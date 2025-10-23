@@ -22,23 +22,19 @@
     a{color:var(--brand);text-decoration:none}
     hr{border:0;border-top:1px solid var(--line);margin:18px 0}
 
-    /* Top bar */
     header{position:sticky;top:0;z-index:10;background:rgba(15,15,18,.7);
       backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
     .wrap{max-width:var(--max);margin:auto;padding:0 20px}
     .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
     .back{color:var(--muted)}
 
-    /* Title + subtitle */
     .title{font:800 36px/1.15 Playfair Display,serif;margin:22px 0 6px}
     .subtitle{color:var(--muted);margin:0 0 14px}
 
-    /* Hero */
     .hero{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
       box-shadow:var(--shadow);margin:10px 0 24px}
     .hero img{display:block;width:100%;height:auto}
 
-    /* Content */
     main{max-width:var(--max);margin:0 auto;padding:0 20px 40px}
     h2{font:800 26px/1.25 Playfair Display,serif;margin:28px 0 10px}
     h3{font:800 18px/1.25 Inter,system-ui;margin:18px 0 6px}
@@ -62,61 +58,7 @@
     .jumprow{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0}
     .jumprow a{color:var(--ink);background:var(--panel);border:1px solid var(--line);
       border-radius:12px;padding:8px 10px;font-weight:700}
-
     footer{max-width:var(--max);margin:0 auto;padding:0 20px 40px;color:var(--muted)}
-
-    /* --- Enhanced Packets-Style Formatting (Dark Theme + Polish) --- */
-    .section-block { margin: 50px 0; }
-
-    /* Pitch panel */
-    .pitch-dark {
-      background: #1a1a20;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 32px 30px;
-      text-align: center;
-      box-shadow: 0 6px 22px rgba(0,0,0,.35);
-      position: relative; overflow: hidden;
-    }
-    .pitch-dark h2 { margin: 0 0 14px; font-size: 28px; font-weight: 800; }
-    .pitch-dark::before {
-      content:""; position:absolute; inset:0;
-      background-image:url("https://i.imgur.com/8KZtI2U.png"); /* subtle noise */
-      opacity:.06; pointer-events:none;
-    }
-
-    /* Twin cards */
-    .twocol { display:grid; grid-template-columns:1fr; gap:24px; margin-top:30px; }
-    @media (min-width: 900px){ .twocol { grid-template-columns:1fr 1fr; } }
-
-    .cardish-dark {
-      background:#131318; border:1px solid var(--line); border-radius:18px;
-      padding:26px 28px; box-shadow:0 6px 18px rgba(0,0,0,.3);
-      position:relative; overflow:hidden;
-    }
-    .cardish-dark::before{
-      content:""; position:absolute; inset:0;
-      background-image:url("https://i.imgur.com/8KZtI2U.png");
-      opacity:.06; pointer-events:none;
-    }
-    .cardish-dark h2 { font-size:24px; margin:0 0 14px; border-left:4px solid var(--brand); padding-left:10px; }
-    .cardish-dark ul { line-height:1.65; margin-left:22px; color:var(--muted); }
-    .cardish-dark ul li{ margin-bottom:6px; }
-    .cardish-dark:hover { border-color:var(--brand); box-shadow:0 4px 18px rgba(255,127,50,0.18); transition:all .22s ease; }
-
-    /* Micro labels + stage label */
-    .micro-label{ color:var(--brand); font-weight:800; font-size:13px; letter-spacing:.2px; text-transform:uppercase; opacity:.85; margin-bottom:6px; }
-    .stage-label{ font-weight:700; color:var(--brand); font-size:14px; margin-bottom:4px; }
-
-    /* Jump buttons */
-    .jump-row { display:flex; flex-wrap:wrap; gap:18px; margin:40px 0 10px; justify-content:center; }
-    .jump-btn { background:var(--brand); color:#111; padding:14px 30px; border-radius:14px; font-weight:800; cursor:pointer; border:none; transition:all .18s ease; text-align:center; }
-    .jump-btn:hover { transform:translateY(-3px); box-shadow:0 6px 12px rgba(255,127,50,0.35); }
-    .jump-btn:active { transform:translateY(0); box-shadow:0 3px 6px rgba(255,127,50,0.2); }
-
-    /* Fade-in */
-    .fade-in { opacity:0; transform:translateY(6px); animation:fadeUp .55s ease forwards; }
-    @keyframes fadeUp { from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)} }
   </style>
 </head>
 <body>
@@ -142,48 +84,41 @@
   </div>
 
   <main>
-    <!-- PITCH + GOALS + CONSTRAINTS + JUMPS (polished, dark theme) -->
-    <section class="section-block fade-in">
-      <div class="micro-label">Project Context</div>
-      <div class="pitch-dark">
-        <h2>My Game Pitch</h2>
-        <p>
-          A narrative-driven action RPG about balance, consequence, and the cost of peace.
-          You play as Ka’Sipho — a peacekeeper whose abilities evolve alongside his emotional arc,
-          blending combat readability with thematic pacing.
-        </p>
+    <!-- Feature, Goals, Constraints (matches reference structure) -->
+    <section class="grid">
+      <div class="panel col-6">
+        <h2>Features</h2>
+        <ul>
+          <li>Readable, tactile combat with encounter pacing as storytelling</li>
+          <li>Emotion-linked ability kit that evolves with the narrative arc</li>
+          <li>Lore surfaces and reactive VO that punctuate play without stalling</li>
+        </ul>
       </div>
-
-      <div class="twocol">
-        <div class="cardish-dark fade-in">
-          <div class="micro-label">Development Targets</div>
-          <h2>Prototype Goals</h2>
-          <ul>
-            <li>Use combat pacing as implicit storytelling</li>
-            <li>Evolve the ability kit across emotional beats</li>
-            <li>Ensure first-time readability through clear telegraphs</li>
-            <li>Support expressive mastery without complexity bloat</li>
-          </ul>
-        </div>
-
-        <div class="cardish-dark fade-in">
-          <div class="micro-label">Production Limits</div>
-          <h2>Constraints</h2>
-          <ul>
-            <li>Solo-led production</li>
-            <li>Academic deadlines → frequent playable slices</li>
-            <li>Art bandwidth limitations → stylized UI first</li>
-            <li>Timeboxed iteration cycles</li>
-          </ul>
-        </div>
+      <div class="panel col-6">
+        <h2>Goals</h2>
+        <ul>
+          <li>Make players feel the tension → release loop through mechanics</li>
+          <li>Keep onboarding approachable while supporting expressive mastery</li>
+          <li>Ship small playable slices on a consistent cadence</li>
+        </ul>
+        <h2 style="margin-top:16px">Constraints</h2>
+        <ul>
+          <li>Indie scope; solo-led production with limited art bandwidth</li>
+          <li>Unity prototype; emphasis on clarity over content breadth</li>
+          <li>Timeboxed milestones across academic + personal schedule</li>
+        </ul>
       </div>
+    </section>
 
-      <div class="jump-row fade-in">
-        <a href="#process" class="jump-btn">Jump to Process</a>
-        <a href="#key" class="jump-btn">Jump to Key Solutions</a>
-        <a href="#takeaways" class="jump-btn">Jump to Takeaways</a>
-        <a href="#links" class="jump-btn">Jump to Published Links</a>
+    <!-- Jump links (Process, Key Solutions, Takeaways) -->
+    <section class="wrap">
+      <div class="jumprow">
+        <a href="#process">Jump to Process</a>
+        <a href="#key">Jump to Key Solutions</a>
+        <a href="#takeaways">Jump to Takeaways</a>
+        <a href="#links">Jump to Published Links</a>
       </div>
+      <hr/>
     </section>
 
     <!-- Process -->
@@ -192,20 +127,20 @@
 
       <h3>1. Research & Mood</h3>
       <ul class="muted">
-        <li>Mapped desired cadence (pressure → decision → catharsis)</li>
-        <li>Studied readable combat: silhouettes, telegraphs, hit-pause, subtle screenshake</li>
+        <li>Mapped desired emotions and cadence (pressure → decision → catharsis)</li>
+        <li>Studied readable combat: silhouettes, telegraphs, hit-pause/screen-shake</li>
       </ul>
 
       <h3>2. Prototype & Playtest</h3>
       <ul class="muted">
-        <li>Fast iteration cycles for movement, camera, and kit timings</li>
-        <li>Weekly playtests—tracked readability, fail states, encounter beats</li>
+        <li>Fast iteration cycles for movement, camera, and core kit timings</li>
+        <li>Weekly playtests—tracked readability, fail states, and encounter beats</li>
       </ul>
 
       <h3>3. Scope & Polish</h3>
       <ul class="muted">
-        <li>Cut feature creep; doubled down on clarity + feel</li>
-        <li>Added narrative surfaces (barks, pickups) that respect flow</li>
+        <li>Cut feature creep; doubled down on clarity and feel</li>
+        <li>Added small narrative surfaces (barks, pickups) that respect flow</li>
       </ul>
 
       <div class="figure">
@@ -213,7 +148,7 @@
       </div>
     </section>
 
-    <!-- Key Solutions -->
+    <!-- Key Solutions (with thought process + results, like the reference) -->
     <section id="key">
       <h2>Key Solutions</h2>
 
@@ -224,7 +159,7 @@
       <h4>My thought process</h4>
       <ul class="muted">
         <li>Let the kit mirror Ka’Sipho’s internal state so mechanics carry narrative</li>
-        <li>Gate complexity behind emotional milestones, not just levels</li>
+        <li>Gate complexity behind emotional milestones, not just level gates</li>
       </ul>
       <h4>Results</h4>
       <ul class="muted">
@@ -240,13 +175,13 @@
       </div>
       <h4>My thought process</h4>
       <ul class="muted">
-        <li>Prioritize silhouettes, clear windups, generous hit-pauses</li>
-        <li>Keep HUD minimal; communicate through animation + VFX where possible</li>
+        <li>Prioritise silhouettes, clear windups, and generous hit-pauses</li>
+        <li>Keep HUD minimal; communicate through animation and VFX where possible</li>
       </ul>
       <h4>Results</h4>
       <ul class="muted">
         <li>Higher first-time clarity; fewer cheap hits in playtests</li>
-        <li>Players focused on space, timing, and intent—not UI</li>
+        <li>Players kept focus on space, timing, and intent—not UI</li>
       </ul>
 
       <hr/>
@@ -262,12 +197,12 @@
       </ul>
       <h4>Results</h4>
       <ul class="muted">
-        <li>Smoother rhythm; moments feel like “earned catharsis”</li>
+        <li>Better rhythm; players described moments as “earned catharsis”</li>
         <li>Reduced difficulty spikes by smoothing recovery windows</li>
       </ul>
     </section>
 
-    <!-- Takeaways -->
+    <!-- Takeaways (matches the ending on the reference) -->
     <section id="takeaways">
       <h2>Takeaways</h2>
       <ul>
@@ -291,8 +226,6 @@
     <div class="wrap">© <span id="year"></span> Tobi Adefidiya</div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent=new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
