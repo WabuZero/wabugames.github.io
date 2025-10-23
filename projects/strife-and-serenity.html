@@ -100,4 +100,199 @@
       opacity:.06; pointer-events:none;
     }
     .cardish-dark h2 { font-size:24px; margin:0 0 14px; border-left:4px solid var(--brand); padding-left:10px; }
-    .cardish-dark ul { line-height:1.65; margin-left
+    .cardish-dark ul { line-height:1.65; margin-left:22px; color:var(--muted); }
+    .cardish-dark ul li{ margin-bottom:6px; }
+    .cardish-dark:hover { border-color:var(--brand); box-shadow:0 4px 18px rgba(255,127,50,0.18); transition:all .22s ease; }
+
+    /* Micro labels + stage label */
+    .micro-label{ color:var(--brand); font-weight:800; font-size:13px; letter-spacing:.2px; text-transform:uppercase; opacity:.85; margin-bottom:6px; }
+    .stage-label{ font-weight:700; color:var(--brand); font-size:14px; margin-bottom:4px; }
+
+    /* Jump buttons */
+    .jump-row { display:flex; flex-wrap:wrap; gap:18px; margin:40px 0 10px; justify-content:center; }
+    .jump-btn { background:var(--brand); color:#111; padding:14px 30px; border-radius:14px; font-weight:800; cursor:pointer; border:none; transition:all .18s ease; text-align:center; }
+    .jump-btn:hover { transform:translateY(-3px); box-shadow:0 6px 12px rgba(255,127,50,0.35); }
+    .jump-btn:active { transform:translateY(0); box-shadow:0 3px 6px rgba(255,127,50,0.2); }
+
+    /* Fade-in */
+    .fade-in { opacity:0; transform:translateY(6px); animation:fadeUp .55s ease forwards; }
+    @keyframes fadeUp { from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)} }
+  </style>
+</head>
+<body>
+  <!-- Top bar -->
+  <header>
+    <div class="wrap bar">
+      <a class="back" href="../index.html">← Back to portfolio</a>
+      <span style="opacity:.6">Tobi Adefidiya</span>
+    </div>
+  </header>
+
+  <!-- Title & subtitle -->
+  <article class="wrap">
+    <h1 class="title">Strife & Serenity</h1>
+    <p class="subtitle">Narrative-driven Action RPG about balance, consequence, and the cost of peace.</p>
+  </article>
+
+  <!-- Hero image -->
+  <div class="wrap hero">
+    <img src="../assets/strife-thumb.jpg"
+         onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2400&auto=format&fit=crop'"
+         alt="Strife & Serenity key art">
+  </div>
+
+  <main>
+    <!-- PITCH + GOALS + CONSTRAINTS + JUMPS (polished, dark theme) -->
+    <section class="section-block fade-in">
+      <div class="micro-label">Project Context</div>
+      <div class="pitch-dark">
+        <h2>My Game Pitch</h2>
+        <p>
+          A narrative-driven action RPG about balance, consequence, and the cost of peace.
+          You play as Ka’Sipho — a peacekeeper whose abilities evolve alongside his emotional arc,
+          blending combat readability with thematic pacing.
+        </p>
+      </div>
+
+      <div class="twocol">
+        <div class="cardish-dark fade-in">
+          <div class="micro-label">Development Targets</div>
+          <h2>Prototype Goals</h2>
+          <ul>
+            <li>Use combat pacing as implicit storytelling</li>
+            <li>Evolve the ability kit across emotional beats</li>
+            <li>Ensure first-time readability through clear telegraphs</li>
+            <li>Support expressive mastery without complexity bloat</li>
+          </ul>
+        </div>
+
+        <div class="cardish-dark fade-in">
+          <div class="micro-label">Production Limits</div>
+          <h2>Constraints</h2>
+          <ul>
+            <li>Solo-led production</li>
+            <li>Academic deadlines → frequent playable slices</li>
+            <li>Art bandwidth limitations → stylized UI first</li>
+            <li>Timeboxed iteration cycles</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="jump-row fade-in">
+        <a href="#process" class="jump-btn">Jump to Process</a>
+        <a href="#key" class="jump-btn">Jump to Key Solutions</a>
+        <a href="#takeaways" class="jump-btn">Jump to Takeaways</a>
+        <a href="#links" class="jump-btn">Jump to Published Links</a>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process">
+      <h2>Process</h2>
+
+      <h3>1. Research & Mood</h3>
+      <ul class="muted">
+        <li>Mapped desired cadence (pressure → decision → catharsis)</li>
+        <li>Studied readable combat: silhouettes, telegraphs, hit-pause, subtle screenshake</li>
+      </ul>
+
+      <h3>2. Prototype & Playtest</h3>
+      <ul class="muted">
+        <li>Fast iteration cycles for movement, camera, and kit timings</li>
+        <li>Weekly playtests—tracked readability, fail states, encounter beats</li>
+      </ul>
+
+      <h3>3. Scope & Polish</h3>
+      <ul class="muted">
+        <li>Cut feature creep; doubled down on clarity + feel</li>
+        <li>Added narrative surfaces (barks, pickups) that respect flow</li>
+      </ul>
+
+      <div class="figure">
+        <img src="https://images.unsplash.com/photo-1513875528452-39400945934d?q=80&w=1600&auto=format&fit=crop" alt="Design notes / sketches (placeholder)">
+      </div>
+    </section>
+
+    <!-- Key Solutions -->
+    <section id="key">
+      <h2>Key Solutions</h2>
+
+      <h3>1) Emotion-Linked Ability Kit</h3>
+      <div class="figure">
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600&auto=format&fit=crop" alt="Ability kit mock (placeholder)">
+      </div>
+      <h4>My thought process</h4>
+      <ul class="muted">
+        <li>Let the kit mirror Ka’Sipho’s internal state so mechanics carry narrative</li>
+        <li>Gate complexity behind emotional milestones, not just levels</li>
+      </ul>
+      <h4>Results</h4>
+      <ul class="muted">
+        <li>Progression “feels earned” and readable; avoids info-dumping</li>
+        <li>Playtesters reported stronger attachment to moment-to-moment choices</li>
+      </ul>
+
+      <hr/>
+
+      <h3>2) Readable Combat Language</h3>
+      <div class="figure">
+        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1600&auto=format&fit=crop" alt="Combat readability mock (placeholder)">
+      </div>
+      <h4>My thought process</h4>
+      <ul class="muted">
+        <li>Prioritize silhouettes, clear windups, generous hit-pauses</li>
+        <li>Keep HUD minimal; communicate through animation + VFX where possible</li>
+      </ul>
+      <h4>Results</h4>
+      <ul class="muted">
+        <li>Higher first-time clarity; fewer cheap hits in playtests</li>
+        <li>Players focused on space, timing, and intent—not UI</li>
+      </ul>
+
+      <hr/>
+
+      <h3>3) Encounter Pacing as Story</h3>
+      <div class="figure">
+        <img src="https://images.unsplash.com/photo-1542838686-73e1a38c5d0c?q=80&w=1600&auto=format&fit=crop" alt="Encounter pacing mock (placeholder)">
+      </div>
+      <h4>My thought process</h4>
+      <ul class="muted">
+        <li>Structure beats to echo the theme: strife → insight → serenity</li>
+        <li>Use camera assists and arena shape language to guide attention</li>
+      </ul>
+      <h4>Results</h4>
+      <ul class="muted">
+        <li>Smoother rhythm; moments feel like “earned catharsis”</li>
+        <li>Reduced difficulty spikes by smoothing recovery windows</li>
+      </ul>
+    </section>
+
+    <!-- Takeaways -->
+    <section id="takeaways">
+      <h2>Takeaways</h2>
+      <ul>
+        <li>Clarity first: fewer, sharper mechanics > many half-baked ones</li>
+        <li>Emotional arc + readable kit progression keeps players engaged</li>
+        <li>Short loops and decisive cuts protect scope and momentum</li>
+      </ul>
+    </section>
+
+    <!-- Published links -->
+    <section id="links">
+      <h2>Published Game Page</h2>
+      <ul>
+        <li><a href="#" target="_blank" rel="noopener">Itch.io / Steam page (coming soon)</a></li>
+      </ul>
+      <p class="muted">Contact: <a href="mailto:tobidee@icloud.com">tobidee@icloud.com</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> Tobi Adefidiya</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
