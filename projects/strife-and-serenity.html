@@ -3,37 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project — Case Study</title>
+  <title>Strife & Serenity — Case Study</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+
   <style>
-    :root{--bg:#0f0f12;--panel:#17171c;--ink:#e8e8ee;--muted:#a7a7b3;--brand:#ff7f32;--line:#26262e;--radius:18px;--shadow:0 10px 30px rgba(0,0,0,.35);--max:980px}
+    :root{
+      --bg:#0f0f12; --panel:#17171c; --ink:#e8e8ee; --muted:#a7a7b3;
+      --brand:#ff7f32; --line:#26262e; --r:18px; --max:980px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,-apple-system,Segoe UI}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui}
     a{color:var(--brand);text-decoration:none}
-    header{position:sticky;top:0;z-index:10;background:rgba(15,15,18,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+
+    header{position:sticky;top:0;z-index:10;background:rgba(15,15,18,.7);
+      backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
     .wrap{max-width:var(--max);margin:auto;padding:0 20px}
     .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
     .back{color:var(--muted)}
-    .title{font:800 36px/1.15 Playfair Display,serif;margin:22px 0 10px}
-    .sub{color:var(--muted)}
-    .hero{max-width:var(--max);margin:10px auto;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
+
+    .title{font:800 36px/1.15 Playfair Display,serif;margin:22px 0 6px}
+    .subtitle{color:var(--muted);margin:0 0 14px}
+
+    .hero{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+      box-shadow:var(--shadow);margin:10px 0 24px}
     .hero img{display:block;width:100%;height:auto}
-    main{max-width:var(--max);margin:0 auto;padding:20px}
-    h2{font:800 24px/1.25 Playfair Display,serif;margin:24px 0 8px}
+
+    main{max-width:var(--max);margin:0 auto;padding:0 20px 40px}
+    h2{font:800 26px/1.25 Playfair Display,serif;margin:28px 0 10px}
+    h3{font:800 18px/1.25 Inter,system-ui;margin:18px 0 6px}
+    h4{font:800 15px/1.25 Inter,system-ui;margin:14px 0 4px;color:var(--muted)}
+
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
     .col-6{grid-column:span 12}
     @media(min-width:900px){.col-6{grid-column:span 6}}
-    .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
-    .meta{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;color:var(--muted);font-size:14px}
-    .figure{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+
+    .panel{background:var(--panel);border:1px solid var(--line);
+      border-radius:var(--r);padding:18px}
+    .muted{color:var(--muted)}
+
+    .figure{border:1px solid var(--line);border-radius:var(--r);
+      overflow:hidden;margin:8px 0}
     .figure img{display:block;width:100%;height:auto}
-    .caption{color:var(--muted);font-size:14px;margin-top:6px}
-    footer{max-width:var(--max);margin:30px auto;padding:0 20px 40px;color:var(--muted)}
+
+    .chiprow{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+    .chip{border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--muted);font-size:13px}
+
+    .jumprow{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0}
+    .jumprow a{color:var(--ink);background:var(--panel);border:1px solid var(--line);
+      border-radius:12px;padding:8px 10px;font-weight:700}
+    footer{max-width:var(--max);margin:0 auto;padding:0 20px 40px;color:var(--muted)}
   </style>
 </head>
 <body>
+  <!-- Top bar -->
   <header>
     <div class="wrap bar">
       <a class="back" href="../index.html">← Back to portfolio</a>
@@ -41,71 +70,162 @@
     </div>
   </header>
 
+  <!-- Title & subtitle -->
   <article class="wrap">
-    <h1 class="title">PROJECT TITLE</h1>
-    <p class="sub">Short project one‑liner goes here. Example: Narrative‑driven action RPG about balance, consequence, and the cost of peace.</p>
+    <h1 class="title">Strife & Serenity</h1>
+    <p class="subtitle">Narrative-driven Action RPG about balance, consequence, and the cost of peace.</p>
   </article>
 
-  <div class="hero"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2400&auto=format&fit=crop" alt="Project hero"></div>
+  <!-- Hero image -->
+  <div class="wrap hero">
+    <img src="../assets/strife-thumb.jpg"
+         onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2400&auto=format&fit=crop'"
+         alt="Strife & Serenity key art">
+  </div>
 
   <main>
+    <!-- Feature, Goals, Constraints (matches reference structure) -->
     <section class="grid">
       <div class="panel col-6">
-        <h2>Overview</h2>
-        <p>What is this project? Two or three paragraphs that explain the goal, the core idea, and what makes it interesting. Keep it actionable and skimmable.</p>
+        <h2>Features</h2>
+        <ul>
+          <li>Readable, tactile combat with encounter pacing as storytelling</li>
+          <li>Emotion-linked ability kit that evolves with the narrative arc</li>
+          <li>Lore surfaces and reactive VO that punctuate play without stalling</li>
+        </ul>
       </div>
       <div class="panel col-6">
-        <h2>Role & Scope</h2>
-        <div class="meta">
-          <div><strong>Role</strong><br/>Game & Narrative Designer</div>
-          <div><strong>Engine</strong><br/>Unity</div>
-          <div><strong>Team</strong><br/>Solo / Small team</div>
-          <div><strong>Timeline</strong><br/>2024–2025</div>
-        </div>
+        <h2>Goals</h2>
+        <ul>
+          <li>Make players feel the tension → release loop through mechanics</li>
+          <li>Keep onboarding approachable while supporting expressive mastery</li>
+          <li>Ship small playable slices on a consistent cadence</li>
+        </ul>
+        <h2 style="margin-top:16px">Constraints</h2>
+        <ul>
+          <li>Indie scope; solo-led production with limited art bandwidth</li>
+          <li>Unity prototype; emphasis on clarity over content breadth</li>
+          <li>Timeboxed milestones across academic + personal schedule</li>
+        </ul>
       </div>
     </section>
 
-    <section>
-      <h2>Design Goals</h2>
-      <ul>
-        <li>Goal A — concise statement.</li>
-        <li>Goal B — concise statement.</li>
-        <li>Goal C — concise statement.</li>
+    <!-- Jump links (Process, Key Solutions, Takeaways) -->
+    <section class="wrap">
+      <div class="jumprow">
+        <a href="#process">Jump to Process</a>
+        <a href="#key">Jump to Key Solutions</a>
+        <a href="#takeaways">Jump to Takeaways</a>
+        <a href="#links">Jump to Published Links</a>
+      </div>
+      <hr/>
+    </section>
+
+    <!-- Process -->
+    <section id="process">
+      <h2>Process</h2>
+
+      <h3>1. Research & Mood</h3>
+      <ul class="muted">
+        <li>Mapped desired emotions and cadence (pressure → decision → catharsis)</li>
+        <li>Studied readable combat: silhouettes, telegraphs, hit-pause/screen-shake</li>
+      </ul>
+
+      <h3>2. Prototype & Playtest</h3>
+      <ul class="muted">
+        <li>Fast iteration cycles for movement, camera, and core kit timings</li>
+        <li>Weekly playtests—tracked readability, fail states, and encounter beats</li>
+      </ul>
+
+      <h3>3. Scope & Polish</h3>
+      <ul class="muted">
+        <li>Cut feature creep; doubled down on clarity and feel</li>
+        <li>Added small narrative surfaces (barks, pickups) that respect flow</li>
+      </ul>
+
+      <div class="figure">
+        <img src="https://images.unsplash.com/photo-1513875528452-39400945934d?q=80&w=1600&auto=format&fit=crop" alt="Design notes / sketches (placeholder)">
+      </div>
+    </section>
+
+    <!-- Key Solutions (with thought process + results, like the reference) -->
+    <section id="key">
+      <h2>Key Solutions</h2>
+
+      <h3>1) Emotion-Linked Ability Kit</h3>
+      <div class="figure">
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600&auto=format&fit=crop" alt="Ability kit mock (placeholder)">
+      </div>
+      <h4>My thought process</h4>
+      <ul class="muted">
+        <li>Let the kit mirror Ka’Sipho’s internal state so mechanics carry narrative</li>
+        <li>Gate complexity behind emotional milestones, not just level gates</li>
+      </ul>
+      <h4>Results</h4>
+      <ul class="muted">
+        <li>Progression “feels earned” and readable; avoids info-dumping</li>
+        <li>Playtesters reported stronger attachment to moment-to-moment choices</li>
+      </ul>
+
+      <hr/>
+
+      <h3>2) Readable Combat Language</h3>
+      <div class="figure">
+        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1600&auto=format&fit=crop" alt="Combat readability mock (placeholder)">
+      </div>
+      <h4>My thought process</h4>
+      <ul class="muted">
+        <li>Prioritise silhouettes, clear windups, and generous hit-pauses</li>
+        <li>Keep HUD minimal; communicate through animation and VFX where possible</li>
+      </ul>
+      <h4>Results</h4>
+      <ul class="muted">
+        <li>Higher first-time clarity; fewer cheap hits in playtests</li>
+        <li>Players kept focus on space, timing, and intent—not UI</li>
+      </ul>
+
+      <hr/>
+
+      <h3>3) Encounter Pacing as Story</h3>
+      <div class="figure">
+        <img src="https://images.unsplash.com/photo-1542838686-73e1a38c5d0c?q=80&w=1600&auto=format&fit=crop" alt="Encounter pacing mock (placeholder)">
+      </div>
+      <h4>My thought process</h4>
+      <ul class="muted">
+        <li>Structure beats to echo the theme: strife → insight → serenity</li>
+        <li>Use camera assists and arena shape language to guide attention</li>
+      </ul>
+      <h4>Results</h4>
+      <ul class="muted">
+        <li>Better rhythm; players described moments as “earned catharsis”</li>
+        <li>Reduced difficulty spikes by smoothing recovery windows</li>
       </ul>
     </section>
 
-    <section class="grid">
-      <figure class="figure col-6">
-        <img src="https://images.unsplash.com/photo-1513875528452-39400945934d?q=80&w=1600&auto=format&fit=crop" alt="Screenshot or diagram">
-      </figure>
-      <div class="panel col-6">
-        <h2>Systems & Mechanics</h2>
-        <p>Explain the key systems. What problems do they solve? What trade‑offs did you accept?</p>
-      </div>
+    <!-- Takeaways (matches the ending on the reference) -->
+    <section id="takeaways">
+      <h2>Takeaways</h2>
+      <ul>
+        <li>Clarity first: fewer, sharper mechanics > many half-baked ones</li>
+        <li>Emotional arc + readable kit progression keeps players engaged</li>
+        <li>Short loops and decisive cuts protect scope and momentum</li>
+      </ul>
     </section>
 
-    <section class="grid">
-      <div class="panel col-6">
-        <h2>Narrative & Experience</h2>
-        <p>How does the story integrate with play? What emotions should the player feel?</p>
-      </div>
-      <figure class="figure col-6">
-        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600&auto=format&fit=crop" alt="Another visual">
-      </figure>
-    </section>
-
-    <section>
-      <h2>Outcome</h2>
-      <p>What was the result? Include learnings, metrics (if any), player feedback, or what you’d do next.</p>
+    <!-- Published links -->
+    <section id="links">
+      <h2>Published Game Page</h2>
+      <ul>
+        <li><a href="#" target="_blank" rel="noopener">Itch.io / Steam page (coming soon)</a></li>
+      </ul>
+      <p class="muted">Contact: <a href="mailto:tobidee@icloud.com">tobidee@icloud.com</a></p>
     </section>
   </main>
 
   <footer>
-    <div>© <span id="year"></span> Tobi Adefidiya · <a href="mailto:tobidee@icloud.com">tobidee@icloud.com</a></div>
+    <div class="wrap">© <span id="year"></span> Tobi Adefidiya</div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent=new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
