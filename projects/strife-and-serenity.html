@@ -22,19 +22,23 @@
     a{color:var(--brand);text-decoration:none}
     hr{border:0;border-top:1px solid var(--line);margin:18px 0}
 
+    /* Top bar */
     header{position:sticky;top:0;z-index:10;background:rgba(15,15,18,.7);
       backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
     .wrap{max-width:var(--max);margin:auto;padding:0 20px}
     .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
     .back{color:var(--muted)}
 
+    /* Title + subtitle */
     .title{font:800 36px/1.15 Playfair Display,serif;margin:22px 0 6px}
     .subtitle{color:var(--muted);margin:0 0 14px}
 
+    /* Hero */
     .hero{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
       box-shadow:var(--shadow);margin:10px 0 24px}
     .hero img{display:block;width:100%;height:auto}
 
+    /* Content */
     main{max-width:var(--max);margin:0 auto;padding:0 20px 40px}
     h2{font:800 26px/1.25 Playfair Display,serif;margin:28px 0 10px}
     h3{font:800 18px/1.25 Inter,system-ui;margin:18px 0 6px}
@@ -58,174 +62,42 @@
     .jumprow{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0}
     .jumprow a{color:var(--ink);background:var(--panel);border:1px solid var(--line);
       border-radius:12px;padding:8px 10px;font-weight:700}
+
     footer{max-width:var(--max);margin:0 auto;padding:0 20px 40px;color:var(--muted)}
-  </style>
-</head>
-<body>
-  <!-- Top bar -->
-  <header>
-    <div class="wrap bar">
-      <a class="back" href="../index.html">← Back to portfolio</a>
-      <span style="opacity:.6">Tobi Adefidiya</span>
-    </div>
-  </header>
 
-  <!-- Title & subtitle -->
-  <article class="wrap">
-    <h1 class="title">Strife & Serenity</h1>
-    <p class="subtitle">Narrative-driven Action RPG about balance, consequence, and the cost of peace.</p>
-  </article>
+    /* --- Enhanced Packets-Style Formatting (Dark Theme + Polish) --- */
+    .section-block { margin: 50px 0; }
 
-  <!-- Hero image -->
-  <div class="wrap hero">
-    <img src="../assets/strife-thumb.jpg"
-         onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2400&auto=format&fit=crop'"
-         alt="Strife & Serenity key art">
-  </div>
+    /* Pitch panel */
+    .pitch-dark {
+      background: #1a1a20;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 32px 30px;
+      text-align: center;
+      box-shadow: 0 6px 22px rgba(0,0,0,.35);
+      position: relative; overflow: hidden;
+    }
+    .pitch-dark h2 { margin: 0 0 14px; font-size: 28px; font-weight: 800; }
+    .pitch-dark::before {
+      content:""; position:absolute; inset:0;
+      background-image:url("https://i.imgur.com/8KZtI2U.png"); /* subtle noise */
+      opacity:.06; pointer-events:none;
+    }
 
-  <main>
-    <!-- Feature, Goals, Constraints (matches reference structure) -->
-    <section class="grid">
-      <div class="panel col-6">
-        <h2>Features</h2>
-        <ul>
-          <li>Readable, tactile combat with encounter pacing as storytelling</li>
-          <li>Emotion-linked ability kit that evolves with the narrative arc</li>
-          <li>Lore surfaces and reactive VO that punctuate play without stalling</li>
-        </ul>
-      </div>
-      <div class="panel col-6">
-        <h2>Goals</h2>
-        <ul>
-          <li>Make players feel the tension → release loop through mechanics</li>
-          <li>Keep onboarding approachable while supporting expressive mastery</li>
-          <li>Ship small playable slices on a consistent cadence</li>
-        </ul>
-        <h2 style="margin-top:16px">Constraints</h2>
-        <ul>
-          <li>Indie scope; solo-led production with limited art bandwidth</li>
-          <li>Unity prototype; emphasis on clarity over content breadth</li>
-          <li>Timeboxed milestones across academic + personal schedule</li>
-        </ul>
-      </div>
-    </section>
+    /* Twin cards */
+    .twocol { display:grid; grid-template-columns:1fr; gap:24px; margin-top:30px; }
+    @media (min-width: 900px){ .twocol { grid-template-columns:1fr 1fr; } }
 
-    <!-- Jump links (Process, Key Solutions, Takeaways) -->
-    <section class="wrap">
-      <div class="jumprow">
-        <a href="#process">Jump to Process</a>
-        <a href="#key">Jump to Key Solutions</a>
-        <a href="#takeaways">Jump to Takeaways</a>
-        <a href="#links">Jump to Published Links</a>
-      </div>
-      <hr/>
-    </section>
-
-    <!-- Process -->
-    <section id="process">
-      <h2>Process</h2>
-
-      <h3>1. Research & Mood</h3>
-      <ul class="muted">
-        <li>Mapped desired emotions and cadence (pressure → decision → catharsis)</li>
-        <li>Studied readable combat: silhouettes, telegraphs, hit-pause/screen-shake</li>
-      </ul>
-
-      <h3>2. Prototype & Playtest</h3>
-      <ul class="muted">
-        <li>Fast iteration cycles for movement, camera, and core kit timings</li>
-        <li>Weekly playtests—tracked readability, fail states, and encounter beats</li>
-      </ul>
-
-      <h3>3. Scope & Polish</h3>
-      <ul class="muted">
-        <li>Cut feature creep; doubled down on clarity and feel</li>
-        <li>Added small narrative surfaces (barks, pickups) that respect flow</li>
-      </ul>
-
-      <div class="figure">
-        <img src="https://images.unsplash.com/photo-1513875528452-39400945934d?q=80&w=1600&auto=format&fit=crop" alt="Design notes / sketches (placeholder)">
-      </div>
-    </section>
-
-    <!-- Key Solutions (with thought process + results, like the reference) -->
-    <section id="key">
-      <h2>Key Solutions</h2>
-
-      <h3>1) Emotion-Linked Ability Kit</h3>
-      <div class="figure">
-        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600&auto=format&fit=crop" alt="Ability kit mock (placeholder)">
-      </div>
-      <h4>My thought process</h4>
-      <ul class="muted">
-        <li>Let the kit mirror Ka’Sipho’s internal state so mechanics carry narrative</li>
-        <li>Gate complexity behind emotional milestones, not just level gates</li>
-      </ul>
-      <h4>Results</h4>
-      <ul class="muted">
-        <li>Progression “feels earned” and readable; avoids info-dumping</li>
-        <li>Playtesters reported stronger attachment to moment-to-moment choices</li>
-      </ul>
-
-      <hr/>
-
-      <h3>2) Readable Combat Language</h3>
-      <div class="figure">
-        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1600&auto=format&fit=crop" alt="Combat readability mock (placeholder)">
-      </div>
-      <h4>My thought process</h4>
-      <ul class="muted">
-        <li>Prioritise silhouettes, clear windups, and generous hit-pauses</li>
-        <li>Keep HUD minimal; communicate through animation and VFX where possible</li>
-      </ul>
-      <h4>Results</h4>
-      <ul class="muted">
-        <li>Higher first-time clarity; fewer cheap hits in playtests</li>
-        <li>Players kept focus on space, timing, and intent—not UI</li>
-      </ul>
-
-      <hr/>
-
-      <h3>3) Encounter Pacing as Story</h3>
-      <div class="figure">
-        <img src="https://images.unsplash.com/photo-1542838686-73e1a38c5d0c?q=80&w=1600&auto=format&fit=crop" alt="Encounter pacing mock (placeholder)">
-      </div>
-      <h4>My thought process</h4>
-      <ul class="muted">
-        <li>Structure beats to echo the theme: strife → insight → serenity</li>
-        <li>Use camera assists and arena shape language to guide attention</li>
-      </ul>
-      <h4>Results</h4>
-      <ul class="muted">
-        <li>Better rhythm; players described moments as “earned catharsis”</li>
-        <li>Reduced difficulty spikes by smoothing recovery windows</li>
-      </ul>
-    </section>
-
-    <!-- Takeaways (matches the ending on the reference) -->
-    <section id="takeaways">
-      <h2>Takeaways</h2>
-      <ul>
-        <li>Clarity first: fewer, sharper mechanics > many half-baked ones</li>
-        <li>Emotional arc + readable kit progression keeps players engaged</li>
-        <li>Short loops and decisive cuts protect scope and momentum</li>
-      </ul>
-    </section>
-
-    <!-- Published links -->
-    <section id="links">
-      <h2>Published Game Page</h2>
-      <ul>
-        <li><a href="#" target="_blank" rel="noopener">Itch.io / Steam page (coming soon)</a></li>
-      </ul>
-      <p class="muted">Contact: <a href="mailto:tobidee@icloud.com">tobidee@icloud.com</a></p>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">© <span id="year"></span> Tobi Adefidiya</div>
-  </footer>
-
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
-</body>
-</html>
+    .cardish-dark {
+      background:#131318; border:1px solid var(--line); border-radius:18px;
+      padding:26px 28px; box-shadow:0 6px 18px rgba(0,0,0,.3);
+      position:relative; overflow:hidden;
+    }
+    .cardish-dark::before{
+      content:""; position:absolute; inset:0;
+      background-image:url("https://i.imgur.com/8KZtI2U.png");
+      opacity:.06; pointer-events:none;
+    }
+    .cardish-dark h2 { font-size:24px; margin:0 0 14px; border-left:4px solid var(--brand); padding-left:10px; }
+    .cardish-dark ul { line-height:1.65; margin-left
