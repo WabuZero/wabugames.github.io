@@ -22,8 +22,10 @@ html{scroll-behavior:smooth}
 body{
   margin:0; min-height:100vh; color:var(--ink);
   font:400 16px/1.6 Inter,system-ui,Segoe UI,Roboto;
-  background:#000 url('Wallpaper.png') center/cover fixed no-repeat;
+  /* IMPORTANT: lowercase filename */
+  background:#000 url('wallpaper.png') center/cover fixed no-repeat;
 }
+/* dark overlay for readability */
 .overlay{position:fixed; inset:0; background:rgba(15,15,18,.55); z-index:0}
 .page{position:relative; z-index:1}
 
@@ -64,9 +66,7 @@ section h2{
 section{scroll-margin-top:calc(var(--navh) + 12px)} /* anchor offset */
 
 /* PROJECTS – CAROUSEL */
-.carousel-shell{
-  position:relative; margin-top:16px;
-}
+.carousel-shell{ position:relative; margin-top:16px; }
 .carousel{
   display:grid; grid-auto-flow:column; grid-auto-columns:minmax(300px, 1fr);
   gap:24px; overflow-x:auto; padding:6px 6px 14px;
@@ -166,12 +166,8 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
       <div class="carousel-shell">
         <button class="arrow left" aria-label="Scroll left" title="Scroll left">◀</button>
         <div class="carousel" id="projectCarousel" tabindex="0" aria-label="Project carousel">
-          
-          <!-- Card 1 -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/strife-thumb.jpg" alt="Strife &amp; Serenity Key Art" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/strife-thumb.jpg" alt="Strife &amp; Serenity" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Strife & Serenity</h3>
               <div class="sub">Narrative-Driven Action RPG</div>
@@ -180,11 +176,8 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 2 -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/cat-sitter-thumb.jpg" alt="Cthulhu's Cat Sitter" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/cat-sitter-thumb.jpg" alt="Cthulhu's Cat Sitter" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Cthulhu's Cat Sitter</h3>
               <div class="sub">Puzzle / Strategy</div>
@@ -193,11 +186,8 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 3 -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/mark-of-mastery-thumb.jpg" alt="Mark of Mastery" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/mark-of-mastery-thumb.jpg" alt="Mark of Mastery" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Mark of Mastery</h3>
               <div class="sub">Action RPG (Prototype)</div>
@@ -206,11 +196,8 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 4 -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/stonespoke-thumb.jpg" alt="Stonespoke" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/stonespoke-thumb.jpg" alt="Stonespoke" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Stonespoke</h3>
               <div class="sub">Adventure / Puzzle</div>
@@ -219,11 +206,8 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 5 -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/high-road-thumb.jpg" alt="High Road" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/high-road-thumb.jpg" alt="High Road" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>High Road (Concept)</h3>
               <div class="sub">Climb / Choice-Driven</div>
@@ -232,11 +216,8 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 6 -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/seeds-of-conflict-thumb.jpg" alt="Seeds of Conflict" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/seeds-of-conflict-thumb.jpg" alt="Seeds of Conflict" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Seeds of Conflict (Concept)</h3>
               <div class="sub">Action RPG / Narrative</div>
@@ -245,11 +226,8 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 7 -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/chain-reaction-thumb.jpg" alt="Chain Reaction" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/chain-reaction-thumb.jpg" alt="Chain Reaction" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Chain Reaction (Board Game)</h3>
               <div class="sub">Hidden Roles / Energy Economy</div>
@@ -258,11 +236,8 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 8 -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/final-galaxy-thumb.jpg" alt="Final Galaxy" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/final-galaxy-thumb.jpg" alt="Final Galaxy" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Final Galaxy (Board Game)</h3>
               <div class="sub">Tactics / Drafting</div>
@@ -270,7 +245,6 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
               <a class="cta" href="#">Case study (soon) →</a>
             </div>
           </article>
-
         </div>
         <button class="arrow right" aria-label="Scroll right" title="Scroll right">▶</button>
       </div>
@@ -299,13 +273,11 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
           <h3>Currently</h3>
           <ul>
             <li>Prototyping encounter pacing & ability kits for S&S</li>
-            <li>Writing bite-sized narrative surfaces that respect flow</li>
+            <li>Writing narrative surfaces that respect flow</li>
             <li>Iterating weekly with live playtests</li>
           </ul>
           <h3 style="margin-top:14px">Contact</h3>
-          <p>
-            <a class="cta" href="mailto:tobidee@icloud.com">tobidee@icloud.com</a>
-          </p>
+          <p><a class="cta" href="mailto:tobidee@icloud.com">tobidee@icloud.com</a></p>
         </div>
       </div>
     </div>
