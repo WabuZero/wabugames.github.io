@@ -1,379 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tobi Adefidiya — Game & Narrative Designer</title>
-  <meta name="description" content="Portfolio of Tobi Adefidiya — Game Designer & Narrative Designer" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0f0f12;        /* near-black */
-      --panel:#17171c;     /* card background */
-      --ink:#e8e8ee;       /* primary text */
-      --muted:#a7a7b3;     /* secondary text */
-      --brand:#ff7f32;     /* accent */
-      --line:#26262e;      /* dividers */
-      --radius:18px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
-      --max:1100px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial}
-    a{color:var(--ink);text-decoration:none}
-    img{max-width:100%;display:block;border-radius:12px}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wabu Games — Tobi Adefidiya</title>
 
-    /* Header */
-    .site-header{position:sticky;top:0;z-index:1000;background:rgba(15,15,18,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-    .wrap{max-width:var(--max);margin:auto;padding:0 20px}
-    .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
-    .brand{display:flex;align-items:baseline;gap:10px;font-weight:800;letter-spacing:.5px}
-    .brand .pipe{opacity:.45}
-    .role{color:var(--muted);font-weight:600}
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
 
-    nav ul{display:flex;list-style:none;margin:0;padding:0;gap:22px}
-    nav a{color:var(--muted)}
-    nav a:hover, nav a:focus{color:var(--ink)}
+<style>
+:root{
+  --bg:#0f0f12; --ink:#e8e8ee; --muted:#a7a7b3;
+  --brand:#ff7f32; --line:#26262e; --r:16px;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --max:1200px; --navh:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; color:var(--ink);
+  font:400 16px/1.6 Inter,system-ui,Segoe UI,Roboto;
+  background:#000 url('Wallpaper.png') center/cover fixed no-repeat;
+}
+.overlay{position:fixed; inset:0; background:rgba(15,15,18,.55); z-index:0}
+.page{position:relative; z-index:1}
 
-    /* Hero */
-    .hero{padding:56px 0 24px;border-bottom:1px solid var(--line)}
-    .hero h1{font:800 42px/1 Playfair Display,serif;margin:0 0 8px}
-    .hero p{margin:0;color:var(--muted)}
+/* NAV */
+nav{
+  position:sticky; top:0; height:var(--navh); z-index:10;
+  backdrop-filter:saturate(120%) blur(10px);
+  background:rgba(15,15,18,.7); border-bottom:1px solid var(--line);
+}
+.wrap{max-width:var(--max); margin:auto; padding:0 20px}
+.navbar{height:var(--navh); display:flex; align-items:center; justify-content:space-between;}
+.brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.04em}
+.brand span:first-child{color:#fff}
+.brand .pipe{opacity:.6}
+.navlinks{display:flex; gap:20px}
+.navlinks a{
+  color:var(--muted); text-decoration:none; font-weight:700; padding:8px 10px;
+  border-radius:10px; transition:color .15s, background .15s;
+}
+.navlinks a:hover{color:var(--ink); background:rgba(255,127,50,.08)}
+.navlinks a.active{color:var(--brand)}
 
-    /* Section scaffold */
-    section{padding:56px 0}
-    h2{font:800 28px/1.2 Playfair Display,serif;margin:0 0 24px}
-    .divider{height:1px;background:var(--line);margin:24px 0}
+/* HERO */
+header.hero{ text-align:center; padding:90px 20px 50px; }
+.hero h1{
+  font:800 48px/1.1 "Playfair Display",serif; color:var(--brand);
+  margin:0 0 10px;
+}
+.hero p{ color:var(--muted); font-size:18px; }
 
-    /* Projects grid */
-    .projects{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
-    .card{grid-column:span 12;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-    @media(min-width:800px){.card{grid-column:span 6}}
-    .card-media{position:relative}
-    .pill{position:absolute;left:12px;top:12px;background:rgba(255,127,50,.9);color:#111;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px}
-    .card img{width:100%;height:260px;object-fit:cover;border-radius:0}
-    .card-body{padding:18px}
-    .card h3{margin:0 0 6px;font-size:20px}
-    .card .sub{color:var(--muted);font-size:14px;margin-bottom:8px}
-    .card .cta{display:inline-flex;align-items:center;gap:8px;color:var(--brand);font-weight:800;margin-top:6px}
+/* SECTION BASE */
+section{padding:40px 20px}
+section .section-inner{max-width:var(--max); margin:auto}
+section h2{
+  font:800 28px/1.2 "Playfair Display",serif; margin:0 0 14px;
+  border-bottom:2px solid var(--brand); display:inline-block;
+}
+section{scroll-margin-top:calc(var(--navh) + 12px)} /* anchor offset */
 
-    /* Carousel */
-    .carousel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-    .carousel-viewport{position:relative;aspect-ratio:16/9}
-    .carousel-viewport img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0}
-    .controls{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line)}
-    .controls button{background:transparent;border:0;color:var(--ink);padding:14px 18px;font-weight:700;cursor:pointer}
-    .dots{display:flex;gap:8px;padding:12px}
-    .dot{width:10px;height:10px;border-radius:50%;background:#4a4a54;opacity:.6}
-    .dot.active{background:var(--brand);opacity:1}
+/* PROJECTS – CAROUSEL */
+.carousel-shell{
+  position:relative; margin-top:16px;
+}
+.carousel{
+  display:grid; grid-auto-flow:column; grid-auto-columns:minmax(300px, 1fr);
+  gap:24px; overflow-x:auto; padding:6px 6px 14px;
+  scroll-snap-type:x mandatory; scroll-behavior:smooth;
+}
+.carousel::-webkit-scrollbar{height:10px}
+.carousel::-webkit-scrollbar-thumb{background:#2b2b33; border-radius:999px}
+.card{
+  background:rgba(15,15,18,.78); border:1px solid var(--line); border-radius:18px;
+  box-shadow:var(--shadow); overflow:hidden; scroll-snap-align:start;
+  backdrop-filter:blur(2px);
+  display:flex; flex-direction:column;
+  transition:transform .25s, box-shadow .25s;
+}
+.card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rgba(0,0,0,.5) }
+.card-media{height:190px; background:#111; overflow:hidden}
+.card-media img{ width:100%; height:100%; object-fit:cover; display:block }
+.card-body{ padding:18px 18px 20px }
+.card h3{ font:800 22px/1.2 "Playfair Display",serif; color:var(--brand); margin:0 0 4px }
+.card .sub{ color:var(--muted); font-weight:600; font-size:14px; margin-bottom:8px }
+.card p{ margin:0 0 14px }
+.cta{ color:var(--brand); text-decoration:none; font-weight:800; border-bottom:2px solid transparent }
+.cta:hover{ border-color:var(--brand) }
 
-    /* About */
-    .about-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
-    .about-card{grid-column:span 12;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
-    @media(min-width:900px){.about-card{grid-column:span 6}}
-    .about-head{display:flex;gap:16px;align-items:center;margin-bottom:10px}
-    .avatar{width:64px;height:64px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
-    .bullets{margin:10px 0 0 0;color:var(--muted)}
+.arrow{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:44px; height:44px; border-radius:50%;
+  display:grid; place-items:center; cursor:pointer; user-select:none;
+  background:rgba(15,15,18,.85); border:1px solid var(--line); color:var(--ink);
+  transition:transform .15s, background .15s, box-shadow .15s;
+}
+.arrow:hover{ transform:translateY(-50%) scale(1.06); box-shadow:0 8px 18px rgba(0,0,0,.35) }
+.arrow.left{ left:-14px }
+.arrow.right{ right:-14px }
 
-    /* Footer */
-    footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted)}
-    .resume-btn{display:inline-flex;gap:10px;align-items:center;background:var(--brand);color:#111;padding:12px 16px;border-radius:12px;font-weight:800;border:0;cursor:pointer}
+/* ABOUT */
+.about-grid{
+  display:grid; gap:24px; margin-top:10px;
+  grid-template-columns:1fr; 
+}
+@media (min-width:900px){ .about-grid{ grid-template-columns:1.2fr .8fr } }
+.panel{
+  background:rgba(19,19,24,.82); border:1px solid var(--line); border-radius:18px; padding:20px; box-shadow:var(--shadow)
+}
+.panel h3{ margin:0 0 10px; font-weight:800 }
+.kv{ display:flex; gap:12px; flex-wrap:wrap; margin-top:8px }
+.kv span{ border:1px solid var(--line); padding:6px 10px; border-radius:999px; color:var(--muted); font-size:13px }
 
-    /* Utility */
-    .muted{color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
-    .span-6{grid-column:span 12}
-    @media(min-width:900px){.span-6{grid-column:span 6}}
-    .pad{padding:18px}
-  </style>
+/* RESUME */
+.resume-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px }
+.btn{
+  display:inline-block; background:var(--brand); color:#111; font-weight:800;
+  padding:10px 14px; border-radius:12px; text-decoration:none
+}
+.btn.ghost{ background:transparent; color:var(--brand); border:2px solid var(--brand) }
+
+/* FOOTER */
+footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
+
+/* SMALL */
+@media (max-width:480px){
+  .hero h1{ font-size:36px }
+}
+</style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="wrap bar">
+
+<div class="overlay"></div>
+<div class="page">
+
+  <!-- NAV -->
+  <nav>
+    <div class="wrap navbar">
       <div class="brand">
-        <span style="font-weight:800">TOBI ADEFIDIYA</span>
-        <span class="pipe">||</span>
-        <span class="role">GAME & NARRATIVE DESIGNER</span>
+        <span>TOBI ADEFIDIYA</span> <span class="pipe">||</span>
+        <span style="color:var(--muted); font-weight:700">GAME & NARRATIVE DESIGNER</span>
       </div>
-      <nav aria-label="Main">
-        <ul>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#resume">Resume</a></li>
-        </ul>
-      </nav>
+      <div class="navlinks">
+        <a href="#projects" class="navlink">Projects</a>
+        <a href="#about" class="navlink">About</a>
+        <a href="#resume" class="navlink">Resume</a>
+      </div>
     </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>TLDR, I'm just a nerd.</h1>
+    <p>Designer • Developer • Storyteller</p>
   </header>
 
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero">
-      <h1>Designing worlds where conflict shapes who we become.</h1>
-      <p class="muted">I’m Tobi Adefidiya — a game & narrative designer building systems that carry feeling. Current work spans <em>Strife & Serenity</em>, original board games, and experimental Unity prototypes.</p>
-    </section>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <h2>Projects</h2>
 
-    <!-- PROJECTS -->
-    <section id="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title">Projects</h2>
-
-      <div class="projects">
-        <!-- Strife & Serenity -->
-        <article class="card">
-          <div class="card-media">
-            <span class="pill">Action RPG</span>
-            <img src="assets/strife-thumb.jpg"
-                 onerror="this.src='https://images.unsplash.com/photo-1520975693416-35a1d12d49fc?q=80&w=1600&auto=format&fit=crop'"
-                 alt="Strife & Serenity Key Art">
-          </div>
-          <div class="card-body">
-            <h3>Strife & Serenity</h3>
-            <div class="sub">Narrative-driven Action RPG</div>
-            <p class="muted">A cosmic tale about balance, consequence, and the cost of peace.</p>
-            <a class="cta" href="projects/strife-and-serenity.html">View case study →</a>
-          </div>
-        </article>
-
-        <!-- Cthulhu’s Cat Sitter -->
-        <article class="card">
-          <div class="card-media">
-            <span class="pill">Prototype</span>
-            <img src="assets/cthulhu-thumb.jpg"
-                 onerror="this.src='https://images.unsplash.com/photo-1520975619015-ffad6c6a9f97?q=80&w=1600&auto=format&fit=crop'"
-                 alt="Cthulhu’s Cat Sitter">
-          </div>
-          <div class="card-body">
-            <h3>Cthulhu’s Cat Sitter</h3>
-            <div class="sub">Comedy management micro-game</div>
-            <p class="muted">Lighthearted chaos with eldritch pets and time pressure.</p>
-            <a class="cta" href="projects/cthulhus-cat-sitter.html">View case study →</a>
-          </div>
-        </article>
-
-        <!-- Mark of Mastery -->
-        <article class="card">
-          <div class="card-media">
-            <span class="pill">Prototype</span>
-            <img src="assets/mark-thumb.jpg"
-                 onerror="this.src='https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600&auto=format&fit=crop'"
-                 alt="Mark of Mastery">
-          </div>
-          <div class="card-body">
-            <h3>Mark of Mastery</h3>
-            <div class="sub">Early S&S prototype</div>
-            <p class="muted">The mechanical and narrative roots of <em>Strife & Serenity</em>.</p>
-            <a class="cta" href="projects/mark-of-mastery.html">View case study →</a>
-          </div>
-        </article>
-
-        <!-- Stonespoke -->
-        <article class="card">
-          <div class="card-media">
-            <span class="pill">Indie</span>
-            <img src="assets/stonespoke-thumb.jpg"
-                 onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop'"
-                 alt="Stonespoke">
-          </div>
-          <div class="card-body">
-            <h3>Stonespoke</h3>
-            <div class="sub">Atmospheric exploration</div>
-            <p class="muted">Quiet traversal with environmental storytelling.</p>
-            <a class="cta" href="projects/stonespoke.html">View case study →</a>
-          </div>
-        </article>
-
-        <!-- High Road (Concept) -->
-        <article class="card">
-          <div class="card-media">
-            <span class="pill">Concept</span>
-            <img src="assets/highroad-thumb.jpg"
-                 onerror="this.src='https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1600&auto=format&fit=crop'"
-                 alt="High Road">
-          </div>
-          <div class="card-body">
-            <h3>High Road</h3>
-            <div class="sub">Concept</div>
-            <p class="muted">Character-driven stealth with partner dynamics.</p>
-            <a class="cta" href="projects/high-road.html">View concept →</a>
-          </div>
-        </article>
-
-        <!-- Seeds of Conflict (Concept) -->
-        <article class="card">
-          <div class="card-media">
-            <span class="pill">Concept</span>
-            <img src="assets/seeds-thumb.jpg"
-                 onerror="this.src='https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1600&auto=format&fit=crop'"
-                 alt="Seeds of Conflict">
-          </div>
-          <div class="card-body">
-            <h3>Seeds of Conflict</h3>
-            <div class="sub">Concept</div>
-            <p class="muted">Systems for escalation, consequence, and reconciliation.</p>
-            <a class="cta" href="projects/seeds-of-conflict.html">View concept →</a>
-          </div>
-        </article>
-
-        <!-- Chain Reaction (Board Game) -->
-        <article class="card">
-          <div class="card-media">
-            <span class="pill">Board Game</span>
-            <img src="assets/chainreaction-thumb.jpg"
-                 onerror="this.src='https://images.unsplash.com/photo-1605522517998-f6f5a9b7b1b6?q=80&w=1600&auto=format&fit=crop'"
-                 alt="Chain Reaction board game">
-          </div>
-          <div class="card-body">
-            <h3>Chain Reaction</h3>
-            <div class="sub">Board Game</div>
-            <p class="muted">Push-your-luck engine with cascading triggers.</p>
-            <a class="cta" href="projects/chain-reaction.html">View rules & design →</a>
-          </div>
-        </article>
-
-        <!-- Final Galaxy (Board Game) -->
-        <article class="card">
-          <div class="card-media">
-            <span class="pill">Board Game</span>
-            <img src="assets/finalgalaxy-thumb.jpg"
-                 onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop'"
-                 alt="Final Galaxy board game">
-          </div>
-          <div class="card-body">
-            <h3>Final Galaxy</h3>
-            <div class="sub">Board Game</div>
-            <p class="muted">Tactical card-driven battles across a dying star map.</p>
-            <a class="cta" href="projects/final-galaxy.html">View rules & design →</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="divider"></div>
-
-      <!-- Simple gallery carousel -->
-      <div class="carousel" aria-label="Gallery">
-        <div class="carousel-viewport">
-          <img id="slide" src="assets/strife-thumb.jpg"
-               onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop'"
-               alt="Showcase slide">
-        </div>
-        <div class="controls">
-          <button type="button" id="prev" aria-label="Previous">← Previous</button>
-          <div class="dots" aria-hidden="true">
-            <div class="dot active" data-i="0"></div>
-            <div class="dot" data-i="1"></div>
-            <div class="dot" data-i="2"></div>
-            <div class="dot" data-i="3"></div>
-            <div class="dot" data-i="4"></div>
-          </div>
-          <button type="button" id="next" aria-label="Next">Next →</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" aria-labelledby="about-title">
-      <h2 id="about-title">About</h2>
-      <div class="about-grid">
-        <article class="about-card span-6">
-          <div class="about-head">
-            <img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=256&auto=format&fit=crop" alt="Portrait placeholder">
-            <div>
-              <strong style="display:block">Tobi Adefidiya</strong>
-              <span class="muted">Game & Narrative Designer</span>
+      <div class="carousel-shell">
+        <button class="arrow left" aria-label="Scroll left" title="Scroll left">◀</button>
+        <div class="carousel" id="projectCarousel" tabindex="0" aria-label="Project carousel">
+          
+          <!-- Card 1 -->
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/strife-thumb.jpg" alt="Strife &amp; Serenity Key Art" onerror="this.style.opacity=0">
             </div>
-          </div>
-          <p>I love making play carry meaning—through mechanics, level rhythm, and the quiet beats where story breathes. I work primarily in Unity.</p>
-          <p class="muted">Email: <a href="mailto:tobidee@icloud.com">tobidee@icloud.com</a> · Portfolio: <a href="https://www.wabugames.com" target="_blank" rel="noopener">wabugames.com</a> · LinkedIn: <a href="https://www.linkedin.com/in/tobi-a-03660b230/" target="_blank" rel="noopener">tobi-a-03660b230</a></p>
-        </article>
+            <div class="card-body">
+              <h3>Strife & Serenity</h3>
+              <div class="sub">Narrative-Driven Action RPG</div>
+              <p>A cosmic tale about balance, consequence, and the cost of peace.</p>
+              <a class="cta" href="projects/strife-and-serenity.html">View case study →</a>
+            </div>
+          </article>
 
-        <article class="about-card span-6">
-          <h3 style="margin:0 0 8px">Drawing</h3>
-          <div class="grid">
-            <div class="span-6 pad"><img src="https://images.unsplash.com/photo-1549289524-06cf8837acee?q=80&w=800&auto=format&fit=crop" alt="Sketchbook"></div>
-            <div class="span-6 pad"><img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=800&auto=format&fit=crop" alt="Digital art"></div>
-          </div>
-          <ul class="bullets">
-            <li>Communicate design ideas visually</li>
-            <li>Color & composition instincts for UI and level framing</li>
-            <li>Appreciation for art pipelines</li>
-          </ul>
-        </article>
+          <!-- Card 2 -->
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/cat-sitter-thumb.jpg" alt="Cthulhu's Cat Sitter" onerror="this.style.opacity=0">
+            </div>
+            <div class="card-body">
+              <h3>Cthulhu's Cat Sitter</h3>
+              <div class="sub">Puzzle / Strategy</div>
+              <p>A cozy yet eldritch management game where you care for cosmic cats.</p>
+              <a class="cta" href="#">Case study (soon) →</a>
+            </div>
+          </article>
 
-        <article class="about-card span-6">
-          <h3 style="margin:0 0 8px">Dancing</h3>
-          <ul class="bullets">
-            <li>Comfort with critique & feedback loops</li>
-            <li>Collaboration and timing</li>
-            <li>Teaching strengthened communication</li>
-          </ul>
-        </article>
+          <!-- Card 3 -->
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/mark-of-mastery-thumb.jpg" alt="Mark of Mastery" onerror="this.style.opacity=0">
+            </div>
+            <div class="card-body">
+              <h3>Mark of Mastery</h3>
+              <div class="sub">Action RPG (Prototype)</div>
+              <p>Fast-paced combat and personal growth woven into a surreal journey.</p>
+              <a class="cta" href="#">Case study (soon) →</a>
+            </div>
+          </article>
 
-        <article class="about-card span-6">
-          <h3 style="margin:0 0 8px">Photography</h3>
-          <div class="grid">
-            <div class="span-6 pad"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=800&auto=format&fit=crop" alt="Landscape"></div>
-            <div class="span-6 pad"><img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?q=80&w=800&auto=format&fit=crop" alt="City"></div>
-          </div>
-          <ul class="bullets">
-            <li>Camera literacy for in-engine framing</li>
-            <li>Guiding a player’s eye through shape language</li>
-            <li>Comfort with DoF and lighting</li>
-          </ul>
-        </article>
+          <!-- Card 4 -->
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/stonespoke-thumb.jpg" alt="Stonespoke" onerror="this.style.opacity=0">
+            </div>
+            <div class="card-body">
+              <h3>Stonespoke</h3>
+              <div class="sub">Adventure / Puzzle</div>
+              <p>Stonecraft, language puzzles, and quiet exploration.</p>
+              <a class="cta" href="#">Case study (soon) →</a>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/high-road-thumb.jpg" alt="High Road" onerror="this.style.opacity=0">
+            </div>
+            <div class="card-body">
+              <h3>High Road (Concept)</h3>
+              <div class="sub">Climb / Choice-Driven</div>
+              <p>Ascend while choosing between Doubt and Desire.</p>
+              <a class="cta" href="#">Case study (soon) →</a>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/seeds-of-conflict-thumb.jpg" alt="Seeds of Conflict" onerror="this.style.opacity=0">
+            </div>
+            <div class="card-body">
+              <h3>Seeds of Conflict (Concept)</h3>
+              <div class="sub">Action RPG / Narrative</div>
+              <p>A seed of strife; a chance at serenity.</p>
+              <a class="cta" href="#">Case study (soon) →</a>
+            </div>
+          </article>
+
+          <!-- Card 7 -->
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/chain-reaction-thumb.jpg" alt="Chain Reaction" onerror="this.style.opacity=0">
+            </div>
+            <div class="card-body">
+              <h3>Chain Reaction (Board Game)</h3>
+              <div class="sub">Hidden Roles / Energy Economy</div>
+              <p>Spy vs. Scientist in a reactor bluff-and-counter game.</p>
+              <a class="cta" href="#">Case study (soon) →</a>
+            </div>
+          </article>
+
+          <!-- Card 8 -->
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/final-galaxy-thumb.jpg" alt="Final Galaxy" onerror="this.style.opacity=0">
+            </div>
+            <div class="card-body">
+              <h3>Final Galaxy (Board Game)</h3>
+              <div class="sub">Tactics / Drafting</div>
+              <p>Fleet orchestration and brinkmanship among dying stars.</p>
+              <a class="cta" href="#">Case study (soon) →</a>
+            </div>
+          </article>
+
+        </div>
+        <button class="arrow right" aria-label="Scroll right" title="Scroll right">▶</button>
       </div>
-    </section>
-
-    <!-- RESUME -->
-    <section id="resume" aria-labelledby="resume-title">
-      <h2 id="resume-title">Resume</h2>
-      <p class="muted">Prefer a one-pager? You can grab it below.</p>
-      <!-- Replace the href with your actual resume link -->
-      <a class="resume-btn" href="#" target="_blank" rel="noopener">📄 Read Resume</a>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div class="divider"></div>
-      <p>Thank you for visiting!</p>
-      <p class="muted">© <span id="year"></span> Tobi Adefidiya · <a href="mailto:tobidee@icloud.com">tobidee@icloud.com</a></p>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    // Simple slider logic (5 images; swap these to your own if desired)
-    const slides=[
-      'assets/strife-thumb.jpg',
-      'assets/mark-thumb.jpg',
-      'assets/stonespoke-thumb.jpg',
-      'assets/chainreaction-thumb.jpg',
-      'assets/finalgalaxy-thumb.jpg'
-    ];
-    let i=0;
-    const img=document.getElementById('slide');
-    const dots=[...document.querySelectorAll('.dot')];
-    function setSafe(src){
-      img.onerror=null; // prevent loop
-      img.src = src;
-    }
-    function show(n){
-      i=(n+slides.length)%slides.length;
-      // set with fallback if missing
-      img.onerror=()=>setSafe('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop');
-      img.src=slides[i];
-      dots.forEach((d,di)=>d.classList.toggle('active',di===i));
-    }
-    document.getElementById('prev').onclick=()=>show(i-1);
-    document.getElementById('next').onclick=()=>show(i+1);
-    dots.forEach(d=>d.onclick=()=>show(+d.dataset.i));
-    setInterval(()=>show(i+1),7000);
-    show(0);
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <h2>About</h2>
+      <div class="about-grid">
+        <div class="panel">
+          <h3>Hey, I’m Tobi — Wabu Games.</h3>
+          <p>
+            I’m a game & narrative designer who loves readable combat, strong thematic arcs,
+            and mechanics that <em>say something</em>. I’m currently building <strong>Strife &amp; Serenity</strong>
+            while prototyping smaller experiences and board games to explore conflict, tension,
+            and resolution in different forms.
+          </p>
+          <div class="kv">
+            <span>Unity</span><span>Systems Design</span><span>Narrative Design</span><span>Rapid Prototyping</span>
+            <span>Level Design</span><span>UX Writing</span><span>Blender</span><span>Git</span>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Currently</h3>
+          <ul>
+            <li>Prototyping encounter pacing & ability kits for S&S</li>
+            <li>Writing bite-sized narrative surfaces that respect flow</li>
+            <li>Iterating weekly with live playtests</li>
+          </ul>
+          <h3 style="margin-top:14px">Contact</h3>
+          <p>
+            <a class="cta" href="mailto:tobidee@icloud.com">tobidee@icloud.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    // Year
-    document.getElementById('year').textContent=new Date().getFullYear();
-  </script>
+  <!-- RESUME -->
+  <section id="resume">
+    <div class="section-inner">
+      <h2>Resume</h2>
+      <div class="panel">
+        <p>You can view or download my latest CV below.</p>
+        <div class="resume-actions">
+          <a class="btn" href="assets/Tobi_Adefidiya_Resume.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn ghost" href="assets/Tobi_Adefidiya_Resume.pdf" download>Download</a>
+        </div>
+        <p style="color:var(--muted); margin-top:10px">
+          (If this link 404s, add your file at <code>/assets/Tobi_Adefidiya_Resume.pdf</code> or change the href.)
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>© <span id="y"></span> Wabu Games — Designed & built by Tobi A.</footer>
+
+</div><!-- /.page -->
+
+<script>
+  // Year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Nav active state on scroll
+  const sections = ['projects','about','resume'].map(id => document.getElementById(id));
+  const links = [...document.querySelectorAll('.navlinks .navlink')];
+  const byId = id => links.find(a => a.getAttribute('href') === '#'+id);
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(a=>a.classList.remove('active'));
+        const a = byId(e.target.id); if(a) a.classList.add('active');
+      }
+    })
+  },{rootMargin:'-50% 0px -45% 0px', threshold:0});
+  sections.forEach(s=>io.observe(s));
+
+  // Carousel arrows
+  const scroller = document.getElementById('projectCarousel');
+  const left = document.querySelector('.arrow.left');
+  const right = document.querySelector('.arrow.right');
+  const step = () => Math.min(500, scroller.clientWidth * 0.9);
+  left.addEventListener('click', ()=> scroller.scrollBy({left:-step(), behavior:'smooth'}));
+  right.addEventListener('click',()=> scroller.scrollBy({left: step(), behavior:'smooth'}));
+
+  // Drag to scroll (desktop)
+  let isDown=false, startX=0, startScroll=0;
+  scroller.addEventListener('mousedown', e => { isDown=true; startX=e.pageX; startScroll=scroller.scrollLeft; scroller.style.cursor='grabbing'; e.preventDefault(); });
+  window.addEventListener('mouseup', ()=>{ isDown=false; scroller.style.cursor='auto'; });
+  window.addEventListener('mousemove', e => { if(!isDown) return; scroller.scrollLeft = startScroll - (e.pageX - startX); });
+
+  // Keyboard arrows when focused
+  scroller.addEventListener('keydown', e=>{
+    if(e.key === 'ArrowRight') scroller.scrollBy({left: step(), behavior:'smooth'});
+    if(e.key === 'ArrowLeft')  scroller.scrollBy({left:-step(), behavior:'smooth'});
+  });
+</script>
+
 </body>
 </html>
