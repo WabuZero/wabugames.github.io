@@ -23,22 +23,31 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
+    /* === PAGE BACKGROUND ===
+       Ensure the file exists in the repo root as Wallpaper.png (case-sensitive).
+       If your file is JPG, change 'Wallpaper.png' to 'Wallpaper.jpg' below. */
     body {
-      background: url('background-paint.png') no-repeat center center fixed;
+      background: url('Wallpaper.png') no-repeat center center fixed; /* <-- change to Wallpaper.jpg if needed */
       background-size: cover;
       background-color: var(--bg);
       color: var(--ink);
       font-family: 'Inter', system-ui, sans-serif;
       line-height: 1.6;
-      margin: 0;
       min-height: 100vh;
     }
 
+    /* Dark tint to keep text readable on busy art */
     .overlay {
       position: fixed;
       inset: 0;
       background: rgba(15, 15, 18, 0.55);
-      z-index: -1;
+      z-index: 0;
+    }
+
+    /* Content wrapper so it sits above the overlay */
+    .page {
+      position: relative;
+      z-index: 1;
     }
 
     header {
@@ -81,12 +90,13 @@
     }
 
     .card {
-      background: rgba(15, 15, 18, 0.75);
+      background: rgba(15, 15, 18, 0.78);
       border: 1px solid var(--line);
       border-radius: 16px;
       box-shadow: var(--shadow);
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(2px);
     }
 
     .card:hover {
@@ -133,73 +143,73 @@
       transition: border-color 0.2s;
     }
 
-    .cta:hover {
-      border-color: var(--brand);
-    }
+    .cta:hover { border-color: var(--brand); }
 
     footer {
       text-align: center;
       color: var(--muted);
       font-size: 0.85rem;
-      padding-bottom: 40px;
+      padding: 40px 0 50px;
     }
   </style>
 </head>
 <body>
 
+  <!-- keeps text readable over the art -->
   <div class="overlay"></div>
 
-  <header>
-    <h1>TLDR, I'm just a nerd.</h1>
-    <p>Designer • Developer • Storyteller</p>
-  </header>
+  <div class="page">
+    <header>
+      <h1>TLDR, I'm just a nerd.</h1>
+      <p>Designer • Developer • Storyteller</p>
+    </header>
 
-  <main>
-    <h2>Projects</h2>
-    <div class="projects">
+    <main>
+      <h2>Projects</h2>
 
-      <article class="card">
-        <div class="card-media">
-          <img src="assets/strife-thumb.jpg" alt="Strife & Serenity Key Art">
-        </div>
-        <div class="card-body">
-          <h3>Strife & Serenity</h3>
-          <div class="sub">Narrative-Driven Action RPG</div>
-          <p>A cosmic tale about balance, consequence, and the cost of peace.</p>
-          <a class="cta" href="projects/strife-and-serenity.html">View case study →</a>
-        </div>
-      </article>
+      <div class="projects">
+        <article class="card">
+          <div class="card-media">
+            <img src="assets/strife-thumb.jpg" alt="Strife & Serenity Key Art">
+          </div>
+          <div class="card-body">
+            <h3>Strife & Serenity</h3>
+            <div class="sub">Narrative-Driven Action RPG</div>
+            <p>A cosmic tale about balance, consequence, and the cost of peace.</p>
+            <a class="cta" href="projects/strife-and-serenity.html">View case study →</a>
+          </div>
+        </article>
 
-      <article class="card">
-        <div class="card-media">
-          <img src="assets/cat-sitter-thumb.jpg" alt="Cthulhu's Cat Sitter">
-        </div>
-        <div class="card-body">
-          <h3>Cthulhu's Cat Sitter</h3>
-          <div class="sub">Puzzle / Strategy</div>
-          <p>A cozy yet eldritch management game where you care for cosmic cats.</p>
-          <a class="cta" href="#">View case study →</a>
-        </div>
-      </article>
+        <article class="card">
+          <div class="card-media">
+            <img src="assets/cat-sitter-thumb.jpg" alt="Cthulhu's Cat Sitter">
+          </div>
+          <div class="card-body">
+            <h3>Cthulhu's Cat Sitter</h3>
+            <div class="sub">Puzzle / Strategy</div>
+            <p>A cozy yet eldritch management game where you care for cosmic cats.</p>
+            <a class="cta" href="#">View case study →</a>
+          </div>
+        </article>
 
-      <article class="card">
-        <div class="card-media">
-          <img src="assets/mark-of-mastery-thumb.jpg" alt="Mark of Mastery">
-        </div>
-        <div class="card-body">
-          <h3>Mark of Mastery</h3>
-          <div class="sub">Action RPG (Prototype)</div>
-          <p>Fast-paced combat and personal growth woven into a surreal narrative journey.</p>
-          <a class="cta" href="#">View case study →</a>
-        </div>
-      </article>
+        <article class="card">
+          <div class="card-media">
+            <img src="assets/mark-of-mastery-thumb.jpg" alt="Mark of Mastery">
+          </div>
+          <div class="card-body">
+            <h3>Mark of Mastery</h3>
+            <div class="sub">Action RPG (Prototype)</div>
+            <p>Fast-paced combat and personal growth woven into a surreal narrative journey.</p>
+            <a class="cta" href="#">View case study →</a>
+          </div>
+        </article>
+      </div>
+    </main>
 
-    </div>
-  </main>
-
-  <footer>
-    © 2025 Wabu Games — Designed & built by Tobi A.
-  </footer>
+    <footer>
+      © 2025 Wabu Games — Designed & built by Tobi A.
+    </footer>
+  </div>
 
 </body>
 </html>
