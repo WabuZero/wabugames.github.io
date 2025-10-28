@@ -22,8 +22,8 @@ html{scroll-behavior:smooth}
 body{
   margin:0; min-height:100vh; color:var(--ink);
   font:400 16px/1.6 Inter,system-ui,Segoe UI,Roboto;
-  /* IMPORTANT: lowercase filename */
-  background:#000 url('wallpaper.png') center/cover fixed no-repeat;
+  /* Case-sensitive Wallpaper reference */
+  background:#000 url('Wallpaper.png') center/cover fixed no-repeat;
 }
 /* dark overlay for readability */
 .overlay{position:fixed; inset:0; background:rgba(15,15,18,.55); z-index:0}
@@ -164,10 +164,10 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
       <h2>Projects</h2>
 
       <div class="carousel-shell">
-        <button class="arrow left" aria-label="Scroll left" title="Scroll left">◀</button>
-        <div class="carousel" id="projectCarousel" tabindex="0" aria-label="Project carousel">
+        <button class="arrow left">◀</button>
+        <div class="carousel" id="projectCarousel">
           <article class="card">
-            <div class="card-media"><img src="assets/strife-thumb.jpg" alt="Strife &amp; Serenity" onerror="this.style.opacity=0"></div>
+            <div class="card-media"><img src="assets/strife-thumb.jpg" alt=""></div>
             <div class="card-body">
               <h3>Strife & Serenity</h3>
               <div class="sub">Narrative-Driven Action RPG</div>
@@ -177,7 +177,7 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
           </article>
 
           <article class="card">
-            <div class="card-media"><img src="assets/cat-sitter-thumb.jpg" alt="Cthulhu's Cat Sitter" onerror="this.style.opacity=0"></div>
+            <div class="card-media"><img src="assets/cat-sitter-thumb.jpg" alt=""></div>
             <div class="card-body">
               <h3>Cthulhu's Cat Sitter</h3>
               <div class="sub">Puzzle / Strategy</div>
@@ -187,7 +187,7 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
           </article>
 
           <article class="card">
-            <div class="card-media"><img src="assets/mark-of-mastery-thumb.jpg" alt="Mark of Mastery" onerror="this.style.opacity=0"></div>
+            <div class="card-media"><img src="assets/mark-of-mastery-thumb.jpg" alt=""></div>
             <div class="card-body">
               <h3>Mark of Mastery</h3>
               <div class="sub">Action RPG (Prototype)</div>
@@ -197,7 +197,7 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
           </article>
 
           <article class="card">
-            <div class="card-media"><img src="assets/stonespoke-thumb.jpg" alt="Stonespoke" onerror="this.style.opacity=0"></div>
+            <div class="card-media"><img src="assets/stonespoke-thumb.jpg" alt=""></div>
             <div class="card-body">
               <h3>Stonespoke</h3>
               <div class="sub">Adventure / Puzzle</div>
@@ -207,7 +207,7 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
           </article>
 
           <article class="card">
-            <div class="card-media"><img src="assets/high-road-thumb.jpg" alt="High Road" onerror="this.style.opacity=0"></div>
+            <div class="card-media"><img src="assets/high-road-thumb.jpg" alt=""></div>
             <div class="card-body">
               <h3>High Road (Concept)</h3>
               <div class="sub">Climb / Choice-Driven</div>
@@ -217,7 +217,7 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
           </article>
 
           <article class="card">
-            <div class="card-media"><img src="assets/seeds-of-conflict-thumb.jpg" alt="Seeds of Conflict" onerror="this.style.opacity=0"></div>
+            <div class="card-media"><img src="assets/seeds-of-conflict-thumb.jpg" alt=""></div>
             <div class="card-body">
               <h3>Seeds of Conflict (Concept)</h3>
               <div class="sub">Action RPG / Narrative</div>
@@ -227,121 +227,4 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
           </article>
 
           <article class="card">
-            <div class="card-media"><img src="assets/chain-reaction-thumb.jpg" alt="Chain Reaction" onerror="this.style.opacity=0"></div>
-            <div class="card-body">
-              <h3>Chain Reaction (Board Game)</h3>
-              <div class="sub">Hidden Roles / Energy Economy</div>
-              <p>Spy vs. Scientist in a reactor bluff-and-counter game.</p>
-              <a class="cta" href="#">Case study (soon) →</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-media"><img src="assets/final-galaxy-thumb.jpg" alt="Final Galaxy" onerror="this.style.opacity=0"></div>
-            <div class="card-body">
-              <h3>Final Galaxy (Board Game)</h3>
-              <div class="sub">Tactics / Drafting</div>
-              <p>Fleet orchestration and brinkmanship among dying stars.</p>
-              <a class="cta" href="#">Case study (soon) →</a>
-            </div>
-          </article>
-        </div>
-        <button class="arrow right" aria-label="Scroll right" title="Scroll right">▶</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-inner">
-      <h2>About</h2>
-      <div class="about-grid">
-        <div class="panel">
-          <h3>Hey, I’m Tobi — Wabu Games.</h3>
-          <p>
-            I’m a game & narrative designer who loves readable combat, strong thematic arcs,
-            and mechanics that <em>say something</em>. I’m currently building <strong>Strife &amp; Serenity</strong>
-            while prototyping smaller experiences and board games to explore conflict, tension,
-            and resolution in different forms.
-          </p>
-          <div class="kv">
-            <span>Unity</span><span>Systems Design</span><span>Narrative Design</span><span>Rapid Prototyping</span>
-            <span>Level Design</span><span>UX Writing</span><span>Blender</span><span>Git</span>
-          </div>
-        </div>
-        <div class="panel">
-          <h3>Currently</h3>
-          <ul>
-            <li>Prototyping encounter pacing & ability kits for S&S</li>
-            <li>Writing narrative surfaces that respect flow</li>
-            <li>Iterating weekly with live playtests</li>
-          </ul>
-          <h3 style="margin-top:14px">Contact</h3>
-          <p><a class="cta" href="mailto:tobidee@icloud.com">tobidee@icloud.com</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESUME -->
-  <section id="resume">
-    <div class="section-inner">
-      <h2>Resume</h2>
-      <div class="panel">
-        <p>You can view or download my latest CV below.</p>
-        <div class="resume-actions">
-          <a class="btn" href="assets/Tobi_Adefidiya_Resume.pdf" target="_blank" rel="noopener">View PDF</a>
-          <a class="btn ghost" href="assets/Tobi_Adefidiya_Resume.pdf" download>Download</a>
-        </div>
-        <p style="color:var(--muted); margin-top:10px">
-          (If this link 404s, add your file at <code>/assets/Tobi_Adefidiya_Resume.pdf</code> or change the href.)
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <footer>© <span id="y"></span> Wabu Games — Designed & built by Tobi A.</footer>
-
-</div><!-- /.page -->
-
-<script>
-  // Year
-  document.getElementById('y').textContent = new Date().getFullYear();
-
-  // Nav active state on scroll
-  const sections = ['projects','about','resume'].map(id => document.getElementById(id));
-  const links = [...document.querySelectorAll('.navlinks .navlink')];
-  const byId = id => links.find(a => a.getAttribute('href') === '#'+id);
-  const io = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        links.forEach(a=>a.classList.remove('active'));
-        const a = byId(e.target.id); if(a) a.classList.add('active');
-      }
-    })
-  },{rootMargin:'-50% 0px -45% 0px', threshold:0});
-  sections.forEach(s=>io.observe(s));
-
-  // Carousel arrows
-  const scroller = document.getElementById('projectCarousel');
-  const left = document.querySelector('.arrow.left');
-  const right = document.querySelector('.arrow.right');
-  const step = () => Math.min(500, scroller.clientWidth * 0.9);
-  left.addEventListener('click', ()=> scroller.scrollBy({left:-step(), behavior:'smooth'}));
-  right.addEventListener('click',()=> scroller.scrollBy({left: step(), behavior:'smooth'}));
-
-  // Drag to scroll (desktop)
-  let isDown=false, startX=0, startScroll=0;
-  scroller.addEventListener('mousedown', e => { isDown=true; startX=e.pageX; startScroll=scroller.scrollLeft; scroller.style.cursor='grabbing'; e.preventDefault(); });
-  window.addEventListener('mouseup', ()=>{ isDown=false; scroller.style.cursor='auto'; });
-  window.addEventListener('mousemove', e => { if(!isDown) return; scroller.scrollLeft = startScroll - (e.pageX - startX); });
-
-  // Keyboard arrows when focused
-  scroller.addEventListener('keydown', e=>{
-    if(e.key === 'ArrowRight') scroller.scrollBy({left: step(), behavior:'smooth'});
-    if(e.key === 'ArrowLeft')  scroller.scrollBy({left:-step(), behavior:'smooth'});
-  });
-</script>
-
-</body>
-</html>
+            <div class="card-media"><img src=
