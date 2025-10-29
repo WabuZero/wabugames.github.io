@@ -15,10 +15,12 @@
   --bg:#0f0f12; --ink:#e8e8ee; --muted:#a7a7b3;
   --brand:#ff7f32; --line:#26262e; --r:16px;
   --shadow:0 10px 30px rgba(0,0,0,.35);
-  --max:1200px; --navh:64px;
+  --max:1200px; --navh:64px; --gap:24px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
+/* Background (case-sensitive filename) */
 body{
   margin:0; min-height:100vh; color:var(--ink);
   font:400 16px/1.6 Inter,system-ui,Segoe UI,Roboto;
@@ -54,7 +56,7 @@ header.hero{ text-align:center; padding:90px 20px 50px; }
 }
 .hero p{ color:var(--muted); font-size:18px; }
 
-/* SECTION BASE */
+/* SECTIONS */
 section{padding:40px 20px}
 section .section-inner{max-width:var(--max); margin:auto}
 section h2{
@@ -64,16 +66,31 @@ section h2{
 section{scroll-margin-top:calc(var(--navh) + 12px)} /* anchor offset */
 
 /* PROJECTS – CAROUSEL */
-.carousel-shell{
-  position:relative; margin-top:16px;
-}
+.carousel-shell{ position:relative; margin-top:16px; }
 .carousel{
-  display:grid; grid-auto-flow:column; grid-auto-columns:minmax(300px, 1fr);
-  gap:24px; overflow-x:auto; padding:6px 6px 14px;
-  scroll-snap-type:x mandatory; scroll-behavior:smooth;
+  display:grid;
+  grid-auto-flow:column;
+  /* EXACTLY 3 CARDS VISIBLE ON DESKTOP */
+  grid-auto-columns: calc((100% - (var(--gap) * 2)) / 3);
+  gap:var(--gap);
+  overflow-x:auto;
+  padding:6px 6px 14px;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  /* Hide scrollbar (all browsers) */
+  scrollbar-width: none;
 }
-.carousel::-webkit-scrollbar{height:10px}
-.carousel::-webkit-scrollbar-thumb{background:#2b2b33; border-radius:999px}
+.carousel::-webkit-scrollbar{ display:none; height:0; }
+
+@media (max-width:1024px){
+  /* 2 cards per view on tablet */
+  .carousel{ grid-auto-columns: calc((100% - var(--gap)) / 2); }
+}
+@media (max-width:640px){
+  /* 1 card per view on phone */
+  .carousel{ grid-auto-columns: 100%; }
+}
+
 .card{
   background:rgba(15,15,18,.78); border:1px solid var(--line); border-radius:18px;
   box-shadow:var(--shadow); overflow:hidden; scroll-snap-align:start;
@@ -91,16 +108,18 @@ section{scroll-margin-top:calc(var(--navh) + 12px)} /* anchor offset */
 .cta{ color:var(--brand); text-decoration:none; font-weight:800; border-bottom:2px solid transparent }
 .cta:hover{ border-color:var(--brand) }
 
+/* Arrows on top of cards + outside edges a bit */
 .arrow{
   position:absolute; top:50%; transform:translateY(-50%);
-  width:44px; height:44px; border-radius:50%;
+  width:48px; height:48px; border-radius:50%;
   display:grid; place-items:center; cursor:pointer; user-select:none;
-  background:rgba(15,15,18,.85); border:1px solid var(--line); color:var(--ink);
+  background:rgba(15,15,18,.92); border:1px solid var(--line); color:var(--ink);
   transition:transform .15s, background .15s, box-shadow .15s;
+  z-index:5; /* <-- ensure above cards */
 }
 .arrow:hover{ transform:translateY(-50%) scale(1.06); box-shadow:0 8px 18px rgba(0,0,0,.35) }
-.arrow.left{ left:-14px }
-.arrow.right{ right:-14px }
+.arrow.left{ left:-18px }
+.arrow.right{ right:-18px }
 
 /* ABOUT */
 .about-grid{
@@ -166,12 +185,9 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
       <div class="carousel-shell">
         <button class="arrow left" aria-label="Scroll left" title="Scroll left">◀</button>
         <div class="carousel" id="projectCarousel" tabindex="0" aria-label="Project carousel">
-          
-          <!-- Card 1 -->
+          <!-- STRIFE & SERENITY -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/strife-thumb.jpg" alt="Strife &amp; Serenity Key Art" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/strife-thumb.jpg" alt="Strife &amp; Serenity" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Strife & Serenity</h3>
               <div class="sub">Narrative-Driven Action RPG</div>
@@ -180,11 +196,9 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 2 -->
+          <!-- CTHULHU'S CAT SITTER -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/cat-sitter-thumb.jpg" alt="Cthulhu's Cat Sitter" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/cat-sitter-thumb.jpg" alt="Cthulhu's Cat Sitter" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Cthulhu's Cat Sitter</h3>
               <div class="sub">Puzzle / Strategy</div>
@@ -193,11 +207,9 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 3 -->
+          <!-- MARK OF MASTERY -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/mark-of-mastery-thumb.jpg" alt="Mark of Mastery" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/mark-of-mastery-thumb.jpg" alt="Mark of Mastery" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Mark of Mastery</h3>
               <div class="sub">Action RPG (Prototype)</div>
@@ -206,11 +218,9 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 4 -->
+          <!-- STONESPOKE -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/stonespoke-thumb.jpg" alt="Stonespoke" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/stonespoke-thumb.jpg" alt="Stonespoke" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Stonespoke</h3>
               <div class="sub">Adventure / Puzzle</div>
@@ -219,11 +229,9 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 5 -->
+          <!-- HIGH ROAD -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/high-road-thumb.jpg" alt="High Road" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/high-road-thumb.jpg" alt="High Road" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>High Road (Concept)</h3>
               <div class="sub">Climb / Choice-Driven</div>
@@ -232,11 +240,9 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 6 -->
+          <!-- SEEDS OF CONFLICT -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/seeds-of-conflict-thumb.jpg" alt="Seeds of Conflict" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/seeds-of-conflict-thumb.jpg" alt="Seeds of Conflict" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Seeds of Conflict (Concept)</h3>
               <div class="sub">Action RPG / Narrative</div>
@@ -245,11 +251,9 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 7 -->
+          <!-- CHAIN REACTION -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/chain-reaction-thumb.jpg" alt="Chain Reaction" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/chain-reaction-thumb.jpg" alt="Chain Reaction" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Chain Reaction (Board Game)</h3>
               <div class="sub">Hidden Roles / Energy Economy</div>
@@ -258,11 +262,9 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Card 8 -->
+          <!-- FINAL GALAXY -->
           <article class="card">
-            <div class="card-media">
-              <img src="assets/final-galaxy-thumb.jpg" alt="Final Galaxy" onerror="this.style.opacity=0">
-            </div>
+            <div class="card-media"><img src="assets/final-galaxy-thumb.jpg" alt="Final Galaxy" onerror="this.style.opacity=0"></div>
             <div class="card-body">
               <h3>Final Galaxy (Board Game)</h3>
               <div class="sub">Tactics / Drafting</div>
@@ -270,7 +272,6 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
               <a class="cta" href="#">Case study (soon) →</a>
             </div>
           </article>
-
         </div>
         <button class="arrow right" aria-label="Scroll right" title="Scroll right">▶</button>
       </div>
@@ -299,13 +300,11 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
           <h3>Currently</h3>
           <ul>
             <li>Prototyping encounter pacing & ability kits for S&S</li>
-            <li>Writing bite-sized narrative surfaces that respect flow</li>
+            <li>Writing narrative surfaces that respect flow</li>
             <li>Iterating weekly with live playtests</li>
           </ul>
           <h3 style="margin-top:14px">Contact</h3>
-          <p>
-            <a class="cta" href="mailto:tobidee@icloud.com">tobidee@icloud.com</a>
-          </p>
+          <p><a class="cta" href="mailto:tobidee@icloud.com">tobidee@icloud.com</a></p>
         </div>
       </div>
     </div>
@@ -350,24 +349,37 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
   },{rootMargin:'-50% 0px -45% 0px', threshold:0});
   sections.forEach(s=>io.observe(s));
 
-  // Carousel arrows
+  // ===== Carousel arrows: scroll by exactly one "page" (3 cards) on desktop =====
   const scroller = document.getElementById('projectCarousel');
   const left = document.querySelector('.arrow.left');
   const right = document.querySelector('.arrow.right');
-  const step = () => Math.min(500, scroller.clientWidth * 0.9);
-  left.addEventListener('click', ()=> scroller.scrollBy({left:-step(), behavior:'smooth'}));
-  right.addEventListener('click',()=> scroller.scrollBy({left: step(), behavior:'smooth'}));
 
-  // Drag to scroll (desktop)
+  function pageSize(){
+    const style = getComputedStyle(scroller);
+    const gap = parseInt(style.columnGap || style.gap || '24', 10) || 24;
+    const card = scroller.querySelector('.card');
+    if(!card) return scroller.clientWidth;
+    const cardW = card.offsetWidth;
+    // How many cards currently visible (1, 2, or 3 depending on media query)
+    let visible = 3;
+    if (window.matchMedia('(max-width:1024px)').matches) visible = 2;
+    if (window.matchMedia('(max-width:640px)').matches)  visible = 1;
+    return cardW*visible + gap*(visible-1);
+  }
+
+  left.addEventListener('click', ()=> scroller.scrollBy({left:-pageSize(), behavior:'smooth'}));
+  right.addEventListener('click',()=> scroller.scrollBy({left: pageSize(), behavior:'smooth'}));
+
+  // Optional: drag to scroll on desktop
   let isDown=false, startX=0, startScroll=0;
   scroller.addEventListener('mousedown', e => { isDown=true; startX=e.pageX; startScroll=scroller.scrollLeft; scroller.style.cursor='grabbing'; e.preventDefault(); });
   window.addEventListener('mouseup', ()=>{ isDown=false; scroller.style.cursor='auto'; });
   window.addEventListener('mousemove', e => { if(!isDown) return; scroller.scrollLeft = startScroll - (e.pageX - startX); });
 
-  // Keyboard arrows when focused
+  // Keyboard support
   scroller.addEventListener('keydown', e=>{
-    if(e.key === 'ArrowRight') scroller.scrollBy({left: step(), behavior:'smooth'});
-    if(e.key === 'ArrowLeft')  scroller.scrollBy({left:-step(), behavior:'smooth'});
+    if(e.key === 'ArrowRight') scroller.scrollBy({left: pageSize(), behavior:'smooth'});
+    if(e.key === 'ArrowLeft')  scroller.scrollBy({left:-pageSize(), behavior:'smooth'});
   });
 </script>
 
