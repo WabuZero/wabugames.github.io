@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Strife & Serenity — Case Study | Wabu Games</title>
+<title>Strife & Serenity — Prologue Case Study | Wabu Games</title>
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -131,7 +131,7 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
     <div class="navwrap">
       <div class="brand">
         <span>TOBI ADEFIDIYA</span><span class="pipe">||</span>
-        <span style="color:var(--muted);font-weight:700">GAME & NARRATIVE DESIGNER</span>
+        <span style="color:var(--muted);font-weight:700)">GAME & NARRATIVE DESIGNER</span>
       </div>
       <div class="navlinks">
         <a href="../index.html#projects">Projects</a>
@@ -144,12 +144,12 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
   <!-- HERO -->
   <header class="hero">
     <div class="inner">
-      <div class="kicker">Case Study</div>
-      <h1>Strife &amp; Serenity</h1>
+      <div class="kicker">Prologue Case Study</div>
+      <h1>Strife &amp; Serenity — Prologue</h1>
       <p class="deck">
-        A narrative-driven action RPG about balance, consequence, and the cost of peace. You play as Ka’Sipho,
-        navigating the Zothari’s authoritarian peace and the Conflict Entity’s reset—where every victory carries a price,
-        and every resolution reshapes the natural order.
+        A narrative-driven action RPG prologue focused on readable, expressive combat and
+        traversal pacing. This slice covers Gate Town arrival → a set-piece arena → a duel that
+        ties mechanics to story beats—without heavy exposition.
       </p>
 
       <div class="meta">
@@ -165,8 +165,8 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
         <a href="#constraints">Constraints</a>
         <a href="#process">Process</a>
         <a href="#systems">Key Systems</a>
-        <a href="#results">Takeaways</a>
-        <a href="#gallery">Gallery</a>
+        <a href="#gallery">Media Gallery</a>
+        <a href="#results">Results & Takeaways</a>
       </div>
     </div>
   </header>
@@ -181,8 +181,8 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
         <a href="#constraints">Constraints</a>
         <a href="#process">Process</a>
         <a href="#systems">Key Systems</a>
-        <a href="#results">Results & Takeaways</a>
         <a href="#gallery">Media Gallery</a>
+        <a href="#results">Results & Takeaways</a>
       </aside>
 
       <!-- Content -->
@@ -191,39 +191,50 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
         <section id="overview" class="section">
           <h2>Overview</h2>
           <p class="lead">
-            <strong>Strife &amp; Serenity</strong> asks what happens when peace is forced into a universe that needs
-            conflict to grow. The Zothari’s enforced order collides with the Entity of Conflict’s reset, and you’re
-            caught in between—pushing a combat system that’s readable, expressive, and narratively loaded.
+            The prologue introduces the world at a moment of fragile peace and rising tension—no spoilers, just
+            <em>stakes you can feel through play</em>. The slice focuses on clear telegraphs, satisfying counters, and
+            traversal that breathes between encounters.
           </p>
           <div class="cols" style="margin-top:12px">
             <div>
-              <h3 style="margin:0 0 6px">Design North Star</h3>
-              <p>Make combat feel like conversation—abilities and counters that clearly “say” intent, with payoffs that
-                echo the theme of balance (conflict → resolution).</p>
+              <h3 style="margin:0 0 6px">What’s in this slice</h3>
+              <ul>
+                <li><strong>Gate Town traversal:</strong> onboarding, readable affordances, and tone-setting.</li>
+                <li><strong>Set-piece arena:</strong> waves that teach timing, spacing, and recovery options.</li>
+                <li><strong>Boss-style duel:</strong> “conversation” combat—telegraph → commit → counter → resolve.</li>
+              </ul>
+              <p style="margin-top:10px">
+                Play the current prologue build on
+                <a href="https://wabuzero.itch.io/strifeserenity" target="_blank" rel="noopener">Itch.io</a>
+                and learn more at
+                <a href="https://wabugames.com" target="_blank" rel="noopener">WabuGames.com</a>.
+              </p>
             </div>
             <div>
-              <div class="callout"><strong>Vertical slice goal:</strong> Gate Town traversal, a set-piece arena, and a
-                climactic duel where mechanical clarity supports each story beat.</div>
+              <div class="callout">
+                <strong>North Star:</strong> Combat should communicate intent like dialogue—every tell and counter
+                reads instantly, and every payoff reinforces the theme of balance without stating it outright.
+              </div>
             </div>
           </div>
         </section>
 
         <section id="goals" class="section">
-          <h2>Project Goals</h2>
+          <h2>Project Goals (Prologue)</h2>
           <ul>
-            <li>Readable, learnable combat with expressive ability kits (no button soup).</li>
-            <li>Encounters that escalate tension → choice → consequence without cutscene crutches.</li>
-            <li>UI that communicates state at a glance (ability bar, parry windows, telegraphs).</li>
-            <li>Ship a polished prologue that stands alone as a portfolio slice.</li>
+            <li>Deliver a <strong>5–8 minute</strong> prologue that stands alone.</li>
+            <li>Prioritize <strong>readability</strong> (tells, counters, UI states) over content breadth.</li>
+            <li>Use traversal pacing to create <strong>tension → release</strong> between fights.</li>
+            <li>Teach the ability kit through <strong>play</strong>, not exposition.</li>
           </ul>
         </section>
 
         <section id="constraints" class="section">
           <h2>Constraints</h2>
           <ul>
-            <li>Solo development; art bandwidth focused on clarity over spectacle.</li>
-            <li>One major boss encounter + 2 skirmishes in slice scope.</li>
-            <li>Target 60fps on mid-range laptops at 1080p.</li>
+            <li>Solo production → focus on clarity, lighting, and UI polish over bespoke art volume.</li>
+            <li>1 boss-style duel, 2 skirmish beats, 1 traversal lane.</li>
+            <li>Target: 60fps @ 1080p on mid-range laptops.</li>
           </ul>
         </section>
 
@@ -231,55 +242,41 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
           <h2>Process</h2>
           <div class="cols">
             <div>
-              <h3 style="margin:0 0 6px">From Pillars → Pacing</h3>
-              <p>Defined pillars (<em>clarity, consequence, cadence</em>) and mapped them to encounter loops:
-                telegraph → commit → counter window → resolve → reposition. Paper prototypes → Unity blockouts →
-                weekly playtests.</p>
+              <h3 style="margin:0 0 6px">From Pillars → Encounters</h3>
+              <p>Pillars (<em>clarity, consequence, cadence</em>) mapped to loops:
+                telegraph → commit → counter window → resolve → reposition. Paper → blockout →
+                weekly playtests with quick tuning passes.</p>
             </div>
             <div>
-              <h3 style="margin:0 0 6px">Iteration Cadence</h3>
-              <p>Each pass targeted a pain point (unclear tells, camera drift, i-frame timing). Telemetry/heatmaps
-                informed arena geometry, enemy timings, and cooldown tuning.</p>
+              <h3 style="margin:0 0 6px">Iteration</h3>
+              <p>Addressed one friction per pass (camera drift, parry window, tell contrast, recovery routes).
+                 Heatmaps + interview notes informed arena shape and ability cooldowns.</p>
             </div>
           </div>
         </section>
 
         <section id="systems" class="section">
-          <h2>Key Systems</h2>
+          <h2>Key Systems (Prologue)</h2>
           <div class="cols">
             <div>
-              <h3>Ability Kit: Strife vs Serenity</h3>
-              <p><strong>Strife</strong> skills front-load risk/reward and stagger windows; <strong>Serenity</strong> skills
-                 emphasize timing, parries, and controlled recovery. Mixing both creates synergy and narrative resonance.</p>
+              <h3>Ability Kit: Strife / Serenity</h3>
+              <p><strong>Strife</strong> skills emphasize assertive windows and risk/reward;
+                 <strong>Serenity</strong> skills focus on timing, parries, and controlled recovery.
+                 Mixing both creates satisfying decision loops.</p>
             </div>
             <div>
               <h3>Readable Tells & Counters</h3>
-              <p>Color/shape-coded telegraphs, intent-based hitstop (warning vs reward), consistent parry i-frames,
-                 and an ability bar that mirrors combat state without clutter.</p>
-            </div>
-            <div>
-              <h3>Boss Phases with Moral Weight</h3>
-              <p>“Duel of intents” where your style nudges the boss toward aggressive vs composed AI sets, tying
-                 player habit back into the theme of balance.</p>
+              <p>Color/shape-coded telegraphs, intent-based hitstop, consistent i-frames, and an
+                 ability bar that mirrors combat state at a glance.</p>
             </div>
             <div>
               <h3>Traversal as Tone</h3>
-              <p>Decompression spaces between fights seed worldbuilding via lighting, signage, and environmental
-                 storytelling—no exposition dumps necessary.</p>
+              <p>Quiet spaces between fights shift lighting and signage to seed context and decompress without cutscenes.</p>
             </div>
-          </div>
-        </section>
-
-        <section id="results" class="section">
-          <h2>Results & Takeaways</h2>
-          <ul>
-            <li>Playtesters could read enemy intent and reliably parry within 2–3 attempts.</li>
-            <li>Ability synergies encouraged mixing Strife/Serenity rather than one-tricking.</li>
-            <li>Next: add a support archetype, deepen phase reactivity, and expand in-world onboarding.</li>
-          </ul>
-          <div class="nextprev">
-            <a class="ghost" href="../index.html#projects">← Back to Projects</a>
-            <a href="high-road.html">Next: High Road →</a>
+            <div>
+              <h3>Fail-Forward Recovery</h3>
+              <p>Short, visible recovery ladders keep momentum after mistakes so players stay in the fantasy.</p>
+            </div>
           </div>
         </section>
 
@@ -287,12 +284,25 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
           <h2>Media Gallery</h2>
           <div class="gallery">
             <!-- Replace with your actual images (they auto-crop) -->
-            <img src="../assets/strife-01.jpg" alt="Arena blockout">
+            <img src="../assets/strife-01.jpg" alt="Gate Town blockout">
             <img src="../assets/strife-02.jpg" alt="Ability UI iteration">
             <img src="../assets/strife-03.jpg" alt="Telegraph readability pass">
-            <img src="../assets/strife-04.jpg" alt="Boss phase 2 lighting">
-            <img src="../assets/strife-05.jpg" alt="Traversal decompress space">
+            <img src="../assets/strife-04.jpg" alt="Arena encounter lighting">
+            <img src="../assets/strife-05.jpg" alt="Boss duel phase timing">
             <img src="../assets/strife-06.jpg" alt="Final polish slice">
+          </div>
+        </section>
+
+        <section id="results" class="section">
+          <h2>Results & Takeaways</h2>
+          <ul>
+            <li>Playtesters reliably read enemy intent and landed parries within 2–3 attempts.</li>
+            <li>Players mixed Strife/Serenity skills instead of one-tricking, thanks to clear affordances.</li>
+            <li>Next steps: add one support archetype, deepen duel phase reactivity, and expand in-world onboarding beats.</li>
+          </ul>
+          <div class="nextprev">
+            <a class="ghost" href="../index.html#projects">← Back to Projects</a>
+            <a href="high-road.html">Next: High Road →</a>
           </div>
         </section>
 
