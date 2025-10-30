@@ -1,134 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Wabu Games — Tobi Adefidiya</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Wabu Games | Tobi Adefidiya</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
-
 <style>
 :root{
   --bg:#0f0f12; --ink:#e8e8ee; --muted:#a7a7b3;
-  --brand:#ff7f32; --line:#26262e; --r:16px;
-  --shadow:0 10px 30px rgba(0,0,0,.35);
-  --max:1200px; --navh:64px; --gap:24px;
+  --brand:#ff7f32; --line:#26262e;
+  --r:18px; --max:1180px; --shadow:0 16px 34px rgba(0,0,0,.45);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{box-sizing:border-box;}
 body{
-  margin:0; min-height:100vh; color:var(--ink);
-  font:400 16px/1.6 Inter,system-ui,Segoe UI,Roboto;
+  margin:0; font-family:Inter,system-ui,sans-serif; color:var(--ink);
   background:#000 url('Wallpaper.png') center/cover fixed no-repeat;
 }
-.overlay{position:fixed; inset:0; background:rgba(15,15,18,.55); z-index:0}
-.page{position:relative; z-index:1}
+.overlay{position:fixed; inset:0; background:rgba(10,10,12,.6); z-index:0;}
+.page{position:relative; z-index:1;}
 
 /* NAV */
 nav{
-  position:sticky; top:0; height:var(--navh); z-index:10;
-  backdrop-filter:saturate(120%) blur(10px);
-  background:rgba(15,15,18,.7); border-bottom:1px solid var(--line);
+  position:sticky; top:0; height:62px;
+  backdrop-filter:blur(10px) saturate(120%);
+  background:rgba(15,15,18,.75); border-bottom:1px solid var(--line);
+  z-index:10;
 }
-.wrap{max-width:var(--max); margin:auto; padding:0 20px}
-.navbar{height:var(--navh); display:flex; align-items:center; justify-content:space-between;}
-.brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.04em}
-.brand span:first-child{color:#fff}
-.brand .pipe{opacity:.6}
-.navlinks{display:flex; gap:20px}
-.navlinks a{
-  color:var(--muted); text-decoration:none; font-weight:700; padding:8px 10px;
-  border-radius:10px; transition:color .15s, background .15s;
-}
-.navlinks a:hover{color:var(--ink); background:rgba(255,127,50,.08)}
-.navlinks a.active{color:var(--brand)}
+.navwrap{max-width:var(--max); margin:auto; display:flex; align-items:center; justify-content:space-between; height:62px; padding:0 18px;}
+.brand{display:flex; align-items:center; gap:12px; font-weight:800;}
+.brand span:first-child{color:#fff;}
+.brand .pipe{opacity:.6;}
+.navlinks{display:flex; gap:18px;}
+.navlinks a{color:var(--muted); text-decoration:none; font-weight:700; padding:8px 10px; border-radius:10px;}
+.navlinks a:hover{color:var(--ink); background:rgba(255,127,50,.08);}
+.navlinks a.active{color:var(--brand);}
 
-/* HERO */
-header.hero{ text-align:center; padding:90px 20px 50px; }
-.hero h1{
-  font:800 48px/1.1 "Playfair Display",serif; color:var(--brand);
-  margin:0 0 10px;
-}
-.hero p{ color:var(--muted); font-size:18px; }
+/* HEADER */
+header{max-width:var(--max); margin:auto; text-align:center; padding:80px 20px 40px;}
+header h1{font:800 48px/1.2 "Playfair Display",serif; color:var(--brand);}
+header p{max-width:700px; margin:12px auto 0; color:#e8e8ee; font-size:18px;}
 
-/* SECTIONS */
-section{padding:40px 20px}
-section .section-inner{max-width:var(--max); margin:auto}
-section h2{
-  font:800 28px/1.2 "Playfair Display",serif; margin:0 0 14px;
-  border-bottom:2px solid var(--brand); display:inline-block;
-}
-section{scroll-margin-top:calc(var(--navh) + 12px)}
-
-/* PROJECTS – CAROUSEL */
-.carousel-shell{ position:relative; margin-top:16px; }
-.carousel{
-  display:grid;
-  grid-auto-flow:column;
-  grid-auto-columns: calc((100% - (var(--gap) * 2)) / 3);
-  gap:var(--gap);
-  overflow-x:auto;
-  padding:6px 6px 14px;
-  scroll-snap-type:x mandatory;
-  scroll-behavior:smooth;
-  scrollbar-width:none;
-}
-.carousel::-webkit-scrollbar{ display:none; height:0; }
-@media (max-width:1024px){ .carousel{ grid-auto-columns: calc((100% - var(--gap)) / 2); } }
-@media (max-width:640px){ .carousel{ grid-auto-columns:100%; } }
-
-.card{
-  background:rgba(15,15,18,.78); border:1px solid var(--line); border-radius:18px;
-  box-shadow:var(--shadow); overflow:hidden; scroll-snap-align:start;
-  backdrop-filter:blur(2px);
-  display:flex; flex-direction:column;
-  transition:transform .25s, box-shadow .25s;
-}
-.card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rgba(0,0,0,.5) }
-.card-media{height:190px; background:#111; overflow:hidden}
-.card-media img{ width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
-.card-body{ padding:18px 18px 20px }
-.card h3{ font:800 22px/1.2 "Playfair Display",serif; color:var(--brand); margin:0 0 4px }
-.card .sub{ color:var(--muted); font-weight:600; font-size:14px; margin-bottom:8px }
-.card p{ margin:0 0 14px }
-.cta{ color:var(--brand); text-decoration:none; font-weight:800; border-bottom:2px solid transparent }
-.cta:hover{ border-color:var(--brand) }
-
-.arrow{
-  position:absolute; top:50%; transform:translateY(-50%);
-  width:48px; height:48px; border-radius:50%;
-  display:grid; place-items:center; cursor:pointer; user-select:none;
-  background:rgba(15,15,18,.92); border:1px solid var(--line); color:var(--ink);
-  transition:transform .15s, background .15s, box-shadow .15s;
-  z-index:5;
-}
-.arrow:hover{ transform:translateY(-50%) scale(1.06); box-shadow:0 8px 18px rgba(0,0,0,.35) }
-.arrow.left{ left:-18px } .arrow.right{ right:-18px }
+/* PROJECTS */
+#projects{max-width:var(--max); margin:80px auto; padding:0 20px;}
+#projects h2{font:800 36px/1.2 "Playfair Display",serif; color:var(--brand); margin-bottom:14px;}
+.projects-carousel{display:flex; overflow-x:auto; gap:20px; scroll-behavior:smooth; padding-bottom:10px;}
+.project{flex:0 0 calc(33.333% - 14px); background:rgba(15,15,18,.85); border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--shadow); text-align:center; transition:transform .2s;}
+.project:hover{transform:translateY(-4px);}
+.project img{width:100%; height:200px; object-fit:cover; border-top-left-radius:var(--r); border-top-right-radius:var(--r);}
+.project h3{font-weight:700; margin:12px 0 6px; color:var(--ink);}
+.project p{color:var(--muted); font-size:14px; padding:0 10px 16px;}
+.projects-carousel::-webkit-scrollbar{display:none;}
 
 /* ABOUT */
-.about-grid{display:grid; gap:24px; margin-top:10px; grid-template-columns:1fr;}
-@media (min-width:900px){ .about-grid{ grid-template-columns:1.2fr .8fr } }
-.panel{
-  background:rgba(19,19,24,.82); border:1px solid var(--line); border-radius:18px;
-  padding:20px; box-shadow:var(--shadow)
-}
-.panel h3{ margin:0 0 10px; font-weight:800 }
-.kv{ display:flex; gap:12px; flex-wrap:wrap; margin-top:8px }
-.kv span{ border:1px solid var(--line); padding:6px 10px; border-radius:999px; color:var(--muted); font-size:13px }
+#about{max-width:var(--max); margin:80px auto; padding:0 20px;}
+#about h2{font:800 36px/1.2 "Playfair Display",serif; color:var(--brand);}
+#about p{color:#d0d0da; font-size:17px; max-width:820px;}
 
 /* RESUME */
-.resume-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px }
-.btn{
-  display:inline-block; background:var(--brand); color:#111; font-weight:800;
-  padding:10px 14px; border-radius:12px; text-decoration:none
-}
-.btn.ghost{ background:transparent; color:var(--brand); border:2px solid var(--brand) }
+#resume{background:rgba(15,15,18,.8); border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--shadow); padding:40px 20px; max-width:var(--max); margin:80px auto;}
+#resume h2{font:800 36px/1.2 "Playfair Display",serif; color:var(--brand); margin-bottom:14px; text-align:center;}
+#resume p{color:#cfcfd6; font-size:17px; margin-bottom:28px; text-align:center;}
+.resume-buttons{display:flex; justify-content:center; gap:18px; flex-wrap:wrap;}
+.resume-buttons a{text-decoration:none; font-weight:800; padding:14px 28px; border-radius:12px; transition:.25s ease;}
+.resume-buttons a.view{background:var(--brand); color:#111; box-shadow:0 8px 20px rgba(255,127,50,.35);}
+.resume-buttons a.download{border:2px solid var(--brand); color:var(--brand);}
 
 /* FOOTER */
-footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
-@media (max-width:480px){ .hero h1{ font-size:36px } }
+footer{max-width:var(--max); margin:auto; padding:30px 20px; border-top:1px solid var(--line); text-align:center; color:var(--muted);}
 </style>
 </head>
 <body>
@@ -136,153 +74,85 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
 <div class="page">
 
   <nav>
-    <div class="wrap navbar">
+    <div class="navwrap">
       <div class="brand">
-        <span>TOBI ADEFIDIYA</span> <span class="pipe">||</span>
-        <span style="color:var(--muted); font-weight:700">GAME & NARRATIVE DESIGNER</span>
+        <span>TOBI ADEFIDIYA</span><span class="pipe">||</span>
+        <span style="color:var(--muted);font-weight:700;">GAME & NARRATIVE DESIGNER</span>
       </div>
       <div class="navlinks">
-        <a href="#projects" class="navlink">Projects</a>
-        <a href="#about" class="navlink">About</a>
-        <a href="#resume" class="navlink">Resume</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#resume">Resume</a>
       </div>
     </div>
   </nav>
 
-  <header class="hero">
-    <h1>TLDR, I'm just a nerd.</h1>
-    <p>Designer • Developer • Storyteller</p>
+  <header>
+    <h1>TL;DR, I'm just a nerd.</h1>
+    <p>Designer, writer, and storyteller building worlds where conflict and harmony collide.  
+    Welcome to <strong>Wabu Games</strong> — my home for making meaning through play.</p>
   </header>
 
+  <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-inner">
-      <h2>Projects</h2>
-      <div class="carousel-shell">
-        <button class="arrow left">◀</button>
-        <div class="carousel" id="projectCarousel">
-
-          <!-- Strife & Serenity -->
-          <article class="card">
-            <div class="card-media"><img src="assets/strife-thumb.jpg" alt="Strife & Serenity"></div>
-            <div class="card-body">
-              <h3>Strife & Serenity</h3>
-              <div class="sub">Narrative-Driven Action RPG</div>
-              <p>A cosmic tale about balance, consequence, and the cost of peace.</p>
-              <a class="cta" href="projects/strife-and-serenity.html">View case study →</a>
-            </div>
-          </article>
-
-          <!-- Cthulhu's Cat Sitter -->
-          <article class="card">
-            <div class="card-media"><img src="assets/cat-sitter-thumb.jpg" alt="Cthulhu's Cat Sitter"></div>
-            <div class="card-body">
-              <h3>Cthulhu's Cat Sitter</h3>
-              <div class="sub">Puzzle / Strategy</div>
-              <p>A cozy yet eldritch management game where you care for cosmic cats.</p>
-              <a class="cta" href="#">Case study (soon) →</a>
-            </div>
-          </article>
-
-          <!-- Mark of Mastery -->
-          <article class="card">
-            <div class="card-media"><img src="assets/mark-thumb.png" alt="Mark of Mastery"></div>
-            <div class="card-body">
-              <h3>Mark of Mastery</h3>
-              <div class="sub">Action RPG (Prototype)</div>
-              <p>Fast-paced combat and personal growth woven into a surreal journey.</p>
-              <a class="cta" href="#">Case study (soon) →</a>
-            </div>
-          </article>
-
-          <!-- Stonespoke -->
-          <article class="card">
-            <div class="card-media"><img src="assets/stonespoke-thumb.jpg" alt="Stonespoke"></div>
-            <div class="card-body">
-              <h3>Stonespoke</h3>
-              <div class="sub">Adventure / Puzzle</div>
-              <p>Stonecraft, language puzzles, and quiet exploration.</p>
-              <a class="cta" href="#">Case study (soon) →</a>
-            </div>
-          </article>
-
-          <!-- High Road (NEW) -->
-          <article class="card">
-            <div class="card-media">
-              <!-- Upload this file to /assets/ -->
-              <img src="assets/high-road-thumb.png" alt="High Road">
-            </div>
-            <div class="card-body">
-              <h3>High Road</h3>
-              <div class="sub">Platformer / Stealth</div>
-              <p>A mystery-driven, emotionally charged platformer where every choice
-                 pulls you between doubt and desire.</p>
-              <a class="cta" href="#">Case study (soon) →</a>
-            </div>
-          </article>
-
-        </div>
-        <button class="arrow right">▶</button>
-      </div>
+    <h2>Projects</h2>
+    <div class="projects-carousel">
+      <a class="project" href="projects/strife-and-serenity.html">
+        <img src="assets/strife-thumb.png" alt="Strife & Serenity">
+        <h3>Strife & Serenity</h3>
+        <p>Narrative-driven action RPG about balance through conflict.</p>
+      </a>
+      <a class="project" href="projects/cat-sitter.html">
+        <img src="assets/cat-sitter-thumb.png" alt="Cthulhu’s Cat Sitter">
+        <h3>Cthulhu’s Cat Sitter</h3>
+        <p>Cozy chaos management game with cosmic consequences.</p>
+      </a>
+      <a class="project" href="projects/mark.html">
+        <img src="assets/mark-thumb.png" alt="Mark of Mastery">
+        <h3>Mark of Mastery</h3>
+        <p>Fast-paced combat and skill growth rooted in purpose.</p>
+      </a>
+      <a class="project" href="projects/stonespoke.html">
+        <img src="assets/stonespoke-thumb.png" alt="Stonespoke">
+        <h3>Stonespoke</h3>
+        <p>Atmospheric puzzle adventure exploring forgotten echoes.</p>
+      </a>
+      <a class="project" href="projects/high-road.html">
+        <img src="assets/high-road-thumb.png" alt="High Road">
+        <h3>High Road</h3>
+        <p>Mystery platformer about trust, stealth, and emotional resolve.</p>
+      </a>
     </div>
   </section>
 
+  <!-- ABOUT -->
   <section id="about">
-    <div class="section-inner">
-      <h2>About</h2>
-      <div class="about-grid">
-        <div class="panel">
-          <h3>Hey, I’m Tobi — Wabu Games.</h3>
-          <p>I’m a game & narrative designer who loves readable combat, strong thematic arcs, and mechanics that <em>say something</em>. Currently building <strong>Strife & Serenity</strong> while prototyping smaller experiences and board games to explore conflict, tension, and resolution.</p>
-          <div class="kv"><span>Unity</span><span>Systems Design</span><span>Narrative Design</span><span>Rapid Prototyping</span><span>Level Design</span><span>UX Writing</span><span>Blender</span><span>Git</span></div>
-        </div>
-        <div class="panel">
-          <h3>Currently</h3>
-          <ul><li>Prototyping encounter pacing & ability kits for S&S</li><li>Writing narrative surfaces that respect flow</li><li>Iterating weekly with playtests</li></ul>
-          <h3 style="margin-top:14px">Contact</h3>
-          <p><a class="cta" href="mailto:tobidee@icloud.com">tobidee@icloud.com</a></p>
-        </div>
-      </div>
-    </div>
+    <h2>About Me</h2>
+    <p>
+      I'm <strong>Tobi Adefidiya</strong> — a Game Designer and Narrative Designer passionate about exploring
+      the tension between conflict and peace. My goal is to create meaningful player experiences that
+      challenge perception and provoke reflection through systems and storytelling.
+    </p>
   </section>
 
+  <!-- RESUME -->
   <section id="resume">
-    <div class="section-inner">
-      <h2>Resume</h2>
-      <div class="panel">
-        <p>You can view or download my latest CV below.</p>
-        <div class="resume-actions">
-          <a class="btn" href="assets/Tobi_Adefidiya_Resume.pdf" target="_blank" rel="noopener">View PDF</a>
-          <a class="btn ghost" href="assets/Tobi_Adefidiya_Resume.pdf" download>Download</a>
-        </div>
-        <p style="color:var(--muted); margin-top:10px">(If this link 404s, add your file at <code>/assets/Tobi_Adefidiya_Resume.pdf</code> or change the href.)</p>
-      </div>
+    <h2>Resume</h2>
+    <p>
+      A snapshot of my journey through interactive media, game design, and storytelling.  
+      Explore my resume to see the path that shaped my approach to designing meaning through play.
+    </p>
+
+    <div class="resume-buttons">
+      <a href="assets/Tobi_Adefidiya_Resume_Final-1.pdf" target="_blank" class="view">View Resume</a>
+      <a href="assets/Tobi_Adefidiya_Resume_Final-1.pdf" download="Tobi_Adefidiya_Resume.pdf" class="download">Download PDF</a>
     </div>
   </section>
 
-  <footer>© <span id="y"></span> Wabu Games — Designed & built by Tobi A.</footer>
+  <footer>
+    © 2025 Wabu Games | Designed & Built by Tobi Adefidiya
+  </footer>
 
 </div>
-
-<script>
-document.getElementById('y').textContent = new Date().getFullYear();
-
-const scroller=document.getElementById('projectCarousel'),
-      left=document.querySelector('.arrow.left'),
-      right=document.querySelector('.arrow.right');
-
-function pageSize(){
-  const s=getComputedStyle(scroller);
-  const gap=parseInt(s.columnGap||s.gap||'24',10)||24;
-  const c=scroller.querySelector('.card');
-  if(!c)return scroller.clientWidth;
-  const w=c.offsetWidth;
-  let v=3;
-  if(window.matchMedia('(max-width:1024px)').matches)v=2;
-  if(window.matchMedia('(max-width:640px)').matches)v=1;
-  return w*v+gap*(v-1);
-}
-left.addEventListener('click',()=>scroller.scrollBy({left:-pageSize(),behavior:'smooth'}));
-right.addEventListener('click',()=>scroller.scrollBy({left:pageSize(),behavior:'smooth'}));
-</script>
 </body>
 </html>
