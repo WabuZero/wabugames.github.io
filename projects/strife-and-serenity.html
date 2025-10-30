@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>High Road — Case Study | Wabu Games</title>
+<title>Strife & Serenity — Case Study | Wabu Games</title>
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,13 +46,13 @@ nav{
   position:relative; padding:64px 18px 28px;
   background:
     linear-gradient(180deg, rgba(10,10,12,.85) 0%, rgba(10,10,12,.6) 40%, rgba(10,10,12,.0) 100%),
-    url('../assets/high-road-hero.jpg') center/cover no-repeat; /* <-- change hero path */
+    url('../assets/strife-hero.jpg') center/cover no-repeat; /* <-- upload this */
   border-bottom:1px solid var(--line);
 }
 .hero .inner{max-width:var(--max); margin:auto}
 .kicker{color:var(--muted); font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px}
 h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--brand)}
-.deck{color:#e9e9ef; max-width:820px; margin:8px 0 16px}
+.deck{color:#e9e9ef; max-width:860px; margin:8px 0 16px}
 .meta{display:flex; flex-wrap:wrap; gap:10px; margin:12px 0 18px}
 .pill{border:1px solid var(--line); background:rgba(20,20,24,.7); color:var(--muted); padding:6px 10px; border-radius:999px; font-size:13px}
 
@@ -66,10 +66,10 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
 
 /* Layout */
 .wrap{max-width:var(--max); margin:auto; padding:26px 18px 60px}
+.grid{display:grid; grid-template-columns:260px 1fr; gap:24px}
+@media (max-width:980px){ .grid{grid-template-columns:1fr} }
 
 /* Sticky sidebar TOC */
-.grid{display:grid; grid-template-columns:260px 1fr; gap:24px}
-@media (max-width:980px){ .grid{grid-template-columns:1fr; } }
 .toc{
   position:sticky; top:84px; align-self:start;
   background:rgba(18,18,22,.82); border:1px solid var(--line); border-radius:var(--r); padding:14px;
@@ -119,7 +119,6 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
 }
 #toTop.show{opacity:1; pointer-events:auto}
 #toTop:hover{transform:translateY(-2px)}
-/* Anchors scroll offset */
 .section{scroll-margin-top:90px}
 </style>
 </head>
@@ -146,15 +145,18 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
   <header class="hero">
     <div class="inner">
       <div class="kicker">Case Study</div>
-      <h1>High Road</h1>
-      <p class="deck">A mystery-driven, emotionally charged platformer/stealth game where your choices
-        tilt you between doubt and desire—rewiring routes, allies, and the story you tell yourself.</p>
+      <h1>Strife &amp; Serenity</h1>
+      <p class="deck">
+        A narrative-driven action RPG about balance, consequence, and the cost of peace. You play as Ka’Sipho,
+        navigating the Zothari’s authoritarian peace and the Conflict Entity’s reset—where every victory carries a price,
+        and every resolution reshapes the natural order.
+      </p>
 
       <div class="meta">
-        <span class="pill">Platformer / Stealth</span>
-        <span class="pill">Solo Dev</span>
+        <span class="pill">Action RPG</span>
         <span class="pill">Unity</span>
-        <span class="pill">2 months prototype</span>
+        <span class="pill">Systems & Narrative Design</span>
+        <span class="pill">Prologue Vertical Slice</span>
       </div>
 
       <div class="chips">
@@ -162,7 +164,7 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
         <a href="#goals">Goals</a>
         <a href="#constraints">Constraints</a>
         <a href="#process">Process</a>
-        <a href="#solutions">Key Solutions</a>
+        <a href="#systems">Key Systems</a>
         <a href="#results">Takeaways</a>
         <a href="#gallery">Gallery</a>
       </div>
@@ -171,57 +173,57 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
 
   <main class="wrap">
     <div class="grid">
-      <!-- STICKY TOC -->
+      <!-- Sticky TOC -->
       <aside class="toc" id="toc">
         <h4>On this page</h4>
         <a href="#overview">Overview</a>
-        <a href="#goals">Prototype Goals</a>
+        <a href="#goals">Project Goals</a>
         <a href="#constraints">Constraints</a>
         <a href="#process">Process</a>
-        <a href="#solutions">Key Solutions</a>
+        <a href="#systems">Key Systems</a>
         <a href="#results">Results & Takeaways</a>
         <a href="#gallery">Media Gallery</a>
       </aside>
 
-      <!-- CONTENT -->
+      <!-- Content -->
       <div>
 
         <section id="overview" class="section">
           <h2>Overview</h2>
           <p class="lead">
-            <strong>High Road</strong> explores how stealth and platforming can express inner conflict.
-            Each route favors either <em>desire</em> (bold, high-risk lines) or <em>doubt</em> (careful, hidden paths),
-            and the world remembers how you move. Encounters, dialogue, and level states reshape as you commit.
+            <strong>Strife &amp; Serenity</strong> asks what happens when peace is forced into a universe that needs
+            conflict to grow. The Zothari’s enforced order collides with the Entity of Conflict’s reset, and you’re
+            caught in between—pushing a combat system that’s readable, expressive, and narratively loaded.
           </p>
           <div class="cols" style="margin-top:12px">
             <div>
-              <h3 style="margin:0 0 6px">Design Hypothesis</h3>
-              <p>Players feel the character’s tension most when traversal and stealth choices materially
-                alter their future opportunities—without heavy cutscenes or exposition.</p>
+              <h3 style="margin:0 0 6px">Design North Star</h3>
+              <p>Make combat feel like conversation—abilities and counters that clearly “say” intent, with payoffs that
+                echo the theme of balance (conflict → resolution).</p>
             </div>
             <div>
-              <div class="callout"><strong>Win state for the prototype:</strong> deliver a short slice where
-                two distinct play styles both feel valid, readable, and narratively meaningful.</div>
+              <div class="callout"><strong>Vertical slice goal:</strong> Gate Town traversal, a set-piece arena, and a
+                climactic duel where mechanical clarity supports each story beat.</div>
             </div>
           </div>
         </section>
 
         <section id="goals" class="section">
-          <h2>Prototype Goals</h2>
+          <h2>Project Goals</h2>
           <ul>
-            <li>Use traversal + stealth as <em>implicit storytelling</em>.</li>
-            <li>Build a core kit that supports “Doubt vs Desire” with distinct affordances.</li>
-            <li>Keep onboarding clear and frictionless; reward expressive mastery.</li>
-            <li>Ship a 5–8 minute vertical slice with reactive VO and stateful level changes.</li>
+            <li>Readable, learnable combat with expressive ability kits (no button soup).</li>
+            <li>Encounters that escalate tension → choice → consequence without cutscene crutches.</li>
+            <li>UI that communicates state at a glance (ability bar, parry windows, telegraphs).</li>
+            <li>Ship a polished prologue that stands alone as a portfolio slice.</li>
           </ul>
         </section>
 
         <section id="constraints" class="section">
           <h2>Constraints</h2>
           <ul>
-            <li>Indie scope; solo production and limited art bandwidth.</li>
-            <li>Timeboxed sprint for a milestone demo.</li>
-            <li>1 environment + 3 encounter beats; clarity over content breadth.</li>
+            <li>Solo development; art bandwidth focused on clarity over spectacle.</li>
+            <li>One major boss encounter + 2 skirmishes in slice scope.</li>
+            <li>Target 60fps on mid-range laptops at 1080p.</li>
           </ul>
         </section>
 
@@ -229,39 +231,41 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
           <h2>Process</h2>
           <div class="cols">
             <div>
-              <h3 style="margin:0 0 6px">Mapping the Tension</h3>
-              <p>System-map sessions turned “Doubt vs Desire” into level verbs, enemy vision cones,
-                and traversal silhouettes. Paper grayboxes → Unity blockouts → weekly playtests.</p>
+              <h3 style="margin:0 0 6px">From Pillars → Pacing</h3>
+              <p>Defined pillars (<em>clarity, consequence, cadence</em>) and mapped them to encounter loops:
+                telegraph → commit → counter window → resolve → reposition. Paper prototypes → Unity blockouts →
+                weekly playtests.</p>
             </div>
             <div>
               <h3 style="margin:0 0 6px">Iteration Cadence</h3>
-              <p>Each week targeted one “pain to pleasure” swap (e.g., readability, recovery options,
-                stealth tells). Telemetry and quick interviews fed changes the same day.</p>
+              <p>Each pass targeted a pain point (unclear tells, camera drift, i-frame timing). Telemetry/heatmaps
+                informed arena geometry, enemy timings, and cooldown tuning.</p>
             </div>
           </div>
         </section>
 
-        <section id="solutions" class="section">
-          <h2>Key Solutions</h2>
+        <section id="systems" class="section">
+          <h2>Key Systems</h2>
           <div class="cols">
             <div>
-              <h3>Affordance-First Lighting</h3>
-              <p>Cold rim lights highlight doubt routes (cover, crawl), warm accents call out desire routes
-                (vaults, wall-runs). Players learn the palette unconsciously.</p>
+              <h3>Ability Kit: Strife vs Serenity</h3>
+              <p><strong>Strife</strong> skills front-load risk/reward and stagger windows; <strong>Serenity</strong> skills
+                 emphasize timing, parries, and controlled recovery. Mixing both creates synergy and narrative resonance.</p>
             </div>
             <div>
-              <h3>Reactive Surfaces</h3>
-              <p>Whispers on walls and reactive VO punctuate success/failure beats without stalling play.
-                Surface lines shift tone as your route history skews one side.</p>
+              <h3>Readable Tells & Counters</h3>
+              <p>Color/shape-coded telegraphs, intent-based hitstop (warning vs reward), consistent parry i-frames,
+                 and an ability bar that mirrors combat state without clutter.</p>
             </div>
             <div>
-              <h3>Forgiving Fail-Forwards</h3>
-              <p>Short, readable recovery ladders keep momentum after detection, keeping the fantasy intact
-                for both stealth and flow-platforming players.</p>
+              <h3>Boss Phases with Moral Weight</h3>
+              <p>“Duel of intents” where your style nudges the boss toward aggressive vs composed AI sets, tying
+                 player habit back into the theme of balance.</p>
             </div>
             <div>
-              <h3>Readable Stealth Tells</h3>
-              <p>Vision cones, footstep rings, and a “breath bar” reduce ambiguity while keeping pressure high.</p>
+              <h3>Traversal as Tone</h3>
+              <p>Decompression spaces between fights seed worldbuilding via lighting, signage, and environmental
+                 storytelling—no exposition dumps necessary.</p>
             </div>
           </div>
         </section>
@@ -269,26 +273,26 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
         <section id="results" class="section">
           <h2>Results & Takeaways</h2>
           <ul>
-            <li>Players reliably recognized and <em>chose</em> between doubt/desire routes, and stuck with a style.</li>
-            <li>Heat-map paths confirmed the palette read: warm = bold, cold = hidden.</li>
-            <li>Biggest next step: deepen state carry-over and add one enemy archetype that flips the palette.</li>
+            <li>Playtesters could read enemy intent and reliably parry within 2–3 attempts.</li>
+            <li>Ability synergies encouraged mixing Strife/Serenity rather than one-tricking.</li>
+            <li>Next: add a support archetype, deepen phase reactivity, and expand in-world onboarding.</li>
           </ul>
           <div class="nextprev">
             <a class="ghost" href="../index.html#projects">← Back to Projects</a>
-            <a href="strife-and-serenity.html">Next: Strife & Serenity →</a>
+            <a href="high-road.html">Next: High Road →</a>
           </div>
         </section>
 
         <section id="gallery" class="section">
           <h2>Media Gallery</h2>
           <div class="gallery">
-            <!-- Replace these with your images/videos -->
-            <img src="../assets/high-road-01.jpg" alt="Blockout 1">
-            <img src="../assets/high-road-02.jpg" alt="Lighting test">
-            <img src="../assets/high-road-03.jpg" alt="Stealth route">
-            <img src="../assets/high-road-04.jpg" alt="Desire route">
-            <img src="../assets/high-road-05.jpg" alt="HUD & tells">
-            <img src="../assets/high-road-06.jpg" alt="Final slice">
+            <!-- Replace with your actual images (they auto-crop) -->
+            <img src="../assets/strife-01.jpg" alt="Arena blockout">
+            <img src="../assets/strife-02.jpg" alt="Ability UI iteration">
+            <img src="../assets/strife-03.jpg" alt="Telegraph readability pass">
+            <img src="../assets/strife-04.jpg" alt="Boss phase 2 lighting">
+            <img src="../assets/strife-05.jpg" alt="Traversal decompress space">
+            <img src="../assets/strife-06.jpg" alt="Final polish slice">
           </div>
         </section>
 
@@ -300,25 +304,21 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
 </div>
 
 <script>
-// highlight active section in sidebar
+// Highlight active section in sidebar
 const links = [...document.querySelectorAll('#toc a')];
 const sections = links.map(a => document.querySelector(a.getAttribute('href')));
 const opt = {rootMargin: '-40% 0px -50% 0px', threshold: 0};
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     const i = sections.indexOf(e.target);
-    if(i >= 0){
-      links[i].classList.toggle('active', e.isIntersecting);
-    }
+    if(i >= 0){ links[i].classList.toggle('active', e.isIntersecting); }
   });
 }, opt);
 sections.forEach(s=>s && io.observe(s));
 
-// back to top
+// Back to top
 const toTop = document.getElementById('toTop');
-window.addEventListener('scroll', ()=> {
-  toTop.classList.toggle('show', window.scrollY > 800);
-});
+window.addEventListener('scroll', ()=> toTop.classList.toggle('show', window.scrollY > 800));
 toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 </script>
 </body>
