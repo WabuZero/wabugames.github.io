@@ -41,12 +41,12 @@ nav{
 .navlinks a:hover{color:var(--ink); background:rgba(255,127,50,.08)}
 .navlinks a.active{color:var(--brand)}
 
-/* Hero (richer, but clean) */
+/* Hero */
 .hero{
   position:relative; padding:72px 18px 36px;
   background:
     linear-gradient(180deg, rgba(10,10,12,.88) 0%, rgba(10,10,12,.65) 40%, rgba(10,10,12,0) 100%),
-    url('../assets/strife-hero.jpg') center/cover no-repeat;
+    url('../assets/strife-hero.jpg') center/cover no-repeat; /* replace as needed */
   border-bottom:1px solid var(--line);
 }
 .hero .inner{max-width:var(--max); margin:auto}
@@ -61,7 +61,7 @@ h1{font:800 48px/1.08 "Playfair Display",serif; margin:0 0 12px; color:var(--bra
 .grid{display:grid; grid-template-columns:280px 1fr; gap:26px}
 @media (max-width:1060px){ .grid{grid-template-columns:1fr} }
 
-/* Sticky sidebar TOC (sleeker) */
+/* Sticky sidebar TOC */
 .toc{
   position:sticky; top:86px; align-self:start;
   background:rgba(18,18,22,.82); border:1px solid var(--line); border-radius:var(--r); padding:16px;
@@ -102,11 +102,21 @@ h1{font:800 48px/1.08 "Playfair Display",serif; margin:0 0 12px; color:var(--bra
   filter:drop-shadow(0 10px 24px rgba(0,0,0,.45));
 }
 
-/* Gallery */
-.gallery{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
-.gallery img{width:100%; height:200px; object-fit:cover; border-radius:14px; display:block; border:1px solid var(--line)}
-@media (max-width:980px){ .gallery{grid-template-columns:repeat(2,1fr)} }
-@media (max-width:560px){ .gallery{grid-template-columns:1fr} }
+/* Media grid (from Seeds layout) */
+.media-grid{
+  display:grid; gap:14px; grid-template-columns:repeat(3,1fr); margin-top:14px
+}
+.media-grid figure{
+  margin:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#0b0b0f
+}
+.media-grid img, .media-grid video{
+  width:100%; height:200px; object-fit:cover; display:block;
+}
+.media-grid figcaption{
+  padding:8px 10px; font-size:13px; color:var(--muted); border-top:1px solid var(--line)
+}
+@media (max-width:980px){ .media-grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:560px){ .media-grid{grid-template-columns:1fr} }
 
 /* Footer nav */
 .nextprev{
@@ -153,11 +163,8 @@ h1{font:800 48px/1.08 "Playfair Display",serif; margin:0 0 12px; color:var(--bra
       <div class="kicker">Prologue Case Study</div>
       <h1>Strife &amp; Serenity — Prologue</h1>
       <p class="deck">
-        A narrative-driven action RPG prologue focused on readable, expressive combat and
-        traversal pacing. Gate Town arrival → set-piece arena → a duel that ties mechanics to story beats—
-        without heavy exposition.
+        A narrative-driven action RPG prologue focused on readable, expressive combat and traversal pacing.
       </p>
-
       <div class="meta">
         <span class="pill">Action RPG</span>
         <span class="pill">Unity</span>
@@ -169,19 +176,18 @@ h1{font:800 48px/1.08 "Playfair Display",serif; margin:0 0 12px; color:var(--bra
 
   <main class="wrap">
     <div class="grid">
-      <!-- Sticky TOC -->
+      <!-- TOC -->
       <aside class="toc" id="toc">
         <h4>On this page</h4>
         <a href="#overview">Overview</a>
-        <a href="#goals">Project Goals</a>
-        <a href="#constraints">Constraints</a>
-        <a href="#process">Process</a>
+        <a href="#loop">Core Loop</a>
         <a href="#systems">Key Systems</a>
+        <a href="#process">Process</a>
         <a href="#gallery">Media Gallery</a>
         <a href="#results">Results & Takeaways</a>
       </aside>
 
-      <!-- Content -->
+      <!-- CONTENT -->
       <div>
 
         <!-- OVERVIEW -->
@@ -201,9 +207,8 @@ h1{font:800 48px/1.08 "Playfair Display",serif; margin:0 0 12px; color:var(--bra
                 <li><strong>Narrative Sample:</strong> Storyboard Cutscenes, Dialogue Feel, Cinematics.</li>
                 <li><strong>Combat:</strong> Combat feel, Countering, Ability System, Momentum, etc.</li>
               </ul>
-
               <p style="margin-top:14px">
-                Play the current prologue build on
+                Play the current build on
                 <a href="https://wabuzero.itch.io/strifeserenity" target="_blank" rel="noopener">Itch</a>
                 and learn more at
                 <a href="https://wabugames.com" target="_blank" rel="noopener">WabuGames.com</a>.
@@ -217,31 +222,93 @@ h1{font:800 48px/1.08 "Playfair Display",serif; margin:0 0 12px; color:var(--bra
                 Through this, players not only feel the rhythm of conflict and calm, but also uncover a deeply
                 personal story about growth, loss, and understanding—one they can see themselves in.
               </div>
-              <!-- Logo directly beneath the callout -->
               <img class="ss-logo" src="../assets/ss-logo.png" alt="Strife & Serenity Prologue logo">
             </div>
           </div>
+
+          <!-- optional overview media slots -->
+          <div class="media-grid">
+            <figure>
+              <img src="../assets/strife-overview-1.jpg" alt="Key art or teaser">
+              <figcaption>Teaser / key art (replace)</figcaption>
+            </figure>
+            <figure>
+              <video src="../assets/strife-overview-2.mp4" controls></video>
+              <figcaption>30s teaser clip (replace)</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/strife-overview-3.jpg" alt="Gate Town mood">
+              <figcaption>Gate Town mood (replace)</figcaption>
+            </figure>
+          </div>
         </section>
 
-        <section id="goals" class="section">
-          <h2>Project Goals (Prologue)</h2>
+        <!-- CORE LOOP (Seeds-style section + media grid) -->
+        <section id="loop" class="section">
+          <h2>Core Loop (Prologue)</h2>
           <ul>
-            <li>Deliver a <strong>5–8 minute</strong> prologue that stands on its own.</li>
-            <li>Prioritize <strong>readability</strong> (tells, counters, UI states) over content breadth.</li>
-            <li>Use traversal pacing to create <strong>tension → release</strong> between fights.</li>
-            <li>Teach the ability kit through <strong>play</strong>, not exposition.</li>
+            <li><strong>Action:</strong> Skirmish → Set-piece arena → Duel.</li>
+            <li><strong>Learn:</strong> Abilities taught through play (tells, counters, momentum).</li>
+            <li><strong>Release:</strong> Traversal beats create breathing space and tone shifts.</li>
           </ul>
+
+          <div class="media-grid">
+            <figure>
+              <img src="../assets/strife-loop-1.jpg" alt="Arena blockout">
+              <figcaption>Encounter blockout (replace)</figcaption>
+            </figure>
+            <figure>
+              <video src="../assets/strife-loop-2.mp4" controls></video>
+              <figcaption>Loop breakdown clip (replace)</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/strife-loop-3.jpg" alt="Ability onboarding">
+              <figcaption>In-play onboarding (replace)</figcaption>
+            </figure>
+          </div>
         </section>
 
-        <section id="constraints" class="section">
-          <h2>Constraints</h2>
-          <ul>
-            <li>Solo production → clarity, lighting, and UI polish over bespoke art volume.</li>
-            <li>One boss-style duel, two skirmish beats, one traversal lane.</li>
-            <li>Target: 60fps @ 1080p on mid-range laptops.</li>
-          </ul>
+        <!-- KEY SYSTEMS -->
+        <section id="systems" class="section">
+          <h2>Key Systems</h2>
+          <div class="cols">
+            <div>
+              <h3>Ability Kit: Strife / Serenity</h3>
+              <p><strong>Strife</strong> leans into assertive windows and risk/reward; <strong>Serenity</strong> favors timing,
+                 parries, and controlled recovery. Blending both drives satisfying decision loops.</p>
+            </div>
+            <div>
+              <h3>Readable Tells & Counters</h3>
+              <p>Color/shape-coded telegraphs, intent-based hitstop, consistent i-frames, and an ability bar that mirrors state at a glance.</p>
+            </div>
+            <div>
+              <h3>Traversal as Tone</h3>
+              <p>Quiet paths between fights shift lighting and signage to seed context and decompress without heavy cutscenes.</p>
+            </div>
+            <div>
+              <h3>Fail-Forward Recovery</h3>
+              <p>Short, visible recovery ladders keep momentum after mistakes so players stay in the fantasy.</p>
+            </div>
+          </div>
+
+          <!-- system media slots -->
+          <div class="media-grid">
+            <figure>
+              <img src="../assets/strife-systems-1.jpg" alt="Telegraph readability">
+              <figcaption>Telegraph readability pass (replace)</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/strife-systems-2.jpg" alt="HUD/Ability UI">
+              <figcaption>HUD / ability UI iteration (replace)</figcaption>
+            </figure>
+            <figure>
+              <video src="../assets/strife-systems-3.mp4" controls></video>
+              <figcaption>Counter timing clip (replace)</figcaption>
+            </figure>
+          </div>
         </section>
 
+        <!-- PROCESS -->
         <section id="process" class="section">
           <h2>Process</h2>
           <div class="cols">
@@ -249,54 +316,46 @@ h1{font:800 48px/1.08 "Playfair Display",serif; margin:0 0 12px; color:var(--bra
               <h3 style="margin:0 0 6px">From Pillars → Encounters</h3>
               <p>Pillars (<em>clarity, consequence, cadence</em>) mapped to loops:
                 telegraph → commit → counter window → resolve → reposition. Paper → blockout →
-                weekly playtests with quick tuning passes.</p>
+                weekly playtests with fast tuning passes.</p>
             </div>
             <div>
               <h3 style="margin:0 0 6px">Iteration</h3>
               <p>Addressed one friction per pass (camera drift, parry window, tell contrast, recovery routes).
-                 Heatmaps + interview notes informed arena shape and ability cooldowns.</p>
+                 Heatmaps + interview notes informed arena shape and cooldowns.</p>
             </div>
+          </div>
+
+          <!-- process media slots -->
+          <div class="media-grid">
+            <figure>
+              <img src="../assets/strife-process-1.jpg" alt="Blockout">
+              <figcaption>Early blockout (replace)</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/strife-process-2.jpg" alt="Paper sketch">
+              <figcaption>Pillars → encounter sketches (replace)</figcaption>
+            </figure>
+            <figure>
+              <video src="../assets/strife-process-3.mp4" controls></video>
+              <figcaption>Playtest reel (replace)</figcaption>
+            </figure>
           </div>
         </section>
 
-        <section id="systems" class="section">
-          <h2>Key Systems (Prologue)</h2>
-          <div class="cols">
-            <div>
-              <h3>Ability Kit: Strife / Serenity</h3>
-              <p><strong>Strife</strong> emphasizes assertive windows and risk/reward;
-                 <strong>Serenity</strong> focuses on timing, parries, and controlled recovery.
-                 Mixing both creates satisfying decision loops.</p>
-            </div>
-            <div>
-              <h3>Readable Tells & Counters</h3>
-              <p>Color/shape-coded telegraphs, intent-based hitstop, consistent i-frames, and an
-                 ability bar that mirrors combat state at a glance.</p>
-            </div>
-            <div>
-              <h3>Traversal as Tone</h3>
-              <p>Quiet spaces between fights shift lighting and signage to seed context and decompress without cutscenes.</p>
-            </div>
-            <div>
-              <h3>Fail-Forward Recovery</h3>
-              <p>Short, visible recovery ladders keep momentum after mistakes so players stay in the fantasy.</p>
-            </div>
-          </div>
-        </section>
-
+        <!-- MEDIA GALLERY (kept simple) -->
         <section id="gallery" class="section">
           <h2>Media Gallery</h2>
-          <div class="gallery">
-            <img src="../assets/strife-01.jpg" alt="Gate Town blockout">
-            <img src="../assets/strife-02.jpg" alt="Ability UI iteration">
-            <img src="../assets/strife-03.jpg" alt="Telegraph readability pass">
-            <img src="../assets/strife-04.jpg" alt="Arena encounter lighting">
-            <img src="../assets/strife-05.jpg" alt="Boss duel phase timing">
-            <img src="../assets/strife-06.jpg" alt="Final polish slice">
+          <div class="media-grid">
+            <figure><img src="../assets/strife-01.jpg" alt="Gate Town blockout"><figcaption>Gate Town blockout</figcaption></figure>
+            <figure><img src="../assets/strife-02.jpg" alt="Ability UI iteration"><figcaption>Ability UI iteration</figcaption></figure>
+            <figure><img src="../assets/strife-03.jpg" alt="Telegraph pass"><figcaption>Telegraph readability pass</figcaption></figure>
+            <figure><img src="../assets/strife-04.jpg" alt="Arena lighting"><figcaption>Arena encounter lighting</figcaption></figure>
+            <figure><img src="../assets/strife-05.jpg" alt="Duel timing"><figcaption>Boss duel phase timing</figcaption></figure>
+            <figure><img src="../assets/strife-06.jpg" alt="Final polish"><figcaption>Final polish slice</figcaption></figure>
           </div>
         </section>
 
-        <!-- RESULTS BELOW GALLERY -->
+        <!-- RESULTS -->
         <section id="results" class="section">
           <h2>Results & Takeaways</h2>
           <ul>
