@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Seeds of Conflict — Project Case Study | Wabu Games</title>
+<title>Strife & Serenity — Prologue Case Study | Wabu Games</title>
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,7 +46,7 @@ nav{
   position:relative; padding:64px 18px 28px;
   background:
     linear-gradient(180deg, rgba(10,10,12,.85) 0%, rgba(10,10,12,.6) 40%, rgba(10,10,12,.0) 100%),
-    url('../assets/seeds-hero.jpg') center/cover no-repeat; /* replace with your hero */
+    url('../assets/strife-hero.jpg') center/cover no-repeat;
   border-bottom:1px solid var(--line);
 }
 .hero .inner{max-width:var(--max); margin:auto}
@@ -88,21 +88,11 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
   padding:14px; border-radius:14px; color:#ffd3b8
 }
 
-/* Media grid slots */
-.media-grid{
-  display:grid; gap:14px; grid-template-columns:repeat(3,1fr); margin-top:14px
-}
-.media-grid figure{
-  margin:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#0b0b0f
-}
-.media-grid img, .media-grid video{
-  width:100%; height:200px; object-fit:cover; display:block;
-}
-.media-grid figcaption{
-  padding:8px 10px; font-size:13px; color:var(--muted); border-top:1px solid var(--line)
-}
-@media (max-width:980px){ .media-grid{grid-template-columns:repeat(2,1fr)} }
-@media (max-width:560px){ .media-grid{grid-template-columns:1fr} }
+/* Gallery */
+.gallery{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
+.gallery img{width:100%; height:200px; object-fit:cover; border-radius:14px; display:block; border:1px solid var(--line)}
+@media (max-width:980px){ .gallery{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:560px){ .gallery{grid-template-columns:1fr} }
 
 /* Footer nav */
 .nextprev{
@@ -146,321 +136,160 @@ h1{font:800 44px/1.1 "Playfair Display",serif; margin:0 0 10px; color:var(--bran
   <!-- HERO -->
   <header class="hero">
     <div class="inner">
-      <div class="kicker">Project Case Study</div>
-      <h1>Seeds of Conflict</h1>
+      <div class="kicker">Prologue Case Study</div>
+      <h1>Strife &amp; Serenity — Prologue</h1>
       <p class="deck">
-        Hunt a trusted ally turned traitor whose actions stoke a realm on the brink of war.
-        Track their influence, sever the Conflict Entity’s reach, and keep fragile peace from collapsing. <!-- :contentReference[oaicite:2]{index=2}
-          </p>
+        A narrative-driven action RPG prologue 
+        focused on readable, expressive combat 
+        and traversal pacing.
+      </p>
 
-          <div class="media-grid">
-            <!-- Replace these with your images/videos -->
-            <figure>
-              <img src="../assets/seeds-overview-1.jpg" alt="Key art / teaser">
-              <figcaption>Key art / teaser (replace)</figcaption>
-            </figure>
-            <figure>
-              <video src="../assets/seeds-overview-2.mp4" controls></video>
-              <figcaption>30s teaser clip (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-overview-3.jpg" alt="Realm on the brink">
-              <figcaption>Realm on the brink (replace)</figcaption>
-            </figure>
-          </div>
-        </section>
+      <div class="meta">
+        <span class="pill">Action RPG</span>
+        <span class="pill">Unity</span>
+        <span class="pill">Systems & Narrative Design</span>
+        <span class="pill">Prologue Vertical Slice</span>
+      </div>
+    </div>
+  </header>
 
-        <!-- LOOP -->
-        <section id="loop" class="section">
-          <h2>Core Gameplay Loop</h2>
-          <ul>
-            <li><strong>Action:</strong> Fight corrupted / conflicted enemies and mini-bosses.</li>
-            <li><strong>Reward:</strong> Earn loot, upgrade materials, items, and unlock <em>new abilities</em>.</li>
-            <li><strong>Opportunity:</strong> Meet odd characters, uncover lore, and see how conflict shapes the world. :contentReference[oaicite:3]{index=3}</li>
-          </ul>
+  <main class="wrap">
+    <div class="grid">
+      <!-- Sticky TOC -->
+      <aside class="toc" id="toc">
+        <h4>On this page</h4>
+        <a href="#overview">Overview</a>
+        <a href="#goals">Project Goals</a>
+        <a href="#constraints">Constraints</a>
+        <a href="#process">Process</a>
+        <a href="#systems">Key Systems</a>
+        <a href="#gallery">Media Gallery</a>
+        <a href="#results">Results & Takeaways</a>
+      </aside>
 
-          <div class="media-grid">
-            <figure>
-              <img src="../assets/seeds-loop-1.jpg" alt="Encounter blockout">
-              <figcaption>Encounter blockout (replace)</figcaption>
-            </figure>
-            <figure>
-              <video src="../assets/seeds-loop-2.mp4" controls></video>
-              <figcaption>Loop breakdown clip (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-loop-3.jpg" alt="Ability unlock">
-              <figcaption>Ability unlock feedback (replace)</figcaption>
-            </figure>
-          </div>
-        </section>
+      <!-- Content -->
+      <div>
 
-        <!-- AUDIENCE -->
-        <section id="audience" class="section">
-          <h2>Target Audience</h2>
-          <ul>
-            <li><strong>Age:</strong> 16–35 — themes of betrayal, loyalty, and conflict resonate with older teens & adults.</li>
-            <li><strong>Inclusive:</strong> Designed for players of all races, genders, and backgrounds.</li>
-            <li><strong>Lifestyle:</strong> Students, part-time workers, and young professionals with time to play.</li>
-            <li><strong>Platform:</strong> PC first (fidelity + flexibility); consider consoles post-launch. :contentReference[oaicite:4]{index=4}</li>
-          </ul>
-
-          <div class="media-grid">
-            <figure>
-              <img src="../assets/seeds-audience-1.jpg" alt="Player personas">
-              <figcaption>Personas snapshot (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-audience-2.jpg" alt="Platform targets">
-              <figcaption>Platform targets (replace)</figcaption>
-            </figure>
-            <figure>
-              <video src="../assets/seeds-audience-3.mp4" controls></video>
-              <figcaption>Audience pitch clip (replace)</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <!-- COMBAT -->
-        <section id="combat" class="section">
-          <h2>Combat</h2>
+        <!-- UPDATED OVERVIEW -->
+        <section id="overview" class="section">
+          <h2>Overview</h2>
           <p class="lead">
-            Flashy, responsive action where readable telegraphs and honest counters make payoffs feel earned.
-            Attacks fall into distinct categories to keep rhythm and variety high. :contentReference[oaicite:5]{index=5}
+            This prologue was inspired by a months-long ideation phase that helped me clarify
+            what I wanted to say with a game (<a href="https://adaptable-radius-84c.notion.site/Tobi-Adefidiya-Semester-I-Portfolio-Ideation-12a927cda10680a387f4d474ba6bcefb" target="_blank" rel="noopener">see process</a>).
           </p>
 
-          <div class="media-grid">
-            <figure>
-              <img src="../assets/seeds-combat-1.jpg" alt="Telegraphs & counters">
-              <figcaption>Telegraphs & counters (replace)</figcaption>
-            </figure>
-            <figure>
-              <video src="../assets/seeds-combat-2.mp4" controls></video>
-              <figcaption>Combat timing test (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-combat-3.jpg" alt="Hit FX exploration">
-              <figcaption>Hit FX exploration (replace)</figcaption>
-            </figure>
+          <div class="cols" style="margin-top:12px">
+            <div>
+              <h3 style="margin:0 0 10px">What’s in this slice</h3>
+              <ul>
+                <li><strong>Traversal:</strong> Grappling, Climbing, Platforming, Balancing.</li>
+                <li><strong>Narrative Sample:</strong> Storyboard Cutscenes, Dialogue Feel, Cinematics.</li>
+                <li><strong>Combat:</strong> Combat Feel, Countering, Ability System, Momentum, etc.</li>
+              </ul>
+
+              <p style="margin-top:14px">
+                Play the current prologue build on
+                <a href="https://wabuzero.itch.io/strifeserenity" target="_blank" rel="noopener">Itch</a>
+                and learn more at
+                <a href="https://wabugames.com" target="_blank" rel="noopener">here</a>.
+              </p>
+            </div>
+
+            <div>
+              <div class="callout">
+                <strong>North Star:</strong> Combat should communicate intent like dialogue—every tell and
+        counter reads instantly, and every payoff reinforces the theme of balance <em>and emotion</em>.
+        Through this, players not only experience the rhythm of conflict and calm but also uncover a
+        deeply personal story about growth, loss, and understanding—one they can see themselves in.
+              </div>
+            </div>
           </div>
         </section>
 
-        <!-- MARKS -->
-        <section id="marks" class="section">
-          <h2>Mechanics — Marks</h2>
-          <p>
-            Core systems revolve around “Marks” that modulate ability windows, damage routes, and counter opportunities.
-            Stacking and timing Marks rewards deliberate play without sacrificing flow. :contentReference[oaicite:6]{index=6}
-          </p>
-
-          <div class="media-grid">
-            <figure>
-              <img src="../assets/seeds-marks-1.jpg" alt="Mark states UI">
-              <figcaption>Mark states UI (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-marks-2.jpg" alt="Decision matrix">
-              <figcaption>Decision matrix (replace)</figcaption>
-            </figure>
-            <figure>
-              <video src="../assets/seeds-marks-3.mp4" controls></video>
-              <figcaption>Marks in combat (replace)</figcaption>
-            </figure>
-          </div>
+        <section id="goals" class="section">
+          <h2>Project Goals (Prologue)</h2>
+          <ul>
+            <li>Deliver a <strong>5–8 minute</strong> prologue that stands alone.</li>
+            <li>Prioritize <strong>readability</strong> (tells, counters, UI states) over content breadth.</li>
+            <li>Use traversal pacing to create <strong>tension → release</strong> between fights.</li>
+            <li>Teach the ability kit through <strong>play</strong>, not exposition.</li>
+          </ul>
         </section>
 
-        <!-- CAMERA -->
-        <section id="camera" class="section">
-          <h2>Cutscenes — Camera Work</h2>
-          <p>
-            Dialogue advances with mostly fixed framing, punctuated by purposeful moves:
-            <strong>Tilt</strong>, <strong>Zoom</strong>, <strong>Pan</strong>, <strong>Boom</strong>, and <strong>Truck</strong> for emphasis and clarity. :contentReference[oaicite:7]{index=7}
-          </p>
-
-          <div class="media-grid">
-            <figure>
-              <img src="../assets/seeds-cam-1.jpg" alt="Storyboard panel">
-              <figcaption>Storyboard: tilt/pan moments (replace)</figcaption>
-            </figure>
-            <figure>
-              <video src="../assets/seeds-cam-2.mp4" controls></video>
-              <figcaption>Camera move test (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-cam-3.jpg" alt="Blocking">
-              <figcaption>Blocking & eyelines (replace)</figcaption>
-            </figure>
-          </div>
+        <section id="constraints" class="section">
+          <h2>Constraints</h2>
+          <ul>
+            <li>Solo production → focus on clarity, lighting, and UI polish over bespoke art volume.</li>
+            <li>1 boss-style duel, 2 skirmish beats, 1 traversal lane.</li>
+            <li>Target: 60fps @ 1080p on mid-range laptops.</li>
+          </ul>
         </section>
 
-        <!-- ART CUTS -->
-        <section id="artcuts" class="section">
-          <h2>Cutscenes — Artwork</h2>
-          <p>
-            High-impact scenes shift from in-engine models to illustrated cut-ins for expressiveness.
-            Dialogue sprites change with emotion to deepen character voice. :contentReference[oaicite:8]{index=8}
-          </p>
-
-          <div class="media-grid">
-            <figure>
-              <img src="../assets/seeds-art-1.jpg" alt="Illustrated cut-in">
-              <figcaption>Illustrated cut-in (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-art-2.jpg" alt="Expression sheet">
-              <figcaption>Expression sheet (replace)</figcaption>
-            </figure>
-            <figure>
-              <video src="../assets/seeds-art-3.mp4" controls></video>
-              <figcaption>Dialogue sprite prototype (replace)</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <!-- UI/UX -->
-        <section id="uiux" class="section">
-          <h2>UI / UX</h2>
-          <p>
-            Readability first: attack types, states, and cooldowns surface clearly; players always understand what just happened and what they can do next. :contentReference[oaicite:9]{index=9}
-          </p>
-
-          <div class="media-grid">
-            <figure>
-              <img src="../assets/seeds-ui-1.jpg" alt="Ability grid">
-              <figcaption>Ability grid (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-ui-2.jpg" alt="HUD passes">
-              <figcaption>HUD passes (replace)</figcaption>
-            </figure>
-            <figure>
-              <video src="../assets/seeds-ui-3.mp4" controls></video>
-              <figcaption>UX clickthrough (replace)</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <!-- CHARACTERS -->
-        <section id="characters" class="section">
-          <h2>Characters</h2>
+        <section id="process" class="section">
+          <h2>Process</h2>
           <div class="cols">
             <div>
-              <h3>Ka’Sipho — Blade of the Zothari</h3>
-              <p>
-                A restless prodigy chasing a brother-figure turned enemy; flippant surface, purpose underneath.
-                His pursuit tests loyalty, justice, and identity. :contentReference[oaicite:10]{index=10}
-              </p>
+              <h3 style="margin:0 0 6px">From Pillars → Encounters</h3>
+              <p>Pillars (<em>clarity, consequence, cadence</em>) mapped to loops:
+                telegraph → commit → counter window → resolve → reposition. Paper → blockout →
+                weekly playtests with quick tuning passes.</p>
             </div>
             <div>
-              <h3>Zephyrax — Last of the Drakes</h3>
-              <p>
-                Fiery, proud, and seeking redemption after loss at the hands of the Conflict Entity’s wake;
-                loyal to a fault, unintentionally goofy. :contentReference[oaicite:11]{index=11}
-              </p>
+              <h3 style="margin:0 0 6px">Iteration</h3>
+              <p>Addressed one friction per pass (camera drift, parry window, tell contrast, recovery routes).
+                 Heatmaps + interview notes informed arena shape and ability cooldowns.</p>
             </div>
-            <div>
-              <h3>Betty — The Beacon</h3>
-              <p>
-                A bright force fighting fascism by night; hope embodied, now allied with Ka’Sipho and Zephyrax
-                to free Sub-Verses from the Entity’s influence. :contentReference[oaicite:12]{index=12}
-              </p>
-            </div>
-          </div>
-
-          <div class="media-grid">
-            <figure>
-              <img src="../assets/seeds-char-ka.jpg" alt="Ka’Sipho concept">
-              <figcaption>Ka’Sipho concept (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-char-zeph.jpg" alt="Zephyrax concept">
-              <figcaption>Zephyrax concept (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-char-betty.jpg" alt="Betty concept">
-              <figcaption>Betty concept (replace)</figcaption>
-            </figure>
           </div>
         </section>
 
-        <!-- ENVIRONMENT -->
-        <section id="env" class="section">
-          <h2>Environment — Moodboards</h2>
-          <p>
-            Atmosphere shifts with tension: signage, color, and weather echo the realm’s political heartbeat. :contentReference[oaicite:13]{index=13}
-          </p>
-
-          <div class="media-grid">
-            <figure>
-              <img src="../assets/seeds-env-1.jpg" alt="Town mood">
-              <figcaption>Gate Town mood (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-env-2.jpg" alt="Arena mood">
-              <figcaption>Arena mood (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-env-3.jpg" alt="Borderlands mood">
-              <figcaption>Borderlands mood (replace)</figcaption>
-            </figure>
+        <section id="systems" class="section">
+          <h2>Key Systems (Prologue)</h2>
+          <div class="cols">
+            <div>
+              <h3>Ability Kit: Strife / Serenity</h3>
+              <p><strong>Strife</strong> emphasizes assertive windows and risk/reward;
+                 <strong>Serenity</strong> focuses on timing, parries, and controlled recovery.
+                 Mixing both creates satisfying decision loops.</p>
+            </div>
+            <div>
+              <h3>Readable Tells & Counters</h3>
+              <p>Color/shape coded telegraphs, intent-based hitstop, consistent i-frames, and an
+                 ability bar that mirrors combat state at a glance.</p>
+            </div>
+            <div>
+              <h3>Traversal as Tone</h3>
+              <p>Quiet spaces between fights shift lighting and signage to seed context and decompress without cutscenes.</p>
+            </div>
+            <div>
+              <h3>Fail-Forward Recovery</h3>
+              <p>Short, visible recovery ladders keep momentum after mistakes so players stay in the fantasy.</p>
+            </div>
           </div>
         </section>
 
-        <!-- ROADMAP -->
-        <section id="roadmap" class="section">
-          <h2>Semester II & Beyond</h2>
+        <section id="gallery" class="section">
+          <h2>Media Gallery</h2>
+          <div class="gallery">
+            <img src="../assets/strife-01.jpg" alt="Gate Town blockout">
+            <img src="../assets/strife-02.jpg" alt="Ability UI iteration">
+            <img src="../assets/strife-03.jpg" alt="Telegraph readability pass">
+            <img src="../assets/strife-04.jpg" alt="Arena encounter lighting">
+            <img src="../assets/strife-05.jpg" alt="Boss duel phase timing">
+            <img src="../assets/strife-06.jpg" alt="Final polish slice">
+          </div>
+        </section>
+
+        <!-- RESULTS BELOW GALLERY -->
+        <section id="results" class="section">
+          <h2>Results & Takeaways</h2>
           <ul>
-            <li>Ship a fully functional chapter as the FMP submission.</li>
-            <li>Continue development post-university; build community interest on Discord.</li>
-            <li>Release on indie-friendly platforms (Itch / Steam) as scope stabilizes. :contentReference[oaicite:14]{index=14}</li>
+            <li>Playtesters reliably read enemy intent and landed parries within 2–3 attempts.</li>
+            <li>Players mixed Strife/Serenity skills instead of one-tricking, thanks to clear affordances.</li>
+            <li>Next steps: add one support archetype, deepen duel phase reactivity, and expand in-world onboarding beats.</li>
           </ul>
-
-          <div class="media-grid">
-            <figure>
-              <img src="../assets/seeds-roadmap-1.jpg" alt="Milestone plan">
-              <figcaption>Milestone plan (replace)</figcaption>
-            </figure>
-            <figure>
-              <video src="../assets/seeds-roadmap-2.mp4" controls></video>
-              <figcaption>Feature progress reel (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-roadmap-3.jpg" alt="Release targets">
-              <figcaption>Release targets (replace)</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <!-- PLAYTESTING -->
-        <section id="playtest" class="section">
-          <h2>Playtesting</h2>
-          <p>
-            I’m gathering iterative feedback through structured playtests. Join the Discord to help shape balance,
-            onboarding, and encounter cadence. :contentReference[oaicite:15]{index=15}
-          </p>
-
-          <div class="media-grid">
-            <figure>
-              <img src="../assets/seeds-pt-1.jpg" alt="Playtest session">
-              <figcaption>Playtest session (replace)</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/seeds-pt-2.jpg" alt="Survey snapshots">
-              <figcaption>Survey snapshots (replace)</figcaption>
-            </figure>
-            <figure>
-              <video src="../assets/seeds-pt-3.mp4" controls></video>
-              <figcaption>First-time user test (replace)</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <!-- CREDITS / THANKS -->
-        <section id="credits" class="section">
-          <h2>Thanks for Reading</h2>
           <div class="nextprev">
             <a class="ghost" href="../index.html#projects">← Back to Projects</a>
-            <a href="strife-and-serenity.html">Next: Strife & Serenity →</a>
+            <a href="high-road.html">Next: High Road →</a>
           </div>
         </section>
 
