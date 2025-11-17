@@ -92,14 +92,10 @@ h1{font:800 48px/1.08 "Playfair Display",serif; margin:0 0 12px; color:var(--bra
 .cols{display:grid; gap:18px; grid-template-columns:1fr 1fr}
 @media (max-width:820px){ .cols{grid-template-columns:1fr} }
 
-/* Callout + Logo slot */
+/* Callout */
 .callout{
   background:rgba(255,127,50,.1); border:1px solid rgba(255,127,50,.28);
   padding:14px; border-radius:14px; color:#ffd3b8
-}
-.ss-logo{
-  display:block; margin:16px auto 0; width:min(740px,92%); height:auto;
-  filter:drop-shadow(0 10px 24px rgba(0,0,0,.45));
 }
 
 /* Media grid */
@@ -199,7 +195,6 @@ h1{font:800 48px/1.08 "Playfair Display",serif; margin:0 0 12px; color:var(--bra
             (<a href="https://adaptable-radius-84c.notion.site/Tobi-Adefidiya-Semester-I-Portfolio-Ideation-12a927cda10680a387f4d474ba6bcefb" target="_blank" rel="noopener">see process</a>).
           </p>
 
-          <!-- concise, recruiter-friendly summary distilled from your Notion Overview -->
           <div class="cols" style="margin-top:12px">
             <div>
               <h3 style="margin:0 0 10px">What this slice demonstrates</h3>
@@ -208,13 +203,6 @@ h1{font:800 48px/1.08 "Playfair Display",serif; margin:0 0 12px; color:var(--bra
                 <li><strong>Traversal as pacing:</strong> short movement beats to breathe between fights and set tone.</li>
                 <li><strong>Narrative sample:</strong> storyboarded cutscenes and dialogue feel that support character and theme.</li>
               </ul>
-
-              <p style="margin-top:14px">
-                Play the current build on
-                <a href="https://wabuzero.itch.io/strifeserenity" target="_blank" rel="noopener">Itch</a>
-                and learn more at
-                <a href="https://wabugames.com" target="_blank" rel="noopener">WabuGames.com</a>.
-              </p>
             </div>
 
             <div>
@@ -224,8 +212,16 @@ h1{font:800 48px/1.08 "Playfair Display",serif; margin:0 0 12px; color:var(--bra
                 The goal is a deep, relatable story felt through play: growth, loss, and understanding that
                 players can see themselves in.
               </div>
-              <!-- Project logo under the callout -->
-              <img class="ss-logo" src="../assets/ss-logo.png" alt="Strife & Serenity Prologue logo">
+
+              <!-- ⭐ REPLACED LOGO WITH CENTERED TEXT ⭐ -->
+              <p style="text-align:center; margin-top:16px; font-weight:600;">
+                Play the current build on
+                <a href="https://wabuzero.itch.io/strifeserenity" target="_blank">Itch</a>
+                and learn more at
+                <a href="https://wabugames.com" target="_blank">WabuGames.com</a>.
+              </p>
+              <!-- END CHANGE -->
+
             </div>
           </div>
 
@@ -395,5 +391,6 @@ const toTop = document.getElementById('toTop');
 window.addEventListener('scroll', ()=> toTop.classList.toggle('show', window.scrollY > 800));
 toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 </script>
+
 </body>
 </html>
