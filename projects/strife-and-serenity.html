@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Strife & Serenity — Prologue Case Study | Wabu Games</title>
 
+<meta name="description" content="Strife & Serenity — Prologue is a narrative-driven Action RPG slice exploring balance between conflict and calm through story-first pacing, exploration, and expressive combat systems." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Strife & Serenity — Prologue Case Study | Wabu Games" />
+<meta property="og:description" content="A story-first prologue slice built around mystery, exploration, and expressive combat — with Marks and adaptive feedback systems that reward intentional play." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="../assets/strife-hero.jpg" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Strife & Serenity — Prologue Case Study | Wabu Games" />
+<meta name="twitter:description" content="A story-first prologue slice built around mystery, exploration, and expressive combat — with Marks and adaptive feedback systems that reward intentional play." />
+<meta name="twitter:image" content="../assets/strife-hero.jpg" />
+
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +37,18 @@ body{
   font:400 16px/1.65 Inter,system-ui,Segoe UI,Roboto;
   background:#000 url('../Wallpaper.png') center/cover fixed no-repeat;
 }
+@media (max-width: 820px){
+  body{ background-attachment: scroll; }
+}
 .overlay{position:fixed; inset:0; background:rgba(10,10,12,.6); z-index:0}
 .page{position:relative; z-index:1}
+
+/* Focus styles */
+a:focus-visible, button:focus-visible, video:focus-visible{
+  outline:2px solid rgba(255,127,50,.9);
+  outline-offset:3px;
+  border-radius:12px;
+}
 
 /* Top nav */
 nav{
@@ -60,7 +84,7 @@ h1{
 .hero-sub{
   display:flex; flex-wrap:wrap; gap:22px; align-items:flex-end; margin-bottom:18px;
 }
-.deck{color:#e9e9ef; max-width:680px; margin:10px 0 0; font-size:18px}
+.deck{color:#e9e9ef; max-width:720px; margin:10px 0 0; font-size:18px}
 .meta{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 4px}
 .pill{border:1px solid var(--line); background:rgba(20,20,24,.7); color:var(--muted); padding:6px 10px; border-radius:999px; font-size:13px}
 
@@ -93,7 +117,7 @@ h1{
 }
 .toc h4{margin:0 0 8px; font-weight:900; color:#ffd4b5; letter-spacing:.04em; text-transform:uppercase; font-size:11px}
 .toc a{
-  display:block; color:var(--muted); text-decoration:none; padding:9px 12px; border-radius:12px; font-weight:650; font-size:14px;
+  display:block; color:var(--muted); text-decoration:none; padding:9px 12px; border-radius:12px; font-weight:600; font-size:14px;
 }
 .toc a + a{margin-top:2px}
 .toc a:hover{color:var(--ink); background:rgba(255,127,50,.08)}
@@ -211,24 +235,6 @@ h1{
 }
 @media (max-width:720px){ .system-grid{grid-template-columns:1fr} }
 
-/* Process timeline */
-.timeline{
-  list-style:none; margin:12px 0 0; padding:0;
-  border-left:1px solid rgba(255,255,255,.12);
-}
-.timeline li{
-  padding:8px 0 10px 16px;
-  position:relative; font-size:14px;
-}
-.timeline li::before{
-  content:""; width:8px; height:8px; border-radius:50%;
-  border:2px solid var(--brand);
-  background:#0b0b10;
-  position:absolute; left:-5px; top:14px;
-}
-.timeline-title{font-weight:600; margin-bottom:2px}
-.timeline-note{color:var(--muted); font-size:13px}
-
 /* Quote */
 .pullquote{
   margin-top:14px; padding:12px 14px 10px;
@@ -289,6 +295,22 @@ h1{
 #toTop.show{opacity:1; pointer-events:auto}
 #toTop:hover{transform:translateY(-2px)}
 .section{scroll-margin-top:90px}
+
+/* Mini 3-up priorities */
+.priorities{
+  display:grid; gap:12px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  margin-top:12px;
+}
+.priority-card{
+  border-radius:14px; padding:12px 14px 12px;
+  background:rgba(12,12,18,.92);
+  border:1px solid rgba(255,255,255,.05);
+  font-size:14px;
+}
+.priority-card h3{margin:0 0 6px; font-size:16px}
+.priority-card p{margin:0; color:#d7d7e3}
+@media (max-width:900px){ .priorities{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
@@ -318,8 +340,8 @@ h1{
         <div>
           <h1>Strife &amp; Serenity — Prologue</h1>
           <p class="deck">
-            A narrative-driven action RPG prologue where a young fighter learns to wield both conflict and calm.
-            This slice focuses on expressive melee combat, traversal as pacing, and a tightly scoped, playable story moment.
+            A story-first prologue slice you interact with through its protagonist, Ka’Sipho —
+            built around mystery, exploration for context, and expressive combat that feels like a conversation.
           </p>
         </div>
       </div>
@@ -356,6 +378,7 @@ h1{
         <a href="#overview">Overview</a>
         <a href="#loop">Core Loop</a>
         <a href="#systems">Key Systems</a>
+        <a href="#feedback">Feedback Loops</a>
         <a href="#process">Process</a>
         <a href="#gallery">Media Gallery</a>
         <a href="#results">Results & Takeaways</a>
@@ -368,32 +391,50 @@ h1{
         <section id="overview" class="section">
           <div class="section-header-eyebrow">01 • Framing the slice</div>
           <h2>Overview</h2>
+
           <p class="lead">
-            Strife &amp; Serenity is about balance: between aggression and restraint, between
-            wanting to save the world and just surviving the day. The prologue is a contained slice
-            that lets players feel that tension in their hands before they ever see the wider Uni-Verse.
+            As exciting as it can be, <strong>Strife &amp; Serenity</strong> isn’t a go-go-go game.
+            It’s a story that you can interact with through its protagonist, Ka’Sipho —
+            shrouded in mystery, where you start off with only a handful of context and go on from there.
+            This prologue is a contained slice that lets players feel that: a taste of what to expect before turning the first page.
           </p>
 
           <div class="cols" style="margin-top:12px">
             <div>
-              <h3 style="margin:0 0 8px">What this slice is trying to prove</h3>
-              <ul>
-                <li><strong>Combat reads at a glance:</strong> enemies broadcast intent clearly, so
-                    players feel clever for reacting, not lucky for guessing.</li>
-                <li><strong>Traversal supports emotion:</strong> small movement beats create a rhythm
-                    of <em>breathe → push → breathe</em> instead of endless arenas.</li>
-                <li><strong>Story is carried through play:</strong> ability unlocks, enemy behaviors,
-                    and small environmental details all echo the theme of conflict vs calm.</li>
-              </ul>
+              <h3 style="margin:0 0 8px">What this slice prioritizes</h3>
 
-              <h3 style="margin:14px 0 6px">My role</h3>
+              <div class="priorities">
+                <div class="priority-card">
+                  <h3>Combat</h3>
+                  <p>
+                    Establishing the feel of Ka’Sipho’s kit — abilities (Spells, Air Slash, etc) and mechanics
+                    (Parrying, Dodging, etc) — and making them work together as a cohesive toolset.
+                  </p>
+                </div>
+                <div class="priority-card">
+                  <h3>Exploration</h3>
+                  <p>
+                    Opportunities to gain context by exploring settings, inspired by
+                    <a href="https://kingdomhearts.fandom.com/wiki/Xehanort%27s_Report" target="_blank" rel="noopener">Xehanort’s Reports</a>
+                    (Kingdom Hearts: Birth by Sleep).
+                  </p>
+                </div>
+                <div class="priority-card">
+                  <h3>Story</h3>
+                  <p>
+                    Story first and game second — like a book or film you can inhabit, with gameplay meant to elevate immersion rather than interrupt it.
+                  </p>
+                </div>
+              </div>
+
+              <h3 style="margin:18px 0 6px">My role</h3>
               <p style="margin:0 0 6px">
-                I owned the prologue end-to-end: combat kit design, encounter layouts, narrative
-                beats, moment-to-moment pacing, and implementation in Unity / Game Creator 2.
+                As this was a solo project, I owned it end-to-end: Story/Narrative Design, Abilities and Combat Design,
+                Audio Cues, Lighting, VFX, Pacing and more.
               </p>
               <p style="margin:0">
-                Earlier in the semester I did a long ideation pass on what I wanted this project
-                to say about conflict, player motivation, and “earned peace”.
+                Earlier in the semester I went through a months-long ideation phase, where I explored what I wanted this project to say about conflict,
+                player motivation, and the dichotomy between what someone was trained to be/born to do versus what the world that they live in actually demands.
                 That thinking shaped every decision in this slice
                 (<a href="https://adaptable-radius-84c.notion.site/Tobi-Adefidiya-Semester-I-Portfolio-Ideation-12a927cda10680a387f4d474ba6bcefb" target="_blank" rel="noopener">ideation notes</a>).
               </p>
@@ -401,45 +442,43 @@ h1{
 
             <div>
               <div class="callout">
-                <strong>North Star:</strong> 
-                <br/>Combat should feel like a conversation, not a checklist. Every tell,
-                dodge, parry, and counter is a line of dialogue between the player and the enemy —
-                and the story of the prologue is written in those exchanges.
+                <strong>North Star:</strong>
+                <br/>Combat should feel <em>satisfying, like a conversation</em> — where every action is a line of dialogue between the player and the enemy.
+              </div>
+
+              <div class="cta-row">
+                <a class="btn btn-primary" href="https://wabuzero.itch.io/strifeserenity" target="_blank" rel="noopener">
+                  Play the current build on Itch →
+                </a>
+                <a class="btn btn-ghost" href="https://wabugames.com" target="_blank" rel="noopener">
+                  Learn more at WabuGames.com
+                </a>
               </div>
 
               <div class="pullquote">
                 “If players understand the character <em>through</em> how they fight, I’ve done my job.”
                 <span>— Design goal for the prologue</span>
               </div>
-
-              <div class="cta-row">
-                <a class="btn btn-primary" href="https://wabuzero.itch.io/strifeserenity" target="_blank">
-                  Play the current build on Itch →
-                </a>
-                <a class="btn btn-ghost" href="https://wabugames.com" target="_blank">
-                  Learn more at WabuGames.com
-                </a>
-              </div>
             </div>
           </div>
 
           <div class="media-grid">
             <figure>
-              <img src="../assets/strife-overview-1.jpg" alt="Wide shot of the prologue level">
+              <img src="../assets/strife-overview-1.jpg" alt="Wide shot of the prologue level" loading="lazy" decoding="async">
               <figcaption>
                 Opening approach into the prologue space: a clean read of where to go and what feels dangerous.
                 <div class="media-meta">Level read • Space for onboarding</div>
               </figcaption>
             </figure>
             <figure>
-              <video src="../assets/strife-overview-2.mp4" controls></video>
+              <video src="../assets/strife-overview-2.mp4" controls preload="metadata" playsinline aria-label="Combat reel video"></video>
               <figcaption>
                 Short combat reel showing the Strife / Serenity kit in motion and how encounters escalate.
                 <div class="media-meta">Combat feel • Kit preview</div>
               </figcaption>
             </figure>
             <figure>
-              <img src="../assets/strife-overview-3.jpg" alt="Mood shot of Gate Town environment">
+              <img src="../assets/strife-overview-3.jpg" alt="Mood shot of Gate Town environment" loading="lazy" decoding="async">
               <figcaption>
                 Gate-Town mood pass — signage and lighting hint at wider conflict without stopping the player.
                 <div class="media-meta">Environmental storytelling</div>
@@ -453,67 +492,69 @@ h1{
           <div class="section-header-eyebrow">02 • How it plays</div>
           <h2>Core Loop (Prologue)</h2>
           <p class="section-sub">
-            The loop had to be readable enough for first-time players, but layered enough to hint at where
-            the full game will go. I framed it as a cycle of <strong>Read → Decide → Act → Reflect</strong>.
+            The loop had to be readable enough for first-time players, but layered enough to hint at where the full game will go.
           </p>
 
           <div class="loop-grid">
             <div class="loop-card">
-              <div class="loop-step">01 • Read</div>
-              <div class="loop-title">Skirmish setups</div>
+              <div class="loop-step">01 • Arrival</div>
+              <div class="loop-title">Disorientation</div>
               <p>
-                Small groups of enemies at clear entry angles teach players how telegraphs, ranges,
-                and Strife/Serenity abilities behave — without dumping a tutorial wall of text.
+                <strong>In medias res:</strong> you enter the world with limited context, in the middle of a situation.
+                Sparse dialogue, incomplete information, and environmental unease establish that something matters —
+                even if you don’t know what yet. This mirrors Ka’Sipho, who is just as in the dark as the player.
               </p>
             </div>
             <div class="loop-card">
-              <div class="loop-step">02 • Decide</div>
-              <div class="loop-title">Tool choice in the moment</div>
+              <div class="loop-step">02 • Observe</div>
+              <div class="loop-title">Exploration as understanding</div>
               <p>
-                Each encounter is framed so players can ask: <em>“Do I push?”</em> (Strife) or
-                <em>“Do I wait and punish?”</em> (Serenity) — both are valid, but have different risks.
+                With only a handful of information, players are encouraged to explore wherever they’re able.
+                Environmental storytelling, optional discoveries (reports, letters, etc), and spatial storytelling
+                provide context without relying on exposition.
               </p>
             </div>
             <div class="loop-card">
-              <div class="loop-step">03 • Act</div>
-              <div class="loop-title">Set-piece arenas & duels</div>
+              <div class="loop-step">03 • Engage</div>
+              <div class="loop-title">Intentional response</div>
               <p>
-                The loop peaks with a contained arena or a duel where the player must combine what they’ve
-                learned: spacing, windows, and emotional stakes from the narrative beats.
+                Engagement is defined by how the player chooses to act: combat when conflict is unavoidable,
+                traversal (Jump, Dodge, Sprint, Grapple) as expression, and restraint as a meaningful choice.
+                Traversal is authored to communicate Ka’Sipho’s physicality and caution — not just move the player forward.
               </p>
             </div>
             <div class="loop-card">
               <div class="loop-step">04 • Reflect</div>
-              <div class="loop-title">Traversal & quiet beats</div>
+              <div class="loop-title">Quiet beats after intensity</div>
               <p>
-                Short traversal segments and small interactions (graffiti, echoes of conflict, idle barks)
-                give players breathing room to mentally file what just happened.
+                After heavier encounters, short traversal segments and small interactions create breathing room.
+                These beats help the prologue stay reflective, letting players mentally file what just happened before moving on.
               </p>
             </div>
           </div>
 
           <p style="margin-top:10px">
-            Structuring the prologue like this forced me to be honest about pacing:
-            if a fight didn’t teach something new or pay off a previous beat, it got cut or re-framed.
+            Although most of the settings in this prologue have an old and abandoned feel, making them still feel alive
+            was one of the biggest challenges — especially when exploration is meant to do so much of the immersion work.
           </p>
 
           <div class="media-grid">
             <figure>
-              <img src="../assets/strife-loop-1.jpg" alt="Arena blockout layout">
+              <img src="../assets/strife-loop-1.jpg" alt="Arena blockout layout" loading="lazy" decoding="async">
               <figcaption>
                 Early arena blockout used to test how long the loop should take to feel “just enough”.
                 <div class="media-meta">Whitebox • Encounter pacing</div>
               </figcaption>
             </figure>
             <figure>
-              <video src="../assets/strife-loop-2.mp4" controls></video>
+              <video src="../assets/strife-loop-2.mp4" controls preload="metadata" playsinline aria-label="Core loop breakdown video"></video>
               <figcaption>
                 Loop breakdown: skirmish → traversal → arena → duel, annotated for iteration notes.
                 <div class="media-meta">Designer pass • Breakdown clip</div>
               </figcaption>
             </figure>
             <figure>
-              <img src="../assets/strife-loop-3.jpg" alt="Ability onboarding moments">
+              <img src="../assets/strife-loop-3.jpg" alt="Ability onboarding moments" loading="lazy" decoding="async">
               <figcaption>
                 Ability onboarding integrated into natural play (no separate “training room”).
                 <div class="media-meta">In-context tutorial design</div>
@@ -576,21 +617,21 @@ h1{
 
           <div class="media-grid">
             <figure>
-              <img src="../assets/strife-systems-1.jpg" alt="Telegraph readability debug">
+              <img src="../assets/strife-systems-1.jpg" alt="Telegraph readability debug" loading="lazy" decoding="async">
               <figcaption>
                 A readability pass focusing on telegraphs and silhouettes over raw VFX noise.
                 <div class="media-meta">Combat clarity • Debug view</div>
               </figcaption>
             </figure>
             <figure>
-              <img src="../assets/strife-systems-2.jpg" alt="HUD and ability UI iteration">
+              <img src="../assets/strife-systems-2.jpg" alt="HUD and ability UI iteration" loading="lazy" decoding="async">
               <figcaption>
                 HUD iteration to keep the Strife/Serenity state legible in peripheral vision.
                 <div class="media-meta">UI • Player state at a glance</div>
               </figcaption>
             </figure>
             <figure>
-              <video src="../assets/strife-systems-3.mp4" controls></video>
+              <video src="../assets/strife-systems-3.mp4" controls preload="metadata" playsinline aria-label="Counter timing showcase video"></video>
               <figcaption>
                 Counter-timing showcase: slow-down + sound design reinforcing “you read that right”.
                 <div class="media-meta">Combat feel • Feedback layering</div>
@@ -599,101 +640,163 @@ h1{
           </div>
         </section>
 
+        <!-- FEEDBACK LOOPS -->
+        <section id="feedback" class="section">
+          <div class="section-header-eyebrow">04 • Reward & reinforcement</div>
+          <h2>Feedback Loops</h2>
+          <p class="section-sub">
+            One of the biggest things that <strong>Strife &amp; Serenity</strong> has to offer is its reinforcement and rewarding of
+            <strong>intentional</strong>, not passive engagement.
+          </p>
+
+          <div class="system-grid">
+            <article class="system-card">
+              <div class="system-tag">01 • Marks</div>
+              <h3>Enhancement artifacts</h3>
+              <p>
+                Marks are enhancement artifacts that can be attached to the player’s weaponry to modify stats and behaviour.
+                Early iterations explored a <strong>Materia-inspired</strong> approach (Final Fantasy VII), where slotted Marks would determine
+                which spells or abilities could be cast. While I’d keep the idea of being able to slot abilities or spells to a hotbar to be used in the field,
+                for the prologue, Marks instead function as <strong>reinforcements</strong> rather than permissions.
+              </p>
+              <p style="margin:10px 0 0">
+                They enhance what the player already chooses to do without locking core abilities behind configuration.
+                This keeps the system readable for first-time players while still hinting at deeper customization in the full game.
+                Overall, Marks allow progression to feel more personal.
+              </p>
+            </article>
+
+            <article class="system-card">
+              <div class="system-tag">02 • Adaptive Combat Gauge</div>
+              <h3>Momentum as a temporary reward</h3>
+              <p>
+                Combat is further reinforced through an adaptive gauge that responds to variety and momentum.
+                Using different abilities and spells fills the gauge, which increases Ka’Sipho’s combat level up to a temporary cap (3).
+              </p>
+
+              <ul style="margin:10px 0 10px; padding-left:18px">
+                <li>Spells &amp; abilities deal increased damage</li>
+                <li>Stronger, more useful status effects on hit</li>
+                <li>Basic attacks become more potent</li>
+              </ul>
+
+              <p style="margin:0">
+                This heightened state is intentionally temporary. Once it expires, the gauge resets — encouraging players to stay engaged
+                and continue experimenting rather than settling into a single safe pattern.
+              </p>
+
+              <p style="margin:10px 0 0">
+                Early iterations explored a command-gauge–inspired system (Kingdom Hearts: Birth by Sleep), where chaining specific abilities or spells
+                would push combat into element-specific states (for example, repeated ice attacks leading to a frost-aligned state). For scope and clarity,
+                this approach was ultimately simplified into a more linear system.
+              </p>
+            </article>
+          </div>
+
+          <div class="callout" style="margin-top:14px">
+            <strong>Why this matters</strong><br/>
+            Together, these systems ensure that progression feels like feedback rather than escalation.
+            The game responds to how the player plays, and growth is felt moment to moment rather than inflated stats or permanent advantages.
+            <br/><br/>
+            From a player’s perspective, this approach reflects a personal appreciation for systems that acknowledge intentional play.
+            When a game rewards players for engaging fully with its mechanics, it creates a quiet dialogue between designer and player.
+          </div>
+        </section>
+
         <!-- PROCESS -->
         <section id="process" class="section">
-          <div class="section-header-eyebrow">04 • How I built it</div>
+          <div class="section-header-eyebrow">05 • How I built it</div>
           <h2>Process</h2>
           <p class="section-sub">
-            Because this was a solo slice, I treated it like a small production: clear pillars,
-            aggressive scoping, and a loop of test → change one thing → test again.
+            Although <strong>Strife &amp; Serenity</strong> is a solo slice, its development followed a structured, multi-phase process.
+            Rather than starting with mechanics, the project began with questions — about conflict, balance, identity, and the cost of resolution —
+            and worked outward toward play.
           </p>
 
           <div class="cols">
             <div>
-              <span class="label">From pillars to play</span>
-              <ul style="margin:10px 0 0; padding-left:18px; font-size:14px">
-                <li>
-                  Defined three core pillars: <strong>clarity</strong> (players always know what’s happening),
-                  <strong>consequence</strong> (their choices matter), and <strong>cadence</strong>
-                  (the rhythm between quiet and loud moments).
-                </li>
-                <li>
-                  Sketched paper encounters first, mapping where each pillar shows up:
-                  <em>“this fight is about learning to read, this one is about committing, this one is about recovery.”</em>
-                </li>
-                <li>
-                  Blocked out levels in Unity, then layered VFX, audio, and narrative beats only once
-                  the movement and timings felt right.
-                </li>
-              </ul>
+              <span class="label">Ideation &amp; thematic foundation</span>
+              <p style="margin:10px 0 0; font-size:14px">
+                The project began with an extended ideation phase, documented in detail on my Notion page.
+                I explored a wide range of themes — identity, power, balance, determination, redemption —
+                before deliberately narrowing them down. Through research, reflection, and media analysis,
+                <strong>conflict</strong> emerged as the foundational theme, both narratively and mechanically.
+              </p>
+              <p style="margin:10px 0 0; font-size:14px">
+                This phase wasn’t about generating a game idea immediately, but about understanding what the game should be about,
+                and what it should ask of the player emotionally. That thematic groundwork shaped every decision that followed.
+              </p>
             </div>
 
             <div>
-              <span class="label">Playtests & iteration</span>
+              <span class="label">Story discovery through music collaboration</span>
+              <p style="margin:10px 0 0; font-size:14px">
+                As the concept matured, I collaborated with music students to develop the tone and emotional language of the world.
+                To support this, I created <strong>14 short concept videos</strong>, each focused on a specific moment, mood, or narrative beat.
+              </p>
               <ul style="margin:10px 0 0; padding-left:18px; font-size:14px">
-                <li>
-                  Ran quick hallway tests to see how fast players picked up tells and counters,
-                  then adjusted timings and hitstop.
-                </li>
-                <li>
-                  Collected “first-death” stories: asking playtesters to describe what they
-                  <em>thought</em> happened helped me spot where communication was breaking.
-                </li>
-                <li>
-                  Used a “one friction per pass” rule — each iteration cycle targeted a single issue
-                  (camera, readability, stamina pacing) so changes stayed trackable.
-                </li>
+                <li>Rough story context</li>
+                <li>Visual references and pacing</li>
+                <li>Inspiration tracks closest to how I imagined the final soundtrack</li>
               </ul>
+              <p style="margin:10px 0 0; font-size:14px">
+                What began as music reference material evolved into <strong>proto-storyboards</strong>, helping refine narrative flow,
+                solidify key moments, and lock the emotional arc of the prologue before major implementation began.
+                (<a href="https://youtube.com/playlist?list=PLE4rjqU3ZvE3d7SACtQgpkmoJH4B6BEBc&si=oYGpIjk7fp75Sjqq" target="_blank" rel="noopener">concept video playlist</a>)
+              </p>
             </div>
           </div>
 
-          <ul class="timeline">
-            <li>
-              <div class="timeline-title">Discovery & Ideation</div>
-              <div class="timeline-note">
-                Months of writing, worldbuilding, and questions about conflict, peace, and consequence.
-                The prologue is where those ideas had to survive contact with a controller.
-              </div>
-            </li>
-            <li>
-              <div class="timeline-title">Whitebox & Pillar Tests</div>
-              <div class="timeline-note">
-                Greyboxing arenas and traversal routes to validate pacing before committing to art or polish.
-              </div>
-            </li>
-            <li>
-              <div class="timeline-title">Combat & Kit Tuning</div>
-              <div class="timeline-note">
-                Built and tuned the Strife/Serenity kit, enemy archetypes, and duel behaviours
-                directly against the pillars.
-              </div>
-            </li>
-            <li>
-              <div class="timeline-title">Narrative Pass & Polish</div>
-              <div class="timeline-note">
-                Layered in cutscenes, VO beats, environmental details, and sound to reinforce
-                character and theme without interrupting play.
-              </div>
-            </li>
-          </ul>
+          <div class="cols" style="margin-top:14px">
+            <div>
+              <span class="label">Mechanical prototyping &amp; visual exploration</span>
+              <p style="margin:10px 0 0; font-size:14px">
+                With the story established, I transitioned into Unity to explore how the game should feel.
+                I focused first on movement, abilities, and spells — testing how traversal and combat could express character and theme rather than just function.
+                Particular attention was given to spell identity and status effects, ensuring each ability felt distinct and readable while supporting the adaptive combat philosophy.
+              </p>
+              <p style="margin:10px 0 0; font-size:14px">
+                Mechanics were iterated visually and in motion early, allowing feel and clarity to drive design decisions before committing to polish.
+              </p>
+            </div>
+
+            <div>
+              <span class="label">Worldbuilding, art &amp; iteration</span>
+              <p style="margin:10px 0 0; font-size:14px">
+                Once the core mechanics and narrative beats were in place, I moved into environment design and worldbuilding.
+                Settings were designed to feel aged, abandoned, but not lifeless — spaces that suggest history rather than explain it outright.
+                I collaborated with art students on key art and cutscene elements, ensuring visual storytelling aligned with the tone established earlier.
+              </p>
+              <p style="margin:10px 0 0; font-size:14px">
+                Throughout development, the project followed a tight iteration loop: <strong>test → adjust one thing → test again</strong>.
+                This kept scope controlled while allowing the slice to steadily converge toward its intended experience.
+              </p>
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top:14px">
+            <strong>Outcome</strong><br/>
+            By the end of the process, the prologue emerged as a focused, intentional slice — not a feature showcase, but a tonal and thematic introduction to
+            <em>Strife &amp; Serenity</em>. Each phase informed the next, allowing story, sound, mechanics, and visuals to develop in conversation with one another rather than in isolation.
+          </div>
 
           <div class="media-grid">
             <figure>
-              <img src="../assets/strife-process-1.jpg" alt="Early blockout of level geometry">
+              <img src="../assets/strife-process-1.jpg" alt="Early blockout of level geometry" loading="lazy" decoding="async">
               <figcaption>
                 Early blockout: prioritising sightlines and escape routes over set dressing.
                 <div class="media-meta">Whitebox • Layout first</div>
               </figcaption>
             </figure>
             <figure>
-              <img src="../assets/strife-process-2.jpg" alt="Paper design sketches">
+              <img src="../assets/strife-process-2.jpg" alt="Paper design sketches" loading="lazy" decoding="async">
               <figcaption>
                 Paper encounter sketches mapping where each pillar is tested and escalated.
                 <div class="media-meta">Design docs • Encounter planning</div>
               </figcaption>
             </figure>
             <figure>
-              <video src="../assets/strife-process-3.mp4" controls></video>
+              <video src="../assets/strife-process-3.mp4" controls preload="metadata" playsinline aria-label="Playtest reel video"></video>
               <figcaption>
                 Playtest reel capturing first-time reactions to the duel and key combat reads.
                 <div class="media-meta">Iteration • Observational notes</div>
@@ -704,7 +807,7 @@ h1{
 
         <!-- MEDIA GALLERY -->
         <section id="gallery" class="section">
-          <div class="section-header-eyebrow">05 • In motion</div>
+          <div class="section-header-eyebrow">06 • In motion</div>
           <h2>Media Gallery</h2>
           <p class="section-sub">
             A snapshot of the prologue as it exists today — combat, mood, and a few in-engine shots.
@@ -712,42 +815,42 @@ h1{
 
           <div class="media-grid">
             <figure>
-              <img src="../assets/strife-01.jpg" alt="Gate Town blockout and mood">
+              <img src="../assets/strife-01.jpg" alt="Gate Town blockout and mood" loading="lazy" decoding="async">
               <figcaption>
                 Gate-Town blockout evolving into a moodier, more layered space.
                 <div class="media-meta">Environment • Before / after</div>
               </figcaption>
             </figure>
             <figure>
-              <img src="../assets/strife-02.jpg" alt="Ability UI iteration">
+              <img src="../assets/strife-02.jpg" alt="Ability UI iteration" loading="lazy" decoding="async">
               <figcaption>
                 Strife/Serenity ability UI after simplifying to two clear states.
                 <div class="media-meta">UI • Readable states</div>
               </figcaption>
             </figure>
             <figure>
-              <img src="../assets/strife-03.jpg" alt="Telegraph readability pass">
+              <img src="../assets/strife-03.jpg" alt="Telegraph readability pass" loading="lazy" decoding="async">
               <figcaption>
                 Telegraph readability pass focusing on lighting and contrast on enemy attacks.
                 <div class="media-meta">Combat • Visual communication</div>
               </figcaption>
             </figure>
             <figure>
-              <img src="../assets/strife-04.jpg" alt="Arena lighting and atmosphere">
+              <img src="../assets/strife-04.jpg" alt="Arena lighting and atmosphere" loading="lazy" decoding="async">
               <figcaption>
                 Arena lighting tuned to frame the player and push focus to the duel.
                 <div class="media-meta">Lighting • Duel staging</div>
               </figcaption>
             </figure>
             <figure>
-              <img src="../assets/strife-05.jpg" alt="Duel phase timing breakdown">
+              <img src="../assets/strife-05.jpg" alt="Duel phase timing breakdown" loading="lazy" decoding="async">
               <figcaption>
                 Duel phase breakdown: changing timings and tells to reflect the opponent’s emotional state.
                 <div class="media-meta">Boss design • Phase escalation</div>
               </figcaption>
             </figure>
             <figure>
-              <img src="../assets/strife-06.jpg" alt="Final polish slice">
+              <img src="../assets/strife-06.jpg" alt="Final polish slice" loading="lazy" decoding="async">
               <figcaption>
                 A late polish pass bringing VFX, audio, and camera work into alignment.
                 <div class="media-meta">Polish • Cohesive feel</div>
@@ -756,7 +859,7 @@ h1{
           </div>
         </section>
 
-        <!-- RESULTS -->
+        <!-- RESULTS (UNCHANGED) -->
         <section id="results" class="section">
           <div class="section-header-eyebrow">06 • Looking forward</div>
           <h2>Results &amp; Takeaways</h2>
