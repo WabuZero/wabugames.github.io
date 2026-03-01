@@ -410,6 +410,41 @@ h1{
 .timeline-title{font-weight:900; margin-bottom:2px}
 .timeline-note{color:var(--muted); font-size:13px}
 
+/* Spec tables */
+.table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  overflow:hidden;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(10,10,14,.88);
+}
+.table th, .table td{
+  padding:10px 12px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  font-size:14px;
+  vertical-align:top;
+}
+.table th{
+  text-align:left;
+  color:#ffd4b5;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  background:rgba(255,127,50,.08);
+}
+.table tr:last-child td{border-bottom:none}
+.code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color:#efeaff;
+  background:rgba(140,104,255,.12);
+  border:1px solid rgba(140,104,255,.24);
+  padding:2px 6px;
+  border-radius:8px;
+  font-size:13px;
+}
+
 /* Results */
 .results-grid{
   display:grid;
@@ -458,6 +493,12 @@ h1{
 
 hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
 .small{color:var(--muted); font-size:13px}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .card, .btn, #toTop{transition:none}
+}
 </style>
 </head>
 
@@ -473,7 +514,7 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
       <div class="brand">
         <span class="title">TOBI ADEFIDIYA</span>
         <span class="pipe">||</span>
-        <span class="sub">GAME & NARRATIVE DESIGNER</span>
+        <span class="sub">GAME &amp; NARRATIVE DESIGNER</span>
       </div>
       <div class="navlinks">
         <a href="../index.html#projects">Projects</a>
@@ -493,30 +534,24 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
           <h1>Cthulhu’s Cat Sitter</h1>
 
           <p class="deck">
-            A non-Euclidean 3D horror puzzle game for PC &amp; VR: you take a “simple” cat-sitting job,
+            A non-Euclidean 3D horror puzzle game for PC &amp; VR. You take a suspiciously high-paying cat-sitting job,
             survive five nights of impossible trials, and return each time to a house that keeps changing.
-            Your only constant rule: feed the cat… or become the food.
+            Your only constant rule: refill the cat bowl… or you won’t wake up.
           </p>
 
           <div class="meta">
             <span class="pill"><strong>Genre:</strong> Horror Puzzle</span>
-            <span class="pill"><strong>Platform:</strong> PC + VR</span>
-            <span class="pill"><strong>Hook:</strong> Non-Euclidean trials</span>
-            <span class="pill"><strong>Loop:</strong> 5 nights + house returns</span>
-            <span class="pill"><strong>Style:</strong> PS1-inspired low-poly</span>
+            <span class="pill"><strong>Platforms:</strong> PC + VR</span>
+            <span class="pill"><strong>Structure:</strong> 5 Nights / Trials</span>
+            <span class="pill"><strong>Hook:</strong> Non-Euclidean spaces</span>
+            <span class="pill"><strong>Style:</strong> PS1-inspired + analogue audio</span>
           </div>
 
           <div class="cta-row">
-            <!-- Replace these when you have links -->
-            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">
-              Trailer / Gameplay →
-            </a>
-            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
-              Download / Prototype →
-            </a>
-            <a class="btn btn-soft" href="#" target="_blank" rel="noopener">
-              GDD / Design Notes →
-            </a>
+            <!-- Replace # when you have links -->
+            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Trailer / Gameplay →</a>
+            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Prototype / Build →</a>
+            <a class="btn btn-soft" href="#" target="_blank" rel="noopener">Design Notes →</a>
           </div>
         </div>
 
@@ -525,22 +560,22 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
           <div class="hero-facts">
             <div class="fact">
               <div class="fact-label">Premise</div>
-              <div class="fact-value">Cat-sitting job → 5 nights of trials</div>
+              <div class="fact-value">Cat sitting job → house tests you nightly</div>
             </div>
             <div class="fact">
-              <div class="fact-label">North Star</div>
-              <div class="fact-value">Make the house feel intelligent &amp; hostile</div>
+              <div class="fact-label">Core Rule</div>
+              <div class="fact-value">Refill bowl after every trial or die in sleep</div>
             </div>
             <div class="fact">
-              <div class="fact-label">Experience Pillars</div>
-              <div class="fact-value">Mystery • Spatial dread • Puzzle adaptation</div>
+              <div class="fact-label">Escalation</div>
+              <div class="fact-value">House decays “as if years pass” between nights</div>
             </div>
           </div>
 
           <hr class="sep">
 
           <div class="small">
-            Reviewer tip: skim the highlight cards + loop first, then jump to Systems for the “how it works.”
+            Best skim route: <strong>Overview → Loop → House Changes → Trials → Endings</strong>.
           </div>
         </aside>
       </div>
@@ -554,10 +589,14 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
       <aside class="toc" id="toc">
         <h4>On this page</h4>
         <a href="#overview">Overview</a>
+        <a href="#pillars">Experience Pillars</a>
         <a href="#loop">Core Loop</a>
-        <a href="#systems">Key Systems</a>
-        <a href="#levels">Trials (1–5)</a>
-        <a href="#process">Process</a>
+        <a href="#house">Between Nights (House Changes)</a>
+        <a href="#trials">Trials (Nights 1–5)</a>
+        <a href="#story">Story & Endings</a>
+        <a href="#mechanics">Mechanics</a>
+        <a href="#audiovisual">Art & Sound</a>
+        <a href="#controls">Controls (PC + VR)</a>
         <a href="#gallery">Media Gallery</a>
         <a href="#results">Results & Takeaways</a>
       </aside>
@@ -567,4 +606,519 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
 
         <!-- OVERVIEW -->
         <section id="overview" class="section">
-          <div class="section-header-eyebrow">01 • Framing the experience</div
+          <div class="section-header-eyebrow">01 • What it is</div>
+          <h2>Overview</h2>
+
+          <p class="lead">
+            Cthulhu’s Cat Sitter aims to bring a fresh angle to indie horror by making the environment itself feel “foreign” —
+            spaces that break logic, but still have rules you can learn. You’re not just solving puzzles; you’re learning how a house thinks.
+          </p>
+
+          <div class="highlight-grid">
+            <div class="highlight">
+              <div class="k">Setup</div>
+              <div class="v">A job you can’t refuse</div>
+              <div class="n">You’re broke, you need money, and the salary is absurdly high… even if the employer name is “Cthulhu.”</div>
+            </div>
+            <div class="highlight">
+              <div class="k">Structure</div>
+              <div class="v">5 nights, 5 trials</div>
+              <div class="n">Choosing to sleep triggers a trial. Survive → return home → repeat. Each night is harder than the last.</div>
+            </div>
+            <div class="highlight">
+              <div class="k">Rule</div>
+              <div class="v">Feed the cat</div>
+              <div class="n">After every night, you must refill the bowl or the cat eats you in your sleep.</div>
+            </div>
+          </div>
+
+          <div class="cols" style="margin-top:14px">
+            <div class="card">
+              <h3>Game purpose</h3>
+              <p>
+                Challenge players to understand “foreign” spaces through adaptation and observation — and make that
+                problem-solving feel immersive in VR as well as readable on PC.
+              </p>
+              <hr class="sep">
+              <h3 style="margin-top:0">Target vibe</h3>
+              <p style="margin:0">
+                Suburban normality with cosmic dread underneath: the house is a mask, and the trials are the truth.
+              </p>
+            </div>
+
+            <div>
+              <div class="callout">
+                <strong>North Star:</strong><br/>
+                The player should feel like the house is alive — watching them, learning them,
+                and quietly changing the rules to win.
+              </div>
+
+              <div class="pullquote">
+                “I don’t trust any room in this house… but I think I can outsmart it.”
+                <span>— Desired player feeling</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="media-grid">
+            <figure>
+              <img src="../assets/cthulhu-overview-1.jpg" alt="House entry shot" loading="lazy">
+              <figcaption>
+                Normal suburb framing before anything breaks.
+                <div class="media-meta">Replace with: best exterior / entry shot</div>
+              </figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/cthulhu-overview-2.jpg" alt="Non-euclidean moment" loading="lazy">
+              <figcaption>
+                One image that screams “space is wrong.”
+                <div class="media-meta">Replace with: strongest non-Euclidean screenshot</div>
+              </figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/cthulhu-overview-3.jpg" alt="Cat bowl / kitchen shot" loading="lazy">
+              <figcaption>
+                The simplest interaction with the biggest consequence.
+                <div class="media-meta">Replace with: bowl + food pickup</div>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- PILLARS -->
+        <section id="pillars" class="section">
+          <div class="section-header-eyebrow">02 • What it prioritizes</div>
+          <h2>Experience Pillars</h2>
+          <p class="section-sub">
+            These pillars come directly from the structure and goals of the GDD: foreign spaces, learnable rules, escalating dread, and immersion across PC + VR.
+          </p>
+
+          <div class="system-grid">
+            <article class="system-card">
+              <div class="system-tag">Pillar</div>
+              <h3>Learnable “foreign” environments</h3>
+              <p>
+                Non-Euclidean tricks are surprising, but consistent enough to master: loops, scale shifts, mirror logic, and recursive spaces.
+              </p>
+            </article>
+            <article class="system-card">
+              <div class="system-tag">Pillar</div>
+              <h3>House as story engine</h3>
+              <p>
+                The trials are the action, but the house between nights delivers the mystery: locked rooms open, décor decays, and lore surfaces appear.
+              </p>
+            </article>
+            <article class="system-card">
+              <div class="system-tag">Pillar</div>
+              <h3>Pressure through routine</h3>
+              <p>
+                The cat bowl turns routine into tension. You can explore… but you’ll be prompted to sleep. Delay too long and the house kills you.
+              </p>
+            </article>
+            <article class="system-card">
+              <div class="system-tag">Pillar</div>
+              <h3>VR immersion without cheap noise</h3>
+              <p>
+                Events can be random or location-triggered: sounds outside windows, shapes in mirrors, motion in peripheral vision — dread from implication.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- CORE LOOP -->
+        <section id="loop" class="section">
+          <div class="section-header-eyebrow">03 • The rhythm</div>
+          <h2>Core Loop</h2>
+
+          <p class="section-sub">
+            The loop is cyclical on purpose: it teaches the player how to survive by learning and repeating patterns, while the house escalates each return.
+          </p>
+
+          <div class="loop-grid">
+            <div class="loop-card">
+              <div class="loop-step">01 • Explore</div>
+              <div class="loop-title">Search the house</div>
+              <p>Find the cat bowl, locate cat food, uncover notes/lore, and notice what has changed since last night.</p>
+            </div>
+            <div class="loop-card">
+              <div class="loop-step">02 • Sleep</div>
+              <div class="loop-title">Choose to start the trial</div>
+              <p>Going to bed triggers the night’s trial. Waiting too long causes the house to “punish” you.</p>
+            </div>
+            <div class="loop-card">
+              <div class="loop-step">03 • Survive</div>
+              <div class="loop-title">Adapt to the trial</div>
+              <p>Each trial introduces a different non-Euclidean feature plus a threat that can kill you.</p>
+            </div>
+            <div class="loop-card">
+              <div class="loop-step">04 • Return</div>
+              <div class="loop-title">Refill bowl or die</div>
+              <p>You return at the same time — one day later. Refill the bowl or the cat eats you in your sleep.</p>
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top:14px">
+            <strong>Design pressure:</strong><br/>
+            Exploration is tempting because the house changes and new rooms unlock — but the longer you stall, the more dangerous it becomes.
+          </div>
+        </section>
+
+        <!-- BETWEEN NIGHTS -->
+        <section id="house" class="section">
+          <div class="section-header-eyebrow">04 • What changes (and why it matters)</div>
+          <h2>Between Nights: The House Evolves</h2>
+
+          <p class="lead">
+            After every trial, you return to the guest bedroom at the exact same time — but it’s now the next day.
+            The house deteriorates as if you were gone for years, and one new locked room opens after each night.
+          </p>
+
+          <div class="cols" style="margin-top:14px">
+            <div class="card">
+              <h3>House escalation examples</h3>
+              <ul>
+                <li>More blood stains, damaged items, and strange sounds.</li>
+                <li>More activity outside windows: silhouettes, knocks, lock fumbling.</li>
+                <li>New lore surfaces: notes from past cat sitters, diaries, symbolism.</li>
+                <li>Cat food spawns somewhere new each return; bowl stays in the kitchen.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Room unlocks (1 per night)</h3>
+              <ul>
+                <li><strong>After Night 1:</strong> star-dome master bedroom + diary in unknown language.</li>
+                <li><strong>After Night 2:</strong> bathroom with mirror showing a demonic “second room.”</li>
+                <li><strong>After Night 3:</strong> infinite garage stocked with cat food — distance illusion.</li>
+                <li><strong>After Night 4:</strong> basement key appears (multiple warnings not to enter).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="media-grid">
+            <figure>
+              <img src="../assets/cthulhu-house-1.jpg" alt="Star dome bedroom" loading="lazy">
+              <figcaption>Unlocked room: star-dome bedroom with Cthulhu imagery + diary.</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/cthulhu-house-2.jpg" alt="Bathroom mirror horror" loading="lazy">
+              <figcaption>Bathroom mirror: clean room vs hellish reflection that changes after interactions.</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/cthulhu-house-3.jpg" alt="Infinite garage" loading="lazy">
+              <figcaption>Infinite garage: walk forward, turn around — the door is still right behind you.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- TRIALS -->
+        <section id="trials" class="section">
+          <div class="section-header-eyebrow">05 • Night design</div>
+          <h2>Trials (Nights 1–5)</h2>
+
+          <p class="section-sub">
+            Each level must: (1) feature non-Euclidean logic, (2) include a threat, (3) be moderately difficult, (4) get harder each night,
+            (5) last 10+ minutes, and (6) end by returning to the house (usually via a door).
+          </p>
+
+          <div class="cols">
+            <div class="card">
+              <h3>Trial feature examples</h3>
+              <ul>
+                <li>Shapeshifting maze chase</li>
+                <li>Endless corridor of doors + code puzzle</li>
+                <li>Huge room stealth: avoid detection by “the cat”</li>
+                <li>Reversed dimension: controls + space invert</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Night 1 (detailed journey)</h3>
+              <ul>
+                <li>Wake to scratching → open door → same room, but enormous (scale break).</li>
+                <li>Spider drops in → chase begins → escape through tiny door into wall-interior passage.</li>
+                <li>Non-Euclidean maze: wrong turns = death; subtle hints like arrows/exit signs.</li>
+                <li>Final sprint: dodge spiders to the bright door → return to the house.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top:14px">
+            <strong>Why the trials work:</strong><br/>
+            Each night is a “new rule” for space. Learning becomes survival, and repetition becomes mastery — which supports the cyclical structure.
+          </div>
+        </section>
+
+        <!-- STORY -->
+        <section id="story" class="section">
+          <div class="section-header-eyebrow">06 • Narrative structure</div>
+          <h2>Story & Endings</h2>
+
+          <div class="cols">
+            <div class="card">
+              <h3>Intro sequence (opening hook)</h3>
+              <ul>
+                <li>Low-res PC job board → absurd cat-sitting pay → “Cthulhu” employer name.</li>
+                <li>Friend drops you off at generic suburban house.</li>
+                <li>You enter, search for the cat, sleep… then wake to scratching.</li>
+                <li>Door opens to an impossible version of the same room → Night 1 begins.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>End sequence (after Night 5)</h3>
+              <ul>
+                <li>Doorbell rings → suited “businessman” Cthulhu returns with briefcase of money.</li>
+                <li>You walk home… and the ending branches based on a key choice.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="system-grid" style="margin-top:14px">
+            <article class="system-card">
+              <div class="system-tag">Good ending</div>
+              <h3>Resist the basement</h3>
+              <p>
+                If you never enter the basement, you make it home. Fade to black → celebration collage. You got paid… and escaped.
+              </p>
+            </article>
+            <article class="system-card">
+              <div class="system-tag">Bad ending</div>
+              <h3>Break trust</h3>
+              <p>
+                If you enter the basement, an elevator appears on your walk home. You’re taken to a void where Cthulhu reveals his true nature and destroys your mind.
+              </p>
+            </article>
+          </div>
+
+          <div class="pullquote">
+            “The basement isn’t just a room. It’s the moment the story admits what the game has been implying.”
+            <span>— Branching payoff design</span>
+          </div>
+        </section>
+
+        <!-- MECHANICS -->
+        <section id="mechanics" class="section">
+          <div class="section-header-eyebrow">07 • Mechanics & rules</div>
+          <h2>Mechanics</h2>
+
+          <div class="system-grid">
+            <article class="system-card">
+              <div class="system-tag">Movement</div>
+              <h3>Walk + Sprint + stamina (hidden)</h3>
+              <p>
+                Standard 3D movement for PC/VR. Sprint uses stamina that regenerates; stamina UI is invisible for immersion.
+              </p>
+            </article>
+            <article class="system-card">
+              <div class="system-tag">Interaction</div>
+              <h3>Glow objects + doors behave differently</h3>
+              <p>
+                Interactable items glow when you’re close and looking/pointing at them (keys, notes, food, taps). Doors don’t glow — they open/close or “locked” SFX.
+              </p>
+            </article>
+            <article class="system-card">
+              <div class="system-tag">Horror events</div>
+              <h3>Random + triggered scares</h3>
+              <p>
+                Horror moments can occur at random timing or in specific areas: sounds, movement, brief creature appearances, and “something outside.”
+              </p>
+            </article>
+            <article class="system-card">
+              <div class="system-tag">Non-Euclidean tricks</div>
+              <h3>Loading / look-based transitions</h3>
+              <p>
+                Space illusions can be implemented with door closures, loading tricks, and changes based on where the player is looking.
+              </p>
+            </article>
+          </div>
+
+          <div class="callout" style="margin-top:14px">
+            <strong>Fail state clarity:</strong><br/>
+            The cat bowl is not optional. It’s the “daily tax” on curiosity — and the player learns that the hard way.
+          </div>
+        </section>
+
+        <!-- ART + SOUND -->
+        <section id="audiovisual" class="section">
+          <div class="section-header-eyebrow">08 • Feel + identity</div>
+          <h2>Art & Sound Direction</h2>
+
+          <div class="cols">
+            <div class="card">
+              <h3>Art direction</h3>
+              <ul>
+                <li><strong>PS1-style 3D:</strong> low-poly models + low-res textures for indie horror authenticity.</li>
+                <li><strong>Setting:</strong> modern American suburb, colonial house + impossible spaces.</li>
+                <li><strong>Character philosophy:</strong> player model is simple; randomized textures imply many sitters before you.</li>
+                <li><strong>Cthulhu:</strong> suited “human scale” form + abstract “true form” (eyes/tentacles in darkness).</li>
+                <li><strong>The cat:</strong> “Tinkle the Furrbidden One” — larger than normal, split mandible jaw, teeth.</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3>Sound direction</h3>
+              <ul>
+                <li><strong>Tape compression</strong> on most audio to support analogue horror.</li>
+                <li><strong>House ambience:</strong> clock ticks, floor creaks, water, hum, record player (sometimes).</li>
+                <li><strong>Outside pressure:</strong> knocks, footsteps, twigs, window rustling, lock fumbling.</li>
+                <li><strong>Horror palette:</strong> silence, sudden stings, bass tones → white noise (bad ending).</li>
+                <li><strong>Speech style:</strong> Undertale-like “talk” SFX, unique per Cthulhu form.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTROLS -->
+        <section id="controls" class="section">
+          <div class="section-header-eyebrow">09 • Platform mapping</div>
+          <h2>Controls (PC + VR)</h2>
+
+          <p class="section-sub">
+            The game supports PC keyboard/mouse and VR controllers. Below is the suggested control mapping.
+          </p>
+
+          <table class="table" aria-label="Control mapping table">
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>PC</th>
+                <th>VR (example)</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Move</td>
+                <td><span class="code">WASD</span></td>
+                <td>Left thumbstick</td>
+                <td>Standard directional movement</td>
+              </tr>
+              <tr>
+                <td>Look / Rotate</td>
+                <td>Mouse</td>
+                <td>Head movement / right stick</td>
+                <td>VR prefers head look; stick optional for comfort</td>
+              </tr>
+              <tr>
+                <td>Door interaction</td>
+                <td><span class="code">Left Click</span></td>
+                <td>X / A</td>
+                <td>Doors do not glow; play locked SFX if needed</td>
+              </tr>
+              <tr>
+                <td>Object interaction</td>
+                <td><span class="code">E</span></td>
+                <td>X / A</td>
+                <td>Glow aura when close &amp; targeting</td>
+              </tr>
+              <tr>
+                <td>Sprint</td>
+                <td><span class="code">Shift</span></td>
+                <td>Triggers</td>
+                <td>Hidden stamina; panting when exhausted</td>
+              </tr>
+              <tr>
+                <td>Crouch</td>
+                <td><span class="code">Ctrl</span></td>
+                <td>Grip buttons</td>
+                <td>Optional stealth / crawl spaces depending on trials</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- MEDIA GALLERY -->
+        <section id="gallery" class="section">
+          <div class="section-header-eyebrow">10 • Drop in your best shots</div>
+          <h2>Media Gallery</h2>
+
+          <p class="section-sub">
+            Replace these placeholders with your strongest 6: (1) house exterior, (2) bowl moment, (3) mirror trick, (4) infinite garage, (5) night 1 spider, (6) suited Cthulhu.
+          </p>
+
+          <div class="media-grid">
+            <figure><img src="../assets/cthulhu-01.jpg" alt="Gallery shot 1" loading="lazy"><figcaption>Exterior/entry framing.<div class="media-meta">House</div></figcaption></figure>
+            <figure><img src="../assets/cthulhu-02.jpg" alt="Gallery shot 2" loading="lazy"><figcaption>Cat bowl rule clarity beat.<div class="media-meta">Core Rule</div></figcaption></figure>
+            <figure><img src="../assets/cthulhu-03.jpg" alt="Gallery shot 3" loading="lazy"><figcaption>Bathroom mirror “second room.”<div class="media-meta">Non-Euclidean</div></figcaption></figure>
+            <figure><img src="../assets/cthulhu-04.jpg" alt="Gallery shot 4" loading="lazy"><figcaption>Infinite garage illusion.<div class="media-meta">Spatial Trick</div></figcaption></figure>
+            <figure><img src="../assets/cthulhu-05.jpg" alt="Gallery shot 5" loading="lazy"><figcaption>Night 1 spider threat / chase.<div class="media-meta">Trial Threat</div></figcaption></figure>
+            <figure><img src="../assets/cthulhu-06.jpg" alt="Gallery shot 6" loading="lazy"><figcaption>Suit Cthulhu + briefcase payoff.<div class="media-meta">Ending</div></figcaption></figure>
+          </div>
+        </section>
+
+        <!-- RESULTS -->
+        <section id="results" class="section">
+          <div class="section-header-eyebrow">11 • Looking forward</div>
+          <h2>Results &amp; Takeaways</h2>
+
+          <div class="results-grid">
+            <div>
+              <h3>What I want to land (playtest goals)</h3>
+              <ul>
+                <li>The house feels coherent enough to learn, but hostile enough to dread.</li>
+                <li>Players understand the “feed the cat” rule as a constant looming threat.</li>
+                <li>Non-Euclidean moments feel surprising but fair (rule discovery → mastery).</li>
+              </ul>
+            </div>
+            <div>
+              <h3>What I’d push further next</h3>
+              <ul>
+                <li>Sharper VR-first interaction polish (hands, haptics, object affordances).</li>
+                <li>More “return home” micro-events to build paranoia (windows, sounds, silhouettes).</li>
+                <li>Stronger visual language for each trial’s unique “rule” so players can reason faster.</li>
+              </ul>
+            </div>
+          </div>
+
+          <p style="margin-top:12px">
+            Cthulhu’s Cat Sitter is about surviving a contract you can’t quit — and learning the rules of a place that
+            shouldn’t have rules at all.
+          </p>
+
+          <div class="nextprev">
+            <a class="ghost" href="../index.html#projects">← Back to Projects</a>
+            <a href="strife-and-serenity.html">Next: Strife &amp; Serenity →</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <button id="toTop" aria-label="Back to top">▲</button>
+</div>
+
+<script>
+/* ===== Active TOC highlight ===== */
+const links = [...document.querySelectorAll('#toc a[href^="#"]')];
+const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    const idx = sections.indexOf(e.target);
+    if(idx >= 0){
+      links[idx].classList.toggle('active', e.isIntersecting);
+    }
+  });
+}, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+sections.forEach(s => io.observe(s));
+
+/* ===== Back to top ===== */
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', ()=> toTop.classList.toggle('show', window.scrollY > 800));
+toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* ===== Reading progress bar ===== */
+const progress = document.getElementById('progress');
+function updateProgress(){
+  const doc = document.documentElement;
+  const scrollTop = doc.scrollTop || document.body.scrollTop;
+  const scrollHeight = doc.scrollHeight - doc.clientHeight;
+  const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+  progress.style.width = pct.toFixed(2) + '%';
+}
+window.addEventListener('scroll', updateProgress, {passive:true});
+updateProgress();
+</script>
+
+</body>
+</html>
