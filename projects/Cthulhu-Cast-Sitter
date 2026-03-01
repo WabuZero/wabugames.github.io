@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cthulhu’s Cat Sitter — Case Study | Wabu Games</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b0b0e;
+  --panel:rgba(15,15,18,.86);
+  --panel2:rgba(10,10,14,.92);
+  --ink:#ececf2;
+  --muted:#a7a7b3;
+  --muted2:#8a8a96;
+
+  --brand:#ff7f32;     /* orange */
+  --purple:#8c68ff;    /* purple */
+
+  --line:rgba(255,255,255,.08);
+  --max:1180px;
+  --r:18px;
+  --shadow:0 18px 44px rgba(0,0,0,.55);
+  --shadow2:0 12px 26px rgba(0,0,0,.42);
+  --glass:blur(10px) saturate(125%);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--ink);
+  font:400 16px/1.65 Inter,system-ui,Segoe UI,Roboto;
+  background:#000 url('../Wallpaper.png') center/cover fixed no-repeat;
+}
+a{color:inherit}
+.overlay{
+  position:fixed; inset:0;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255,127,50,.18), transparent 48%),
+    radial-gradient(circle at 85% 12%, rgba(140,104,255,.16), transparent 50%),
+    rgba(8,8,10,.66);
+  z-index:0;
+}
+.page{position:relative; z-index:1}
+
+/* Top progress bar */
+#progress{
+  position:fixed; left:0; top:0; height:3px; width:0%;
+  background:linear-gradient(90deg, var(--brand), var(--purple));
+  z-index:999;
+  box-shadow:0 8px 22px rgba(0,0,0,.55);
+}
+
+/* Top nav */
+nav{
+  position:sticky; top:0; z-index:50; height:64px;
+  backdrop-filter:var(--glass);
+  background:rgba(10,10,13,.72);
+  border-bottom:1px solid var(--line);
+}
+.navwrap{
+  max-width:var(--max); margin:auto; height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 18px; gap:14px;
+}
+.brand{
+  display:flex; align-items:center; gap:12px;
+  font-weight:900; letter-spacing:.02em;
+}
+.brand .title{color:#fff}
+.brand .pipe{opacity:.5}
+.brand .sub{color:var(--muted); font-weight:750; font-size:12px; text-transform:uppercase; letter-spacing:.14em}
+.navlinks{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+.navlinks a{
+  color:var(--muted);
+  text-decoration:none; font-weight:750;
+  padding:8px 10px; border-radius:12px;
+  border:1px solid transparent;
+}
+.navlinks a:hover{
+  color:var(--ink);
+  background:rgba(255,127,50,.08);
+  border-color:rgba(255,127,50,.18);
+}
+
+/* HERO */
+.hero{
+  position:relative; padding:76px 18px 42px;
+  border-bottom:1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(6,6,9,.92) 0%, rgba(6,6,9,.72) 42%, rgba(6,6,9,0) 100%),
+    url('../assets/cthulhu-hero.jpg') center/cover no-repeat;
+}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255,127,50,.20), transparent 55%),
+    radial-gradient(circle at 90% 10%, rgba(140,104,255,.18), transparent 55%);
+  pointer-events:none;
+}
+.hero .inner{position:relative; z-index:1; max-width:var(--max); margin:auto}
+.kicker{
+  display:inline-flex; gap:10px; align-items:center;
+  color:var(--muted);
+  font-weight:900; letter-spacing:.16em; text-transform:uppercase;
+  font-size:11px;
+  margin-bottom:12px;
+}
+.kicker .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--brand);
+  box-shadow:0 0 0 6px rgba(255,127,50,.12);
+}
+h1{
+  font:800 50px/1.06 "Playfair Display",serif;
+  margin:0 0 12px;
+  color:#fff;
+  text-shadow:0 10px 26px rgba(0,0,0,.7);
+}
+.hero-sub{
+  display:grid;
+  grid-template-columns: 1.35fr .65fr;
+  gap:18px;
+  align-items:start;
+}
+@media (max-width:980px){ .hero-sub{grid-template-columns:1fr} }
+
+.deck{color:#f1f1f6; max-width:760px; margin:6px 0 0; font-size:18px}
+.meta{display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 4px}
+.pill{
+  border:1px solid var(--line);
+  background:rgba(18,18,22,.72);
+  color:var(--muted);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:13px;
+  box-shadow:0 8px 18px rgba(0,0,0,.25);
+}
+.pill strong{color:#fff}
+
+.hero-card{
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(8,8,12,.78);
+  border-radius:16px;
+  padding:14px 14px 12px;
+  box-shadow:var(--shadow2);
+}
+.hero-card h3{
+  margin:0 0 8px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:#ffd4b5;
+}
+.hero-facts{display:grid; grid-template-columns:1fr; gap:10px}
+.fact{
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(5,5,8,.78);
+}
+.fact-label{text-transform:uppercase; letter-spacing:.12em; font-size:11px; color:var(--muted); margin-bottom:4px}
+.fact-value{font-weight:650; font-size:14px}
+
+/* CTA buttons */
+.cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 14px; border-radius:999px;
+  font-size:14px; font-weight:850; text-decoration:none;
+  border:1px solid transparent;
+  transition:transform .15s, filter .15s, background .15s;
+}
+.btn-primary{background:var(--brand); color:#101014; box-shadow:0 16px 34px rgba(0,0,0,.55)}
+.btn-primary:hover{filter:brightness(1.05); transform:translateY(-1px)}
+.btn-ghost{background:transparent; color:var(--brand); border-color:rgba(255,127,50,.70)}
+.btn-ghost:hover{background:rgba(255,127,50,.10); transform:translateY(-1px)}
+.btn-soft{background:rgba(140,104,255,.12); border:1px solid rgba(140,104,255,.32); color:#efeaff}
+.btn-soft:hover{background:rgba(140,104,255,.16); transform:translateY(-1px)}
+
+/* Layout */
+.wrap{max-width:var(--max); margin:auto; padding:26px 18px 70px}
+.grid{display:grid; grid-template-columns: 300px 1fr; gap:24px}
+@media (max-width:1060px){ .grid{grid-template-columns:1fr} }
+
+/* Sidebar TOC */
+.toc{
+  position:sticky; top:86px; align-self:start;
+  background:rgba(12,12,16,.86);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  padding:14px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.toc::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 0 0, rgba(255,127,50,.18), transparent 55%),
+    radial-gradient(circle at 100% 0, rgba(140,104,255,.14), transparent 55%);
+  opacity:.6; pointer-events:none;
+}
+.toc > *{position:relative; z-index:1}
+.toc h4{
+  margin:0 0 10px;
+  font-weight:950;
+  color:#ffd4b5;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:11px;
+}
+.toc a{
+  display:flex; align-items:center; gap:10px;
+  color:var(--muted);
+  text-decoration:none;
+  padding:9px 10px;
+  border-radius:12px;
+  font-weight:800;
+  font-size:13px;
+  border:1px solid transparent;
+}
+.toc a + a{margin-top:4px}
+.toc a:hover{
+  color:var(--ink);
+  background:rgba(255,127,50,.08);
+  border-color:rgba(255,127,50,.16);
+}
+.toc a.active{
+  color:var(--brand);
+  background:linear-gradient(90deg, rgba(255,127,50,.14), transparent);
+  border-color:rgba(255,127,50,.22);
+}
+
+/* Sections */
+.section{
+  background:var(--panel);
+  border-radius:var(--r);
+  padding:22px 22px 20px;
+  margin-bottom:22px;
+  border:1px solid rgba(255,255,255,.05);
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+  scroll-margin-top:90px;
+}
+.section::before{
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius:inherit;
+  border:1px solid transparent;
+  background:
+    radial-gradient(circle at 0 0, rgba(255,127,50,.24), transparent 55%),
+    radial-gradient(circle at 100% 0, rgba(140,104,255,.18), transparent 55%);
+  mix-blend-mode:screen;
+  opacity:.22;
+  pointer-events:none;
+}
+.section > *{position:relative; z-index:1}
+.section h2{
+  font:850 30px/1.16 "Playfair Display",serif;
+  margin:0 0 10px;
+  color:var(--brand);
+}
+.section-header-eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:11px;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.section-sub{color:var(--muted); font-size:14px; margin:0 0 12px}
+.lead{color:#dadbe6; font-size:18px; margin:10px 0 0}
+
+/* Reusable UI blocks */
+.cols{display:grid; gap:16px; grid-template-columns:1fr 1fr}
+@media (max-width:860px){ .cols{grid-template-columns:1fr} }
+
+.card{
+  background:rgba(10,10,14,.88);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:14px 14px 12px;
+  box-shadow:0 10px 22px rgba(0,0,0,.30);
+}
+.card h3{margin:0 0 8px; font-size:14px; letter-spacing:.02em}
+.card p{margin:0}
+.card ul{margin:8px 0 0; padding-left:18px; color:#d6d6e1}
+.card li{margin:6px 0}
+
+.callout{
+  background:rgba(255,127,50,.10);
+  border:1px solid rgba(255,127,50,.26);
+  padding:14px;
+  border-radius:16px;
+  color:#ffd3b8;
+  font-size:14px;
+}
+.callout strong{font-weight:900}
+
+.pullquote{
+  margin-top:12px;
+  padding:12px 14px 10px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(5,5,10,.88);
+  font-size:14px;
+  color:#f0e9ff;
+  font-style:italic;
+}
+.pullquote span{display:block; margin-top:6px; font-size:12px; color:var(--muted); font-style:normal}
+
+.highlight-grid{
+  display:grid; gap:12px;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  margin-top:14px;
+}
+@media (max-width:980px){ .highlight-grid{grid-template-columns:repeat(2, minmax(0,1fr))} }
+@media (max-width:560px){ .highlight-grid{grid-template-columns:1fr} }
+
+.highlight{
+  background:rgba(12,12,18,.92);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;
+  padding:12px 12px 11px;
+}
+.highlight .k{font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:var(--muted); margin-bottom:4px}
+.highlight .v{font-weight:900; font-size:14px}
+.highlight .n{margin-top:6px; font-size:13px; color:#d6d6e1}
+
+/* Media grid */
+.media-grid{
+  display:grid; gap:14px;
+  grid-template-columns:repeat(3,1fr);
+  margin-top:16px;
+}
+.media-grid figure{
+  margin:0;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  overflow:hidden;
+  background:radial-gradient(circle at 0 0, #1a1a24, #07070b);
+}
+.media-grid img, .media-grid video{
+  width:100%; height:200px;
+  object-fit:cover; display:block;
+  background:#0b0b10;
+}
+.media-grid figcaption{
+  padding:10px 12px 12px;
+  font-size:13px;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.media-meta{font-size:11px; text-transform:uppercase; letter-spacing:.14em; opacity:.75; margin-top:4px}
+@media (max-width:980px){ .media-grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:560px){ .media-grid{grid-template-columns:1fr} }
+
+/* Loop cards */
+.loop-grid{
+  display:grid; gap:12px;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  margin:14px 0 6px;
+}
+.loop-card{
+  border-radius:16px;
+  padding:12px 12px 12px;
+  background:rgba(10,10,14,.92);
+  border:1px solid rgba(255,255,255,.06);
+  font-size:13px;
+}
+.loop-step{font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:var(--muted); margin-bottom:6px}
+.loop-title{font-weight:950; margin-bottom:6px; font-size:14px}
+.loop-card p{margin:0; color:#d6d6e1}
+@media (max-width:950px){ .loop-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:560px){ .loop-grid{grid-template-columns:1fr} }
+
+/* Systems */
+.system-grid{
+  display:grid; gap:12px;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  margin-top:10px;
+}
+.system-card{
+  border-radius:16px;
+  padding:12px 14px 12px;
+  background:rgba(10,10,14,.94);
+  border:1px solid rgba(255,255,255,.06);
+  font-size:14px;
+}
+.system-card h3{margin:0 0 6px; font-size:16px}
+.system-tag{font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:var(--muted); margin-bottom:4px}
+@media (max-width:760px){ .system-grid{grid-template-columns:1fr} }
+
+/* Timeline */
+.timeline{list-style:none; margin:12px 0 0; padding:0; border-left:1px solid rgba(255,255,255,.14)}
+.timeline li{padding:8px 0 10px 16px; position:relative; font-size:14px}
+.timeline li::before{
+  content:"";
+  width:9px; height:9px; border-radius:50%;
+  border:2px solid var(--brand);
+  background:#0b0b10;
+  position:absolute; left:-6px; top:14px;
+}
+.timeline-title{font-weight:900; margin-bottom:2px}
+.timeline-note{color:var(--muted); font-size:13px}
+
+/* Results */
+.results-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  margin-top:10px;
+}
+.results-grid h3{margin:0 0 6px; font-size:16px}
+.results-grid ul{margin:0; padding-left:18px; font-size:14px}
+@media (max-width:720px){ .results-grid{grid-template-columns:1fr} }
+
+/* Footer nav */
+.nextprev{display:flex; justify-content:space-between; gap:12px; margin-top:18px}
+.nextprev a{
+  text-decoration:none; color:#111;
+  background:var(--brand);
+  font-weight:900;
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,.12);
+}
+.nextprev a.ghost{
+  background:transparent;
+  color:var(--brand);
+  border:2px solid rgba(255,127,50,.75);
+}
+.nextprev a:hover{filter:brightness(1.05)}
+
+/* Back to top */
+#toTop{
+  position:fixed; right:18px; bottom:20px;
+  width:44px; height:44px;
+  display:grid; place-items:center;
+  border-radius:50%;
+  background:rgba(12,12,16,.90);
+  border:1px solid rgba(255,255,255,.10);
+  color:var(--ink);
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  opacity:0; pointer-events:none;
+  transition:opacity .2s, transform .2s;
+  z-index:60;
+}
+#toTop.show{opacity:1; pointer-events:auto}
+#toTop:hover{transform:translateY(-2px)}
+
+hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
+.small{color:var(--muted); font-size:13px}
+</style>
+</head>
+
+<body>
+<div id="progress"></div>
+<div class="overlay"></div>
+
+<div class="page">
+
+  <!-- NAV -->
+  <nav>
+    <div class="navwrap">
+      <div class="brand">
+        <span class="title">TOBI ADEFIDIYA</span>
+        <span class="pipe">||</span>
+        <span class="sub">GAME & NARRATIVE DESIGNER</span>
+      </div>
+      <div class="navlinks">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#resume">Resume</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="inner">
+      <div class="kicker"><span class="dot"></span> Case Study</div>
+
+      <div class="hero-sub">
+        <div>
+          <h1>Cthulhu’s Cat Sitter</h1>
+
+          <p class="deck">
+            A non-Euclidean 3D horror puzzle game for PC &amp; VR: you take a “simple” cat-sitting job,
+            survive five nights of impossible trials, and return each time to a house that keeps changing.
+            Your only constant rule: feed the cat… or become the food.
+          </p>
+
+          <div class="meta">
+            <span class="pill"><strong>Genre:</strong> Horror Puzzle</span>
+            <span class="pill"><strong>Platform:</strong> PC + VR</span>
+            <span class="pill"><strong>Hook:</strong> Non-Euclidean trials</span>
+            <span class="pill"><strong>Loop:</strong> 5 nights + house returns</span>
+            <span class="pill"><strong>Style:</strong> PS1-inspired low-poly</span>
+          </div>
+
+          <div class="cta-row">
+            <!-- Replace these when you have links -->
+            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">
+              Trailer / Gameplay →
+            </a>
+            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
+              Download / Prototype →
+            </a>
+            <a class="btn btn-soft" href="#" target="_blank" rel="noopener">
+              GDD / Design Notes →
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="At-a-glance">
+          <h3>At a glance</h3>
+          <div class="hero-facts">
+            <div class="fact">
+              <div class="fact-label">Premise</div>
+              <div class="fact-value">Cat-sitting job → 5 nights of trials</div>
+            </div>
+            <div class="fact">
+              <div class="fact-label">North Star</div>
+              <div class="fact-value">Make the house feel intelligent &amp; hostile</div>
+            </div>
+            <div class="fact">
+              <div class="fact-label">Experience Pillars</div>
+              <div class="fact-value">Mystery • Spatial dread • Puzzle adaptation</div>
+            </div>
+          </div>
+
+          <hr class="sep">
+
+          <div class="small">
+            Reviewer tip: skim the highlight cards + loop first, then jump to Systems for the “how it works.”
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+
+      <!-- TOC -->
+      <aside class="toc" id="toc">
+        <h4>On this page</h4>
+        <a href="#overview">Overview</a>
+        <a href="#loop">Core Loop</a>
+        <a href="#systems">Key Systems</a>
+        <a href="#levels">Trials (1–5)</a>
+        <a href="#process">Process</a>
+        <a href="#gallery">Media Gallery</a>
+        <a href="#results">Results & Takeaways</a>
+      </aside>
+
+      <!-- CONTENT -->
+      <div>
+
+        <!-- OVERVIEW -->
+        <section id="overview" class="section">
+          <div class="section-header-eyebrow">01 • Framing the experience</div
