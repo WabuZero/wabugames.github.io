@@ -74,7 +74,7 @@ h1{
   display:grid; grid-template-columns: 1.35fr .65fr; gap:18px; align-items:start;
 }
 @media (max-width:980px){ .hero-sub{grid-template-columns:1fr} }
-.deck{color:#e9e9ef; max-width:760px; margin:10px 0 0; font-size:18px}
+.deck{color:#e9e9ef; max-width:780px; margin:10px 0 0; font-size:18px}
 .meta{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 4px}
 .pill{border:1px solid var(--line); background:rgba(20,20,24,.7); color:var(--muted); padding:6px 10px; border-radius:999px; font-size:13px}
 
@@ -163,7 +163,7 @@ h1{
 .section-sub{color:var(--muted); font-size:14px; margin-bottom:12px}
 .lead{color:#d7d7e3; font-size:18px; margin-top:4px}
 
-/* Small cards */
+/* Mini cards */
 .card-grid{display:grid; gap:14px; grid-template-columns:repeat(3, minmax(0,1fr)); margin-top:12px}
 @media (max-width:980px){ .card-grid{grid-template-columns:repeat(2, minmax(0,1fr))} }
 @media (max-width:560px){ .card-grid{grid-template-columns:1fr} }
@@ -186,8 +186,9 @@ h1{
   background:radial-gradient(circle at 0 0, #181824, #050508);
 }
 .media-grid img, .media-grid video{
-  width:100%; height:210px; object-fit:cover; display:block;
+  width:100%; height:220px; object-fit:cover; display:block;
 }
+.media-grid .tall img, .media-grid .tall video{height:320px}
 .media-grid figcaption{
   padding:8px 10px 10px; font-size:13px; color:var(--muted); border-top:1px solid var(--line)
 }
@@ -197,23 +198,28 @@ h1{
 @media (max-width:980px){ .media-grid{grid-template-columns:repeat(2,1fr)} }
 @media (max-width:560px){ .media-grid{grid-template-columns:1fr} }
 
-/* Timeline */
-.timeline{
-  list-style:none; margin:12px 0 0; padding:0;
-  border-left:1px solid rgba(255,255,255,.12);
+/* Responsive video embed */
+.embed{
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.35);
 }
-.timeline li{
-  padding:8px 0 10px 16px;
-  position:relative; font-size:14px;
+.embed .frame{
+  position:relative; width:100%; padding-top:56.25%;
 }
-.timeline li::before{
-  content:""; width:8px; height:8px; border-radius:50%;
-  border:2px solid var(--brand);
-  background:#0b0b10;
-  position:absolute; left:-5px; top:14px;
+.embed iframe{
+  position:absolute; inset:0; width:100%; height:100%;
+  border:0;
 }
-.timeline-title{font-weight:700; margin-bottom:2px}
-.timeline-note{color:var(--muted); font-size:13px}
+
+/* Callout */
+.callout{
+  background:rgba(255,127,50,.10);
+  border:1px solid rgba(255,127,50,.28);
+  padding:14px; border-radius:14px; color:#ffd3b8; font-size:14px;
+}
+.callout strong{font-weight:900}
 
 /* Next/Prev */
 .nextprev{
@@ -276,42 +282,41 @@ code{
         <div>
           <h1>Mark of Mastery</h1>
           <p class="deck">
-            A process-driven prototype exploring character presence, cinematic combat framing,
-            and clean UI readability — built through iterative passes rather than one giant “feature dump”.
+            A remake of my original university demo—rebuilt from scratch to push deeper combat,
+            smarter enemy AI, and a more deliberate story setup for a potential full game.
           </p>
 
           <div class="meta">
-            <span class="pill">Action RPG • Prototype</span>
+            <span class="pill">Hack &amp; Slash</span>
             <span class="pill">Unity</span>
-            <span class="pill">Character + Camera + UI</span>
-            <span class="pill">Process Documentation</span>
+            <span class="pill">Combat + Enemy AI</span>
+            <span class="pill">Story-first setup</span>
           </div>
 
           <div class="cta-row">
-            <!-- Replace these when ready -->
-            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Play / Build →</a>
-            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Video / Reel →</a>
+            <a class="btn btn-primary" href="https://youtu.be/afUwl9TMKfE?si=xMbDZIA1XhiZBUFD" target="_blank" rel="noopener">Watch original pitch →</a>
+            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Play / Build →</a>
             <a class="btn btn-soft" href="#" target="_blank" rel="noopener">Dev Notes / PDF →</a>
           </div>
 
           <p class="small" style="margin-top:10px">
-            Tip: Replace <code>../assets/mom-*.jpg</code> slots as you upload images — the layout will stay clean.
+            Replace the hero image at <code>../assets/mom-hero.jpg</code>. Use GIFs freely — layouts are optimized for them.
           </p>
         </div>
 
         <aside class="hero-card">
-          <h3>At a glance</h3>
+          <h3>Project goals</h3>
           <div class="fact">
-            <div class="fact-label">Role</div>
-            <div class="fact-value">Design • Implementation • Presentation</div>
+            <div class="fact-label">Combat Upgrade</div>
+            <div class="fact-value">More diverse moves + better flow</div>
           </div>
           <div class="fact">
-            <div class="fact-label">Primary Goal</div>
-            <div class="fact-value">Make the prototype “feel” premium</div>
+            <div class="fact-label">Enemy AI Upgrade</div>
+            <div class="fact-value">Less predictable, more reactive</div>
           </div>
           <div class="fact">
-            <div class="fact-label">Focus Areas</div>
-            <div class="fact-value">Character, Camera, UI, Feedback</div>
+            <div class="fact-label">Story Upgrade</div>
+            <div class="fact-value">Surface + hidden narrative layers</div>
           </div>
         </aside>
       </div>
@@ -324,202 +329,333 @@ code{
       <!-- TOC -->
       <aside class="toc" id="toc">
         <h4>On this page</h4>
-        <a href="#overview">Overview</a>
-        <a href="#pillars">Design Pillars</a>
-        <a href="#process">Process</a>
-        <a href="#gallery">Development Gallery</a>
+        <a href="#intro">Overview</a>
+        <a href="#pitch">Original Demo Pitch</a>
+        <a href="#upgrades">What’s changing</a>
+        <a href="#mechanics">New Mechanics</a>
+        <a href="#sprinting">Mechanic I: Sprinting</a>
+        <a href="#targeting">Mechanic II: Targeting</a>
+        <a href="#gallery">Media Gallery</a>
         <a href="#takeaways">Takeaways</a>
       </aside>
 
       <!-- CONTENT -->
       <div>
 
-        <!-- OVERVIEW -->
-        <section id="overview" class="section">
-          <div class="section-header-eyebrow">01 • What this is</div>
-          <h2>Overview</h2>
+        <!-- INTRO -->
+        <section id="intro" class="section">
+          <div class="section-header-eyebrow">01 • Framing the project</div>
+          <h2>Digital Game Project — Mark of Mastery</h2>
           <p class="lead">
-            Mark of Mastery started as a character-forward action RPG prototype, but quickly became a
-            focused experiment: <strong>how much “premium feel” can you get from strong presentation + readable systems?</strong>
-          </p>
-          <p style="margin-top:10px">
-            Instead of building everything at once, I approached it in deliberate passes—tightening one layer
-            (character, camera, UI, feedback) at a time until the whole experience felt cohesive.
+            This project is a remake of my original university demo. I rebuilt it from scratch, keeping a few foundational ideas,
+            but redesigning the experience to better match what I originally wanted it to feel like.
           </p>
 
+          <div class="callout" style="margin-top:12px">
+            <strong>Why a remake?</strong><br/>
+            The first demo proved the concept, but lacked the depth and fluidity I envisioned. This version focuses on
+            combat variety, smarter enemies, and a clearer narrative direction for a potential full game.
+          </div>
+
           <div class="media-grid">
-            <figure>
-              <img src="../assets/mom-overview-1.jpg" alt="Overview screenshot slot">
+            <figure class="tall">
+              <img src="../assets/mom-old-combat.gif" alt="Old combat gif slot">
               <figcaption>
-                Mood / framing: establishing a bold visual identity early.
-                <div class="media-meta">Tone • Identity</div>
+                Original demo combat (baseline). This remake aims to expand player options and interaction depth.
+                <div class="media-meta">Before • Combat simplicity</div>
               </figcaption>
             </figure>
-            <figure>
-              <img src="../assets/mom-overview-2.jpg" alt="Combat framing slot">
+            <figure class="tall">
+              <img src="../assets/mom-old-ai.gif" alt="Old AI gif slot">
               <figcaption>
-                Combat readability: ensuring silhouettes + contrast stay legible.
-                <div class="media-meta">Readability • Clarity</div>
+                Original AI baseline: follow → attack → occasional block → wait.
+                <div class="media-meta">Before • AI predictability</div>
               </figcaption>
             </figure>
-            <figure>
-              <img src="../assets/mom-overview-3.jpg" alt="UI slot">
+            <figure class="tall">
+              <img src="../assets/mom-story-ref.png" alt="Story reference image slot">
               <figcaption>
-                UI refinement: less noise, more confidence for the player.
-                <div class="media-meta">UI • Player state</div>
+                Story inspiration: narrative that doesn’t spoonfeed — letting players connect dots (FF7-style).
+                <div class="media-meta">Narrative • Surface + hidden layers</div>
               </figcaption>
             </figure>
           </div>
         </section>
 
-        <!-- PILLARS -->
-        <section id="pillars" class="section">
-          <div class="section-header-eyebrow">02 • What guided decisions</div>
-          <h2>Design Pillars</h2>
+        <!-- PITCH -->
+        <section id="pitch" class="section">
+          <div class="section-header-eyebrow">02 • Where it started</div>
+          <h2>Original Demo Pitch</h2>
           <p class="section-sub">
-            These pillars kept scope tight and ensured every change had a reason.
+            This pitch captures the original goal and vibe before the remake.
+          </p>
+
+          <div class="embed" style="margin-top:12px">
+            <div class="frame">
+              <!-- YouTube embed for: https://youtu.be/afUwl9TMKfE -->
+              <iframe
+                src="https://www.youtube.com/embed/afUwl9TMKfE"
+                title="Mark of Mastery — Original Demo Pitch"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <p class="small" style="margin-top:10px">
+            If you prefer not to embed, you can remove the iframe and keep the hero button link.
+          </p>
+        </section>
+
+        <!-- UPGRADES -->
+        <section id="upgrades" class="section">
+          <div class="section-header-eyebrow">03 • What’s changing</div>
+          <h2>The big upgrades</h2>
+          <p class="section-sub">
+            The remake keeps the hack-and-slash core, but pushes depth in three directions: combat, enemy behavior, and story setup.
           </p>
 
           <div class="card-grid">
             <div class="mini-card">
-              <div class="mini-k">Pillar 01</div>
-              <h3>Character Presence</h3>
-              <p>Strong silhouette, intentional proportions, readable expression.</p>
+              <div class="mini-k">Upgrade 01</div>
+              <h3>Combat overhaul</h3>
+              <p>
+                The original system worked, but didn’t have the fluidity I imagined. This remake aims for a more dynamic moveset
+                with richer interactions and player expression.
+              </p>
             </div>
             <div class="mini-card">
-              <div class="mini-k">Pillar 02</div>
-              <h3>Cinematic Camera</h3>
-              <p>Dolly/boom/tracking choices that elevate without confusing.</p>
+              <div class="mini-k">Upgrade 02</div>
+              <h3>Smarter enemy AI</h3>
+              <p>
+                Enemies should feel less scripted and more reactive. The goal is more varied encounters that require intentional play,
+                not autopilot combos.
+              </p>
             </div>
             <div class="mini-card">
-              <div class="mini-k">Pillar 03</div>
-              <h3>Minimal UI</h3>
-              <p>Only what the player needs—fast reads, no clutter.</p>
+              <div class="mini-k">Upgrade 03</div>
+              <h3>New story direction</h3>
+              <p>
+                The earlier demo was an intro without a clear end in mind. This remake uses the demo to set up a fuller narrative,
+                with surface story + hidden discovery layers.
+              </p>
+            </div>
+          </div>
+
+          <p style="margin-top:12px">
+            Even with these changes, the heart stays the same: <strong>high-energy action + narrative depth</strong>.
+            This demo is also a learning playground — a chance to level up combat design, AI design, and storytelling craft.
+          </p>
+        </section>
+
+        <!-- MECHANICS OVERVIEW -->
+        <section id="mechanics" class="section">
+          <div class="section-header-eyebrow">04 • New systems</div>
+          <h2>Mechanics added in the remake</h2>
+          <p class="section-sub">
+            Two early additions address clarity + flow: faster world traversal and a targeting system that feels reliable instead of disorienting.
+          </p>
+
+          <div class="card-grid">
+            <div class="mini-card">
+              <div class="mini-k">Mechanic I</div>
+              <h3>Sprinting</h3>
+              <p>Added to reduce downtime when traveling between points. Simple, readable, and fast.</p>
             </div>
             <div class="mini-card">
-              <div class="mini-k">Pillar 04</div>
-              <h3>Expressive Feedback</h3>
-              <p>Trails, hit cues, and timing that make actions feel deliberate.</p>
+              <div class="mini-k">Mechanic II</div>
+              <h3>Targeting</h3>
+              <p>Rebuilt to avoid abrupt camera shifts and clearly communicate when you can lock-on.</p>
             </div>
             <div class="mini-card">
-              <div class="mini-k">Pillar 05</div>
-              <h3>Iterate in Passes</h3>
-              <p>Improve one layer per iteration so results stay trackable.</p>
-            </div>
-            <div class="mini-card">
-              <div class="mini-k">Pillar 06</div>
-              <h3>Clarity over Noise</h3>
-              <p>If something looks cool but reduces readability, it gets reworked.</p>
+              <div class="mini-k">Design note</div>
+              <h3>Scope discipline</h3>
+              <p>I considered a stamina bar (BOTW-style) but cut it for this demo to stay on schedule.</p>
             </div>
           </div>
         </section>
 
-        <!-- PROCESS -->
-        <section id="process" class="section">
-          <div class="section-header-eyebrow">03 • How it was built</div>
-          <h2>Process</h2>
-          <p class="section-sub">
-            Development moved through a clear sequence: get the shape right → get the camera right → get the UI right → polish feedback.
+        <!-- SPRINTING -->
+        <section id="sprinting" class="section">
+          <div class="section-header-eyebrow">05 • Mechanic I</div>
+          <h2>Sprinting (Out of combat / World)</h2>
+          <p class="lead">
+            In the previous demo, playtest feedback pointed out travel time between points felt slow. Sprinting fixes that with a lightweight addition:
+            hold <strong>LEFT SHIFT</strong> while moving to sprint when unarmed.
           </p>
 
-          <ul class="timeline">
-            <li>
-              <div class="timeline-title">Character Pass</div>
-              <div class="timeline-note">Model/shape iterations to land a strong readable identity.</div>
-            </li>
-            <li>
-              <div class="timeline-title">Camera Language</div>
-              <div class="timeline-note">Experimenting with framing choices to heighten feel without losing clarity.</div>
-            </li>
-            <li>
-              <div class="timeline-title">UI Simplification</div>
-              <div class="timeline-note">Removing noise until the HUD felt “confident” and quick to parse.</div>
-            </li>
-            <li>
-              <div class="timeline-title">Feedback & Polish</div>
-              <div class="timeline-note">Trails, hits, and timing cues aligned into one cohesive presentation.</div>
-            </li>
-          </ul>
-
           <div class="media-grid">
-            <figure>
-              <img src="../assets/mom-process-1.jpg" alt="Process slot 1">
+            <figure class="tall">
+              <img src="../assets/mom-sprint.gif" alt="Sprinting gif slot">
               <figcaption>
-                Early character iteration snapshots.
-                <div class="media-meta">Character • Iteration</div>
+                Sprinting in action — SHIFT while moving (unarmed).
+                <div class="media-meta">World flow • Player convenience</div>
               </figcaption>
             </figure>
-            <figure>
-              <img src="../assets/mom-process-2.jpg" alt="Process slot 2">
+            <figure class="tall">
+              <img src="../assets/mom-sprint-2.jpg" alt="Sprint screenshot slot">
               <figcaption>
-                Camera experiments: angles, distance, and lock behavior.
-                <div class="media-meta">Camera • Readability</div>
+                Optional: show the input prompt or animation transition here.
+                <div class="media-meta">Polish • Feedback</div>
               </figcaption>
             </figure>
-            <figure>
-              <img src="../assets/mom-process-3.jpg" alt="Process slot 3">
+            <figure class="tall">
+              <img src="../assets/mom-sprint-3.jpg" alt="World traversal slot">
               <figcaption>
-                UI iteration: refining layout for quick, confident reads.
-                <div class="media-meta">UI • Clarity</div>
+                Optional: show distance between points / level traversal layout.
+                <div class="media-meta">Level flow • Travel time</div>
               </figcaption>
             </figure>
           </div>
+        </section>
+
+        <!-- TARGETING -->
+        <section id="targeting" class="section">
+          <div class="section-header-eyebrow">06 • Mechanic II</div>
+          <h2>Targeting (Combat)</h2>
+          <p class="lead">
+            The original targeting caused disorientation: the camera snapped hard to enemies, and players often chose to fight without lock-on.
+            This remake rebuilds targeting around <strong>clear candidate states</strong> inspired by <em>Kingdom Hearts</em>.
+          </p>
+
+          <div class="card-grid">
+            <div class="mini-card">
+              <div class="mini-k">State 01</div>
+              <h3>Out of range</h3>
+              <p>No target candidate — you’re too far for lock-on.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">State 02</div>
+              <h3>Candidate</h3>
+              <p>In range — the game clearly indicates you can lock on.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">State 03</div>
+              <h3>Locked-on</h3>
+              <p>Clear confirmation via UI highlight (healthbar border).</p>
+            </div>
+          </div>
+
+          <div class="media-grid">
+            <figure>
+              <img src="../assets/mom-target-candidate-yellow.png" alt="Candidate ring slot">
+              <figcaption>
+                Candidate state (your Notion example: yellow ring / candidate indicator).
+                <div class="media-meta">Readability • Candidate</div>
+              </figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/mom-target-main-blue.png" alt="Main target slot">
+              <figcaption>
+                Main target locked (blue ring / primary target).
+                <div class="media-meta">Readability • Primary target</div>
+              </figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/mom-target-healthbar.png" alt="Healthbar highlight slot">
+              <figcaption>
+                Instead of a tracking icon, I illuminated the enemy healthbar to show state changes.
+                <div class="media-meta">UI • State indication</div>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="media-grid">
+            <figure>
+              <img src="../assets/mom-hb-out.png" alt="Healthbar out of range slot">
+              <figcaption>
+                Healthbar: out of range (no candidate).
+                <div class="media-meta">State • Out of range</div>
+              </figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/mom-hb-candidate.png" alt="Healthbar candidate slot">
+              <figcaption>
+                Healthbar: candidate (blue border).
+                <div class="media-meta">State • Candidate</div>
+              </figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/mom-hb-locked.png" alt="Healthbar locked slot">
+              <figcaption>
+                Healthbar: locked-on (green border).
+                <div class="media-meta">State • Locked</div>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="media-grid">
+            <figure class="tall">
+              <img src="../assets/mom-target-sphere.png" alt="Sphere hierarchy slot">
+              <figcaption>
+                Target range sphere (child object) used as a trigger to manage candidate/lock state reliably.
+                <div class="media-meta">Implementation • Range logic</div>
+              </figcaption>
+            </figure>
+            <figure class="tall">
+              <img src="../assets/mom-targeting-demo.gif" alt="Targeting gif slot">
+              <figcaption>
+                Targeting flow in motion (candidate → locked → out of range).
+                <div class="media-meta">Feel • Player clarity</div>
+              </figcaption>
+            </figure>
+            <figure class="tall">
+              <img src="../assets/mom-targeting-3.jpg" alt="Camera framing slot">
+              <figcaption>
+                Optional: show the camera framing keeping both player + enemy in shot.
+                <div class="media-meta">Camera • Composition</div>
+              </figcaption>
+            </figure>
+          </div>
+
+          <p style="margin-top:12px">
+            To keep both player and enemy in frame, targeting is constrained by range.
+            If the player exits the sphere, the enemy removes itself as a candidate and breaks lock if active.
+          </p>
         </section>
 
         <!-- GALLERY -->
         <section id="gallery" class="section">
-          <div class="section-header-eyebrow">04 • Image-heavy documentation</div>
-          <h2>Development Gallery</h2>
+          <div class="section-header-eyebrow">07 • Additional media</div>
+          <h2>Media Gallery</h2>
           <p class="section-sub">
-            A curated snapshot of the devlog: lots of visuals, grouped so the page stays clean.
+            Use this section for any additional screenshots, gifs, UI iterations, or environment shots — the grid keeps it clean.
           </p>
 
-          <h3 style="margin:0 0 8px; color:#fff">Character</h3>
           <div class="media-grid">
-            <figure><img src="../assets/mom-char-1.jpg" alt=""><figcaption>Early sculpt / blockout<div class="media-meta">Character</div></figcaption></figure>
-            <figure><img src="../assets/mom-char-2.jpg" alt=""><figcaption>Proportions & face refinement<div class="media-meta">Character</div></figcaption></figure>
-            <figure><img src="../assets/mom-char-3.jpg" alt=""><figcaption>Final silhouette pass<div class="media-meta">Character</div></figcaption></figure>
-          </div>
-
-          <h3 style="margin:16px 0 8px; color:#fff">Camera</h3>
-          <div class="media-grid">
-            <figure><img src="../assets/mom-cam-1.jpg" alt=""><figcaption>Dolly / boom tests<div class="media-meta">Camera</div></figcaption></figure>
-            <figure><img src="../assets/mom-cam-2.jpg" alt=""><figcaption>Lock-on distance comparisons<div class="media-meta">Camera</div></figcaption></figure>
-            <figure><img src="../assets/mom-cam-3.jpg" alt=""><figcaption>Special move framing<div class="media-meta">Camera</div></figcaption></figure>
-          </div>
-
-          <h3 style="margin:16px 0 8px; color:#fff">UI + Feedback</h3>
-          <div class="media-grid">
-            <figure><img src="../assets/mom-ui-1.jpg" alt=""><figcaption>UI concept / sketch slot<div class="media-meta">UI</div></figcaption></figure>
-            <figure><img src="../assets/mom-ui-2.jpg" alt=""><figcaption>HUD layout iteration<div class="media-meta">UI</div></figcaption></figure>
-            <figure><img src="../assets/mom-vfx-1.jpg" alt=""><figcaption>Weapon trail / hit effect tests<div class="media-meta">Feedback</div></figcaption></figure>
+            <figure><img src="../assets/mom-g-1.jpg" alt=""><figcaption>Combat variety / moveset slot<div class="media-meta">Combat</div></figcaption></figure>
+            <figure><img src="../assets/mom-g-2.jpg" alt=""><figcaption>Enemy behavior / AI slot<div class="media-meta">AI</div></figcaption></figure>
+            <figure><img src="../assets/mom-g-3.jpg" alt=""><figcaption>Story / environmental cue slot<div class="media-meta">Narrative</div></figcaption></figure>
+            <figure><img src="../assets/mom-g-4.jpg" alt=""><figcaption>UI iteration slot<div class="media-meta">UI</div></figcaption></figure>
+            <figure><img src="../assets/mom-g-5.jpg" alt=""><figcaption>World / level shot slot<div class="media-meta">World</div></figcaption></figure>
+            <figure><img src="../assets/mom-g-6.jpg" alt=""><figcaption>Polish / VFX pass slot<div class="media-meta">Polish</div></figcaption></figure>
           </div>
 
           <p class="small" style="margin-top:12px">
-            Want *even more* slots? Duplicate any <code>&lt;figure&gt;</code> blocks—this grid stays aligned automatically.
+            Duplicate any <code>&lt;figure&gt;</code> blocks to add more images — the layout will adapt automatically.
           </p>
         </section>
 
         <!-- TAKEAWAYS -->
         <section id="takeaways" class="section">
-          <div class="section-header-eyebrow">05 • What I learned</div>
+          <div class="section-header-eyebrow">08 • What I’m improving</div>
           <h2>Takeaways</h2>
 
           <div class="card-grid">
             <div class="mini-card">
-              <div class="mini-k">Lesson</div>
-              <h3>“Cool” must still read</h3>
-              <p>VFX/camera choices only land when they don’t fight clarity.</p>
+              <div class="mini-k">Takeaway</div>
+              <h3>Combat depth needs structure</h3>
+              <p>Adding moves is easy — designing interactions and readability is the real work.</p>
             </div>
             <div class="mini-card">
-              <div class="mini-k">Lesson</div>
-              <h3>UI gets better by subtracting</h3>
-              <p>The HUD improved most when I removed elements aggressively.</p>
+              <div class="mini-k">Takeaway</div>
+              <h3>AI is about perception</h3>
+              <p>Even small changes feel big when they make enemies less predictable and more reactive.</p>
             </div>
             <div class="mini-card">
-              <div class="mini-k">Lesson</div>
-              <h3>Iterate in passes</h3>
-              <p>Fix one layer at a time so each improvement stays measurable.</p>
+              <div class="mini-k">Takeaway</div>
+              <h3>Story should be discovered</h3>
+              <p>Layering surface + hidden narrative makes players lean in instead of feeling spoonfed.</p>
             </div>
           </div>
 
