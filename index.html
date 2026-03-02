@@ -96,6 +96,16 @@ section{scroll-margin-top:calc(var(--navh) + 12px)}
 .cta{ color:var(--brand); text-decoration:none; font-weight:800; border-bottom:2px solid transparent }
 .cta:hover{ border-color:var(--brand) }
 
+/* "Soon" link styling */
+.cta.soon{
+  color:var(--muted);
+  font-weight:800;
+  cursor:not-allowed;
+  border-bottom-color:transparent;
+  opacity:.9;
+}
+.cta.soon:hover{ border-bottom-color:transparent; color:var(--muted) }
+
 .arrow{
   position:absolute; top:50%; transform:translateY(-50%);
   width:48px; height:48px; border-radius:50%;
@@ -158,7 +168,7 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
     <div class="section-inner">
       <h2>Projects</h2>
       <div class="carousel-shell">
-        <button class="arrow left">◀</button>
+        <button class="arrow left" aria-label="Scroll left">◀</button>
         <div class="carousel" id="projectCarousel">
 
           <!-- Strife & Serenity -->
@@ -179,7 +189,6 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
               <h3>Cthulhu's Cat Sitter</h3>
               <div class="sub">Puzzle / Strategy</div>
               <p>A cozy yet eldritch management game where you care for cosmic cats.</p>
-              <!-- ✅ HOOKED UP -->
               <a class="cta" href="projects/cthulhu-cat-sitter.html">View case study →</a>
             </div>
           </article>
@@ -191,7 +200,8 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
               <h3>Mark of Mastery</h3>
               <div class="sub">Action RPG (Prototype)</div>
               <p>Fast-paced combat and personal growth woven into a surreal journey.</p>
-              <a class="cta" href="#">Case study (soon) →</a>
+              <!-- ✅ HOOKED UP -->
+              <a class="cta" href="projects/mark-of-mastery.html">View case study →</a>
             </div>
           </article>
 
@@ -202,27 +212,24 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
               <h3>Stonespoke</h3>
               <div class="sub">Adventure / Puzzle</div>
               <p>Stonecraft, language puzzles, and quiet exploration.</p>
-              <a class="cta" href="#">Case study (soon) →</a>
+              <a class="cta soon" href="#" data-soon="true">Case study (soon) →</a>
             </div>
           </article>
 
-          <!-- High Road (NEW) -->
+          <!-- High Road -->
           <article class="card">
-            <div class="card-media">
-              <!-- Upload this file to /assets/ -->
-              <img src="assets/high-road-thumb.png" alt="High Road">
-            </div>
+            <div class="card-media"><img src="assets/high-road-thumb.png" alt="High Road"></div>
             <div class="card-body">
               <h3>High Road</h3>
               <div class="sub">Platformer / Stealth</div>
-              <p>A mystery-driven, emotionally charged platformer where every choice
-                 pulls you between doubt and desire.</p>
-              <a class="cta" href="#">Case study (soon) →</a>
+              <p>A mystery-driven, emotionally charged platformer where every choice pulls you between doubt and desire.</p>
+              <!-- ✅ CHANGE THIS TO soon IF you don't have the page yet -->
+              <a class="cta" href="projects/high-road.html">View case study →</a>
             </div>
           </article>
 
         </div>
-        <button class="arrow right">▶</button>
+        <button class="arrow right" aria-label="Scroll right">▶</button>
       </div>
     </div>
   </section>
@@ -238,7 +245,11 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
         </div>
         <div class="panel">
           <h3>Currently</h3>
-          <ul><li>Prototyping encounter pacing & ability kits for S&S</li><li>Writing narrative surfaces that respect flow</li><li>Iterating weekly with playtests</li></ul>
+          <ul>
+            <li>Prototyping encounter pacing & ability kits for S&amp;S</li>
+            <li>Writing narrative surfaces that respect flow</li>
+            <li>Iterating weekly with playtests</li>
+          </ul>
           <h3 style="margin-top:14px">Contact</h3>
           <p><a class="cta" href="mailto:tobidee@icloud.com">tobidee@icloud.com</a></p>
         </div>
@@ -255,7 +266,9 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
           <a class="btn" href="assets/Tobi_Adefidiya_Resume.pdf" target="_blank" rel="noopener">View PDF</a>
           <a class="btn ghost" href="assets/Tobi_Adefidiya_Resume.pdf" download>Download</a>
         </div>
-        <p style="color:var(--muted); margin-top:10px">(If this link 404s, add your file at <code>/assets/Tobi_Adefidiya_Resume.pdf</code> or change the href.)</p>
+        <p style="color:var(--muted); margin-top:10px">
+          (If this link 404s, add your file at <code>/assets/Tobi_Adefidiya_Resume.pdf</code> or change the href.)
+        </p>
       </div>
     </div>
   </section>
@@ -265,8 +278,10 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
 </div>
 
 <script>
+/* Year */
 document.getElementById('y').textContent = new Date().getFullYear();
 
+/* Carousel arrows */
 const scroller=document.getElementById('projectCarousel'),
       left=document.querySelector('.arrow.left'),
       right=document.querySelector('.arrow.right');
@@ -284,6 +299,27 @@ function pageSize(){
 }
 left.addEventListener('click',()=>scroller.scrollBy({left:-pageSize(),behavior:'smooth'}));
 right.addEventListener('click',()=>scroller.scrollBy({left:pageSize(),behavior:'smooth'}));
+
+/* Prevent "soon" links from jumping to top */
+document.querySelectorAll('[data-soon="true"]').forEach(a=>{
+  a.addEventListener('click',(e)=>{
+    e.preventDefault();
+  });
+});
+
+/* Active nav highlighting (Projects/About/Resume) */
+const navLinks=[...document.querySelectorAll('.navlink')];
+const sections=navLinks.map(a=>document.querySelector(a.getAttribute('href')));
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    const idx=sections.indexOf(en.target);
+    if(idx>=0){
+      navLinks[idx].classList.toggle('active', en.isIntersecting);
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px', threshold:0});
+sections.forEach(s=>s && io.observe(s));
 </script>
+
 </body>
 </html>
