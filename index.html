@@ -93,24 +93,8 @@ section{scroll-margin-top:calc(var(--navh) + 12px)}
 .card h3{ font:800 22px/1.2 "Playfair Display",serif; color:var(--brand); margin:0 0 4px }
 .card .sub{ color:var(--muted); font-weight:600; font-size:14px; margin-bottom:8px }
 .card p{ margin:0 0 14px }
-
-.cta{
-  color:var(--brand);
-  text-decoration:none;
-  font-weight:800;
-  border-bottom:2px solid transparent;
-  display:inline-block;
-}
+.cta{ color:var(--brand); text-decoration:none; font-weight:800; border-bottom:2px solid transparent }
 .cta:hover{ border-color:var(--brand) }
-
-/* Disabled "soon" CTA */
-.cta.soon{
-  color:var(--muted);
-  border-bottom-color:transparent;
-  cursor:not-allowed;
-  opacity:.9;
-}
-.cta.soon:hover{ border-bottom-color:transparent; color:var(--muted) }
 
 .arrow{
   position:absolute; top:50%; transform:translateY(-50%);
@@ -147,7 +131,6 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
 @media (max-width:480px){ .hero h1{ font-size:36px } }
 </style>
 </head>
-
 <body>
 <div class="overlay"></div>
 <div class="page">
@@ -174,10 +157,8 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
   <section id="projects">
     <div class="section-inner">
       <h2>Projects</h2>
-
       <div class="carousel-shell">
-        <button class="arrow left" aria-label="Scroll left">◀</button>
-
+        <button class="arrow left">◀</button>
         <div class="carousel" id="projectCarousel">
 
           <!-- Strife & Serenity -->
@@ -213,34 +194,33 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
             </div>
           </article>
 
-          <!-- Stonespoke -->
+          <!-- Stonespoke (✅ HOOKED UP + LINK TEXT FIXED) -->
           <article class="card">
             <div class="card-media"><img src="assets/stonespoke-thumb.jpg" alt="Stonespoke"></div>
             <div class="card-body">
               <h3>Stonespoke</h3>
               <div class="sub">Adventure / Puzzle</div>
               <p>Stonecraft, language puzzles, and quiet exploration.</p>
-              <a class="cta soon" href="#" data-soon="true">Case study (soon) →</a>
+              <a class="cta" href="projects/stonespoke.html">View case study →</a>
             </div>
           </article>
 
           <!-- High Road -->
           <article class="card">
-            <div class="card-media"><img src="assets/high-road-thumb.png" alt="High Road"></div>
+            <div class="card-media">
+              <img src="assets/high-road-thumb.png" alt="High Road">
+            </div>
             <div class="card-body">
               <h3>High Road</h3>
               <div class="sub">Platformer / Stealth</div>
-              <p>A mystery-driven, emotionally charged platformer where every choice pulls you between doubt and desire.</p>
-              <a class="cta soon" href="#" data-soon="true">Case study (soon) →</a>
-              <!-- If you HAVE the page, swap to:
-              <a class="cta" href="projects/high-road.html">View case study →</a>
-              -->
+              <p>A mystery-driven, emotionally charged platformer where every choice
+                 pulls you between doubt and desire.</p>
+              <a class="cta" href="#">Case study (soon) →</a>
             </div>
           </article>
 
         </div>
-
-        <button class="arrow right" aria-label="Scroll right">▶</button>
+        <button class="arrow right">▶</button>
       </div>
     </div>
   </section>
@@ -256,11 +236,7 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
         </div>
         <div class="panel">
           <h3>Currently</h3>
-          <ul>
-            <li>Prototyping encounter pacing & ability kits for S&amp;S</li>
-            <li>Writing narrative surfaces that respect flow</li>
-            <li>Iterating weekly with playtests</li>
-          </ul>
+          <ul><li>Prototyping encounter pacing & ability kits for S&S</li><li>Writing narrative surfaces that respect flow</li><li>Iterating weekly with playtests</li></ul>
           <h3 style="margin-top:14px">Contact</h3>
           <p><a class="cta" href="mailto:tobidee@icloud.com">tobidee@icloud.com</a></p>
         </div>
@@ -277,21 +253,18 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
           <a class="btn" href="assets/Tobi_Adefidiya_Resume.pdf" target="_blank" rel="noopener">View PDF</a>
           <a class="btn ghost" href="assets/Tobi_Adefidiya_Resume.pdf" download>Download</a>
         </div>
-        <p style="color:var(--muted); margin-top:10px">
-          (If this link 404s, add your file at <code>/assets/Tobi_Adefidiya_Resume.pdf</code> or change the href.)
-        </p>
+        <p style="color:var(--muted); margin-top:10px">(If this link 404s, add your file at <code>/assets/Tobi_Adefidiya_Resume.pdf</code> or change the href.)</p>
       </div>
     </div>
   </section>
 
   <footer>© <span id="y"></span> Wabu Games — Designed & built by Tobi A.</footer>
+
 </div>
 
 <script>
-/* Footer year */
 document.getElementById('y').textContent = new Date().getFullYear();
 
-/* Carousel arrows */
 const scroller=document.getElementById('projectCarousel'),
       left=document.querySelector('.arrow.left'),
       right=document.querySelector('.arrow.right');
@@ -309,23 +282,6 @@ function pageSize(){
 }
 left.addEventListener('click',()=>scroller.scrollBy({left:-pageSize(),behavior:'smooth'}));
 right.addEventListener('click',()=>scroller.scrollBy({left:pageSize(),behavior:'smooth'}));
-
-/* Stop disabled "soon" links from jumping to top */
-document.querySelectorAll('[data-soon="true"]').forEach(a=>{
-  a.addEventListener('click',(e)=>e.preventDefault());
-});
-
-/* Active nav highlighting */
-const navLinks=[...document.querySelectorAll('.navlink')];
-const sections=navLinks.map(a=>document.querySelector(a.getAttribute('href')));
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(en=>{
-    const idx=sections.indexOf(en.target);
-    if(idx>=0) navLinks[idx].classList.toggle('active', en.isIntersecting);
-  });
-},{rootMargin:'-45% 0px -50% 0px', threshold:0});
-sections.forEach(s=>s && io.observe(s));
 </script>
-
 </body>
 </html>
