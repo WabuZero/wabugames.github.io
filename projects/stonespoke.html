@@ -234,6 +234,17 @@ h1{
 }
 .callout strong{font-weight:900}
 
+/* Results & Takeaways grid */
+.results-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  margin-top:10px;
+}
+.results-grid h3{margin:0 0 6px; font-size:16px}
+.results-grid ul{margin:0; padding-left:18px; font-size:14px}
+@media (max-width:720px){ .results-grid{grid-template-columns:1fr} }
+
 /* Next/Prev */
 .nextprev{
   display:flex; justify-content:space-between; gap:12px; margin-top:18px;
@@ -345,6 +356,7 @@ code{
         <a href="#collab">Collaboration</a>
         <a href="#inspo">Inspiration</a>
         <a href="#gallery">Media Gallery</a>
+        <a href="#takeaways">Results &amp; Takeaways</a>
       </aside>
 
       <div>
@@ -354,7 +366,7 @@ code{
           <div class="section-header-eyebrow">01 • What it is</div>
           <h2>Overview</h2>
           <p class="lead">
-            Stonespoke is designed to feel like arriving *after* something happened. Instead of explaining the world outright,
+            Stonespoke is designed to feel like arriving <em>after</em> something happened. Instead of explaining the world outright,
             the environment and small discoveries do the storytelling. The primary puzzle language is spoken clues: the statue’s riddle
             references objects/emotions/imagery associated with colors, and the player translates that into an ordered path.
           </p>
@@ -430,7 +442,7 @@ code{
           <div class="section-header-eyebrow">03 • Design pillars</div>
           <h2>Key Systems</h2>
           <p class="section-sub">
-            The “systems” here are mostly *communication systems*—how we teach the player without menus.
+            The “systems” here are mostly <em>communication systems</em>—how we teach the player without menus.
           </p>
 
           <div class="feature">
@@ -448,7 +460,7 @@ code{
               <div class="mini-k">Environmental storytelling</div>
               <h3 style="margin:0 0 6px;font-size:16px">Story in the silence</h3>
               <ul>
-                <li>Objects and layout suggest what happened *before* you arrived.</li>
+                <li>Objects and layout suggest what happened <em>before</em> you arrived.</li>
                 <li>Optional details reward curiosity without blocking main progress.</li>
                 <li>Every “why is this here?” moment doubles as tone-setting.</li>
               </ul>
@@ -509,12 +521,12 @@ code{
           <div class="section-header-eyebrow">05 • Reference</div>
           <h2>Inspiration</h2>
           <p class="section-sub">
-            The core “spoken clue → step colors” idea is inspired by a Ratchet &amp; Clank-style riddle puzzle where clues point to colors and you step them in order to “mix” the correct result.  [oai_citation:0‡Ratchet & Clank Wiki](https://ratchetandclank.fandom.com/wiki/Search_for_Clues?utm_source=chatgpt.com)
+            The core “spoken clue → step colors” idea is inspired by a Ratchet &amp; Clank riddle puzzle where clues point to colors,
+            and you step them in order to “mix” the correct result.
           </p>
 
           <div class="embed" style="margin-top:12px">
             <div class="frame">
-              <!-- Your provided link -->
               <iframe
                 src="https://www.youtube.com/embed/tBFuY8-78Co"
                 title="Ratchet & Clank riddle puzzle inspiration"
@@ -544,6 +556,38 @@ code{
             <figure><img src="../assets/stonespoke-05.jpg" alt=""><figcaption>Feedback / VFX moment (slot) <div class="media-meta">Readability</div></figcaption></figure>
             <figure><img src="../assets/stonespoke-06.jpg" alt=""><figcaption>End beat / reveal (slot) <div class="media-meta">Payoff</div></figcaption></figure>
           </div>
+        </section>
+
+        <!-- TAKEAWAYS -->
+        <section id="takeaways" class="section">
+          <div class="section-header-eyebrow">07 • Reflection</div>
+          <h2>Results &amp; Takeaways</h2>
+
+          <div class="results-grid">
+            <div>
+              <h3>What landed well</h3>
+              <ul>
+                <li><strong>Environmental storytelling:</strong> players could infer what happened and why they were there without heavy exposition.</li>
+                <li><strong>Riddle-driven solving:</strong> the “listen → interpret → step” loop felt memorable and fair.</li>
+                <li><strong>Clear feedback:</strong> confirmation signals helped players course-correct without giving away the answer.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3>What I’d push further next</h3>
+              <ul>
+                <li><strong>Better ramp:</strong> add a mid-tier puzzle that teaches the “association language” before the hardest clue set.</li>
+                <li><strong>More expressive feedback:</strong> make “almost correct” feel distinct from “wrong,” without spoilers.</li>
+                <li><strong>More optional narrative crumbs:</strong> small finds that deepen the mystery for curious players.</li>
+              </ul>
+            </div>
+          </div>
+
+          <p style="margin-top:12px">
+            Stonespoke proved a simple idea can hit hard when it’s communicated cleanly:
+            let players listen, make meaning, and commit. The next iteration would expand variety and polish feedback,
+            without losing the quiet tone.
+          </p>
 
           <div class="nextprev">
             <a class="ghost" href="../index.html#projects">← Back to Projects</a>
