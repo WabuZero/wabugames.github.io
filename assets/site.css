@@ -1,0 +1,81 @@
+/* =========================================================
+   Wabu Games — Shared Mobile Patch (applies to ALL pages)
+   Add to every page: <link rel="stylesheet" href="../assets/site.css">
+   (index uses: <link rel="stylesheet" href="assets/site.css">)
+   ========================================================= */
+
+:root{
+  --m-pad: 16px;
+}
+
+/* ---------- Mobile polish ---------- */
+@media (max-width: 720px){
+
+  /* Reduce general spacing */
+  section{padding:28px var(--m-pad)}
+  .wrap{padding:28px var(--m-pad) 64px}
+
+  /* HERO sizing (works for both index + case study pages) */
+  header.hero{padding:64px var(--m-pad) 30px}
+  .hero h1{font-size:34px}
+  .hero p{font-size:16px}
+
+  /* Sticky nav should not feel cramped */
+  nav{height:auto}
+  .navbar, .navwrap{
+    height:auto;
+    padding:12px var(--m-pad);
+    align-items:flex-start;
+    gap:10px;
+    flex-direction:column;
+  }
+
+  /* Brand line wraps cleanly */
+  .brand{
+    flex-wrap:wrap;
+    gap:10px;
+    line-height:1.2;
+  }
+
+  /* Links become “pills” and wrap */
+  .navlinks{
+    width:100%;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .navlinks a{
+    padding:8px 10px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.06);
+  }
+
+  /* Index carousel arrows: hide on touch */
+  .arrow{display:none}
+
+  /* Card media a bit shorter */
+  .card-media{height:170px}
+
+  /* Case study layouts: sidebar + main should stack */
+  .grid{grid-template-columns:1fr !important}
+  .toc{display:none} /* remove sidebar TOC on mobile (huge win) */
+
+  /* Case study typography */
+  h1{font-size:34px}
+  .deck{font-size:16px}
+  .lead{font-size:16px}
+
+  /* Media grids become 1 column */
+  .media-grid{grid-template-columns:1fr !important}
+  .media-grid img, .media-grid video{height:220px}
+
+  /* Feature rows become 1 column */
+  .feature{grid-template-columns:1fr !important}
+  .card-grid{grid-template-columns:1fr !important}
+}
+
+/* Small phones */
+@media (max-width: 420px){
+  h1{font-size:30px}
+  .hero h1{font-size:30px}
+}
