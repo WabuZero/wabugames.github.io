@@ -1,1 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mark of Mastery — Case Study | Wabu Games</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0c0c10;
+  --ink:#ececf2;
+  --muted:#a7a7b3;
+  --line:rgba(255,255,255,.10);
+  --brand:#ff7f32;
+  --purple:#8c68ff;
+  --panel:rgba(14,14,18,.9);
+  --max:1180px;
+  --r:18px;
+  --shadow:0 16px 40px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--ink);
+  font:400 16px/1.65 Inter,system-ui;
+  background:#000 url('../Wallpaper.png') center/cover fixed no-repeat;
+}
+.overlay{position:fixed; inset:0; background:rgba(8,8,12,.65); z-index:0}
+.page{position:relative; z-index:1}
+a{text-decoration:none}
+
+/* Progress */
+#progress{
+  position:fixed; top:0; left:0; height:3px; width:0%;
+  background:linear-gradient(90deg,var(--brand),var(--purple));
+  z-index:999;
+}
+
+/* Nav */
+nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(10,10,14,.75);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.navwrap{
+  max-width:var(--max); margin:auto;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 18px;
+}
+.brand{font-weight:900}
+.brand span{color:var(--muted); font-weight:700}
+.navlinks a{
+  color:var(--muted); margin-left:16px; font-weight:700;
+}
+.navlinks a:hover{color:var(--brand)}
+
+/* Hero */
+.hero{
+  padding:88px 18px 48px;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.85),transparent),
+    url('../assets/mom-hero.jpg') center/cover no-repeat;
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{max-width:var(--max); margin:auto}
+.kicker{
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:11px;
+  color:var(--muted);
+}
+h1{
+  font:800 52px/1.05 "Playfair Display",serif;
+  margin:10px 0;
+}
+.deck{
+  max-width:720px;
+  font-size:18px;
+  color:#e6e6ee;
+}
+
+/* Layout */
+.wrap{max-width:var(--max); margin:auto; padding:28px 18px 72px}
+.section{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  padding:22px;
+  margin-bottom:22px;
+  box-shadow:var(--shadow);
+}
+.section h2{
+  font:800 28px "Playfair Display",serif;
+  color:var(--brand);
+  margin:0 0 10px;
+}
+.section p{margin:0 0 10px; color:#d8d8e4}
+
+/* Pillars */
+.pillars{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+@media(max-width:900px){.pillars{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.pillars{grid-template-columns:1fr}}
+.pillar{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+  background:rgba(10,10,14,.9);
+}
+.pillar h3{margin:0 0 6px; font-size:16px}
+.pillar p{font-size:14px}
+
+/* Media grids */
+.media-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:14px;
+}
+@media(max-width:900px){.media-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.media-grid{grid-template-columns:1fr}}
+.media-grid figure{
+  margin:0;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#0b0b10;
+}
+.media-grid img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  display:block;
+}
+.media-grid figcaption{
+  padding:10px;
+  font-size:13px;
+  color:var(--muted);
+  border-top:1px solid var(--line);
+}
+
+/* Reflection */
+ul{padding-left:18px}
+li{margin:8px 0}
+
+#toTop{
+  position:fixed; right:18px; bottom:18px;
+  width:44px; height:44px;
+  border-radius:50%;
+  background:rgba(14,14,18,.9);
+  border:1px solid var(--line);
+  color:#fff;
+  cursor:pointer;
+  opacity:0; pointer-events:none;
+}
+#toTop.show{opacity:1; pointer-events:auto}
+</style>
+</head>
+
+<body>
+<div id="progress"></div>
+<div class="overlay"></div>
+
+<div class="page">
+
+<nav>
+  <div class="navwrap">
+    <div class="brand">TOBI ADEFIDIYA <span>|| GAME & NARRATIVE DESIGNER</span></div>
+    <div class="navlinks">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#resume">Resume</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">Process Case Study</div>
+    <h1>Mark of Mastery</h1>
+    <p class="deck">
+      A prototype exploring growth, mastery, and cinematic combat feel — built as a
+      hands-on investigation into character design, camera language, UI clarity,
+      and visual feedback.
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="section">
+  <h2>Overview</h2>
+  <p>
+    Mark of Mastery began as an opportunity to bring one of my original characters
+    into an interactive space, and evolved into a focused exploration of how
+    presentation, camera movement, UI, and VFX can reinforce a player’s sense of
+    progression and control.
+  </p>
+</section>
+
+<section class="section">
+  <h2>Design Pillars</h2>
+  <div class="pillars">
+    <div class="pillar">
+      <h3>Character First</h3>
+      <p>Designing a protagonist whose form, proportions, and expression feel readable and intentional.</p>
+    </div>
+    <div class="pillar">
+      <h3>Cinematic Camera</h3>
+      <p>Using dolly, boom, tracking, and lock-on shots to elevate combat without sacrificing clarity.</p>
+    </div>
+    <div class="pillar">
+      <h3>Minimal UI</h3>
+      <p>Reducing noise while clearly communicating health, stamina, and player options.</p>
+    </div>
+    <div class="pillar">
+      <h3>Expressive Feedback</h3>
+      <p>Weapon trails, hit effects, and timing cues that make actions feel weighty and deliberate.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Process Highlights</h2>
+  <p>
+    Rather than building everything at once, development moved in focused passes —
+    refining one layer of the experience before moving on to the next.
+  </p>
+</section>
+
+<section class="section">
+  <h2>Development Gallery</h2>
+  <div class="media-grid">
+    <figure><img src="../assets/mom-char-1.jpg"><figcaption>Early character sculpt iterations</figcaption></figure>
+    <figure><img src="../assets/mom-char-2.jpg"><figcaption>Face refinement & proportions</figcaption></figure>
+    <figure><img src="../assets/mom-char-3.jpg"><figcaption>Final head and hair pass</figcaption></figure>
+
+    <figure><img src="../assets/mom-camera-1.jpg"><figcaption>Dolly & boom shot experimentation</figcaption></figure>
+    <figure><img src="../assets/mom-camera-2.jpg"><figcaption>Third-person vs lock-on comparison</figcaption></figure>
+    <figure><img src="../assets/mom-camera-3.jpg"><figcaption>Cinematic special attack framing</figcaption></figure>
+
+    <figure><img src="../assets/mom-ui-1.jpg"><figcaption>Early UI sketches & inspirations</figcaption></figure>
+    <figure><img src="../assets/mom-ui-2.jpg"><figcaption>Final health & stamina layout</figcaption></figure>
+    <figure><img src="../assets/mom-ui-3.jpg"><figcaption>Simplified pause & control review</figcaption></figure>
+
+    <figure><img src="../assets/mom-vfx-1.jpg"><figcaption>Weapon trail texture creation</figcaption></figure>
+    <figure><img src="../assets/mom-vfx-2.jpg"><figcaption>Hit & counter effect tests</figcaption></figure>
+    <figure><img src="../assets/mom-vfx-3.jpg"><figcaption>Final combat feedback pass</figcaption></figure>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Reflection & Takeaways</h2>
+  <ul>
+    <li>Strong visual feedback can dramatically improve perceived combat feel.</li>
+    <li>Camera movement must serve clarity first, spectacle second.</li>
+    <li>Iterative reduction often leads to stronger UI than additive design.</li>
+    <li>Process-driven exploration helped clarify my design instincts.</li>
+  </ul>
+</section>
+
+</main>
+
+<button id="toTop">▲</button>
+
+</div>
+
+<script>
+const bar=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';
+});
+const t=document.getElementById('toTop');
+window.addEventListener('scroll',()=>t.classList.toggle('show',window.scrollY>700));
+t.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+</script>
+
+</body>
+</html>
