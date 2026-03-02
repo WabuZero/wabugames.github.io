@@ -93,15 +93,21 @@ section{scroll-margin-top:calc(var(--navh) + 12px)}
 .card h3{ font:800 22px/1.2 "Playfair Display",serif; color:var(--brand); margin:0 0 4px }
 .card .sub{ color:var(--muted); font-weight:600; font-size:14px; margin-bottom:8px }
 .card p{ margin:0 0 14px }
-.cta{ color:var(--brand); text-decoration:none; font-weight:800; border-bottom:2px solid transparent }
+
+.cta{
+  color:var(--brand);
+  text-decoration:none;
+  font-weight:800;
+  border-bottom:2px solid transparent;
+  display:inline-block;
+}
 .cta:hover{ border-color:var(--brand) }
 
-/* "Soon" link styling */
+/* Disabled "soon" CTA */
 .cta.soon{
   color:var(--muted);
-  font-weight:800;
-  cursor:not-allowed;
   border-bottom-color:transparent;
+  cursor:not-allowed;
   opacity:.9;
 }
 .cta.soon:hover{ border-bottom-color:transparent; color:var(--muted) }
@@ -141,6 +147,7 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
 @media (max-width:480px){ .hero h1{ font-size:36px } }
 </style>
 </head>
+
 <body>
 <div class="overlay"></div>
 <div class="page">
@@ -167,8 +174,10 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
   <section id="projects">
     <div class="section-inner">
       <h2>Projects</h2>
+
       <div class="carousel-shell">
         <button class="arrow left" aria-label="Scroll left">◀</button>
+
         <div class="carousel" id="projectCarousel">
 
           <!-- Strife & Serenity -->
@@ -200,7 +209,6 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
               <h3>Mark of Mastery</h3>
               <div class="sub">Action RPG (Prototype)</div>
               <p>Fast-paced combat and personal growth woven into a surreal journey.</p>
-              <!-- ✅ HOOKED UP -->
               <a class="cta" href="projects/mark-of-mastery.html">View case study →</a>
             </div>
           </article>
@@ -223,12 +231,15 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
               <h3>High Road</h3>
               <div class="sub">Platformer / Stealth</div>
               <p>A mystery-driven, emotionally charged platformer where every choice pulls you between doubt and desire.</p>
-              <!-- ✅ CHANGE THIS TO soon IF you don't have the page yet -->
+              <a class="cta soon" href="#" data-soon="true">Case study (soon) →</a>
+              <!-- If you HAVE the page, swap to:
               <a class="cta" href="projects/high-road.html">View case study →</a>
+              -->
             </div>
           </article>
 
         </div>
+
         <button class="arrow right" aria-label="Scroll right">▶</button>
       </div>
     </div>
@@ -274,11 +285,10 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
   </section>
 
   <footer>© <span id="y"></span> Wabu Games — Designed & built by Tobi A.</footer>
-
 </div>
 
 <script>
-/* Year */
+/* Footer year */
 document.getElementById('y').textContent = new Date().getFullYear();
 
 /* Carousel arrows */
@@ -300,22 +310,18 @@ function pageSize(){
 left.addEventListener('click',()=>scroller.scrollBy({left:-pageSize(),behavior:'smooth'}));
 right.addEventListener('click',()=>scroller.scrollBy({left:pageSize(),behavior:'smooth'}));
 
-/* Prevent "soon" links from jumping to top */
+/* Stop disabled "soon" links from jumping to top */
 document.querySelectorAll('[data-soon="true"]').forEach(a=>{
-  a.addEventListener('click',(e)=>{
-    e.preventDefault();
-  });
+  a.addEventListener('click',(e)=>e.preventDefault());
 });
 
-/* Active nav highlighting (Projects/About/Resume) */
+/* Active nav highlighting */
 const navLinks=[...document.querySelectorAll('.navlink')];
 const sections=navLinks.map(a=>document.querySelector(a.getAttribute('href')));
 const io=new IntersectionObserver((entries)=>{
   entries.forEach(en=>{
     const idx=sections.indexOf(en.target);
-    if(idx>=0){
-      navLinks[idx].classList.toggle('active', en.isIntersecting);
-    }
+    if(idx>=0) navLinks[idx].classList.toggle('active', en.isIntersecting);
   });
 },{rootMargin:'-45% 0px -50% 0px', threshold:0});
 sections.forEach(s=>s && io.observe(s));
