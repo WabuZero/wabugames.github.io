@@ -389,7 +389,8 @@ code{
             </div>
           </div>
 
-          <div class="feature">
+          <!-- ✅ CHANGED: single column layout + removed the image-slots box -->
+          <div class="feature" style="grid-template-columns:1fr">
             <div class="box">
               <div class="mini-k">Why this remake exists</div>
               <h3 style="margin:0 0 6px;font-size:16px">Make the demo worthy of becoming a full game</h3>
@@ -399,22 +400,12 @@ code{
                 <li>Systems like <strong>Marks</strong>, <strong>Mastery</strong>, and <strong>Darkos</strong> create longer-term identity.</li>
               </ul>
 
+              <!-- ✅ CHANGED: keep orange callout, replace text with your “Why a remake?” -->
               <div class="callout" style="margin-top:12px">
-                <strong>North Star:</strong><br/>
-                Flashy combat that stays readable — power that feels earned — and a narrative that respects player intelligence.
+                <strong>Why a remake?</strong><br/>
+                The first demo proved the concept, but lacked the depth and fluidity I envisioned. This version focuses on
+                combat variety, smarter enemies, and a clearer narrative direction for a potential full game.
               </div>
-            </div>
-
-            <div class="box">
-              <div class="mini-k">Image slots for this section</div>
-              <ul>
-                <li>Old combat GIF (baseline)</li>
-                <li>Old AI GIF (baseline)</li>
-                <li>Story inspiration image (FF7 discovery / environmental narrative)</li>
-              </ul>
-              <p class="small" style="margin-top:10px">
-                Drop your media into these paths, or rename them to match your files.
-              </p>
             </div>
           </div>
 
@@ -664,7 +655,3 @@ toTop.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 </body>
 </html>
-"""
-out = Path("/mnt/data/mark-of-mastery.html")
-out.write_text(html, encoding="utf-8")
-out.as_posix()
