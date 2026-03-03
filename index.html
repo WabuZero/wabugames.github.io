@@ -1,4 +1,4 @@
-l<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -9,6 +9,7 @@ l<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+
 <style>
 :root{
   --bg:#0f0f12; --ink:#e8e8ee; --muted:#a7a7b3;
@@ -129,8 +130,76 @@ section{scroll-margin-top:calc(var(--navh) + 12px)}
 /* FOOTER */
 footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
 @media (max-width:480px){ .hero h1{ font-size:36px } }
+
+/* =========================================================
+   MOBILE PORTRAIT FIXES (INDEX ONLY)
+   - Makes header/nav clean in portrait
+   - Makes carousel one-card centered swipe
+   - Does NOT affect laptop/desktop
+   ========================================================= */
+@media (max-width: 640px){
+  /* NAV: stack brand + links */
+  nav{ height:auto; }
+  .navbar{
+    height:auto;
+    padding:10px 0;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .brand{
+    flex-wrap:wrap;
+    gap:8px;
+    line-height:1.1;
+  }
+  .brand span:first-child{
+    font-size:18px;
+    letter-spacing:.02em;
+  }
+  .brand .pipe{ display:none; }
+  .brand span:last-child{
+    width:100%;
+    font-size:13px;
+    letter-spacing:.10em;
+    text-transform:uppercase;
+    opacity:.95;
+  }
+
+  /* Nav links: centered pills */
+  .navlinks{
+    width:100%;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .navlinks a{
+    padding:10px 14px;
+    border-radius:999px;
+    background:rgba(15,15,18,.55);
+    border:1px solid rgba(255,255,255,.08);
+  }
+
+  /* Hero spacing */
+  header.hero{ padding:58px 18px 32px; }
+  .hero h1{ font-size:34px; }
+  .hero p{ font-size:16px; }
+
+  /* Carousel: single centered card */
+  .carousel{
+    grid-auto-columns: 88%;
+    padding: 6px 16px 14px;
+    scroll-padding-left: 16px;
+    scroll-padding-right: 16px;
+  }
+  .card{ scroll-snap-align:center; }
+
+  /* Hide arrows on mobile (swipe instead) */
+  .arrow{ display:none; }
+}
 </style>
 </head>
+
 <body>
 <div class="overlay"></div>
 <div class="page">
