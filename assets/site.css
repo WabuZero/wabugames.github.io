@@ -1,7 +1,8 @@
 /* =========================================================
    Wabu Games — Shared Mobile Patch (applies to ALL pages)
-   Add to every page: <link rel="stylesheet" href="../assets/site.css">
-   (index uses: <link rel="stylesheet" href="assets/site.css">)
+   Add to every page:
+   - index:    <link rel="stylesheet" href="assets/site.css?v=1">
+   - projects: <link rel="stylesheet" href="../assets/site.css?v=1">
    ========================================================= */
 
 :root{
@@ -79,6 +80,7 @@
   h1{font-size:30px}
   .hero h1{font-size:30px}
 }
+
 /* =========================
    Mobile nav (shared)
    Centers brand above links
@@ -140,5 +142,20 @@
   h1{
     font-size:38px !important;
     line-height:1.06 !important;
+  }
+}
+
+/* =========================
+   Index carousel: 1 centered card per swipe on mobile
+   ========================= */
+@media (max-width: 720px){
+  .carousel{
+    grid-auto-columns: 100% !important;
+    scroll-padding: 0 var(--m-pad);
+    padding-left: var(--m-pad);
+    padding-right: var(--m-pad);
+  }
+  .carousel .card{
+    scroll-snap-align: center;
   }
 }
