@@ -108,6 +108,47 @@ section{scroll-margin-top:calc(var(--navh) + 12px)}
 .arrow:hover{ transform:translateY(-50%) scale(1.06); box-shadow:0 8px 18px rgba(0,0,0,.35) }
 .arrow.left{ left:-18px } .arrow.right{ right:-18px }
 
+/* ---- Carousel indicator (dots + hint) ---- */
+.carousel-indicator{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin-top:12px;
+  user-select:none;
+}
+.dots{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  justify-content:center;
+}
+.dot{
+  width:8px; height:8px;
+  border-radius:999px;
+  background:rgba(255,255,255,.22);
+  border:1px solid rgba(255,255,255,.16);
+  cursor:pointer;
+  transition:transform .15s, background .15s, border-color .15s;
+}
+.dot:hover{ transform:scale(1.15); }
+.dot.active{
+  background:var(--brand);
+  border-color:rgba(255,127,50,.65);
+  transform:scale(1.2);
+}
+.swipe-hint{
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(15,15,18,.55);
+}
+.swipe-hint.hide{ display:none; }
+
 /* ABOUT */
 .about-grid{display:grid; gap:24px; margin-top:10px; grid-template-columns:1fr;}
 @media (min-width:900px){ .about-grid{ grid-template-columns:1.2fr .8fr } }
@@ -133,24 +174,27 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
 
 /* =========================================================
    MOBILE PORTRAIT FIXES (INDEX ONLY)
-   - Makes header/nav clean in portrait
-   - Makes carousel one-card centered swipe
-   - Does NOT affect laptop/desktop
+   - Clean header/nav in portrait
+   - Carousel: one-card centered swipe
+   - Adds dots/hint
+   - Reduces the huge Projects→About gap
    ========================================================= */
 @media (max-width: 640px){
-  /* NAV: stack brand + links */
+  /* NAV: stack brand + links (CENTERED) */
   nav{ height:auto; }
   .navbar{
     height:auto;
-    padding:10px 0;
+    padding:12px 0;
     flex-direction:column;
-    align-items:flex-start;
+    align-items:center;
     gap:10px;
   }
 
   .brand{
-    flex-wrap:wrap;
-    gap:8px;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:6px;
     line-height:1.1;
   }
   .brand span:first-child{
@@ -160,8 +204,8 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
   .brand .pipe{ display:none; }
   .brand span:last-child{
     width:100%;
-    font-size:13px;
-    letter-spacing:.10em;
+    font-size:12px;
+    letter-spacing:.12em;
     text-transform:uppercase;
     opacity:.95;
   }
@@ -177,7 +221,7 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
     padding:10px 14px;
     border-radius:999px;
     background:rgba(15,15,18,.55);
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.10);
   }
 
   /* Hero spacing */
@@ -185,10 +229,14 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
   .hero h1{ font-size:34px; }
   .hero p{ font-size:16px; }
 
+  /* Projects section: reduce bottom padding (fixes your circled “empty area”) */
+  #projects{ padding-bottom:18px; }
+  #about{ padding-top:26px; }
+
   /* Carousel: single centered card */
   .carousel{
     grid-auto-columns: 88%;
-    padding: 6px 16px 14px;
+    padding: 6px 16px 10px;
     scroll-padding-left: 16px;
     scroll-padding-right: 16px;
   }
@@ -196,6 +244,12 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
 
   /* Hide arrows on mobile (swipe instead) */
   .arrow{ display:none; }
+
+  /* Indicator: show on mobile */
+  .carousel-indicator{
+    margin-top:10px;
+    margin-bottom:6px;
+  }
 }
 </style>
 </head>
@@ -227,8 +281,9 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
     <div class="section-inner">
       <h2>Projects</h2>
       <div class="carousel-shell">
-        <button class="arrow left">◀</button>
-        <div class="carousel" id="projectCarousel">
+        <button class="arrow left" aria-label="Previous projects">◀</button>
+
+        <div class="carousel" id="projectCarousel" aria-label="Projects carousel">
 
           <!-- Strife & Serenity -->
           <article class="card">
@@ -286,7 +341,14 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
           </article>
 
         </div>
-        <button class="arrow right">▶</button>
+
+        <button class="arrow right" aria-label="Next projects">▶</button>
+
+        <!-- NEW: Dots + swipe hint -->
+        <div class="carousel-indicator" aria-label="Carousel position">
+          <div class="dots" id="carouselDots" aria-hidden="false"></div>
+          <div class="swipe-hint" id="swipeHint">Swipe →</div>
+        </div>
       </div>
     </div>
   </section>
@@ -331,23 +393,101 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
 <script>
 document.getElementById('y').textContent = new Date().getFullYear();
 
-const scroller=document.getElementById('projectCarousel'),
-      left=document.querySelector('.arrow.left'),
-      right=document.querySelector('.arrow.right');
+const scroller = document.getElementById('projectCarousel');
+const left = document.querySelector('.arrow.left');
+const right = document.querySelector('.arrow.right');
 
 function pageSize(){
-  const s=getComputedStyle(scroller);
-  const gap=parseInt(s.columnGap||s.gap||'24',10)||24;
-  const c=scroller.querySelector('.card');
-  if(!c)return scroller.clientWidth;
-  const w=c.offsetWidth;
-  let v=3;
-  if(window.matchMedia('(max-width:1024px)').matches)v=2;
-  if(window.matchMedia('(max-width:640px)').matches)v=1;
-  return w*v+gap*(v-1);
+  const s = getComputedStyle(scroller);
+  const gap = parseInt(s.columnGap || s.gap || '24', 10) || 24;
+  const c = scroller.querySelector('.card');
+  if(!c) return scroller.clientWidth;
+  const w = c.offsetWidth;
+  let v = 3;
+  if(window.matchMedia('(max-width:1024px)').matches) v = 2;
+  if(window.matchMedia('(max-width:640px)').matches) v = 1;
+  return w*v + gap*(v-1);
 }
-left.addEventListener('click',()=>scroller.scrollBy({left:-pageSize(),behavior:'smooth'}));
-right.addEventListener('click',()=>scroller.scrollBy({left:pageSize(),behavior:'smooth'}));
+if(left && right){
+  left.addEventListener('click', ()=> scroller.scrollBy({left:-pageSize(), behavior:'smooth'}));
+  right.addEventListener('click', ()=> scroller.scrollBy({left: pageSize(), behavior:'smooth'}));
+}
+
+/* ===== NEW: Dots indicator + active tracking ===== */
+const dotsWrap = document.getElementById('carouselDots');
+const swipeHint = document.getElementById('swipeHint');
+const cards = [...scroller.querySelectorAll('.card')];
+
+function buildDots(){
+  if(!dotsWrap) return;
+  dotsWrap.innerHTML = '';
+  cards.forEach((_, i)=>{
+    const b = document.createElement('button');
+    b.className = 'dot';
+    b.type = 'button';
+    b.setAttribute('aria-label', `Go to project ${i+1} of ${cards.length}`);
+    b.addEventListener('click', ()=>{
+      cards[i].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+      if(swipeHint) swipeHint.classList.add('hide');
+    });
+    dotsWrap.appendChild(b);
+  });
+}
+
+function setActiveDot(index){
+  if(!dotsWrap) return;
+  const dots = [...dotsWrap.querySelectorAll('.dot')];
+  dots.forEach((d, i)=> d.classList.toggle('active', i === index));
+}
+
+function getActiveIndex(){
+  // Find the card closest to the center of the scroller viewport
+  const rect = scroller.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  let bestIdx = 0;
+  let bestDist = Infinity;
+
+  cards.forEach((card, idx)=>{
+    const r = card.getBoundingClientRect();
+    const cardCenter = r.left + r.width / 2;
+    const dist = Math.abs(cardCenter - centerX);
+    if(dist < bestDist){
+      bestDist = dist;
+      bestIdx = idx;
+    }
+  });
+
+  return bestIdx;
+}
+
+let raf = null;
+function onCarouselScroll(){
+  if(raf) return;
+  raf = requestAnimationFrame(()=>{
+    raf = null;
+    const idx = getActiveIndex();
+    setActiveDot(idx);
+  });
+}
+
+function initCarouselIndicator(){
+  if(!cards.length || !dotsWrap) return;
+  buildDots();
+  setActiveDot(0);
+  scroller.addEventListener('scroll', onCarouselScroll, {passive:true});
+
+  // Hide hint after first interaction (touch/scroll)
+  const hideHint = ()=> swipeHint && swipeHint.classList.add('hide');
+  scroller.addEventListener('touchstart', hideHint, {passive:true});
+  scroller.addEventListener('wheel', hideHint, {passive:true});
+
+  // Update after resize (layout changes)
+  window.addEventListener('resize', ()=>{
+    setActiveDot(getActiveIndex());
+  });
+}
+
+initCarouselIndicator();
 </script>
 </body>
 </html>
