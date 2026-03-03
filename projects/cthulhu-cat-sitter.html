@@ -500,6 +500,43 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
   html{scroll-behavior:auto}
   .card, .btn, #toTop{transition:none}
 }
+/* =========================================================
+   MOBILE FIX (PORTRAIT): better hero sizing + hide sidebar TOC
+   ========================================================= */
+@media (max-width:640px){
+  /* tighter hero so headers don’t look massive */
+  .hero{ padding:54px 14px 26px; }
+  h1{
+    font-size:34px;
+    line-height:1.08;
+    margin-bottom:10px;
+  }
+  .deck{ font-size:16px; }
+
+  /* nav stacks cleaner */
+  .navwrap{ padding:0 12px; }
+  .brand{ gap:10px; }
+  .brand .sub{ display:none; } /* optional: makes nav less cramped */
+
+  /* TOC is what ruins portrait layout—hide it */
+  .toc{ display:none; }
+
+  /* content becomes full-width */
+  .wrap{ padding:18px 14px 56px; }
+  .grid{ grid-template-columns:1fr; gap:16px; }
+
+  /* make pills + buttons breathe */
+  .meta{ gap:8px; }
+  .pill{ font-size:12px; padding:6px 9px; }
+  .cta-row .btn{ width:100%; justify-content:center; }
+
+  /* smaller section padding so it doesn’t feel chunky */
+  .section{ padding:18px 16px 16px; }
+  .section h2{ font-size:24px; }
+
+  /* media tiles slightly taller on phones */
+  .media-grid img, .media-grid video{ height:220px; }
+}
 </style>
 </head>
 
