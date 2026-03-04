@@ -722,35 +722,31 @@ hr.sep{
 
           <div class="cols" style="margin-top:14px">
             <div class="card">
-              <h3>What this prologue is trying to prove</h3>
-              <ul>
-                <li><strong>Readable tension:</strong> the player senses that “something is wrong” before being told.</li>
-                <li><strong>Understanding through discovery:</strong> context comes from space + optional artifacts, not exposition dumps.</li>
-                <li><strong>Character through control:</strong> Ka’Sipho’s identity shows up in how he moves, hesitates, commits, and recovers.</li>
-              </ul>
+                <h3>My role</h3>
+                <p>
+                  Narrative design, systems design, combat tuning, level design, Unity implementation, and overall presentation.
+                </p>
 
-              <hr class="sep">
-
-              <h3 style="margin-top:0">My role</h3>
-              <p style="margin:0">
-                Solo end-to-end: Story/Narrative Design, Abilities &amp; Combat Design, Audio cues, Lighting,
-                VFX, Pacing, and implementation.
-              </p>
-            </div>
-
-            <div>
+                <details>
+                  <summary>
+                    <div>What this prologue is trying to prove</div>
+                    <div class="chev">＋</div>
+                  </summary>
+                  <div class="details-body">
+                    <ul>
+                      <li><strong>Readable tension:</strong> the player senses that “something is wrong” before being told.</li>
+                      <li><strong>Understanding through discovery:</strong> context comes from space + optional artifacts, not exposition dumps.</li>
+                      <li><strong>Character through control:</strong> Ka’Sipho’s identity shows up in how he moves, hesitates, commits, and recovers.</li>
+                    </ul>
+                  </div>
+                </details>
+              </div><div>
               <div class="callout">
                 <strong>North Star:</strong><br/>
                 Combat should feel satisfying—like a conversation. Every action is a line of dialogue between the
                 player and the enemy.
               </div>
-
-              <div class="pullquote">
-                “Throw the player into the dark—then let them earn the light.”
-                <span>— Prologue goal (mystery + discovery)</span>
-              </div>
-
-              <details style="margin-top:10px">
+<details style="margin-top:10px">
                 <summary>
                   <div>
                     Deep dive <span class="sublabel">Ideation foundation</span>
@@ -836,7 +832,7 @@ hr.sep{
           </div>
 
           <div class="cols" style="margin-top:14px">
-            <details open>
+            <details>
               <summary>
                 <div>
                   What I wanted players to feel <span class="sublabel">emotional goals</span>
@@ -906,10 +902,7 @@ hr.sep{
               <div class="system-tag">Combat Identity</div>
               <h3>Strife &amp; Serenity styles</h3>
               <p>
-                <strong>Strife</strong> leans forward: higher commitment, bigger payoff when you read correctly.
-                <strong>Serenity</strong> rewards timing, counters, and repositioning. Switching style is expression:
-                “who am I in this moment?”
-              </p>
+                Combat isn’t built around a single solution. You can’t rely only on sword attacks, hiding behind a shield, or mindlessly casting spells. Each tool solves a different problem, and victory comes from weaving them together.</p>
             </article>
 
             <article class="system-card">
@@ -922,7 +915,7 @@ hr.sep{
             </article>
 
             <article class="system-card">
-              <div class="system-tag">Progression</div>
+              <div class="system-tag">Customization</div>
               <h3>Marks (enhancement gems)</h3>
               <p>
                 Marks attach to weaponry to modify stats/behavior. Early iterations explored a Materia-style “spells depend on slots,”
@@ -941,29 +934,32 @@ hr.sep{
           </div>
 
           <div class="cols" style="margin-top:14px">
-            <details open>
+            <details>
               <summary>
-                <div>
-                  Design decision: Marks <span class="sublabel">Materia debate</span>
-                </div>
-                <div class="chev">＋</div>
+                <div>Deeper Dive: Marks</div>
               </summary>
               <div class="details-body">
-                Early on, I debated making Marks work like FF7 Materia: slot a Mark → gain a spell/ability.
-                I still like the long-term idea of slotting abilities/spells into a field hotbar — but for the prologue,
-                Marks became enhancements that <strong>amplify the player’s intent</strong> without hiding core abilities behind configuration.
-                <ul>
-                  <li><strong>Pro:</strong> clearer onboarding for first-time players</li>
-                  <li><strong>Pro:</strong> still hints at deep customization later</li>
-                  <li><strong>Tradeoff:</strong> less “buildcraft” in the earliest slice</li>
-                </ul>
+                <div class="img-carousel" aria-label="Marks image carousel">
+                  <figure class="img-slide">
+                    <img src="../assets/marks-01.jpg" alt="Marks screenshot 1" loading="lazy">
+                    <figcaption>Replace with: Marks UI / menu</figcaption>
+                  </figure>
+                  <figure class="img-slide">
+                    <img src="../assets/marks-02.jpg" alt="Marks screenshot 2" loading="lazy">
+                    <figcaption>Replace with: Enhancement gem / socket close-up</figcaption>
+                  </figure>
+                  <figure class="img-slide">
+                    <img src="../assets/marks-03.jpg" alt="Marks screenshot 3" loading="lazy">
+                    <figcaption>Replace with: In-combat effect / VFX</figcaption>
+                  </figure>
+                </div>
               </div>
             </details>
 
             <details>
               <summary>
                 <div>
-                  Design decision: Gauge system <span class="sublabel">KH:BBS iteration</span>
+                  Deeper Dive: Gauge System
                 </div>
                 <div class="chev">＋</div>
               </summary>
@@ -972,6 +968,22 @@ hr.sep{
                 would shift combat into element-aligned states (e.g., frequent ice attacks → frost state).
                 For scope/readability, this was simplified into a more linear system for the prologue —
                 while preserving the core goal: <strong>reward variety and momentum</strong>.
+
+                <div class="img-carousel" aria-label="Gauge System image carousel">
+                  <figure class="img-slide">
+                    <img src="../assets/gauge-01.jpg" alt="Gauge screenshot 1" loading="lazy">
+                    <figcaption>Replace with: Gauge UI (full)</figcaption>
+                  </figure>
+                  <figure class="img-slide">
+                    <img src="../assets/gauge-02.jpg" alt="Gauge screenshot 2" loading="lazy">
+                    <figcaption>Replace with: Build / spend moment</figcaption>
+                  </figure>
+                  <figure class="img-slide">
+                    <img src="../assets/gauge-03.jpg" alt="Gauge screenshot 3" loading="lazy">
+                    <figcaption>Replace with: Serenity timing / counter payoff</figcaption>
+                  </figure>
+                </div>
+
               </div>
             </details>
           </div>
@@ -1043,10 +1055,10 @@ hr.sep{
           </div>
 
           <div class="cols" style="margin-top:14px">
-            <details open>
+            <details>
               <summary>
                 <div>
-                  Mechanical prototyping &amp; visual exploration <span class="sublabel">feel first</span>
+                  Mechanical &amp; Visual
                 </div>
                 <div class="chev">＋</div>
               </summary>
@@ -1060,7 +1072,7 @@ hr.sep{
             <details>
               <summary>
                 <div>
-                  Worldbuilding, art &amp; iteration <span class="sublabel">aged, not lifeless</span>
+                  Worldbuilding, art &amp; iteration <span class="sublabel">aged</span>
                 </div>
                 <div class="chev">＋</div>
               </summary>
@@ -1291,5 +1303,48 @@ document.querySelectorAll('details').forEach(d=>{
 });
 </script>
 
+
+<script>
+/* Ensure all collapsibles start closed (even if an 'open' slips in) */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('details').forEach(d => d.open = false);
+});
+</script>
+
 </body>
-</html>
+</html
+/* Image carousel (one image per swipe) */
+.img-carousel{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  padding:10px 2px 2px;
+  scrollbar-width:none;
+}
+.img-carousel::-webkit-scrollbar{display:none;height:0}
+.img-slide{
+  flex:0 0 100%;
+  scroll-snap-align:start;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  overflow:hidden;
+  background:rgba(10,10,14,.88);
+}
+.img-slide img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  display:block;
+  background:#0b0b10;
+}
+.img-slide figcaption{
+  padding:10px 12px;
+  font-size:13px;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+>
