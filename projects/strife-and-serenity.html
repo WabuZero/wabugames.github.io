@@ -590,19 +590,7 @@ hr.sep{
 /* ===== PATCH: remove accordion subtitles + unify collapsed header height ===== */
 .sublabel{display:none !important;}
 details summary{
-  height:90px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-}
-details summary > div:first-child{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:4px;
-  height:100%;
-  flex:1;
+  min-height:72px;
 }
 details summary > div:first-child{
   flex:1;
@@ -629,7 +617,7 @@ details summary > div:first-child{
 /* ===== Mobile: center header + hide section jump box ===== */
 @media (max-width: 720px){
   .navwrap{flex-direction:column; align-items:center; justify-content:center; gap:10px; height:auto;}
-  .brand{flex-direction:column; align-items:center; text-align:center; gap:6px;}
+  .brand{flex-direction:column; align-items:center; text-align:left; gap:6px;}
   .brand .pipe{display:none;}
   .navlinks{width:100%; justify-content:center;}
   .toc{display:none !important;}
@@ -756,7 +744,7 @@ details summary > div:first-child{
                 </p>
 <details>
 <summary>
-<div><div class="label">DEEP DIVE</div><div class="title">What this prologue is trying to prove</div></div>
+<div><div class="title">What this prologue is trying to prove</div></div>
 <div class="chev">＋</div>
 </summary>
 <div class="details-body">
@@ -775,7 +763,7 @@ details summary > div:first-child{
               </div>
 <details style="margin-top:10px">
 <summary>
-<div><div class="label">DEEP DIVE</div><div class="title">Ideation foundation</div></div>
+<div><div class="title">Ideation foundation</div></div>
 <div class="chev">＋</div>
 </summary>
 <div class="details-body">
@@ -854,7 +842,7 @@ details summary > div:first-child{
 <div class="cols" style="margin-top:14px">
 <details>
 <summary>
-<div><div class="section-header-eyebrow">Deep Dive</div><div class="label">DEEP DIVE</div><div class="title">What I wanted players to feel</div></div>
+<div><div class="section-header-eyebrow">Deep Dive</div><div class="title">What I wanted players to feel</div></div>
 <div class="chev">＋</div>
 </summary>
 <div class="details-body">
@@ -867,7 +855,7 @@ details summary > div:first-child{
 </details>
 <details>
 <summary>
-<div><div class="section-header-eyebrow">Deep Dive</div><div class="label">DEEP DIVE</div><div class="title">Worldbuilding via artifacts</div></div>
+<div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Worldbuilding via artifacts</div></div>
 <div class="chev">＋</div>
 </summary>
 <div class="details-body">
@@ -943,14 +931,14 @@ details summary > div:first-child{
 <div class="cols" style="margin-top:14px">
 <details>
 <summary>
-<div><div class="section-header-eyebrow">Deep Dive</div><div class="label">DEEP DIVE</div><div class="title">Design Choice: Marks</div></div>
+<div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Design Choice: Marks</div></div>
 <div class="chev">＋</div>
 </summary>
 
 <div class="body"><p>Early on, I debated making Marks work like FF7 Materia: slot a Mark → gain a spell/ability. I still like the long-term idea of slotting abilities/spells into a field hotbar — but for the prologue, Marks became enhancements that amplify the player’s intent without hiding core abilities behind configuration.</p></div></details>
 <details>
 <summary>
-<div><div class="section-header-eyebrow">Deep Dive</div><div class="label">DEEP DIVE</div><div class="title">Design Choice: Combat Gauge</div></div>
+<div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Design Choice: Combat Gauge</div></div>
 <div class="chev">＋</div>
 </summary>
 
@@ -1019,7 +1007,7 @@ details summary > div:first-child{
 <div class="cols" style="margin-top:14px">
 <details>
 <summary>
-<div><div class="section-header-eyebrow">Deep Dive</div><div class="label">DEEP DIVE</div><div class="title">Mechanical &amp; Visual</div></div>
+<div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Mechanical &amp; Visual</div></div>
 <div class="chev">＋</div>
 </summary>
 <div class="details-body">
@@ -1030,7 +1018,7 @@ details summary > div:first-child{
 </details>
 <details>
 <summary>
-<div><div class="section-header-eyebrow">Deep Dive</div><div class="label">DEEP DIVE</div><div class="title">Worldbuilding, art &amp; iteration</div></div>
+<div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Worldbuilding, art &amp; iteration</div></div>
 <div class="chev">＋</div>
 </summary>
 <div class="details-body">
