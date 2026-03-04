@@ -632,9 +632,9 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
         <a href="#house">Between Nights (House Changes)</a>
         <a href="#trials">Trials (Nights 1–5)</a>
         <a href="#story">Story & Endings</a>
-        <a href="#mechanics">Mechanics</a>
+        
         <a href="#audiovisual">Art & Sound</a>
-        <a href="#controls">Controls (PC + VR)</a>
+        
         <a href="#gallery">Media Gallery</a>
         <a href="#results">Results & Takeaways</a>
       </aside>
@@ -678,10 +678,8 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
                 problem-solving feel immersive in VR as well as readable on PC.
               </p>
               <hr class="sep">
-              <h3 style="margin-top:0">Target vibe</h3>
-              <p style="margin:0">
-                Suburban normality with cosmic dread underneath: the house is a mask, and the trials are the truth.
-              </p>
+              <details class="card" style="margin-top:10px"><summary style="cursor:pointer;font-weight:700;">Target vibe</summary><p style="margin-top:8px">
+                Suburban normality with cosmic dread underneath: the house is a mask, and the trials are the truth.</p></details>
             </div>
 
             <div>
@@ -733,28 +731,28 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
 
           <div class="system-grid">
             <article class="system-card">
-              <div class="system-tag">Pillar</div>
+              <div class="system-tag">Pillar 01</div>
               <h3>Learnable “foreign” environments</h3>
               <p>
                 Non-Euclidean tricks are surprising, but consistent enough to master: loops, scale shifts, mirror logic, and recursive spaces.
               </p>
             </article>
             <article class="system-card">
-              <div class="system-tag">Pillar</div>
+              <div class="system-tag">Pillar 02</div>
               <h3>House as story engine</h3>
               <p>
                 The trials are the action, but the house between nights delivers the mystery: locked rooms open, décor decays, and lore surfaces appear.
               </p>
             </article>
             <article class="system-card">
-              <div class="system-tag">Pillar</div>
+              <div class="system-tag">Pillar 03</div>
               <h3>Pressure through routine</h3>
               <p>
                 The cat bowl turns routine into tension. You can explore… but you’ll be prompted to sleep. Delay too long and the house kills you.
               </p>
             </article>
             <article class="system-card">
-              <div class="system-tag">Pillar</div>
+              <div class="system-tag">Pillar 04</div>
               <h3>VR immersion without cheap noise</h3>
               <p>
                 Events can be random or location-triggered: sounds outside windows, shapes in mirrors, motion in peripheral vision — dread from implication.
@@ -858,7 +856,7 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
             (5) last 10+ minutes, and (6) end by returning to the house (usually via a door).
           </p>
 
-          <div class="cols">
+          <div class="loop-grid">
             <div class="card">
               <h3>Trial feature examples</h3>
               <ul>
@@ -890,7 +888,7 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
           <div class="section-header-eyebrow">06 • Narrative structure</div>
           <h2>Story & Endings</h2>
 
-          <div class="cols">
+          <div class="loop-grid">
             <div class="card">
               <h3>Intro sequence (opening hook)</h3>
               <ul>
@@ -932,54 +930,20 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
           </div>
         </section>
 
-        <!-- MECHANICS -->
-        <section id="mechanics" class="section">
-          <div class="section-header-eyebrow">07 • Mechanics & rules</div>
-          <h2>Mechanics</h2>
-
-          <div class="system-grid">
-            <article class="system-card">
-              <div class="system-tag">Movement</div>
-              <h3>Walk + Sprint + stamina (hidden)</h3>
-              <p>
-                Standard 3D movement for PC/VR. Sprint uses stamina that regenerates; stamina UI is invisible for immersion.
-              </p>
-            </article>
-            <article class="system-card">
-              <div class="system-tag">Interaction</div>
-              <h3>Glow objects + doors behave differently</h3>
-              <p>
-                Interactable items glow when you’re close and looking/pointing at them (keys, notes, food, taps). Doors don’t glow — they open/close or “locked” SFX.
-              </p>
-            </article>
-            <article class="system-card">
-              <div class="system-tag">Horror events</div>
-              <h3>Random + triggered scares</h3>
-              <p>
-                Horror moments can occur at random timing or in specific areas: sounds, movement, brief creature appearances, and “something outside.”
-              </p>
-            </article>
-            <article class="system-card">
-              <div class="system-tag">Non-Euclidean tricks</div>
-              <h3>Loading / look-based transitions</h3>
-              <p>
-                Space illusions can be implemented with door closures, loading tricks, and changes based on where the player is looking.
-              </p>
-            </article>
-          </div>
-
-          <div class="callout" style="margin-top:14px">
-            <strong>Fail state clarity:</strong><br/>
-            The cat bowl is not optional. It’s the “daily tax” on curiosity — and the player learns that the hard way.
-          </div>
-        </section>
+        
 
         <!-- ART + SOUND -->
         <section id="audiovisual" class="section">
           <div class="section-header-eyebrow">08 • Feel + identity</div>
           <h2>Art & Sound Direction</h2>
 
-          <div class="cols">
+          <div class="media-grid">
+            <figure><img src="../assets/ps1-filter-process.jpg" alt="PS1 filter process"><figcaption>PS1 filter development process.</figcaption></figure>
+            <figure><img src="../assets/ps1-filter-before.jpg" alt="Before filter"><figcaption>Before applying the PS1 filter.</figcaption></figure>
+            <figure><img src="../assets/ps1-filter-after.jpg" alt="After filter"><figcaption>After applying the PS1 filter aesthetic.</figcaption></figure>
+          </div>
+
+          <div class="loop-grid">
             <div class="card">
               <h3>Art direction</h3>
               <ul>
@@ -1004,64 +968,7 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
           </div>
         </section>
 
-        <!-- CONTROLS -->
-        <section id="controls" class="section">
-          <div class="section-header-eyebrow">09 • Platform mapping</div>
-          <h2>Controls (PC + VR)</h2>
-
-          <p class="section-sub">
-            The game supports PC keyboard/mouse and VR controllers. Below is the suggested control mapping.
-          </p>
-
-          <table class="table" aria-label="Control mapping table">
-            <thead>
-              <tr>
-                <th>Action</th>
-                <th>PC</th>
-                <th>VR (example)</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Move</td>
-                <td><span class="code">WASD</span></td>
-                <td>Left thumbstick</td>
-                <td>Standard directional movement</td>
-              </tr>
-              <tr>
-                <td>Look / Rotate</td>
-                <td>Mouse</td>
-                <td>Head movement / right stick</td>
-                <td>VR prefers head look; stick optional for comfort</td>
-              </tr>
-              <tr>
-                <td>Door interaction</td>
-                <td><span class="code">Left Click</span></td>
-                <td>X / A</td>
-                <td>Doors do not glow; play locked SFX if needed</td>
-              </tr>
-              <tr>
-                <td>Object interaction</td>
-                <td><span class="code">E</span></td>
-                <td>X / A</td>
-                <td>Glow aura when close &amp; targeting</td>
-              </tr>
-              <tr>
-                <td>Sprint</td>
-                <td><span class="code">Shift</span></td>
-                <td>Triggers</td>
-                <td>Hidden stamina; panting when exhausted</td>
-              </tr>
-              <tr>
-                <td>Crouch</td>
-                <td><span class="code">Ctrl</span></td>
-                <td>Grip buttons</td>
-                <td>Optional stealth / crawl spaces depending on trials</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+        
 
         <!-- MEDIA GALLERY -->
         <section id="gallery" class="section">
