@@ -283,22 +283,36 @@ code{
   height:220px !important;
 }
 
-/* --- Collapsible style (orange like other pages) --- */
+
+/* Collapsible style (neutral like other cards) */
 .collapsible{
   cursor:pointer;
   display:flex;
   justify-content:space-between;
   align-items:center;
   width:100%;
-  background:rgba(255,127,50,.10);
-  border:1px solid rgba(255,127,50,.28);
+  background:rgba(12,12,18,.92);
+  border:1px solid rgba(255,255,255,.06);
   padding:12px 14px;
   border-radius:14px;
   font-weight:800;
-  color:#ffd3b8;
+  color:#e8e8ee;
   margin-top:6px;
 }
 
+.collapsible .icon{
+  font-size:18px;
+  opacity:.8;
+}
+
+.collapsible-content{
+  display:none;
+  margin-top:10px;
+}
+
+.collapsible.active + .collapsible-content{
+  display:block;
+}
 .collapsible .icon{font-size:18px}
 
 .collapsible-content{
@@ -591,8 +605,14 @@ Why this remake exists
 
           <div class="feature">
             <div class="box">
-              <div class="mini-k">Deep Dive</div>
-              <h3 style="margin:0 0 6px;font-size:16px">Four mark types</h3>
+              
+<button class="collapsible">
+Deep Dive — Four Mark Types
+<span class="icon">+</span>
+</button>
+<div class="collapsible-content">
+<h3 style="margin:0 0 6px;font-size:16px">Four mark types</h3>
+
               <ul>
                 <li><strong>Offence:</strong> ATK Up, Piercing Strikes, CRIT Up</li>
                 <li><strong>Defence:</strong> DEF Up, Increased Parry Window, Last Chance</li>
@@ -602,8 +622,14 @@ Why this remake exists
             </div>
 
             <div class="box">
-              <div class="mini-k">Deep Dive</div>
-              <h3 style="margin:0 0 6px;font-size:16px">Candidate → Locked feedback</h3>
+              
+<button class="collapsible">
+Deep Dive — Candidate → Locked Feedback
+<span class="icon">+</span>
+</button>
+<div class="collapsible-content">
+<h3 style="margin:0 0 6px;font-size:16px">Candidate → Locked feedback</h3>
+
               <ul>
                 <li>Candidate range inspired by Kingdom Hearts lock-on comfort.</li>
                 <li>Healthbar communicates state (no camera-jump surprises).</li>
