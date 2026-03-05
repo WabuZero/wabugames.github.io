@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/site.css?v=1">
-  
+
 <style>
 :root{
   --bg:#0f0f12; --ink:#e8e8ee; --muted:#a7a7b3;
@@ -23,6 +23,7 @@ body{
   margin:0; color:var(--ink);
   font:400 16px/1.65 Inter,system-ui,Segoe UI,Roboto;
   background:#000 url('../Wallpaper.png') center/cover fixed no-repeat;
+  overflow-x:hidden; /* prevents sections drifting sideways */
 }
 a{color:inherit}
 .overlay{position:fixed; inset:0; background:rgba(10,10,12,.62); z-index:0}
@@ -138,7 +139,7 @@ h1{
   border:1px solid rgba(255,255,255,.03);
   box-shadow:var(--shadow);
   position:relative;
-  overflow:hidden;
+  overflow:clip; /* prevents glow from pushing sideways */
 }
 .section::before{
   content:"";
@@ -179,10 +180,11 @@ h1{
 
 /* Feature rows */
 .feature{
-  display:grid; grid-template-columns: 1.05fr .95fr; gap:16px; margin-top:14px;
+  display:grid;
+  grid-template-columns: 1fr; /* makes "No correct route" fill the full width */
+  gap:16px; margin-top:14px;
   align-items:start;
 }
-@media (max-width:900px){ .feature{grid-template-columns:1fr} }
 .feature .box{
   border-radius:14px; padding:14px;
   background:rgba(12,12,18,.92);
@@ -243,7 +245,6 @@ h1{
 .media-grid img, .media-grid video{
   width:100%; height:220px; object-fit:cover; display:block;
 }
-.media-grid .tall img, .media-grid .tall video{height:320px}
 .media-grid figcaption{
   padding:8px 10px 10px; font-size:13px; color:var(--muted); border-top:1px solid var(--line)
 }
@@ -252,17 +253,6 @@ h1{
 }
 @media (max-width:980px){ .media-grid{grid-template-columns:repeat(2,1fr)} }
 @media (max-width:560px){ .media-grid{grid-template-columns:1fr} }
-
-/* Embedded audio */
-.audio{
-  border-radius:16px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.10);
-  background:rgba(0,0,0,.28);
-  padding:14px;
-}
-.audio .label{font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin-bottom:8px; font-weight:900}
-.audio audio{width:100%}
 
 /* Callout */
 .callout{
@@ -355,9 +345,8 @@ code{
           </div>
 
           <div class="cta-row">
-            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Playable build (add link) →</a>
-            <a class="btn btn-ghost" href="#pitch">Audio pitch →</a>
-            <a class="btn btn-soft" href="#routes">Desire vs Doubt →</a>
+            <a class="btn btn-primary" href="https://wabuzero.itch.io/high-road" target="_blank" rel="noopener">Playable build →</a>
+            <a class="btn btn-soft" href="https://adaptable-radius-84c.notion.site/Game-I-High-Road-13c927cda10680f59936f2face654c71" target="_blank" rel="noopener">Ideation →</a>
           </div>
 
           <p class="small" style="margin-top:10px">
@@ -469,19 +458,6 @@ code{
               </ul>
               <p class="small" style="margin-top:10px">This became a core mechanic after Week 6 feedback favoring freedom + less linearity in a reflective game.</p>
             </div>
-
-            <div class="box" id="pitch">
-              <div class="mini-k">Audio log</div>
-              <h3 style="margin:0 0 6px;font-size:16px">Week VI pitch (slot)</h3>
-              <div class="audio" style="margin-top:10px">
-                <div class="label">Add your file at <code>../assets/New Recording 192.m4a</code> (or rename below)</div>
-                <audio controls preload="metadata">
-                  <source src="../assets/New Recording 192.m4a" type="audio/mp4">
-                  Your browser does not support the audio element.
-                </audio>
-                <p class="small" style="margin:10px 0 0">Tip: export as <code>.mp3</code> for widest browser support.</p>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -521,15 +497,15 @@ code{
           </div>
 
           <div class="media-grid">
-            <figure class="tall">
+            <figure>
               <img src="../assets/high-road-desire.jpg" alt="Desire route (slot)">
               <figcaption>Desire route visuals (slot). <div class="media-meta">Fast, shiny, risky</div></figcaption>
             </figure>
-            <figure class="tall">
+            <figure>
               <img src="../assets/high-road-doubt.jpg" alt="Doubt route (slot)">
               <figcaption>Doubt route visuals (slot). <div class="media-meta">Stable, quiet, persistent</div></figcaption>
             </figure>
-            <figure class="tall">
+            <figure>
               <video src="../assets/high-road-branching.mp4" controls></video>
               <figcaption>Branch decision moment (slot). <div class="media-meta">Choice point</div></figcaption>
             </figure>
@@ -688,8 +664,3 @@ toTop.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 </body>
 </html>
-"""
-
-out_path = Path("/mnt/data/high-road.html")
-out_path.write_text(html, encoding="utf-8")
-out_path.as_posix()
