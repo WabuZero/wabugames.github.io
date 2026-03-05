@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ORUU — Case Study | Wabu Games</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=1">
+
+<style>
+:root{
+  --bg:#0f0f12; --ink:#e8e8ee; --muted:#a7a7b3;
+  --brand:#ff7f32; --purple:#8c68ff;
+  --line:#26262e; --max:1180px;
+  --r:18px; --shadow:0 16px 34px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--ink);
+  font:400 16px/1.65 Inter,system-ui,Segoe UI,Roboto;
+  background:#000 url('../Wallpaper.png') center/cover fixed no-repeat;
+  overflow-x:hidden;
+}
+a{color:inherit}
+.overlay{position:fixed; inset:0; background:rgba(10,10,12,.62); z-index:0}
+.page{position:relative; z-index:1}
+
+/* Scroll progress */
+#progress{
+  position:fixed; top:0; left:0; height:3px; width:0%;
+  background:linear-gradient(90deg, var(--brand), var(--purple));
+  z-index:999;
+  box-shadow:0 10px 24px rgba(0,0,0,.55);
+}
+
+/* Top nav */
+nav{
+  position:sticky; top:0; z-index:10; height:62px;
+  backdrop-filter:blur(10px) saturate(120%);
+  background:rgba(15,15,18,.78); border-bottom:1px solid var(--line);
+}
+.navwrap{max-width:var(--max); margin:auto; height:62px; display:flex; align-items:center; justify-content:space-between; padding:0 18px}
+.brand{display:flex; align-items:center; gap:12px; font-weight:800}
+.brand span:first-child{color:#fff}
+.brand .pipe{opacity:.6}
+.navlinks{display:flex; gap:18px}
+.navlinks a{color:var(--muted); text-decoration:none; font-weight:700; padding:8px 10px; border-radius:10px}
+.navlinks a:hover{color:var(--ink); background:rgba(255,127,50,.08)}
+.navlinks a.active{color:var(--brand)}
+
+/* Hero */
+.hero{
+  position:relative; padding:78px 18px 42px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255,127,50,.18) 0, transparent 55%),
+    radial-gradient(circle at 88% 8%, rgba(140,104,255,.16) 0, transparent 55%),
+    linear-gradient(180deg, rgba(10,10,12,.92) 0%, rgba(10,10,12,.72) 45%, rgba(10,10,12,0) 100%),
+    url('../assets/oruu-hero.jpg') center/cover no-repeat;
+  border-bottom:1px solid var(--line);
+}
+.hero .inner{max-width:var(--max); margin:auto}
+.kicker{
+  color:var(--muted); font-weight:800; letter-spacing:.12em;
+  text-transform:uppercase; margin-bottom:10px; font-size:11px;
+}
+h1{
+  font:800 48px/1.08 "Playfair Display",serif; margin:0 0 12px;
+  color:#fff; text-shadow:0 6px 22px rgba(0,0,0,.7);
+}
+.hero-sub{
+  display:grid; grid-template-columns: 1.35fr .65fr; gap:18px; align-items:start;
+}
+@media (max-width:980px){ .hero-sub{grid-template-columns:1fr} }
+.deck{color:#e9e9ef; max-width:860px; margin:10px 0 0; font-size:18px}
+.meta{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 4px}
+.pill{border:1px solid var(--line); background:rgba(20,20,24,.7); color:var(--muted); padding:6px 10px; border-radius:999px; font-size:13px}
+
+.hero-card{
+  background:rgba(8,8,12,.78);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:14px;
+  box-shadow:var(--shadow);
+}
+.hero-card h3{
+  margin:0 0 10px;
+  font-weight:900; letter-spacing:.12em; text-transform:uppercase;
+  color:#ffd4b5; font-size:11px;
+}
+.fact{padding:10px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.06); background:rgba(5,5,8,.78)}
+.fact + .fact{margin-top:10px}
+.fact-label{text-transform:uppercase; letter-spacing:.12em; font-size:11px; color:var(--muted); margin-bottom:4px}
+.fact-value{font-weight:650; font-size:14px}
+
+.cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:9px 14px; border-radius:999px;
+  font-size:14px; font-weight:800; text-decoration:none;
+  border:1px solid transparent;
+}
+.btn-primary{background:var(--brand); color:#111; box-shadow:0 10px 26px rgba(0,0,0,.6)}
+.btn-primary:hover{filter:brightness(1.05)}
+.btn-ghost{background:transparent; color:var(--brand); border-color:var(--brand)}
+.btn-ghost:hover{background:rgba(255,127,50,.09)}
+.btn-soft{background:rgba(140,104,255,.12); border:1px solid rgba(140,104,255,.32); color:#efeaff}
+.btn-soft:hover{background:rgba(140,104,255,.16)}
+
+/* Layout */
+.wrap{max-width:var(--max); margin:auto; padding:28px 18px 64px}
+.grid{display:grid; grid-template-columns:300px 1fr; gap:26px}
+@media (max-width:1060px){ .grid{grid-template-columns:1fr} }
+
+/* Sticky sidebar TOC */
+.toc{
+  position:sticky; top:86px; align-self:start;
+  background:rgba(18,18,22,.9); border:1px solid var(--line); border-radius:var(--r); padding:16px;
+  box-shadow:var(--shadow)
+}
+.toc h4{margin:0 0 8px; font-weight:900; color:#ffd4b5; letter-spacing:.04em; text-transform:uppercase; font-size:11px}
+.toc a{
+  display:block; color:var(--muted); text-decoration:none; padding:9px 12px; border-radius:12px; font-weight:750; font-size:14px;
+}
+.toc a + a{margin-top:2px}
+.toc a:hover{color:var(--ink); background:rgba(255,127,50,.08)}
+.toc a.active{
+  color:var(--brand);
+  background:linear-gradient(90deg, rgba(255,127,50,.12), transparent);
+}
+
+/* Section cards */
+.section{
+  background:rgba(15,15,18,.92);
+  border-radius:var(--r); padding:24px 24px 22px; margin-bottom:24px;
+  border:1px solid rgba(255,255,255,.03);
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:clip;
+}
+.section::before{
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius:inherit;
+  border:1px solid transparent;
+  background:
+    radial-gradient(circle at 0 0, rgba(255,127,50,.26), transparent 55%),
+    radial-gradient(circle at 100% 0, rgba(140,104,255,.18), transparent 55%);
+  mix-blend-mode:screen;
+  opacity:.18;
+  pointer-events:none;
+}
+.section > *{position:relative; z-index:1}
+.section h2{
+  font:800 28px/1.18 "Playfair Display",serif; margin:0 0 10px; color:var(--brand);
+}
+.section-header-eyebrow{
+  text-transform:uppercase; letter-spacing:.12em;
+  font-size:11px; color:var(--muted); margin-bottom:4px;
+}
+.section-sub{color:var(--muted); font-size:14px; margin-bottom:12px}
+.lead{color:#d7d7e3; font-size:18px; margin-top:4px}
+
+/* Card grids */
+.card-grid{display:grid; gap:14px; grid-template-columns:repeat(3, minmax(0,1fr)); margin-top:12px}
+@media (max-width:980px){ .card-grid{grid-template-columns:repeat(2, minmax(0,1fr))} }
+@media (max-width:560px){ .card-grid{grid-template-columns:1fr} }
+.mini-card{
+  border-radius:14px; padding:12px 14px 12px;
+  background:rgba(12,12,18,.92);
+  border:1px solid rgba(255,255,255,.05);
+  font-size:14px;
+}
+.mini-k{font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin-bottom:4px}
+.mini-card h3{margin:0 0 6px; font-size:16px}
+.mini-card p{margin:0; color:#d6d6e1; font-size:14px}
+
+/* Feature rows */
+.feature{
+  display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:14px;
+  align-items:start;
+}
+@media (max-width:900px){ .feature{grid-template-columns:1fr} }
+.feature .box{
+  border-radius:14px; padding:14px;
+  background:rgba(12,12,18,.92);
+  border:1px solid rgba(255,255,255,.06);
+}
+.feature ul{margin:8px 0 0; padding-left:18px; color:#d6d6e1; font-size:14px}
+.feature li{margin:6px 0}
+
+/* Media grid */
+.media-grid{
+  display:grid; gap:14px; grid-template-columns:repeat(3,1fr); margin-top:16px
+}
+.media-grid figure{
+  margin:0; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+  background:radial-gradient(circle at 0 0, #181824, #050508);
+}
+.media-grid img, .media-grid video{
+  width:100%; height:220px; object-fit:cover; display:block;
+}
+.media-grid figcaption{
+  padding:8px 10px 10px; font-size:13px; color:var(--muted); border-top:1px solid var(--line)
+}
+.media-meta{
+  font-size:11px; text-transform:uppercase; letter-spacing:.12em; opacity:.7; margin-top:3px;
+}
+@media (max-width:980px){ .media-grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:560px){ .media-grid{grid-template-columns:1fr} }
+
+/* Callout */
+.callout{
+  background:rgba(255,127,50,.10);
+  border:1px solid rgba(255,127,50,.28);
+  padding:14px; border-radius:14px; color:#ffd3b8; font-size:14px;
+}
+.callout strong{font-weight:900}
+
+/* Back to top */
+#toTop{
+  position:fixed; right:18px; bottom:20px; width:44px; height:44px; display:grid; place-items:center;
+  border-radius:50%; background:rgba(18,18,22,.95); border:1px solid var(--line); color:var(--ink);
+  box-shadow:var(--shadow); cursor:pointer; opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; z-index:20
+}
+#toTop.show{opacity:1; pointer-events:auto}
+#toTop:hover{transform:translateY(-2px)}
+.section{scroll-margin-top:90px}
+
+.small{font-size:13px;color:var(--muted)}
+code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size:13px;
+  color:#efeaff;
+  background:rgba(140,104,255,.12);
+  border:1px solid rgba(140,104,255,.22);
+  padding:2px 6px;
+  border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+<div id="progress"></div>
+<div class="overlay"></div>
+<div class="page">
+
+  <nav>
+    <div class="navwrap">
+      <div class="brand">
+        <span>TOBI ADEFIDIYA</span><span class="pipe">||</span>
+        <span style="color:var(--muted);font-weight:700">GAME & NARRATIVE DESIGNER</span>
+      </div>
+      <div class="navlinks">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#resume">Resume</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="inner">
+      <div class="kicker">Team Project • Producer Case Study</div>
+
+      <div class="hero-sub">
+        <div>
+          <h1>ORUU</h1>
+          <p class="deck">
+            An adventure game where you play as a newborn magical creature—the first spark of life after silence—who
+            discovers a sleeping Robot relic. Together, you cross a post-apocalyptic wasteland to restore sound and life,
+            even as that journey drains the Robot’s remaining energy.
+          </p>
+
+          <div class="meta">
+            <span class="pill">Adventure</span>
+            <span class="pill">Companionship</span>
+            <span class="pill">Sound-based puzzles</span>
+            <span class="pill">Bittersweet farewell</span>
+            <span class="pill">Top-down 2D</span>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://anastasiaye.itch.io/oruu" target="_blank" rel="noopener">Playable build →</a>
+            <a class="btn btn-ghost" href="TeamDiiiiing_GDD.docx.pdf" target="_blank" rel="noopener">GDD →</a>
+            <a class="btn btn-soft" href="https://youtu.be/tdqVswj6QSA" target="_blank" rel="noopener">Video Essay →</a>
+            </div>
+
+          <p class="small" style="margin-top:10px">
+            Replace the hero image at <code>../assets/oruu-hero.jpg</code>.
+          </p>
+        </div>
+
+        <aside class="hero-card">
+          <h3>At a glance</h3>
+          <div class="fact">
+            <div class="fact-label">Team</div>
+            <div class="fact-value">Diiiiing</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">My role</div>
+            <div class="fact-value">Producer (coordination, time management, strengths alignment)</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Experience goal</div>
+            <div class="fact-value">Companionship in silence → bittersweet letting go</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+
+      <aside class="toc" id="toc">
+        <h4>On this page</h4>
+        <a href="#overview">Overview</a>
+        <a href="#role">My Role</a>
+        <a href="#loop">Core Loop</a>
+        <a href="#mechanics">Core Mechanics</a>
+        <a href="#narrative">Narrative Sequences</a>
+        <a href="#systems">Systems & AI</a>
+        <a href="#controls">Controls</a>
+        <a href="#gallery">Media Gallery</a>
+        <a href="#takeaways">Takeaways</a>
+      </aside>
+
+      <div>
+
+        <section id="overview" class="section">
+          <div class="section-header-eyebrow">01 • Concept</div>
+          <h2>Overview</h2>
+          <p class="lead">
+            ORUU is an adventure about a newborn magical creature emerging from a swamp into a silent, post-apocalyptic world.
+            You awaken an old Robot relic by accident and travel together across the wasteland, restoring sound and life—at the
+            cost of the Robot’s energy.
+          </p>
+
+          <div class="card-grid">
+            <div class="mini-card">
+              <div class="mini-k">Player fantasy</div>
+              <h3>First life after silence</h3>
+              <p>You’re innocent, curious, and learning the world by making sound.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Core relationship</div>
+              <h3>Creature + Robot</h3>
+              <p>Companionship forms through shared exploration and care in a hostile, quiet world.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Arc</div>
+              <h3>Restore → release</h3>
+              <p>Bringing vitality back requires accepting an inevitable goodbye at the summit.</p>
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top:12px">
+            <strong>Experience goal:</strong><br/>
+            Players feel companionship traveling with the Robot through silence—and the bittersweet beauty of letting go when paths must part.
+          </div>
+        </section>
+
+        <section id="role" class="section">
+          <div class="section-header-eyebrow">02 • Producer</div>
+          <h2>My Role</h2>
+          <p class="lead">
+            I produced ORUU—making sure everyone worked to their strengths, stayed aligned on scope, and hit milestones with healthy time management.
+          </p>
+
+          <div class="feature">
+            <div class="box">
+              <div class="mini-k">Team leadership</div>
+              <h3 style="margin:0 0 6px;font-size:16px">Strengths-first planning</h3>
+              <ul>
+                <li>Assigned ownership by discipline (program/design/art/QA) and created clear handoff points.</li>
+                <li>Kept the “experience goal” as the anchor for decisions (companionship → farewell).</li>
+                <li>Protected scope by prioritizing: sound interactions, Robot companionship, reactor arc.</li>
+              </ul>
+            </div>
+            <div class="box">
+              <div class="mini-k">Execution</div>
+              <h3 style="margin:0 0 6px;font-size:16px">Milestones + communication</h3>
+              <ul>
+                <li>Ran check-ins and ensured blockers were surfaced early.</li>
+                <li>Tracked deliverables (assets, sequences, UI) against deadlines.</li>
+                <li>Supported QA pass + iteration cycles to keep play feel coherent.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="loop" class="section">
+          <div class="section-header-eyebrow">03 • How it plays</div>
+          <h2>Core Loop</h2>
+          <p class="section-sub">
+            Explore a silent space → make sounds → Robot records/replays → environment reacts → progress toward reactors.
+          </p>
+
+          <div class="card-grid">
+            <div class="mini-card">
+              <div class="mini-k">01</div>
+              <h3>Explore</h3>
+              <p>Move through rotted machine ruins and polluted terrain, searching for interactables and pathways.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">02</div>
+              <h3>Create sound</h3>
+              <p>Walk/roll/bump objects to trigger unique sounds from the environment.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">03</div>
+              <h3>Record & replay</h3>
+              <p>The Robot stores sounds, then replays the last recorded sound to trigger “magic events.”</p>
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top:12px">
+            <strong>Progression spine:</strong><br/>
+            Travel across the wasteland and shut down remaining reactors—each shutdown cleans the world a little more, leading to the final summit.
+          </div>
+        </section>
+
+        <section id="mechanics" class="section">
+          <div class="section-header-eyebrow">04 • Mechanics</div>
+          <h2>Core Mechanics</h2>
+          <p class="section-sub">Movement and sound are the language of play—puzzles and story beats are solved through interactions that produce and re-use sound.</p>
+
+          <div class="feature">
+            <div class="box">
+              <div class="mini-k">Player</div>
+              <h3 style="margin:0 0 6px;font-size:16px">Walk • Roll • Bump</h3>
+              <ul>
+                <li><strong>Walking:</strong> slower, freely steerable.</li>
+                <li><strong>Rolling:</strong> faster, limited steering while in motion; impacts trigger sound interactions.</li>
+                <li><strong>Bumping:</strong> colliding with objects emits sounds that the Robot can record.</li>
+              </ul>
+            </div>
+            <div class="box">
+              <div class="mini-k">Environment</div>
+              <h3 style="margin:0 0 6px;font-size:16px">Sound emitters & listeners</h3>
+              <ul>
+                <li><strong>Emitters:</strong> objects that produce distinct sounds when hit.</li>
+                <li><strong>Listeners:</strong> objects that react to specific sounds (unlock, wind, growth, break obstacles).</li>
+                <li><strong>Mud/pollution:</strong> muffles hearing and slows the player if it builds up; Robot helps cleanse.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="narrative" class="section">
+          <div class="section-header-eyebrow">05 • Story structure</div>
+          <h2>Narrative Sequences</h2>
+          <p class="section-sub">Three sequences: Encounter → Companionship → Summit farewell.</p>
+
+          <div class="card-grid">
+            <div class="mini-card">
+              <div class="mini-k">Sequence 1</div>
+              <h3>Beginning — Our Encounter</h3>
+              <p>Birth in the swamp → you bump the sleeping Robot → it records your sounds → you escape the well and see the giant reactor.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Sequence 2</div>
+              <h3>Middle — Time Together</h3>
+              <p>Explore + create powerful sounds → Robot cleanses pollution → separation + fear → reunion at a reactor → first rain since the apocalypse.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Sequence 3</div>
+              <h3>End — To the Summit</h3>
+              <p>World cleans as reactors shut down → realize Robot’s fate → final reactor at the peak → archive of small shared moments → rebirth begins.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="systems" class="section">
+          <div class="section-header-eyebrow">06 • Implementation notes</div>
+          <h2>Systems & AI</h2>
+          <p class="section-sub">Core systems that support companionship and sound-driven puzzle solving.</p>
+
+          <div class="feature">
+            <div class="box">
+              <div class="mini-k">Robot AI</div>
+              <h3 style="margin:0 0 6px;font-size:16px">Follow • Record • Emit</h3>
+              <ul>
+                <li><strong>Pathfinding:</strong> follows the player using simple NavMesh logic.</li>
+                <li><strong>Recording radius:</strong> stores sounds emitted nearby into a sound inventory.</li>
+                <li><strong>Playback:</strong> bumping the Robot causes it to emit the last recorded sound.</li>
+                <li><strong>Progress lights:</strong> Robot indicators light up at major checkpoints.</li>
+              </ul>
+            </div>
+            <div class="box">
+              <div class="mini-k">World feedback</div>
+              <h3 style="margin:0 0 6px;font-size:16px">Pollution → clarity</h3>
+              <ul>
+                <li><strong>Mud buildup:</strong> muffles hearing and narrows sight as it accumulates.</li>
+                <li><strong>Cleansing beats:</strong> narrative moments and Robot care restore clarity.</li>
+                <li><strong>Reactor shutdown:</strong> each shutdown cleans the environment and changes ambience.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="media-grid">
+            <figure>
+              <img src="../assets/oruu-state-diagram.jpg" alt="Player state diagram (slot)">
+              <figcaption>Player animation/state diagram (slot). <div class="media-meta">Walking ↔ Rolling</div></figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/oruu-ui-wireframes.jpg" alt="UI wireframes (slot)">
+              <figcaption>UI wireframes (slot). <div class="media-meta">Title / settings / credits</div></figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/oruu-world-shot.jpg" alt="World shot (slot)">
+              <figcaption>World + reactor mood shot (slot). <div class="media-meta">Silence → sound</div></figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="controls" class="section">
+          <div class="section-header-eyebrow">07 • Controls</div>
+          <h2>Controls</h2>
+          <p class="section-sub">Simple inputs so players can focus on sound, companionship, and exploration.</p>
+
+          <div class="card-grid">
+            <div class="mini-card">
+              <div class="mini-k">Movement</div>
+              <h3>WASD</h3>
+              <p>Move the creature around the world.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Rolling</div>
+              <h3>Hold Shift</h3>
+              <p>Switch to rolling state for speed and impact interactions.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Interaction</div>
+              <h3>Bump / collide</h3>
+              <p>Trigger emitters, record sounds, and cause Robot playback.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="gallery" class="section">
+          <div class="section-header-eyebrow">08 • Media</div>
+          <h2>Media Gallery</h2>
+          <p class="section-sub">Add screenshots and short clips from each sequence.</p>
+
+          <div class="media-grid">
+            <figure><img src="../assets/oruu-01.jpg" alt=""><figcaption>Sequence 1 — The well (slot). <div class="media-meta">Encounter</div></figcaption></figure>
+            <figure><img src="../assets/oruu-02.jpg" alt=""><figcaption>Robot companionship (slot). <div class="media-meta">Care</div></figcaption></figure>
+            <figure><img src="../assets/oruu-03.jpg" alt=""><figcaption>Reactor shutdown + rain (slot). <div class="media-meta">Change</div></figcaption></figure>
+            <figure><video src="../assets/oruu-04.mp4" controls></video><figcaption>Sound puzzle clip (slot). <div class="media-meta">Record / replay</div></figcaption></figure>
+            <figure><img src="../assets/oruu-05.jpg" alt=""><figcaption>Summit journey (slot). <div class="media-meta">Resolve</div></figcaption></figure>
+            <figure><img src="../assets/oruu-06.jpg" alt=""><figcaption>Farewell moment (slot). <div class="media-meta">Letting go</div></figcaption></figure>
+          </div>
+        </section>
+
+        <section id="takeaways" class="section">
+          <div class="section-header-eyebrow">09 • Reflection</div>
+          <h2>Takeaways</h2>
+
+          <div class="card-grid">
+            <div class="mini-card">
+              <div class="mini-k">Production</div>
+              <h3>Experience goal keeps scope sane</h3>
+              <p>When scope pressure hit, we anchored decisions to companionship → farewell, and cut anything that didn’t serve it.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Design</div>
+              <h3>Sound as a puzzle language</h3>
+              <p>Emitters/listeners + Robot playback turns exploration into discovery without heavy UI complexity.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Emotional arc</div>
+              <h3>Mechanics support meaning</h3>
+              <p>The Robot’s care and energy cost makes the ending feel earned rather than sudden.</p>
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top:12px">
+            <strong>Next improvements:</strong><br/>
+            Tune “pollution muffling” readability, polish VFX for “sound recorded,” and strengthen the summit archive moment with clearer audio callbacks.
+          </div>
+
+          <div style="display:flex;justify-content:space-between;gap:12px;margin-top:18px;flex-wrap:wrap">
+            <a class="btn btn-ghost" href="../index.html#projects">← Back to Projects</a>
+            <a class="btn btn-primary" href="high-road.html">Next: High Road →</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <button id="toTop" aria-label="Back to top">▲</button>
+</div>
+
+<script>
+/* Progress bar */
+const progress=document.getElementById('progress');
+window.addEventListener('scroll', ()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+  progress.style.width = pct + '%';
+});
+
+/* Highlight active section in sidebar */
+const links=[...document.querySelectorAll('#toc a')];
+const sections=links.map(a=>document.querySelector(a.getAttribute('href')));
+const opt={rootMargin:'-40% 0px -50% 0px',threshold:0};
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    const i=sections.indexOf(e.target);
+    if(i>=0) links[i].classList.toggle('active', e.isIntersecting);
+  });
+},opt);
+sections.forEach(s=>s && io.observe(s));
+
+/* Back to top */
+const toTop=document.getElementById('toTop');
+window.addEventListener('scroll', ()=>toTop.classList.toggle('show', window.scrollY>800));
+toTop.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+
+</body>
+</html>
