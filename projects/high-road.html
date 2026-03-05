@@ -22,7 +22,7 @@ html{scroll-behavior:smooth}
 body{
   margin:0; color:var(--ink);
   font:400 16px/1.65 Inter,system-ui,Segoe UI,Roboto;
-  background:#000 url('../Wallpaper.png') center/cover fixed no-repeat; overflow-x:hidden;
+  background:#000 url('../Wallpaper.png') center/cover fixed no-repeat;
 }
 a{color:inherit}
 .overlay{position:fixed; inset:0; background:rgba(10,10,12,.62); z-index:0}
@@ -179,7 +179,7 @@ h1{
 
 /* Feature rows */
 .feature{
-  display:grid; grid-template-columns: 1fr; gap:16px; margin-top:14px;
+  display:grid; grid-template-columns: 1.05fr .95fr; gap:16px; margin-top:14px;
   align-items:start;
 }
 @media (max-width:900px){ .feature{grid-template-columns:1fr} }
@@ -470,6 +470,17 @@ code{
               <p class="small" style="margin-top:10px">This became a core mechanic after Week 6 feedback favoring freedom + less linearity in a reflective game.</p>
             </div>
 
+            <div class="box" id="pitch">
+              <div class="mini-k">Audio log</div>
+              <h3 style="margin:0 0 6px;font-size:16px">Week VI pitch (slot)</h3>
+              <div class="audio" style="margin-top:10px">
+                <div class="label">Add your file at <code>../assets/New Recording 192.m4a</code> (or rename below)</div>
+                <audio controls preload="metadata">
+                  <source src="../assets/New Recording 192.m4a" type="audio/mp4">
+                  Your browser does not support the audio element.
+                </audio>
+                <p class="small" style="margin:10px 0 0">Tip: export as <code>.mp3</code> for widest browser support.</p>
+              </div>
             </div>
           </div>
         </section>
