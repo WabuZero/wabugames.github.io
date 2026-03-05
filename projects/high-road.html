@@ -20,6 +20,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
+  overflow-x:hidden;
   margin:0; color:var(--ink);
   font:400 16px/1.65 Inter,system-ui,Segoe UI,Roboto;
   background:#000 url('../Wallpaper.png') center/cover fixed no-repeat;
@@ -138,7 +139,7 @@ h1{
   border:1px solid rgba(255,255,255,.03);
   box-shadow:var(--shadow);
   position:relative;
-  overflow:hidden;
+  overflow:clip;
 }
 .section::before{
   content:"";
@@ -205,7 +206,7 @@ h1{
   background:rgba(12,12,18,.92);
   border:1px solid rgba(255,255,255,.06);
   position:relative;
-  overflow:hidden;
+  overflow:clip;
 }
 .route::before{
   content:"";
@@ -237,7 +238,7 @@ h1{
   display:grid; gap:14px; grid-template-columns:repeat(3,1fr); margin-top:16px
 }
 .media-grid figure{
-  margin:0; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+  margin:0; border:1px solid var(--line); border-radius:14px; overflow:clip;
   background:radial-gradient(circle at 0 0, #181824, #050508);
 }
 .media-grid img, .media-grid video{
@@ -256,7 +257,7 @@ h1{
 /* Embedded audio */
 .audio{
   border-radius:16px;
-  overflow:hidden;
+  overflow:clip;
   border:1px solid rgba(255,255,255,.10);
   background:rgba(0,0,0,.28);
   padding:14px;
@@ -355,9 +356,9 @@ code{
           </div>
 
           <div class="cta-row">
-            <a class="btn btn-primary" href="https://wabuzero.itch.io/high-road" target="_blank" rel="noopener">Playable build →</a>
-            
-            <a class="btn btn-soft" href="https://adaptable-radius-84c.notion.site/Game-I-High-Road-13c927cda10680f59936f2face654c71" target="_blank" rel="noopener">Ideation →</a>
+            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Playable build (add link) →</a>
+            <a class="btn btn-ghost" href="#pitch">Audio pitch →</a>
+            <a class="btn btn-soft" href="#routes">Desire vs Doubt →</a>
           </div>
 
           <p class="small" style="margin-top:10px">
@@ -470,6 +471,17 @@ code{
               <p class="small" style="margin-top:10px">This became a core mechanic after Week 6 feedback favoring freedom + less linearity in a reflective game.</p>
             </div>
 
+            <div class="box" id="pitch">
+              <div class="mini-k">Audio log</div>
+              <h3 style="margin:0 0 6px;font-size:16px">Week VI pitch (slot)</h3>
+              <div class="audio" style="margin-top:10px">
+                <div class="label">Add your file at <code>../assets/New Recording 192.m4a</code> (or rename below)</div>
+                <audio controls preload="metadata">
+                  <source src="../assets/New Recording 192.m4a" type="audio/mp4">
+                  Your browser does not support the audio element.
+                </audio>
+                <p class="small" style="margin:10px 0 0">Tip: export as <code>.mp3</code> for widest browser support.</p>
+              </div>
             </div>
           </div>
         </section>
@@ -510,15 +522,15 @@ code{
           </div>
 
           <div class="media-grid">
-            <figure>
+            <figure class="tall">
               <img src="../assets/high-road-desire.jpg" alt="Desire route (slot)">
               <figcaption>Desire route visuals (slot). <div class="media-meta">Fast, shiny, risky</div></figcaption>
             </figure>
-            <figure>
+            <figure class="tall">
               <img src="../assets/high-road-doubt.jpg" alt="Doubt route (slot)">
               <figcaption>Doubt route visuals (slot). <div class="media-meta">Stable, quiet, persistent</div></figcaption>
             </figure>
-            <figure>
+            <figure class="tall">
               <video src="../assets/high-road-branching.mp4" controls></video>
               <figcaption>Branch decision moment (slot). <div class="media-meta">Choice point</div></figcaption>
             </figure>
