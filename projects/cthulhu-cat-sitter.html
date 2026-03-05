@@ -537,6 +537,28 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
   /* media tiles slightly taller on phones */
   .media-grid img, .media-grid video{ height:220px; }
 }
+
+/* Collapsible card (Strife style) */
+.collapsible-card{margin-top:14px;padding:16px;}
+.collapsible-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:pointer;
+}
+.collapse-btn{
+width:34px;
+height:34px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,.12);
+background:transparent;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+.collapsible-content{margin-top:12px;display:none;}
+.collapsible-card.open .collapsible-content{display:block;}
+
 </style>
 </head>
 
@@ -678,8 +700,18 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
                 problem-solving feel immersive in VR as well as readable on PC.
               </p>
               <hr class="sep">
-              <details style="margin-top:10px"><summary style="cursor:pointer;font-weight:700;">Target vibe</summary><p style="margin-top:8px">
-                Suburban normality with cosmic dread underneath: the house is a mask, and the trials are the truth.</p></details>
+              
+<div class="card collapsible-card">
+  <div class="collapsible-header">
+    <h3 style="margin:0">Target vibe</h3>
+    <button class="collapse-btn">+</button>
+  </div>
+  <div class="collapsible-content">
+    <p>
+                Suburban normality with cosmic dread underneath: the house is a mask, and the trials are the truth.</p>
+  </div>
+</div>
+
             </div>
 
             <div>
@@ -933,40 +965,46 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
         
 
         <!-- ART + SOUND -->
-        <section id="audiovisual" class="section">
-          <div class="section-header-eyebrow">08 • Feel + identity</div>
-          <h2>Art & Sound Direction</h2>
+        
+<section id="audiovisual" class="section">
+  <div class="section-header-eyebrow">08 • Feel + identity</div>
+  <h2>Art Direction</h2>
 
-          <div class="media-grid">
-            <figure><img src="../assets/ps1-filter-process.jpg" alt="PS1 filter process"><figcaption>PS1 filter development process.</figcaption></figure>
-            <figure><img src="../assets/ps1-filter-before.jpg" alt="Before filter"><figcaption>Before applying the PS1 filter.</figcaption></figure>
-            <figure><img src="../assets/ps1-filter-after.jpg" alt="After filter"><figcaption>After applying the PS1 filter aesthetic.</figcaption></figure>
-          </div>
+  <p class="section-sub">
+    The visual direction intentionally mimics early PlayStation horror titles.
+    A custom PS1-style filter was implemented to introduce texture warping,
+    colour banding, and slight instability that reinforces analogue horror aesthetics.
+  </p>
 
-          <div class="loop-grid">
-            <div class="card">
-              <h3>Art direction</h3>
-              <ul>
-                <li><strong>PS1-style 3D:</strong> low-poly models + low-res textures for indie horror authenticity.</li>
-                <li><strong>Setting:</strong> modern American suburb, colonial house + impossible spaces.</li>
-                <li><strong>Character philosophy:</strong> player model is simple; randomized textures imply many sitters before you.</li>
-                <li><strong>Cthulhu:</strong> suited “human scale” form + abstract “true form” (eyes/tentacles in darkness).</li>
-                <li><strong>The cat:</strong> “Tinkle the Furrbidden One” — larger than normal, split mandible jaw, teeth.</li>
-              </ul>
-            </div>
+  <div class="card">
+    <h3>Art philosophy</h3>
+    <ul>
+      <li><strong>PS1-style 3D:</strong> low‑poly models + low‑resolution textures.</li>
+      <li><strong>Setting:</strong> American suburban colonial house that slowly reveals impossible spaces.</li>
+      <li><strong>Player representation:</strong> simple model; randomized textures imply many previous sitters.</li>
+      <li><strong>Cthulhu:</strong> appears human-scale in a suit before revealing an abstract cosmic form.</li>
+      <li><strong>The cat:</strong> “Tinkle the Furrbidden One” — oversized with a split mandible and abnormal teeth.</li>
+    </ul>
+  </div>
 
-            <div class="card">
-              <h3>Sound direction</h3>
-              <ul>
-                <li><strong>Tape compression</strong> on most audio to support analogue horror.</li>
-                <li><strong>House ambience:</strong> clock ticks, floor creaks, water, hum, record player (sometimes).</li>
-                <li><strong>Outside pressure:</strong> knocks, footsteps, twigs, window rustling, lock fumbling.</li>
-                <li><strong>Horror palette:</strong> silence, sudden stings, bass tones → white noise (bad ending).</li>
-                <li><strong>Speech style:</strong> Undertale-like “talk” SFX, unique per Cthulhu form.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+  <div class="media-grid">
+    <figure>
+      <img src="../assets/ps1-filter-process.jpg" alt="PS1 filter process">
+      <figcaption>PS1 filter implementation process.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="../assets/ps1-filter-before.jpg" alt="Before filter">
+      <figcaption>Scene before applying the PS1 filter.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="../assets/ps1-filter-after.jpg" alt="After filter">
+      <figcaption>Scene after the PS1‑inspired rendering pass.</figcaption>
+    </figure>
+  </div>
+</section>
+
 
         
 
@@ -1063,6 +1101,13 @@ function updateProgress(){
 }
 window.addEventListener('scroll', updateProgress, {passive:true});
 updateProgress();
+
+document.querySelectorAll('.collapsible-header').forEach(header=>{
+  header.addEventListener('click',()=>{
+    header.parentElement.classList.toggle('open');
+  });
+});
+
 </script>
 
 </body>
