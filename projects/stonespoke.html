@@ -202,7 +202,7 @@ h1{
 .media-grid img, .media-grid video{
   width:100%; height:220px; object-fit:cover; display:block;
 }
-.media-grid .tall img, .media-grid .tall video{height:320px}
+.media-grid .tall img, .media-grid .tall video{height:220px}
 .media-grid figcaption{
   padding:8px 10px 10px; font-size:13px; color:var(--muted); border-top:1px solid var(--line)
 }
@@ -275,6 +275,33 @@ code{
   padding:2px 6px;
   border-radius:8px;
 }
+
+/* Collapsible cards */
+.collapsible-card{position:relative;}
+.collapsible-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:pointer;
+}
+.collapse-btn{
+width:34px;
+height:34px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,.12);
+background:transparent;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+.collapsible-content{display:none;margin-top:6px;}
+.collapsible-card.open .collapsible-content{display:block;}
+.collapsible-card.open .collapse-btn{
+border-color:rgba(255,127,50,.6);
+background:rgba(255,127,50,.12);
+color:var(--brand);
+}
+
 </style>
 </head>
 
@@ -316,11 +343,12 @@ code{
             <span class="pill">Team Project</span>
           </div>
 
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Playable build (add link) →</a>
-            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Trailer / clip (add link) →</a>
-            <a class="btn btn-soft" href="#inspo">Inspiration →</a>
-          </div>
+          
+<div class="cta-row">
+  <a class="btn btn-primary" href="https://wabuzero.itch.io/stonespoke" target="_blank" rel="noopener">Playable build →</a>
+  <a class="btn btn-soft" href="#inspo">Ideation →</a>
+</div>
+
 
           <p class="small" style="margin-top:10px">
             Replace the hero image at <code>../assets/stonespoke-hero.jpg</code>. Add screenshots/GIFs/videos into the slots below.
@@ -469,21 +497,46 @@ code{
           </div>
 
           <div class="card-grid">
-            <div class="mini-card">
-              <div class="mini-k">Feedback</div>
-              <h3>Readable confirmation</h3>
-              <p>Wrong steps communicate “not that” without punishing the player (sound, light, reset rules).</p>
+
+            <div class="mini-card collapsible-card">
+              <div class="collapsible-header">
+                <div>
+                  <div class="mini-k">Feedback</div>
+                  <h3 style="margin:0">Readable confirmation</h3>
+                </div>
+                <button class="collapse-btn">+</button>
+              </div>
+              <div class="collapsible-content">
+                <p>Wrong steps communicate “not that” without punishing the player (sound, light, reset rules).</p>
+              </div>
             </div>
-            <div class="mini-card">
-              <div class="mini-k">Difficulty</div>
-              <h3>Natural ramp</h3>
-              <p>Start with clear associations, then introduce ambiguous or multi-step metaphors.</p>
+
+            <div class="mini-card collapsible-card">
+              <div class="collapsible-header">
+                <div>
+                  <div class="mini-k">Difficulty</div>
+                  <h3 style="margin:0">Natural ramp</h3>
+                </div>
+                <button class="collapse-btn">+</button>
+              </div>
+              <div class="collapsible-content">
+                <p>Start with clear associations, then introduce ambiguous or multi-step metaphors.</p>
+              </div>
             </div>
-            <div class="mini-card">
-              <div class="mini-k">Flow</div>
-              <h3>Short loops</h3>
-              <p>Listen → try → learn repeats quickly so players stay in the vibe.</p>
+
+            <div class="mini-card collapsible-card">
+              <div class="collapsible-header">
+                <div>
+                  <div class="mini-k">Flow</div>
+                  <h3 style="margin:0">Short loops</h3>
+                </div>
+                <button class="collapse-btn">+</button>
+              </div>
+              <div class="collapsible-content">
+                <p>Listen → try → learn repeats quickly so players stay in the vibe.</p>
+              </div>
             </div>
+
           </div>
         </section>
 
@@ -628,6 +681,20 @@ sections.forEach(s=>s && io.observe(s));
 const toTop=document.getElementById('toTop');
 window.addEventListener('scroll', ()=>toTop.classList.toggle('show', window.scrollY>800));
 toTop.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+document.querySelectorAll('.collapsible-header').forEach(header=>{
+  const btn = header.querySelector('.collapse-btn');
+  header.addEventListener('click',()=>{
+    const card = header.parentElement;
+    card.classList.toggle('open');
+    if(card.classList.contains('open')){
+      btn.textContent = "−";
+    } else {
+      btn.textContent = "+";
+    }
+  });
+});
+
 </script>
 
 </body>
