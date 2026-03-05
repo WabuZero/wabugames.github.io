@@ -276,6 +276,40 @@ code{
   padding:2px 6px;
   border-radius:8px;
 }
+
+/* --- FIX: Overview media height to match other sections --- */
+#overview .media-grid img,
+#overview .media-grid video{
+  height:220px !important;
+}
+
+/* --- Collapsible style (orange like other pages) --- */
+.collapsible{
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  background:rgba(255,127,50,.10);
+  border:1px solid rgba(255,127,50,.28);
+  padding:12px 14px;
+  border-radius:14px;
+  font-weight:800;
+  color:#ffd3b8;
+  margin-top:6px;
+}
+
+.collapsible .icon{font-size:18px}
+
+.collapsible-content{
+  display:none;
+  margin-top:10px;
+}
+
+.collapsible.active + .collapsible-content{
+  display:block;
+}
+
 </style>
 </head>
 
@@ -393,8 +427,14 @@ code{
           <!-- ✅ CHANGED: single column layout + removed the image-slots box -->
           <div class="feature" style="grid-template-columns:1fr">
             <div class="box">
-              <div class="mini-k">Why this remake exists</div>
-              <h3 style="margin:0 0 6px;font-size:16px">Make the demo worthy of becoming a full game</h3>
+              
+<button class="collapsible">
+Why this remake exists
+<span class="icon">+</span>
+</button>
+<div class="collapsible-content">
+<h3 style="margin:0 0 6px;font-size:16px">Make the demo worthy of becoming a full game</h3>
+
               <ul>
                 <li>Combat and AI were <strong>good enough</strong> for prototype, but not for the fantasy.</li>
                 <li>I wanted a story that can actually <strong>lead somewhere</strong>—with clearer intent.</li>
@@ -408,7 +448,7 @@ code{
                 combat variety, smarter enemies, and a clearer narrative direction for a potential full game.
               </div>
             </div>
-          </div>
+</div>
 
           <div class="media-grid">
             <figure class="tall">
@@ -470,7 +510,7 @@ code{
               <h3>Progression with meaning</h3>
               <p>Marks & Mastery reward commitment; Darkos asks whether power is worth the cost.</p>
             </div>
-          </div>
+</div>
 
           <div class="media-grid">
             <figure><img src="../assets/mom-loop-1.jpg" alt=""><figcaption>World pacing / traversal shot (slot). <div class="media-meta">Pacing</div></figcaption></figure>
@@ -549,7 +589,7 @@ code{
 
           <div class="feature">
             <div class="box">
-              <div class="mini-k">Marks breakdown</div>
+              <div class="mini-k">Deep Dive</div>
               <h3 style="margin:0 0 6px;font-size:16px">Four mark types</h3>
               <ul>
                 <li><strong>Offence:</strong> ATK Up, Piercing Strikes, CRIT Up</li>
@@ -560,7 +600,7 @@ code{
             </div>
 
             <div class="box">
-              <div class="mini-k">Targeting clarity</div>
+              <div class="mini-k">Deep Dive</div>
               <h3 style="margin:0 0 6px;font-size:16px">Candidate → Locked feedback</h3>
               <ul>
                 <li>Candidate range inspired by Kingdom Hearts lock-on comfort.</li>
@@ -568,7 +608,7 @@ code{
                 <li>Sphere trigger ensures enemies drop candidacy when you leave range.</li>
               </ul>
             </div>
-          </div>
+</div>
 
           <div class="media-grid">
             <figure><img src="../assets/mom-sprint.gif" alt=""><figcaption>Sprinting (slot). <div class="media-meta">Flow</div></figcaption></figure>
@@ -652,6 +692,17 @@ sections.forEach(s=>s && io.observe(s));
 const toTop=document.getElementById('toTop');
 window.addEventListener('scroll', ()=>toTop.classList.toggle('show', window.scrollY>800));
 toTop.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+
+
+<script>
+document.querySelectorAll(".collapsible").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    btn.classList.toggle("active")
+    const icon=btn.querySelector(".icon")
+    icon.textContent = btn.classList.contains("active") ? "-" : "+"
+  })
+})
 </script>
 
 </body>
