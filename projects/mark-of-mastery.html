@@ -283,36 +283,22 @@ code{
   height:220px !important;
 }
 
-
-/* Collapsible style (neutral like other cards) */
+/* --- Collapsible style (orange like other pages) --- */
 .collapsible{
   cursor:pointer;
   display:flex;
   justify-content:space-between;
   align-items:center;
   width:100%;
-  background:rgba(12,12,18,.92);
-  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,127,50,.10);
+  border:1px solid rgba(255,127,50,.28);
   padding:12px 14px;
   border-radius:14px;
   font-weight:800;
-  color:#e8e8ee;
+  color:#ffd3b8;
   margin-top:6px;
 }
 
-.collapsible .icon{
-  font-size:18px;
-  opacity:.8;
-}
-
-.collapsible-content{
-  display:none;
-  margin-top:10px;
-}
-
-.collapsible.active + .collapsible-content{
-  display:block;
-}
 .collapsible .icon{font-size:18px}
 
 .collapsible-content{
@@ -322,6 +308,22 @@ code{
 
 .collapsible.active + .collapsible-content{
   display:block;
+}
+
+
+/* Keep collapsible looking like normal content inside the box */
+.collapsible{
+  all:unset;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  cursor:pointer;
+}
+
+.collapsible .icon{
+  font-weight:800;
+  font-size:18px;
 }
 
 </style>
@@ -603,40 +605,48 @@ Why this remake exists
             </div>
           </div>
 
-          <div class="feature">
-            <div class="box">
-              
-<button class="collapsible">
-Deep Dive — Four Mark Types
-<span class="icon">+</span>
-</button>
-<div class="collapsible-content">
-<h3 style="margin:0 0 6px;font-size:16px">Four mark types</h3>
+          
+<div class="feature">
 
-              <ul>
-                <li><strong>Offence:</strong> ATK Up, Piercing Strikes, CRIT Up</li>
-                <li><strong>Defence:</strong> DEF Up, Increased Parry Window, Last Chance</li>
-                <li><strong>Vitality:</strong> HP Up, Healing Efficiency, Siphon</li>
-                <li><strong>Darkos:</strong> Diminished Life Drain, Resilience, Controlled Power</li>
-              </ul>
-            </div>
+  <div class="box">
+    <button class="collapsible">
+      <div>
+        <div class="mini-k">Deep Dive</div>
+        <h3 style="margin:0;font-size:16px">Four mark types</h3>
+      </div>
+      <span class="icon">+</span>
+    </button>
 
-            <div class="box">
-              
-<button class="collapsible">
-Deep Dive — Candidate → Locked Feedback
-<span class="icon">+</span>
-</button>
-<div class="collapsible-content">
-<h3 style="margin:0 0 6px;font-size:16px">Candidate → Locked feedback</h3>
+    <div class="collapsible-content">
+      <ul>
+        <li><strong>Offence:</strong> ATK Up, Piercing Strikes, CRIT Up</li>
+        <li><strong>Defence:</strong> DEF Up, Increased Parry Window, Last Chance</li>
+        <li><strong>Vitality:</strong> HP Up, Healing Efficiency, Siphon</li>
+        <li><strong>Darkos:</strong> Diminished Life Drain, Resilience, Controlled Power</li>
+      </ul>
+    </div>
+  </div>
 
-              <ul>
-                <li>Candidate range inspired by Kingdom Hearts lock-on comfort.</li>
-                <li>Healthbar communicates state (no camera-jump surprises).</li>
-                <li>Sphere trigger ensures enemies drop candidacy when you leave range.</li>
-              </ul>
-            </div>
+  <div class="box">
+    <button class="collapsible">
+      <div>
+        <div class="mini-k">Deep Dive</div>
+        <h3 style="margin:0;font-size:16px">Candidate → Locked feedback</h3>
+      </div>
+      <span class="icon">+</span>
+    </button>
+
+    <div class="collapsible-content">
+      <ul>
+        <li>Candidate range inspired by Kingdom Hearts lock-on comfort.</li>
+        <li>Healthbar communicates state (no camera-jump surprises).</li>
+        <li>Sphere trigger ensures enemies drop candidacy when you leave range.</li>
+      </ul>
+    </div>
+  </div>
+
 </div>
+
 
           <div class="media-grid">
             <figure><img src="../assets/mom-sprint.gif" alt=""><figcaption>Sprinting (slot). <div class="media-meta">Flow</div></figcaption></figure>
