@@ -1241,3 +1241,1246 @@ document.querySelectorAll('details').forEach(d => d.open = false);
 </script>
 </body>
 </html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Strife &amp; Serenity — Prologue Case Study | Wabu Games</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;family=Playfair+Display:wght@600;800&amp;display=swap" rel="stylesheet"/>
+<link href="../assets/site.css?v=1" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0b0b0e;
+  --panel:rgba(15,15,18,.86);
+  --panel2:rgba(10,10,14,.92);
+  --ink:#ececf2;
+  --muted:#a7a7b3;
+  --muted2:#8a8a96;
+
+  --brand:#ff7f32;        /* orange */
+  --purple:#8c68ff;       /* purple for progress gradient */
+
+  --line:rgba(255,255,255,.08);
+  --max:1180px;
+  --r:18px;
+  --shadow:0 18px 44px rgba(0,0,0,.55);
+  --shadow2:0 12px 26px rgba(0,0,0,.42);
+  --glass:blur(10px) saturate(125%);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--ink);
+  font:400 16px/1.65 Inter,system-ui,Segoe UI,Roboto;
+  background:#000 url('../Wallpaper.png') center/cover fixed no-repeat;
+}
+a{color:inherit}
+.overlay{
+  position:fixed; inset:0;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255,127,50,.20), transparent 48%),
+    radial-gradient(circle at 85% 12%, rgba(140,104,255,.18), transparent 50%),
+    rgba(8,8,10,.64);
+  z-index:0;
+}
+.page{position:relative; z-index:1}
+
+/* Top progress bar */
+#progress{
+  position:fixed; left:0; top:0; height:3px; width:0%;
+  background:linear-gradient(90deg, var(--brand), var(--purple));
+  z-index:999;
+  box-shadow:0 8px 22px rgba(0,0,0,.55);
+}
+
+/* Top nav */
+nav{
+  position:sticky; top:0; z-index:50; height:64px;
+  backdrop-filter:var(--glass);
+  background:rgba(10,10,13,.72);
+  border-bottom:1px solid var(--line);
+}
+.navwrap{
+  max-width:var(--max); margin:auto; height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 18px; gap:14px;
+}
+.brand{
+  display:flex; align-items:center; gap:12px;
+  font-weight:900; letter-spacing:.02em;
+}
+.brand .title{color:#fff}
+.brand .pipe{opacity:.5}
+.brand .sub{color:var(--muted); font-weight:750; font-size:12px; text-transform:uppercase; letter-spacing:.14em}
+
+.navlinks{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+.navlinks a{
+  color:var(--muted);
+  text-decoration:none; font-weight:750;
+  padding:8px 10px; border-radius:12px;
+  border:1px solid transparent;
+}
+.navlinks a:hover{
+  color:var(--ink);
+  background:rgba(255,127,50,.08);
+  border-color:rgba(255,127,50,.18);
+}
+
+/* HERO */
+.hero{
+  position:relative; padding:76px 18px 42px;
+  border-bottom:1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(6,6,9,.92) 0%, rgba(6,6,9,.72) 42%, rgba(6,6,9,0) 100%),
+    url('../assets/strife-hero.jpg') center/cover no-repeat;
+}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255,127,50,.22), transparent 55%),
+    radial-gradient(circle at 90% 10%, rgba(140,104,255,.18), transparent 55%);
+  pointer-events:none;
+}
+.hero .inner{position:relative; z-index:1; max-width:var(--max); margin:auto}
+.kicker{
+  display:inline-flex; gap:10px; align-items:center;
+  color:var(--muted);
+  font-weight:900; letter-spacing:.16em; text-transform:uppercase;
+  font-size:11px;
+  margin-bottom:12px;
+}
+.kicker .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--brand);
+  box-shadow:0 0 0 6px rgba(255,127,50,.12);
+}
+h1{
+  font:800 50px/1.06 "Playfair Display",serif;
+  margin:0 0 12px;
+  color:#fff;
+  text-shadow:0 10px 26px rgba(0,0,0,.7);
+}
+.hero-sub{
+  display:grid;
+  grid-template-columns: 1.35fr .65fr;
+  gap:18px;
+  align-items:start;
+}
+@media (max-width:980px){ .hero-sub{grid-template-columns:1fr} }
+
+.deck{
+  color:#f1f1f6;
+  max-width:760px;
+  margin:6px 0 0;
+  font-size:18px;
+}
+.meta{
+  display:flex; flex-wrap:wrap; gap:10px;
+  margin:16px 0 4px;
+}
+.pill{
+  border:1px solid var(--line);
+  background:rgba(18,18,22,.72);
+  color:var(--muted);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:13px;
+  box-shadow:0 8px 18px rgba(0,0,0,.25);
+}
+.pill strong{color:#fff}
+
+.hero-card{
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(8,8,12,.78);
+  border-radius:16px;
+  padding:14px 14px 12px;
+  box-shadow:var(--shadow2);
+}
+.hero-card h3{
+  margin:0 0 8px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:#ffd4b5;
+}
+.hero-facts{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+}
+.fact{
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(5,5,8,.78);
+}
+.fact-label{
+  text-transform:uppercase; letter-spacing:.12em;
+  font-size:11px; color:var(--muted); margin-bottom:4px;
+}
+.fact-value{font-weight:650; font-size:14px}
+
+/* CTA buttons */
+.cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 14px; border-radius:999px;
+  font-size:14px; font-weight:850; text-decoration:none;
+  border:1px solid transparent;
+  transition:transform .15s, filter .15s, background .15s;
+}
+.btn-primary{
+  background:var(--brand);
+  color:#101014;
+  box-shadow:0 16px 34px rgba(0,0,0,.55);
+}
+.btn-primary:hover{filter:brightness(1.05); transform:translateY(-1px)}
+.btn-ghost{
+  background:transparent;
+  color:var(--brand);
+  border-color:rgba(255,127,50,.70);
+}
+.btn-ghost:hover{background:rgba(255,127,50,.10); transform:translateY(-1px)}
+.btn-soft{
+  background:rgba(140,104,255,.12);
+  border:1px solid rgba(140,104,255,.32);
+  color:#efeaff;
+}
+.btn-soft:hover{background:rgba(140,104,255,.16); transform:translateY(-1px)}
+
+/* Layout */
+.wrap{max-width:var(--max); margin:auto; padding:26px 18px 70px}
+.grid{
+  display:grid;
+  grid-template-columns: 300px 1fr;
+  gap:24px;
+}
+@media (max-width:1060px){ .grid{grid-template-columns:1fr} }
+
+/* Sticky sidebar TOC */
+.toc{
+  position:sticky; top:86px; align-self:start;
+  background:rgba(12,12,16,.86);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  padding:14px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.toc::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 0 0, rgba(255,127,50,.20), transparent 55%),
+    radial-gradient(circle at 100% 0, rgba(140,104,255,.14), transparent 55%);
+  opacity:.6;
+  pointer-events:none;
+}
+.toc > *{position:relative; z-index:1}
+.toc h4{
+  margin:0 0 10px;
+  font-weight:950;
+  color:#ffd4b5;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:11px;
+}
+.toc a{
+  display:flex; align-items:center; gap:10px;
+  color:var(--muted);
+  text-decoration:none;
+  padding:9px 10px;
+  border-radius:12px;
+  font-weight:800;
+  font-size:13px;
+  border:1px solid transparent;
+}
+.toc a + a{margin-top:4px}
+.toc a:hover{
+  color:var(--ink);
+  background:rgba(255,127,50,.08);
+  border-color:rgba(255,127,50,.16);
+}
+.toc a.active{
+  color:var(--brand);
+  background:linear-gradient(90deg, rgba(255,127,50,.14), transparent);
+  border-color:rgba(255,127,50,.22);
+}
+
+/* Sections */
+.section{
+  background:var(--panel);
+  border-radius:var(--r);
+  padding:22px 22px 20px;
+  margin-bottom:22px;
+  border:1px solid rgba(255,255,255,.05);
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+  scroll-margin-top:90px;
+}
+.section::before{
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius:inherit;
+  border:1px solid transparent;
+  background:
+    radial-gradient(circle at 0 0, rgba(255,127,50,.26), transparent 55%),
+    radial-gradient(circle at 100% 0, rgba(140,104,255,.18), transparent 55%);
+  mix-blend-mode:screen;
+  opacity:.23;
+  pointer-events:none;
+}
+.section > *{position:relative; z-index:1}
+.section h2{
+  font:850 30px/1.16 "Playfair Display",serif;
+  margin:0 0 10px;
+  color:var(--brand);
+}
+.section-header-eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:11px;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.section-sub{color:var(--muted); font-size:14px; margin:0 0 12px}
+.lead{color:#dadbe6; font-size:18px; margin:10px 0 0}
+
+/* Modular content blocks */
+.cols{display:grid; gap:16px; grid-template-columns:1fr 1fr}
+@media (max-width:860px){ .cols{grid-template-columns:1fr} }
+
+.card{
+  background:rgba(10,10,14,.88);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:14px 14px 12px;
+  box-shadow:0 10px 22px rgba(0,0,0,.30);
+}
+.card h3{margin:0 0 8px; font-size:14px; letter-spacing:.02em}
+.card p{margin:0}
+.card ul{margin:8px 0 0; padding-left:18px; color:#d6d6e1}
+.card li{margin:6px 0}
+
+.callout{
+  background:rgba(255,127,50,.10);
+  border:1px solid rgba(255,127,50,.26);
+  padding:14px;
+  border-radius:16px;
+  color:#ffd3b8;
+  font-size:14px;
+}
+.callout strong{font-weight:900}
+
+.pullquote{
+  margin-top:12px;
+  padding:12px 14px 10px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(5,5,10,.88);
+  font-size:14px;
+  color:#f0e9ff;
+  font-style:italic;
+}
+.pullquote span{
+  display:block;
+  margin-top:6px;
+  font-size:12px;
+  color:var(--muted);
+  font-style:normal;
+}
+
+/* Skimmable highlight grid */
+.highlight-grid{
+  display:grid; gap:12px;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  margin-top:14px;
+}
+@media (max-width:980px){ .highlight-grid{grid-template-columns:repeat(2, minmax(0,1fr))} }
+@media (max-width:560px){ .highlight-grid{grid-template-columns:1fr} }
+
+.highlight{
+  background:rgba(12,12,18,.92);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;
+  padding:12px 12px 11px;
+}
+.highlight .k{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.highlight .v{
+  font-weight:900;
+  font-size:14px;
+}
+.highlight .n{
+  margin-top:6px;
+  font-size:13px;
+  color:#d6d6e1;
+}
+
+/* Media grid */
+.media-grid{
+  display:grid; gap:14px;
+  grid-template-columns:repeat(3,1fr);
+  margin-top:16px;
+}
+.media-grid figure{
+  margin:0;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  overflow:hidden;
+  background:radial-gradient(circle at 0 0, #1a1a24, #07070b);
+}
+.media-grid img, .media-grid video{
+  width:100%; height:200px;
+  object-fit:cover; display:block;
+  background:#0b0b10;
+}
+.media-grid figcaption{
+  padding:10px 12px 12px;
+  font-size:13px;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.media-meta{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  opacity:.75;
+  margin-top:4px;
+}
+@media (max-width:980px){ .media-grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:560px){ .media-grid{grid-template-columns:1fr} }
+
+/* Details */
+details{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(10,10,14,.72);
+  border-radius:16px;
+  padding:10px 12px;
+}
+details + details{margin-top:10px}
+summary{
+  cursor:pointer;
+  font-weight:900;
+  color:#fff;
+  list-style:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+summary::-webkit-details-marker{display:none}
+summary .sublabel{
+  color:var(--muted);
+  font-weight:850;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+}
+summary .chev{
+  width:30px; height:30px;
+  border-radius:10px;
+  display:grid; place-items:center;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+  color:var(--muted);
+  flex:0 0 auto;
+}
+details[open] summary .chev{
+  color:var(--brand);
+  border-color:rgba(255,127,50,.30);
+  background:rgba(255,127,50,.10)
+}
+.details-body{margin-top:10px; color:#d6d6e1; font-size:14px}
+.details-body ul{margin:8px 0 0; padding-left:18px}
+.details-body li{margin:6px 0}
+
+/* Core loop cards */
+.loop-grid{
+  display:grid; gap:12px;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  margin:14px 0 6px;
+}
+.loop-card{
+  border-radius:16px;
+  padding:12px 12px 12px;
+  background:rgba(10,10,14,.92);
+  border:1px solid rgba(255,255,255,.06);
+  font-size:13px;
+}
+.loop-step{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+.loop-title{font-weight:950; margin-bottom:6px; font-size:14px}
+.loop-card p{margin:0; color:#d6d6e1}
+@media (max-width:950px){ .loop-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:560px){ .loop-grid{grid-template-columns:1fr} }
+
+/* Systems */
+.system-grid{
+  display:grid; gap:12px;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  margin-top:10px;
+}
+.system-card{
+  border-radius:16px;
+  padding:12px 14px 12px;
+  background:rgba(10,10,14,.94);
+  border:1px solid rgba(255,255,255,.06);
+  font-size:14px;
+}
+.system-card h3{margin:0 0 6px; font-size:16px}
+.system-tag{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+@media (max-width:760px){ .system-grid{grid-template-columns:1fr} }
+
+/* Timeline */
+.timeline{
+  list-style:none; margin:12px 0 0; padding:0;
+  border-left:1px solid rgba(255,255,255,.14);
+}
+.timeline li{
+  padding:8px 0 10px 16px;
+  position:relative; font-size:14px;
+}
+.timeline li::before{
+  content:"";
+  width:9px; height:9px; border-radius:50%;
+  border:2px solid var(--brand);
+  background:#0b0b10;
+  position:absolute; left:-6px; top:14px;
+}
+.timeline-title{font-weight:900; margin-bottom:2px}
+.timeline-note{color:var(--muted); font-size:13px}
+
+/* Results */
+.results-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  margin-top:10px;
+}
+.results-grid h3{margin:0 0 6px; font-size:16px}
+.results-grid ul{margin:0; padding-left:18px; font-size:14px}
+@media (max-width:720px){ .results-grid{grid-template-columns:1fr} }
+
+/* Footer nav */
+.nextprev{
+  display:flex; justify-content:space-between; gap:12px; margin-top:18px;
+}
+.nextprev a{
+  text-decoration:none; color:#111;
+  background:var(--brand);
+  font-weight:900;
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,.12);
+}
+.nextprev a.ghost{
+  background:transparent;
+  color:var(--brand);
+  border:2px solid rgba(255,127,50,.75);
+}
+.nextprev a:hover{filter:brightness(1.05)}
+
+/* Back to top */
+#toTop{
+  position:fixed; right:18px; bottom:20px;
+  width:44px; height:44px;
+  display:grid; place-items:center;
+  border-radius:50%;
+  background:rgba(12,12,16,.90);
+  border:1px solid rgba(255,255,255,.10);
+  color:var(--ink);
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  opacity:0; pointer-events:none;
+  transition:opacity .2s, transform .2s;
+  z-index:60;
+}
+#toTop.show{opacity:1; pointer-events:auto}
+#toTop:hover{transform:translateY(-2px)}
+
+hr.sep{
+  border:none;
+  border-top:1px solid rgba(255,255,255,.10);
+  margin:14px 0;
+}
+.small{color:var(--muted); font-size:13px}
+
+
+/* ===== PATCH: remove accordion subtitles + unify collapsed header height ===== */
+.sublabel{display:none !important;}
+details summary{
+  min-height:72px;
+}
+details summary > div:first-child{
+  flex:1;
+  padding-right:10px;
+}
+
+
+
+/* --- Fix: make progress card titles bold --- */
+.card .label{
+  display:block;
+  font-weight:950;
+  letter-spacing:.01em;
+}
+
+/* --- Collapsible summaries: stack eyebrow + title --- */
+details summary > div:first-child{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+
+/* ===== Mobile: center header + hide section jump box ===== */
+@media (max-width: 720px){
+  .navwrap{flex-direction:column; align-items:center; justify-content:center; gap:10px; height:auto;}
+  .brand{flex-direction:column; align-items:center; text-align:left; gap:6px;}
+  .brand .pipe{display:none;}
+  .navlinks{width:100%; justify-content:center;}
+  .toc{display:none !important;}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div class="overlay"></div>
+<div class="page">
+<!-- NAV -->
+<nav>
+<div class="navwrap">
+<div class="brand">
+<span class="title">TOBI ADEFIDIYA</span>
+<span class="pipe">||</span>
+<span class="sub">GAME &amp; NARRATIVE DESIGNER</span>
+</div>
+<div class="navlinks">
+<a href="../index.html#projects">Projects</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#resume">Resume</a>
+</div>
+</div>
+</nav>
+<!-- HERO -->
+<header class="hero">
+<div class="inner">
+<div class="kicker"><span class="dot"></span> Prologue Case Study</div>
+<div class="hero-sub">
+<div>
+<h1>Strife &amp; Serenity — Prologue</h1>
+<p class="deck">
+            Strife &amp; Serenity was my Final Major Project for my Undergraduate program. An interactable story first, and game second. This slice I have labelled as a 'prologue' is a contained taster slice, a preview of a game I one day hope to release fully.
+          </p>
+<div class="meta">
+<span class="pill"><strong>Genre:</strong> Action RPG</span>
+<span class="pill"><strong>Engine:</strong> Unity</span>
+<span class="pill"><strong>Scope:</strong> Vertical Slice Prologue</span>
+<span class="pill"><strong>Role:</strong> Solo Dev — Systems &amp; Narrative</span>
+</div>
+<div class="cta-row">
+<a class="btn btn-primary" href="https://wabuzero.itch.io/strifeserenity" rel="noopener" target="_blank">
+              Play the current build on Itch →
+            </a>
+<a class="btn btn-ghost" href="https://wabugames.com" rel="noopener" target="_blank">
+              WabuGames.com →
+            </a>
+<a class="btn btn-soft" href="https://youtu.be/IO5IdwDOeGs?si=MIsgkhAkqTqxEj7_" rel="noopener" target="_blank">Watch documentary →</a>
+</div>
+</div>
+<aside aria-label="At-a-glance" class="hero-card">
+<h3>At a glance</h3>
+<div class="hero-facts">
+<div class="fact">
+<div class="fact-label">Role</div>
+<div class="fact-value">Narrative, Combat, Systems, Implementation</div>
+</div>
+<div class="fact">
+<div class="fact-label">Tools</div>
+<div class="fact-value">Unity, Game Creator 2, C#, Blender, FMOD</div>
+</div>
+<div class="fact">
+<div class="fact-label">Slice Content</div>
+<div class="fact-value">1 level • onboarding • encounters • 1 duel</div>
+</div>
+</div>
+<hr class="sep"/>
+<div class="small">
+            Reviewer tip: skim section headers + highlights first, then open the “Deep dive” dropdowns.
+          </div>
+</aside>
+</div>
+</div>
+</header>
+<main class="wrap">
+<div class="grid">
+<!-- TOC -->
+<aside class="toc" id="toc">
+<h4>On this page</h4>
+<a href="#overview">Overview</a>
+<a href="#loop">Core Loop</a>
+<a href="#systems">Key Systems</a>
+<a href="#process">Process</a>
+<a href="#gallery">Media Gallery</a>
+<a href="#results">Results &amp; Takeaways</a>
+</aside>
+<!-- CONTENT -->
+<div>
+<!-- OVERVIEW -->
+<section class="section" id="overview">
+<div class="section-header-eyebrow">01 • Framing the slice</div>
+<h2>Overview</h2>
+<p class="lead">
+            As exciting as it can be, Strife &amp; Serenity isn’t built to be constant adrenaline, but instead a playable mystery. You begin <em><a href="https://en.wikipedia.org/wiki/In_medias_res" target="_blank" rel="noopener">in medias res</a></em> with incomplete context, and your understanding grows through movement and optional discoveries.
+          </p>
+<!-- Reordered priorities: Story-First, Exploration, Combat Kit -->
+<div class="highlight-grid">
+<div class="highlight">
+<div class="k">Priority</div>
+<div class="v">Story-First</div>
+<div class="n">Gameplay exists to elevate narrative tone—like a book you can inhabit.</div>
+</div>
+<div class="highlight">
+<div class="k">Priority</div>
+<div class="v">Exploration</div>
+<div class="n">Optional discoveries (reports/letters) that deepen context without halting pacing.</div>
+</div>
+<div class="highlight">
+<div class="k">Priority</div>
+<div class="v">Combat Kit</div>
+<div class="n">Abilities, mechanics (parry/dodge), and “feel” stitched into one readable kit.</div>
+</div>
+</div>
+<div class="cols" style="margin-top:14px">
+<div class="card">
+<h3>My role</h3>
+<p>
+                  Narrative design, systems design, combat tuning, level design, Unity implementation, and overall presentation.
+                </p>
+<details>
+<summary>
+<div><div class="title">What this prologue is trying to prove</div></div>
+<div class="chev">＋</div>
+</summary>
+<div class="details-body">
+<ul>
+<li><strong>Readable tension:</strong> the player senses that “something is wrong” before being told.</li>
+<li><strong>Understanding through discovery:</strong> context comes from space + optional artifacts, not exposition dumps.</li>
+<li><strong>Character through control:</strong> Ka’Sipho’s identity shows up in how he moves, hesitates, commits, and recovers.</li>
+</ul>
+</div>
+</details>
+</div><div>
+<div class="callout">
+<strong>North Star:</strong><br/>
+                Combat should feel satisfying—like a conversation. Every action is a line of dialogue between the
+                player and the enemy.
+              </div>
+<details style="margin-top:10px">
+<summary>
+<div><div class="title">Ideation foundation</div></div>
+<div class="chev">＋</div>
+</summary>
+<div class="details-body">
+                  Earlier in the semester I went through a months-long ideation phase exploring conflict,
+                  player motivation, and the tension between what someone was trained to be vs. what their world demands.
+                  That thinking shaped every decision in this slice.
+                </div>
+</details>
+</div>
+</div>
+<div class="media-grid">
+<figure>
+<img alt="Wide shot of the prologue level" src="../assets/strife-overview-1.jpg"/>
+<figcaption>
+<strong>Environment read.</strong> Give reviewers a wide “where am I / where do I go” image.
+                <div class="media-meta">Replace with: best wide screenshot</div>
+</figcaption>
+</figure>
+<figure>
+<video controls="" src="../assets/strife-overview-2.mp4"></video>
+<figcaption>
+<strong>30–45 sec trailer clip.</strong> This should sell tone + movement + one fight beat.
+                <div class="media-meta">Replace with: tight montage</div>
+</figcaption>
+</figure>
+<figure>
+<img alt="Mood shot of Gate Town environment" src="../assets/strife-overview-3.jpg"/>
+<figcaption>
+<strong>Mood + mystery.</strong> Lighting/signage hint at wider conflict without stopping play.
+                <div class="media-meta">Replace with: moodiest shot</div>
+</figcaption>
+</figure>
+</div>
+</section>
+<!-- CORE LOOP -->
+<section class="section" id="loop">
+<div class="section-header-eyebrow">02 • How it plays</div>
+<h2>Core Loop (Prologue)</h2>
+<p class="section-sub">
+            The loop is designed to be skimmable for first-time players but layered enough to hint at the full game.
+            It’s a cycle of <strong>Disorient → Observe → Engage → Reflect</strong>.
+          </p>
+<div class="loop-grid">
+<div class="loop-card">
+<div class="loop-step">01 • Arrival</div>
+<div class="loop-title">Disorientation (In Medias Res)</div>
+<p>
+                You enter with limited context. Sparse dialogue, incomplete information, and environmental unease
+                mirror Ka’Sipho’s own uncertainty.
+              </p>
+</div>
+<div class="loop-card">
+<div class="loop-step">02 • Observe</div>
+<div class="loop-title">Exploration as understanding</div>
+<p>
+                The world teaches without speeches: environmental storytelling + optional discoveries
+                (reports, letters, etc.) deepen meaning.
+              </p>
+</div>
+<div class="loop-card">
+<div class="loop-step">03 • Engage</div>
+<div class="loop-title">Intentional response</div>
+<p>
+                Engagement isn’t only combat: traversal (jump/dodge/sprint/grapple) and restraint are meaningful choices,
+                not downtime.
+              </p>
+</div>
+<div class="loop-card">
+<div class="loop-step">04 • Reflect</div>
+<div class="loop-title">Breath + consequence</div>
+<p>
+                Quiet beats let tension land. The game gives room to process, then asks you to move forward anyway.
+              </p>
+</div>
+</div>
+<div class="cols" style="margin-top:14px">
+<details>
+<summary>
+<div><div class="section-header-eyebrow">Deep Dive</div><div class="title">What I wanted players to feel</div></div>
+<div class="chev">＋</div>
+</summary>
+<div class="details-body">
+<ul>
+<li><strong>Curiosity before confidence:</strong> “What happened here?” comes before “I’m in control.”</li>
+<li><strong>Physicality:</strong> traversal sells caution and capability, not just speed.</li>
+<li><strong>Earned momentum:</strong> power spikes come from intentional play, not passive stat inflation.</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>
+<div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Worldbuilding via artifacts</div></div>
+<div class="chev">＋</div>
+</summary>
+<div class="details-body">
+                Exploration rewards context. Optional discoveries work like field reports, inspired by Kingdom Hearts: Birth By Sleep’s <a href="https://www.khwiki.com/Xehanort%27s_Report" target="_blank" rel="noopener">report-style</a> lore delivery letting players opt into deeper understanding.
+              </div>
+</details>
+</div>
+<div class="media-grid">
+<figure>
+<img alt="Loop flow screenshot / layout" src="../assets/strife-loop-1.jpg"/>
+<figcaption>
+<strong>Loop flow snapshot.</strong> One image that shows skirmish → traversal → discovery → escalation.
+                <div class="media-meta">Replace with: annotated screenshot if possible</div>
+</figcaption>
+</figure>
+<figure>
+<video controls="" src="../assets/strife-loop-2.mp4"></video>
+<figcaption>
+<strong>Traversal clip.</strong> Sell that movement is expression (not filler).
+                <div class="media-meta">Replace with: best traversal micro-montage</div>
+</figcaption>
+</figure>
+<figure>
+<img alt="Discovery / report UI moment" src="../assets/strife-loop-3.jpg"/>
+<figcaption>
+<strong>Discovery moment.</strong> Show a report/letter pickup, or a small environmental “tell.”
+                <div class="media-meta">Replace with: discovery UI or prop shot</div>
+</figcaption>
+</figure>
+</div>
+</section>
+<!-- KEY SYSTEMS -->
+<section class="section" id="systems">
+<div class="section-header-eyebrow">03 • The toolkit</div>
+<h2>Key Systems</h2>
+<p class="section-sub">
+            This prologue isn’t only “combat systems.” It’s also progression + customization that reinforces
+            intentional play — especially through <strong>Marks</strong> and the <strong>Adaptive Combat Gauge</strong>.
+          </p>
+<div class="system-grid">
+<article class="system-card">
+<div class="system-tag">Combat Identity</div>
+<h3>Strife &amp; Serenity styles</h3>
+<p>
+                Combat isn’t built around a single solution. You can’t rely only on sword attacks, hiding behind a shield, or mindlessly casting spells. Each tool solves a different problem, and victory comes from weaving them together.</p>
+</article>
+<article class="system-card">
+<div class="system-tag">World &amp; Discovery</div>
+<h3>Optional context (reports, letters)</h3>
+<p>
+                Exploration isn’t loot-hunting — it’s narrative clarity. Optional artifacts add meaning without forcing exposition,
+                letting players choose how deep they want to go.
+              </p>
+</article>
+<article class="system-card">
+<div class="system-tag">Customization</div>
+<h3>Marks (enhancement gems)</h3>
+<p>
+                Marks attach to weaponry to modify stats/behavior. Early iterations explored a Materia-style “spells depend on slots,”
+                but the prologue uses Marks as <strong>reinforcement</strong> rather than <strong>permission</strong> — enhancing what the player chooses to do.
+              </p>
+</article>
+<article class="system-card">
+<div class="system-tag">Reward Loop</div>
+<h3>Adaptive Combat Gauge</h3>
+<p>
+                Variety and momentum fill a gauge. When full, Ka’Sipho’s combat level temporarily rises (cap 3),
+                boosting damage/status impact and encouraging experimentation instead of safe repetition.
+              </p>
+</article>
+</div>
+<div class="cols" style="margin-top:14px">
+<details>
+<summary>
+<div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Design Choice: Marks</div></div>
+<div class="chev">＋</div>
+</summary>
+
+<div class="body"><p>Early on, I debated making Marks work like FF7 Materia (<a href="https://finalfantasy.fandom.com/wiki/Materia_(Final_Fantasy_VII)" target="_blank" rel="noopener">reference</a>): Slot a Mark → gain a spell/ability. I still like the long-term idea of slotting abilities/spells into a field hotbar, but for the prologue, Marks became enhancements that amplify the player’s intent without hiding core abilities behind configuration.</p></div></details>
+<details>
+<summary>
+<div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Design Choice: Combat Gauge</div></div>
+<div class="chev">＋</div>
+</summary>
+
+<div class="body"><p>I explored a <a href="https://www.khwiki.com/Deck_Command_(KHBBS)" target="_blank" rel="noopener">command-gauge</a>-inspired approach (Kingdom Hearts: Birth by Sleep), where specific spell sequences would shift combat into element-aligned states (e.g., frequent ice attacks → frost state). For scope/readability, this was simplified into a more linear system for the prologue - while preserving the core goal: <strong>reward variety and momentum</strong>.</p></div></details>
+</div>
+<div class="callout" style="margin-top:14px">
+<strong>Why this matters:</strong><br/>
+            Marks + the Gauge make progression feel like <em>feedback</em>, not escalation. The game responds to how you play —
+            creating a quiet designer ↔ player dialogue that rewards intentional engagement.
+          </div>
+<div class="media-grid">
+<figure>
+<img alt="Marks UI / inventory / socketing" src="../assets/strife-systems-1.jpg"/>
+<figcaption>
+<strong>Marks moment.</strong> Show the UI or a clear “before/after” stat impact screenshot.
+                <div class="media-meta">Replace with: Marks socketing / tooltip</div>
+</figcaption>
+</figure>
+<figure>
+<img alt="Gauge UI / combat level" src="../assets/strife-systems-2.jpg"/>
+<figcaption>
+<strong>Gauge readability.</strong> Capture gauge filling + level-up state.
+                <div class="media-meta">Replace with: best HUD frame</div>
+</figcaption>
+</figure>
+<figure>
+<video controls="" src="../assets/strife-systems-3.mp4"></video>
+<figcaption>
+<strong>System payoff clip.</strong> One short clip where variety → gauge → stronger effect is obvious.
+                <div class="media-meta">Replace with: 20–30 sec system showcase</div>
+</figcaption>
+</figure>
+</div>
+</section>
+<!-- PROCESS -->
+<section class="section" id="process">
+<div class="section-header-eyebrow">04 • How I built it</div>
+<h2>Process</h2>
+<p class="section-sub">
+            Although this is a solo slice, development followed a structured multi-phase process.
+            It began with questions (conflict, balance, identity, the cost of resolution) and worked outward toward play.
+          </p>
+<div class="cols">
+<div class="card">
+<span class="label">Ideation &amp; thematic foundation</span>
+<p style="margin-top:10px">
+                I explored identity, power, balance, determination, redemption — then deliberately narrowed down.
+                Conflict became the foundation both narratively and mechanically. This wasn’t about “finding a game idea fast,”
+                but about defining what the game should <em>ask</em> of the player emotionally.
+              </p><div class="cta-row" style="margin-top:12px"><a class="btn btn-soft" href="https://adaptable-radius-84c.notion.site/Tobi-Adefidiya-Semester-I-Portfolio-Ideation-12a927cda10680a387f4d474ba6bcefb" rel="noopener" target="_blank">Ideation Notes →</a></div>
+</div>
+<div class="card">
+<span class="label">Music Collaboration</span>
+<p style="margin-top:10px">
+                I collaborated with music students and created <strong>14 concept videos</strong> for specific moments/moods.
+                They started as music reference, but evolved into proto-storyboards: story ideas surfaced, scenes connected,
+                and the emotional arc locked in before heavy implementation began.
+              </p>
+<div class="cta-row" style="margin-top:10px">
+<a class="btn btn-soft" href="https://youtube.com/playlist?list=PLE4rjqU3ZvE3d7SACtQgpkmoJH4B6BEBc&amp;si=oYGpIjk7fp75Sjqq" rel="noopener" target="_blank">
+                  Concept video playlist →
+                </a>
+</div>
+</div>
+</div>
+<div class="cols" style="margin-top:14px">
+<details>
+<summary>
+<div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Mechanical &amp; Visual</div></div>
+<div class="chev">＋</div>
+</summary>
+<div class="details-body">
+                With story established, I moved into Unity focusing on movement, abilities, and spells —
+                testing how traversal/combat could express character and theme rather than just function.
+                Clarity and spell identity were iterated early in motion before committing to polish.
+              </div>
+</details>
+<details>
+<summary>
+<div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Worldbuilding, art &amp; iteration</div></div>
+<div class="chev">＋</div>
+</summary>
+<div class="details-body">
+                Environments were designed to feel abandoned but still alive — spaces that suggest history rather than explain it.
+                I collaborated with art students on key art/cutscene elements, and followed a tight loop:
+                <strong>test → adjust one thing → test again</strong> to keep scope controlled.
+              </div>
+</details>
+</div>
+<ul class="timeline">
+<li>
+<div class="timeline-title">Ideation &amp; thematic foundation</div>
+<div class="timeline-note">
+                Conflict, balance, identity, and consequence defined the emotional “why” before mechanics.
+              </div>
+</li>
+<li>
+<div class="timeline-title">Story shaping via music collaboration</div>
+<div class="timeline-note">
+                14 concept videos evolved into proto-storyboards that clarified the prologue’s emotional arc.
+              </div>
+</li>
+<li>
+<div class="timeline-title">Mechanical prototyping</div>
+<div class="timeline-note">
+                Movement/spells first, then readability, then system payoff — feel guided the build.
+              </div>
+</li>
+<li>
+<div class="timeline-title">Worldbuilding + iteration</div>
+<div class="timeline-note">
+                Aged environments, optional discoveries, and disciplined iteration kept the slice focused.
+              </div>
+</li>
+<li>
+<div class="timeline-title">Outcome</div>
+<div class="timeline-note">
+                A tonal introduction — story, sound, mechanics, and visuals developed in conversation, not isolation.
+              </div>
+</li>
+</ul>
+<div class="media-grid">
+<figure>
+<img alt="Early blockout of level geometry" src="../assets/strife-process-1.jpg"/>
+<figcaption>
+<strong>Blockout.</strong> Sightlines, pacing beats, and readable routes before set dressing.
+                <div class="media-meta">Replace with: cleanest blockout shot</div>
+</figcaption>
+</figure>
+<figure>
+<img alt="Concept video / storyboard frame / doc screenshot" src="../assets/strife-process-2.jpg"/>
+<figcaption>
+<strong>Storyboard energy.</strong> Screenshot a concept video frame or planning doc snippet.
+                <div class="media-meta">Replace with: one strong “planning” artifact</div>
+</figcaption>
+</figure>
+<figure>
+<video controls="" src="../assets/strife-process-3.mp4"></video>
+<figcaption>
+<strong>Iteration reel.</strong> Show a before/after change (timing, UI, readability, etc).
+                <div class="media-meta">Replace with: short comparison clip</div>
+</figcaption>
+</figure>
+</div>
+</section>
+<!-- MEDIA GALLERY -->
+<section class="section" id="gallery">
+<div class="section-header-eyebrow">05 • In motion</div>
+<h2>Media Gallery</h2>
+<p class="section-sub">
+            A snapshot of the prologue as it exists today — combat, mood, traversal, and discovery beats.
+            (Keep captions short: reviewers will actually read them.)
+          </p>
+<div class="media-grid">
+<figure>
+<img alt="Gate Town blockout and mood" src="../assets/strife-01.jpg"/>
+<figcaption>
+                Gate-Town: blockout → mood pass.
+                <div class="media-meta">Environment</div>
+</figcaption>
+</figure>
+<figure>
+<img alt="Ability UI iteration" src="../assets/strife-02.jpg"/>
+<figcaption>
+                UI: simplified into readable states.
+                <div class="media-meta">UI / Readability</div>
+</figcaption>
+</figure>
+<figure>
+<img alt="Discovery / report pickup" src="../assets/strife-03.jpg"/>
+<figcaption>
+                Discovery beat: optional context artifact.
+                <div class="media-meta">Story / Exploration</div>
+</figcaption>
+</figure>
+<figure>
+<img alt="Traversal shot" src="../assets/strife-04.jpg"/>
+<figcaption>
+                Traversal as emotion (caution + capability).
+                <div class="media-meta">Traversal</div>
+</figcaption>
+</figure>
+<figure>
+<img alt="Marks / gauge moment" src="../assets/strife-05.jpg"/>
+<figcaption>
+                Progression moment: Marks + gauge payoff.
+                <div class="media-meta">Progression</div>
+</figcaption>
+</figure>
+<figure>
+<img alt="Final polish slice" src="../assets/strife-06.jpg"/>
+<figcaption>
+                Late polish pass: VFX/audio/camera aligned.
+                <div class="media-meta">Polish</div>
+</figcaption>
+</figure>
+</div>
+</section>
+<!-- RESULTS (kept as-is) -->
+<section class="section" id="results">
+<div class="section-header-eyebrow">06 • Looking forward</div>
+<h2>Results &amp; Takeaways</h2>
+<div class="results-grid">
+<div>
+<h3>What landed well</h3>
+<ul>
+<li>
+                  Playtesters quickly understood the difference between Strife and Serenity
+                  and began swapping styles based on enemy type and mood.
+                </li>
+<li>
+                  Telegraph passes and counter feedback made successful reads feel deliberate
+                  rather than lucky, especially in the duel.
+                </li>
+<li>
+                  Traversal and quiet beats between fights gave players space to breathe and
+                  made the emotional spikes in the prologue hit harder.
+                </li>
+</ul>
+</div>
+<div>
+<h3>What I’d push further next</h3>
+<ul>
+<li>
+                  Introduce one more enemy archetype that pressures Serenity players
+                  without overwhelming new players who lean Strife-heavy.
+                </li>
+<li>
+                  Deepen the duel’s reactive behaviour so it mirrors the player’s
+                  aggression/passivity more explicitly.
+                </li>
+<li>
+                  Tighten onboarding around advanced tech (perfect parries, stance swaps mid-string)
+                  to make those tools feel discoverable rather than “hidden tech”.
+                </li>
+</ul>
+</div>
+</div>
+<p style="margin-top:12px">
+            Overall, this prologue proved that the Strife &amp; Serenity kit works as a
+            vehicle for story, and that the core pillars — clarity, consequence, and cadence —
+            hold up under real players. The next phase is scaling those ideas across a fuller chapter
+            without losing that readability.
+          </p>
+<div class="nextprev">
+<a class="ghost" href="../index.html#projects">← Back to Projects</a>
+<a href="high-road.html">Next: High Road →</a>
+</div>
+</section>
+</div>
+</div>
+</main>
+<button aria-label="Back to top" id="toTop">▲</button>
+</div>
+<script>
+/* ===== Active TOC highlight ===== */
+const links = [...document.querySelectorAll('#toc a[href^="#"]')];
+const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    const idx = sections.indexOf(e.target);
+    if(idx >= 0){
+      links[idx].classList.toggle('active', e.isIntersecting);
+    }
+  });
+}, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+sections.forEach(s => io.observe(s));
+
+/* ===== Back to top ===== */
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', ()=> toTop.classList.toggle('show', window.scrollY > 800));
+toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* ===== Reading progress bar ===== */
+const progress = document.getElementById('progress');
+function updateProgress(){
+  const doc = document.documentElement;
+  const scrollTop = doc.scrollTop || document.body.scrollTop;
+  const scrollHeight = doc.scrollHeight - doc.clientHeight;
+  const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+  progress.style.width = pct.toFixed(2) + '%';
+}
+window.addEventListener('scroll', updateProgress, {passive:true});
+updateProgress();
+
+/* ===== Make accordion chevrons toggle between + and − ===== */
+document.querySelectorAll('details').forEach(d=>{
+  const chev = d.querySelector('.chev');
+  if(!chev) return;
+  const sync = ()=> chev.textContent = d.open ? '−' : '＋';
+  sync();
+  d.addEventListener('toggle', sync);
+});
+</script>
+<script>
+/* Ensure all collapsibles start closed (even if an 'open' slips in) */
+document.addEventListener('DOMContentLoaded', () => {
+  
+  // Force all accordions closed on load
+  document.querySelectorAll('details[open]').forEach(d=>d.removeAttribute('open'));
+document.querySelectorAll('details').forEach(d => d.open = false);
+});
+</script>
+</body>
+</html>
