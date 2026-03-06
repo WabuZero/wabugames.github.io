@@ -283,65 +283,156 @@ code{
   height:220px !important;
 }
 
-/* --- Collapsible style (orange like other pages) --- */
-.collapsible{
+
+/* ===== CONSISTENCY PATCH: match Strife & Serenity theme/assets ===== */
+body{overflow-x:hidden;}
+
+/* Header / nav */
+nav{
+  position:sticky !important; top:0; z-index:50 !important; height:64px !important;
+  backdrop-filter:blur(10px) saturate(125%) !important;
+  background:rgba(10,10,13,.72) !important;
+  border-bottom:1px solid rgba(255,255,255,.08) !important;
+}
+.navwrap{
+  max-width:var(--max); margin:auto; height:64px !important;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 18px; gap:14px;
+}
+.brand{
+  display:flex; align-items:center; gap:12px;
+  font-weight:900 !important; letter-spacing:.02em;
+}
+.brand .title{color:#fff !important;}
+.brand .pipe{opacity:.5 !important;}
+.brand .sub{
+  color:var(--muted) !important; font-weight:750 !important; font-size:12px !important;
+  text-transform:uppercase; letter-spacing:.14em;
+}
+.navlinks{display:flex; gap:8px !important; flex-wrap:wrap; justify-content:flex-end;}
+.navlinks a{
+  color:var(--muted) !important;
+  text-decoration:none; font-weight:750 !important;
+  padding:8px 10px !important; border-radius:12px !important;
+  border:1px solid transparent !important;
+}
+.navlinks a:hover{
+  color:var(--ink) !important;
+  background:rgba(255,127,50,.08) !important;
+  border-color:rgba(255,127,50,.18) !important;
+}
+
+/* Case study kicker orb */
+.kicker{
+  display:inline-flex !important; gap:10px; align-items:center;
+  color:var(--muted) !important;
+  font-weight:900 !important; letter-spacing:.16em !important;
+  text-transform:uppercase;
+  font-size:11px !important;
+  margin-bottom:12px !important;
+}
+.kicker .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--brand);
+  box-shadow:0 0 0 6px rgba(255,127,50,.12);
+  flex:0 0 auto;
+}
+
+/* Section supporting copy */
+.section{scroll-margin-top:90px;}
+.section-sub{
+  color:var(--muted) !important;
+  font-size:14px !important;
+  margin:0 0 12px !important;
+  font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif !important;
+  font-weight:400 !important;
+}
+.lead{
+  color:#dadbe6 !important;
+  font-size:18px !important;
+  margin:10px 0 0 !important;
+}
+
+/* Strife-style collapsibles */
+details{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(10,10,14,.72);
+  border-radius:16px;
+  padding:10px 12px;
+}
+details + details{margin-top:10px}
+summary{
   cursor:pointer;
+  font-weight:900;
+  color:#fff;
+  list-style:none;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  width:100%;
+  justify-content:space-between;
+  gap:10px;
+  min-height:72px;
+}
+summary::-webkit-details-marker{display:none}
+summary .chev{
+  width:30px; height:30px;
+  border-radius:10px;
+  display:grid; place-items:center;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+  color:var(--muted);
+  flex:0 0 auto;
+}
+details[open] summary .chev{
+  color:var(--brand);
+  border-color:rgba(255,127,50,.30);
   background:rgba(255,127,50,.10);
-  border:1px solid rgba(255,127,50,.28);
-  padding:12px 14px;
-  border-radius:14px;
-  font-weight:800;
-  color:#ffd3b8;
-  margin-top:6px;
 }
-
-.collapsible .icon{font-size:18px}
-
-.collapsible-content{
-  display:none;
-  margin-top:10px;
-}
-
-.collapsible.active + .collapsible-content{
-  display:block;
-}
-
-
-/* Keep collapsible looking like normal content inside the box */
-.collapsible{
-  all:unset;
+.details-body{margin-top:10px; color:#d6d6e1; font-size:14px}
+.details-body ul{margin:8px 0 0; padding-left:18px}
+.details-body li{margin:6px 0}
+details summary > div:first-child{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  width:100%;
-  cursor:pointer;
+  flex-direction:column;
+  gap:6px;
+  flex:1;
+  padding-right:10px;
 }
-
-.collapsible .icon{
+details summary .title{
+  margin:0;
+  font-size:16px;
   font-weight:800;
-  font-size:18px;
+  color:#fff;
+}
+details summary .section-header-eyebrow,
+details summary .system-tag,
+details summary .mini-k{
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:11px;
+  color:var(--muted);
+  margin:0;
+}
+details.card,
+details.system-card,
+details.box{
+  padding:10px 12px;
 }
 
-
-/* Icon color change for collapsible (+ / -) */
-.collapsible .icon{
-  color: var(--muted);
-  transition: color .15s ease;
+/* Clean out old custom collapsible chrome */
+.collapsible, .collapsible-content, .collapsible-card, .collapsible-header, .collapse-btn{
+  all:unset;
 }
+details .callout{margin-top:12px;}
 
-.collapsible.active .icon{
-  color: var(--brand);
+/* Mobile: center header + hide jump menu */
+@media (max-width: 720px){
+  .navwrap{flex-direction:column; align-items:center; justify-content:center; gap:10px; height:auto !important;}
+  nav{height:auto !important;}
+  .brand{flex-direction:column; align-items:center; text-align:left; gap:6px;}
+  .brand .pipe{display:none;}
+  .navlinks{width:100%; justify-content:center;}
+  .toc{display:none !important;}
 }
-
-/* --- Mark type colors (Deep Dive: Four mark types) --- */
-.mark-offence{ color:#ff4d4d; }   /* red */
-.mark-defence{ color:#ffd24d; }   /* yellow */
-.mark-vitality{ color:#5dff8a; }  /* green */
-.mark-darkos{ color:#b06bff; }    /* purple */
 
 </style>
 </head>
@@ -352,22 +443,23 @@ code{
 <div class="page">
 
   <nav>
-    <div class="navwrap">
-      <div class="brand">
-        <span>TOBI ADEFIDIYA</span><span class="pipe">||</span>
-        <span style="color:var(--muted);font-weight:700">GAME & NARRATIVE DESIGNER</span>
-      </div>
-      <div class="navlinks">
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#about">About</a>
-        <a href="../index.html#resume">Resume</a>
-      </div>
-    </div>
-  </nav>
+<div class="navwrap">
+<div class="brand">
+<span class="title">TOBI ADEFIDIYA</span>
+<span class="pipe">||</span>
+<span class="sub">GAME &amp; NARRATIVE DESIGNER</span>
+</div>
+<div class="navlinks">
+<a href="../index.html#projects">Projects</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#resume">Resume</a>
+</div>
+</div>
+</nav>
 
   <header class="hero">
     <div class="inner">
-      <div class="kicker">Prototype Case Study</div>
+      <div class="kicker"><span class="dot"></span> Prototype Case Study</div>
 
       <div class="hero-sub">
         <div>
@@ -461,14 +553,7 @@ code{
 
           <!-- ✅ CHANGED: single column layout + removed the image-slots box -->
           <div class="feature" style="grid-template-columns:1fr">
-            <div class="box">
-              
-<button class="collapsible">
-Why this remake exists
-<span class="icon">+</span>
-</button>
-<div class="collapsible-content">
-<h3 style="margin:0 0 6px;font-size:16px">Make the demo worthy of becoming a full game</h3>
+            <details><summary><div><div class="title">Why this remake exists</div></div><div class="chev">＋</div></summary><div class="details-body"><h3 style="margin:0 0 6px;font-size:16px">Make the demo worthy of becoming a full game</h3>
 
               <ul>
                 <li>Combat and AI were <strong>good enough</strong> for prototype, but not for the fantasy.</li>
@@ -480,9 +565,7 @@ Why this remake exists
               <div class="callout" style="margin-top:12px">
                 <strong>Why a remake?</strong><br/>
                 The first demo proved the concept, but lacked the depth and fluidity I envisioned. This version focuses on
-                combat variety, smarter enemies, and a clearer narrative direction for a potential full game.
-              </div>
-            </div>
+                combat variety, smarter enemies, and a clearer narrative direction for a potential full game.</div></details>
 </div>
 
           <div class="media-grid">
@@ -625,42 +708,18 @@ Why this remake exists
           
 <div class="feature">
 
-  <div class="box">
-    <button class="collapsible">
-      <div>
-        <div class="mini-k">Deep Dive</div>
-        <h3 style="margin:0;font-size:16px">Four mark types</h3>
-      </div>
-      <span class="icon">+</span>
-    </button>
+  <details><summary><div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Four mark types</div></div><div class="chev">＋</div></summary><div class="details-body"><ul>
+        <li><strong>Offence:</strong> ATK Up, Piercing Strikes, CRIT Up</li>
+        <li><strong>Defence:</strong> DEF Up, Increased Parry Window, Last Chance</li>
+        <li><strong>Vitality:</strong> HP Up, Healing Efficiency, Siphon</li>
+        <li><strong>Darkos:</strong> Diminished Life Drain, Resilience, Controlled Power</li>
+      </ul></div></details>
 
-    <div class="collapsible-content">
-      <ul>
-        <li><strong><span class="mark-offence">Offence</span>:</strong> ATK Up, Piercing Strikes, CRIT Up</li>
-        <li><strong><span class="mark-defence">Defence</span>:</strong> DEF Up, Increased Parry Window, Last Chance</li>
-        <li><strong><span class="mark-vitality">Vitality</span>:</strong> HP Up, Healing Efficiency, Siphon</li>
-        <li><strong><span class="mark-darkos">Darkos</span>:</strong> Diminished Life Drain, Resilience, Controlled Power</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="box">
-    <button class="collapsible">
-      <div>
-        <div class="mini-k">Deep Dive</div>
-        <h3 style="margin:0;font-size:16px">Candidate → Locked feedback</h3>
-      </div>
-      <span class="icon">+</span>
-    </button>
-
-    <div class="collapsible-content">
-      <ul>
+  <details><summary><div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Candidate → Locked feedback</div></div><div class="chev">＋</div></summary><div class="details-body"><ul>
         <li>Candidate range inspired by Kingdom Hearts lock-on comfort.</li>
         <li>Healthbar communicates state (no camera-jump surprises).</li>
         <li>Sphere trigger ensures enemies drop candidacy when you leave range.</li>
-      </ul>
-    </div>
-  </div>
+      </ul></div></details>
 
 </div>
 
@@ -750,14 +809,21 @@ toTop.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
 
 
+
 <script>
-document.querySelectorAll(".collapsible").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    btn.classList.toggle("active")
-    const icon=btn.querySelector(".icon")
-    icon.textContent = btn.classList.contains("active") ? "-" : "+"
-  })
-})
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('details').forEach(d => { d.open = false; });
+  document.querySelectorAll('details summary .chev').forEach(ch => { ch.textContent = '＋'; });
+
+  document.querySelectorAll('details').forEach(d => {
+    const sync = () => {
+      const ch = d.querySelector('summary .chev');
+      if(ch) ch.textContent = d.open ? '−' : '＋';
+    };
+    d.addEventListener('toggle', sync);
+    sync();
+  });
+});
 </script>
 
 </body>
