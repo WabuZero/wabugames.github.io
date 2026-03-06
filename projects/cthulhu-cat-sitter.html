@@ -538,157 +538,119 @@ hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
   .media-grid img, .media-grid video{ height:220px; }
 }
 
+/* Collapsible card (Strife style) */
+.collapsible-card{margin-top:14px;padding:16px;}
+.collapsible-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:pointer;
+}
+.collapse-btn{
+width:34px;
+height:34px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,.12);
+background:transparent;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+.collapsible-content{margin-top:12px;display:none;}
+.collapsible-card.open .collapsible-content{display:block;}
 
-/* ===== CONSISTENCY PATCH: match Strife & Serenity theme/assets ===== */
-body{overflow-x:hidden;}
+.collapsible-card.open .collapse-btn{
+  border-color:rgba(255,127,50,.6);
+  background:rgba(255,127,50,.12);
+  color:var(--brand);
+}
 
-/* Header / nav */
+
+
+
+/* ===== INDEX HEADER SYNC ===== */
 nav{
-  position:sticky !important; top:0; z-index:50 !important; height:64px !important;
-  backdrop-filter:blur(10px) saturate(125%) !important;
-  background:rgba(10,10,13,.72) !important;
-  border-bottom:1px solid rgba(255,255,255,.08) !important;
+  position:sticky !important;
+  top:0 !important;
+  height:64px !important;
+  z-index:10 !important;
+  backdrop-filter:saturate(120%) blur(10px) !important;
+  background:rgba(15,15,18,.7) !important;
+  border-bottom:1px solid var(--line) !important;
 }
 .navwrap{
-  max-width:var(--max); margin:auto; height:64px !important;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:0 18px; gap:14px;
+  max-width:1200px !important;
+  margin:auto !important;
+  height:64px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  padding:0 20px !important;
+  gap:0 !important;
 }
 .brand{
-  display:flex; align-items:center; gap:12px;
-  font-weight:900 !important; letter-spacing:.02em;
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  font-weight:800 !important;
+  letter-spacing:.04em !important;
 }
-.brand .title{color:#fff !important;}
-.brand .pipe{opacity:.5 !important;}
-.brand .sub{
-  color:var(--muted) !important; font-weight:750 !important; font-size:12px !important;
-  text-transform:uppercase; letter-spacing:.14em;
+.brand span:first-child{color:#fff !important;}
+.brand .pipe{opacity:.6 !important;}
+.navlinks{
+  display:flex !important;
+  gap:20px !important;
+  justify-content:flex-end !important;
+  flex-wrap:nowrap !important;
 }
-.navlinks{display:flex; gap:8px !important; flex-wrap:wrap; justify-content:flex-end;}
 .navlinks a{
   color:var(--muted) !important;
-  text-decoration:none; font-weight:750 !important;
-  padding:8px 10px !important; border-radius:12px !important;
-  border:1px solid transparent !important;
+  text-decoration:none !important;
+  font-weight:700 !important;
+  padding:8px 10px !important;
+  border-radius:10px !important;
+  border:0 !important;
+  background:transparent !important;
+  transition:color .15s, background .15s !important;
 }
 .navlinks a:hover{
   color:var(--ink) !important;
   background:rgba(255,127,50,.08) !important;
-  border-color:rgba(255,127,50,.18) !important;
 }
+.navlinks a.active{color:var(--brand) !important;}
 
-/* Case study kicker orb */
-.kicker{
-  display:inline-flex !important; gap:10px; align-items:center;
-  color:var(--muted) !important;
-  font-weight:900 !important; letter-spacing:.16em !important;
-  text-transform:uppercase;
-  font-size:11px !important;
-  margin-bottom:12px !important;
-}
-.kicker .dot{
-  width:8px; height:8px; border-radius:50%;
-  background:var(--brand);
-  box-shadow:0 0 0 6px rgba(255,127,50,.12);
-  flex:0 0 auto;
-}
-
-/* Section supporting copy */
-.section{scroll-margin-top:90px;}
-.section-sub{
-  color:var(--muted) !important;
-  font-size:14px !important;
-  margin:0 0 12px !important;
-  font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif !important;
-  font-weight:400 !important;
-}
-.lead{
-  color:#dadbe6 !important;
-  font-size:18px !important;
-  margin:10px 0 0 !important;
-}
-
-/* Strife-style collapsibles */
-details{
-  border:1px solid rgba(255,255,255,.10);
-  background:rgba(10,10,14,.72);
-  border-radius:16px;
-  padding:10px 12px;
-}
-details + details{margin-top:10px}
-summary{
-  cursor:pointer;
-  font-weight:900;
-  color:#fff;
-  list-style:none;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  min-height:72px;
-}
-summary::-webkit-details-marker{display:none}
-summary .chev{
-  width:30px; height:30px;
-  border-radius:10px;
-  display:grid; place-items:center;
-  border:1px solid rgba(255,255,255,.10);
-  background:rgba(255,255,255,.03);
-  color:var(--muted);
-  flex:0 0 auto;
-}
-details[open] summary .chev{
-  color:var(--brand);
-  border-color:rgba(255,127,50,.30);
-  background:rgba(255,127,50,.10);
-}
-.details-body{margin-top:10px; color:#d6d6e1; font-size:14px}
-.details-body ul{margin:8px 0 0; padding-left:18px}
-.details-body li{margin:6px 0}
-details summary > div:first-child{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  flex:1;
-  padding-right:10px;
-}
-details summary .title{
-  margin:0;
-  font-size:16px;
-  font-weight:800;
-  color:#fff;
-}
-details summary .section-header-eyebrow,
-details summary .system-tag,
-details summary .mini-k{
-  text-transform:uppercase;
-  letter-spacing:.14em;
-  font-size:11px;
-  color:var(--muted);
-  margin:0;
-}
-details.card,
-details.system-card,
-details.box{
-  padding:10px 12px;
-}
-
-/* Clean out old custom collapsible chrome */
-.collapsible, .collapsible-content, .collapsible-card, .collapsible-header, .collapse-btn{
-  all:unset;
-}
-details .callout{margin-top:12px;}
-
-/* Mobile: center header + hide jump menu */
 @media (max-width: 720px){
-  .navwrap{flex-direction:column; align-items:center; justify-content:center; gap:10px; height:auto !important;}
   nav{height:auto !important;}
-  .brand{flex-direction:column; align-items:center; text-align:left; gap:6px;}
-  .brand .pipe{display:none;}
-  .navlinks{width:100%; justify-content:center;}
-  .toc{display:none !important;}
+  .navwrap{
+    height:auto !important;
+    padding:12px 14px !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:10px !important;
+  }
+  .brand{
+    flex-direction:column !important;
+    align-items:center !important;
+    text-align:center !important;
+    gap:6px !important;
+    line-height:1.2 !important;
+  }
+  .brand .pipe{display:none !important;}
+  .navlinks{
+    width:100% !important;
+    justify-content:center !important;
+    flex-wrap:wrap !important;
+    gap:10px !important;
+  }
+  .navlinks a{
+    padding:10px 14px !important;
+    border-radius:999px !important;
+    background:rgba(15,15,18,.55) !important;
+    border:1px solid rgba(255,255,255,.10) !important;
+  }
 }
-
+/* ===== END INDEX HEADER SYNC ===== */
 </style>
 </head>
 
@@ -702,14 +664,14 @@ details .callout{margin-top:12px;}
   <nav>
 <div class="navwrap">
 <div class="brand">
-<span class="title">TOBI ADEFIDIYA</span>
+<span>TOBI ADEFIDIYA</span>
 <span class="pipe">||</span>
-<span class="sub">GAME &amp; NARRATIVE DESIGNER</span>
+<span style="color:var(--muted); font-weight:700">GAME &amp; NARRATIVE DESIGNER</span>
 </div>
 <div class="navlinks">
-<a href="../index.html#projects">Projects</a>
-<a href="../index.html#about">About</a>
-<a href="../index.html#resume">Resume</a>
+<a href="../index.html#projects" class="navlink">Projects</a>
+<a href="../index.html#about" class="navlink">About</a>
+<a href="../index.html#resume" class="navlink">Resume</a>
 </div>
 </div>
 </nav>
@@ -799,7 +761,7 @@ details .callout{margin-top:12px;}
           <div class="section-header-eyebrow">01 • What it is</div>
           <h2>Overview</h2>
 
-          <p class="section-sub">
+          <p class="lead">
             Cthulhu’s Cat Sitter aims to bring a fresh angle to indie horror by making the environment itself feel “foreign” —
             spaces that break logic, but still have rules you can learn. You’re not just solving puzzles; you’re learning how a house thinks.
           </p>
@@ -831,8 +793,16 @@ details .callout{margin-top:12px;}
               </p>
               <hr class="sep">
               
-<details class="card"><summary><div><div class="title">Target vibe</div></div><div class="chev">＋</div></summary><div class="details-body"><p>
-                Suburban normality with cosmic dread underneath: the house is a mask, and the trials are the truth.</p></div></details>
+<div class="card collapsible-card">
+  <div class="collapsible-header">
+    <h3 style="margin:0">Target vibe</h3>
+    <button class="collapse-btn">+</button>
+  </div>
+  <div class="collapsible-content">
+    <p>
+                Suburban normality with cosmic dread underneath: the house is a mask, and the trials are the truth.</p>
+  </div>
+</div>
 
             </div>
 
@@ -958,7 +928,7 @@ details .callout{margin-top:12px;}
           <div class="section-header-eyebrow">04 • What changes (and why it matters)</div>
           <h2>Between Nights: The House Evolves</h2>
 
-          <p class="section-sub">
+          <p class="lead">
             After every trial, you return to the guest bedroom at the exact same time — but it’s now the next day.
             The house deteriorates as if you were gone for years, and one new locked room opens after each night.
           </p>
@@ -1065,15 +1035,37 @@ details .callout{margin-top:12px;}
 
           
 <div class="system-grid" style="margin-top:14px">
-  <details class="system-card"><summary><div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Good Ending</div></div><div class="chev">＋</div></summary><div class="details-body"><p>
+  <article class="system-card collapsible-card">
+  <div class="collapsible-header">
+    <div>
+      <div class="system-tag">Deep Dive</div>
+      <h3 style="margin:0">Good Ending</h3>
+    </div>
+    <button class="collapse-btn">+</button>
+  </div>
+  <div class="collapsible-content">
+    <p>
       <strong>Resist the basement:</strong> If you never enter the basement, you make it home.
       Fade to black → celebration collage. You got paid… and escaped.
-    </p></div></details>
+    </p>
+  </div>
+</article>
 
-  <details class="system-card"><summary><div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Bad Ending</div></div><div class="chev">＋</div></summary><div class="details-body"><p>
+  <article class="system-card collapsible-card">
+  <div class="collapsible-header">
+    <div>
+      <div class="system-tag">Deep Dive</div>
+      <h3 style="margin:0">Bad Ending</h3>
+    </div>
+    <button class="collapse-btn">+</button>
+  </div>
+  <div class="collapsible-content">
+    <p>
       <strong>Break trust:</strong> If you enter the basement, an elevator appears on your walk home.
       You’re taken to a void where Cthulhu reveals his true nature and destroys your mind.
-    </p></div></details>
+    </p>
+  </div>
+</article>
 </div>
 </section>
 
@@ -1174,7 +1166,7 @@ details .callout{margin-top:12px;}
 
           <div class="nextprev">
             <a class="ghost" href="../index.html#projects">← Back to Projects</a>
-            <a href="mark-of-mastery.html">Next: Mark of Mastery →</a>
+            <a href="strife-and-serenity.html">Next: Strife &amp; Serenity →</a>
           </div>
         </section>
 
@@ -1218,24 +1210,22 @@ function updateProgress(){
 window.addEventListener('scroll', updateProgress, {passive:true});
 updateProgress();
 
+document.querySelectorAll('.collapsible-header').forEach(header=>{
+  const btn = header.querySelector('.collapse-btn');
 
-</script>
+  header.addEventListener('click',()=>{
+    const card = header.parentElement;
 
+    card.classList.toggle('open');
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('details').forEach(d => { d.open = false; });
-  document.querySelectorAll('details summary .chev').forEach(ch => { ch.textContent = '＋'; });
-
-  document.querySelectorAll('details').forEach(d => {
-    const sync = () => {
-      const ch = d.querySelector('summary .chev');
-      if(ch) ch.textContent = d.open ? '−' : '＋';
-    };
-    d.addEventListener('toggle', sync);
-    sync();
+    if(card.classList.contains('open')){
+      btn.textContent = "−";
+    } else {
+      btn.textContent = "+";
+    }
   });
 });
+
 </script>
 
 </body>
