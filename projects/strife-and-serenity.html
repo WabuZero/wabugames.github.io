@@ -622,6 +622,91 @@ details summary > div:first-child{
   .navlinks{width:100%; justify-content:center;}
   .toc{display:none !important;}
 }
+
+
+/* ===== INDEX HEADER SYNC ===== */
+nav{
+  position:sticky !important;
+  top:0 !important;
+  height:64px !important;
+  z-index:10 !important;
+  backdrop-filter:saturate(120%) blur(10px) !important;
+  background:rgba(15,15,18,.7) !important;
+  border-bottom:1px solid var(--line) !important;
+}
+.navwrap{
+  max-width:1200px !important;
+  margin:auto !important;
+  height:64px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  padding:0 20px !important;
+  gap:0 !important;
+}
+.brand{
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  font-weight:800 !important;
+  letter-spacing:.04em !important;
+}
+.brand span:first-child{color:#fff !important;}
+.brand .pipe{opacity:.6 !important;}
+.navlinks{
+  display:flex !important;
+  gap:20px !important;
+  justify-content:flex-end !important;
+  flex-wrap:nowrap !important;
+}
+.navlinks a{
+  color:var(--muted) !important;
+  text-decoration:none !important;
+  font-weight:700 !important;
+  padding:8px 10px !important;
+  border-radius:10px !important;
+  border:0 !important;
+  background:transparent !important;
+  transition:color .15s, background .15s !important;
+}
+.navlinks a:hover{
+  color:var(--ink) !important;
+  background:rgba(255,127,50,.08) !important;
+}
+.navlinks a.active{color:var(--brand) !important;}
+
+@media (max-width: 720px){
+  nav{height:auto !important;}
+  .navwrap{
+    height:auto !important;
+    padding:12px 14px !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:10px !important;
+  }
+  .brand{
+    flex-direction:column !important;
+    align-items:center !important;
+    text-align:center !important;
+    gap:6px !important;
+    line-height:1.2 !important;
+  }
+  .brand .pipe{display:none !important;}
+  .navlinks{
+    width:100% !important;
+    justify-content:center !important;
+    flex-wrap:wrap !important;
+    gap:10px !important;
+  }
+  .navlinks a{
+    padding:10px 14px !important;
+    border-radius:999px !important;
+    background:rgba(15,15,18,.55) !important;
+    border:1px solid rgba(255,255,255,.10) !important;
+  }
+}
+/* ===== END INDEX HEADER SYNC ===== */
 </style>
 </head>
 <body>
@@ -632,14 +717,14 @@ details summary > div:first-child{
 <nav>
 <div class="navwrap">
 <div class="brand">
-<span class="title">TOBI ADEFIDIYA</span>
+<span>TOBI ADEFIDIYA</span>
 <span class="pipe">||</span>
-<span class="sub">GAME &amp; NARRATIVE DESIGNER</span>
+<span style="color:var(--muted); font-weight:700">GAME &amp; NARRATIVE DESIGNER</span>
 </div>
 <div class="navlinks">
-<a href="../index.html#projects">Projects</a>
-<a href="../index.html#about">About</a>
-<a href="../index.html#resume">Resume</a>
+<a href="../index.html#projects" class="navlink">Projects</a>
+<a href="../index.html#about" class="navlink">About</a>
+<a href="../index.html#resume" class="navlink">Resume</a>
 </div>
 </div>
 </nav>
@@ -651,7 +736,9 @@ details summary > div:first-child{
 <div>
 <h1>Strife &amp; Serenity — Prologue</h1>
 <p class="deck">
-            Strife &amp; Serenity was my Final Major Project for my Undergraduate program. An interactable story first, and game second. This slice I have labelled as a 'prologue' is a contained taster slice, a preview of a game I one day hope to release fully.
+            Strife &amp; Serenity isn’t a go-go-go game. It’s a story you <em>interact</em> with through Ka’Sipho —
+            entering a mystery with only a handful of context, and learning what the world demands of you as you go.
+            This prologue is a contained “taster” slice: a first page you can play.
           </p>
 <div class="meta">
 <span class="pill"><strong>Genre:</strong> Action RPG</span>
@@ -712,7 +799,9 @@ details summary > div:first-child{
 <div class="section-header-eyebrow">01 • Framing the slice</div>
 <h2>Overview</h2>
 <p class="lead">
-            As exciting as it can be, Strife &amp; Serenity isn’t built to be constant adrenaline, but instead a playable mystery. You begin <em><a href="https://en.wikipedia.org/wiki/In_medias_res" target="_blank" rel="noopener">in medias res</a></em> with incomplete context, and your understanding grows through movement and optional discoveries.
+            As exciting as it can be, Strife &amp; Serenity isn’t built to be constant adrenaline.
+            It’s a playable mystery: you begin <em>in medias res</em> with incomplete context, and your understanding
+            grows through movement, atmosphere, optional discoveries, and the way Ka’Sipho fights.
           </p>
 <!-- Reordered priorities: Story-First, Exploration, Combat Kit -->
 <div class="highlight-grid">
@@ -855,7 +944,8 @@ details summary > div:first-child{
 <div class="chev">＋</div>
 </summary>
 <div class="details-body">
-                Exploration rewards context. Optional discoveries work like field reports, inspired by Kingdom Hearts: Birth By Sleep’s <a href="https://www.khwiki.com/Xehanort%27s_Report" target="_blank" rel="noopener">report-style</a> lore delivery letting players opt into deeper understanding.
+                Exploration rewards context. Optional discoveries work like “field reports” — inspired by
+                Kingdom Hearts: Birth By Sleep’s report-style lore delivery — letting players opt into deeper understanding.
               </div>
 </details>
 </div>
@@ -930,14 +1020,14 @@ details summary > div:first-child{
 <div class="chev">＋</div>
 </summary>
 
-<div class="body"><p>Early on, I debated making Marks work like FF7 Materia (<a href="https://finalfantasy.fandom.com/wiki/Materia_(Final_Fantasy_VII)" target="_blank" rel="noopener">reference</a>): Slot a Mark → gain a spell/ability. I still like the long-term idea of slotting abilities/spells into a field hotbar, but for the prologue, Marks became enhancements that amplify the player’s intent without hiding core abilities behind configuration.</p></div></details>
+<div class="body"><p>Early on, I debated making Marks work like FF7 Materia: slot a Mark → gain a spell/ability. I still like the long-term idea of slotting abilities/spells into a field hotbar — but for the prologue, Marks became enhancements that amplify the player’s intent without hiding core abilities behind configuration.</p></div></details>
 <details>
 <summary>
 <div><div class="section-header-eyebrow">Deep Dive</div><div class="title">Design Choice: Combat Gauge</div></div>
 <div class="chev">＋</div>
 </summary>
 
-<div class="body"><p>I explored a <a href="https://www.khwiki.com/Deck_Command_(KHBBS)" target="_blank" rel="noopener">command-gauge</a>-inspired approach (Kingdom Hearts: Birth by Sleep), where specific spell sequences would shift combat into element-aligned states (e.g., frequent ice attacks → frost state). For scope/readability, this was simplified into a more linear system for the prologue - while preserving the core goal: <strong>reward variety and momentum</strong>.</p></div></details>
+<div class="body"><p>I explored a command-gauge-inspired approach (Kingdom Hearts: Birth by Sleep), where specific spell sequences would shift combat into element-aligned states (e.g., frequent ice attacks → frost state). For scope/readability, this was simplified into a more linear system for the prologue - while preserving the core goal: <strong>reward variety and momentum</strong>.</p></div></details>
 </div>
 <div class="callout" style="margin-top:14px">
 <strong>Why this matters:</strong><br/>
@@ -1180,7 +1270,7 @@ details summary > div:first-child{
           </p>
 <div class="nextprev">
 <a class="ghost" href="../index.html#projects">← Back to Projects</a>
-<a href="cthulhu-cat-sitter.html">Next: Cthulhu's Cat Sitter →</a>
+<a href="high-road.html">Next: High Road →</a>
 </div>
 </section>
 </div>
