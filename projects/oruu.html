@@ -241,156 +241,90 @@ code{
   border-radius:8px;
 }
 
-/* ===== CONSISTENCY PATCH: match Strife & Serenity theme/assets ===== */
-body{overflow-x:hidden;}
 
-/* Header / nav */
+/* ===== INDEX HEADER SYNC ===== */
 nav{
-  position:sticky !important; top:0; z-index:50 !important; height:64px !important;
-  backdrop-filter:blur(10px) saturate(125%) !important;
-  background:rgba(10,10,13,.72) !important;
-  border-bottom:1px solid rgba(255,255,255,.08) !important;
+  position:sticky !important;
+  top:0 !important;
+  height:64px !important;
+  z-index:10 !important;
+  backdrop-filter:saturate(120%) blur(10px) !important;
+  background:rgba(15,15,18,.7) !important;
+  border-bottom:1px solid var(--line) !important;
 }
 .navwrap{
-  max-width:var(--max); margin:auto; height:64px !important;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:0 18px; gap:14px;
+  max-width:1200px !important;
+  margin:auto !important;
+  height:64px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  padding:0 20px !important;
+  gap:0 !important;
 }
 .brand{
-  display:flex; align-items:center; gap:12px;
-  font-weight:900 !important; letter-spacing:.02em;
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  font-weight:800 !important;
+  letter-spacing:.04em !important;
 }
-.brand .title{color:#fff !important;}
-.brand .pipe{opacity:.5 !important;}
-.brand .sub{
-  color:var(--muted) !important; font-weight:750 !important; font-size:12px !important;
-  text-transform:uppercase; letter-spacing:.14em;
+.brand span:first-child{color:#fff !important;}
+.brand .pipe{opacity:.6 !important;}
+.navlinks{
+  display:flex !important;
+  gap:20px !important;
+  justify-content:flex-end !important;
+  flex-wrap:nowrap !important;
 }
-.navlinks{display:flex; gap:8px !important; flex-wrap:wrap; justify-content:flex-end;}
 .navlinks a{
   color:var(--muted) !important;
-  text-decoration:none; font-weight:750 !important;
-  padding:8px 10px !important; border-radius:12px !important;
-  border:1px solid transparent !important;
+  text-decoration:none !important;
+  font-weight:700 !important;
+  padding:8px 10px !important;
+  border-radius:10px !important;
+  border:0 !important;
+  background:transparent !important;
+  transition:color .15s, background .15s !important;
 }
 .navlinks a:hover{
   color:var(--ink) !important;
   background:rgba(255,127,50,.08) !important;
-  border-color:rgba(255,127,50,.18) !important;
 }
+.navlinks a.active{color:var(--brand) !important;}
 
-/* Case study kicker orb */
-.kicker{
-  display:inline-flex !important; gap:10px; align-items:center;
-  color:var(--muted) !important;
-  font-weight:900 !important; letter-spacing:.16em !important;
-  text-transform:uppercase;
-  font-size:11px !important;
-  margin-bottom:12px !important;
-}
-.kicker .dot{
-  width:8px; height:8px; border-radius:50%;
-  background:var(--brand);
-  box-shadow:0 0 0 6px rgba(255,127,50,.12);
-  flex:0 0 auto;
-}
-
-/* Section supporting copy */
-.section{scroll-margin-top:90px;}
-.section-sub{
-  color:var(--muted) !important;
-  font-size:14px !important;
-  margin:0 0 12px !important;
-  font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif !important;
-  font-weight:400 !important;
-}
-.lead{
-  color:#dadbe6 !important;
-  font-size:18px !important;
-  margin:10px 0 0 !important;
-}
-
-/* Strife-style collapsibles */
-details{
-  border:1px solid rgba(255,255,255,.10);
-  background:rgba(10,10,14,.72);
-  border-radius:16px;
-  padding:10px 12px;
-}
-details + details{margin-top:10px}
-summary{
-  cursor:pointer;
-  font-weight:900;
-  color:#fff;
-  list-style:none;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  min-height:72px;
-}
-summary::-webkit-details-marker{display:none}
-summary .chev{
-  width:30px; height:30px;
-  border-radius:10px;
-  display:grid; place-items:center;
-  border:1px solid rgba(255,255,255,.10);
-  background:rgba(255,255,255,.03);
-  color:var(--muted);
-  flex:0 0 auto;
-}
-details[open] summary .chev{
-  color:var(--brand);
-  border-color:rgba(255,127,50,.30);
-  background:rgba(255,127,50,.10);
-}
-.details-body{margin-top:10px; color:#d6d6e1; font-size:14px}
-.details-body ul{margin:8px 0 0; padding-left:18px}
-.details-body li{margin:6px 0}
-details summary > div:first-child{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  flex:1;
-  padding-right:10px;
-}
-details summary .title{
-  margin:0;
-  font-size:16px;
-  font-weight:800;
-  color:#fff;
-}
-details summary .section-header-eyebrow,
-details summary .system-tag,
-details summary .mini-k{
-  text-transform:uppercase;
-  letter-spacing:.14em;
-  font-size:11px;
-  color:var(--muted);
-  margin:0;
-}
-details.card,
-details.system-card,
-details.box{
-  padding:10px 12px;
-}
-
-/* Clean out old custom collapsible chrome */
-.collapsible, .collapsible-content, .collapsible-card, .collapsible-header, .collapse-btn{
-  all:unset;
-}
-details .callout{margin-top:12px;}
-
-/* Mobile: center header + hide jump menu */
 @media (max-width: 720px){
-  .navwrap{flex-direction:column; align-items:center; justify-content:center; gap:10px; height:auto !important;}
   nav{height:auto !important;}
-  .brand{flex-direction:column; align-items:center; text-align:left; gap:6px;}
-  .brand .pipe{display:none;}
-  .navlinks{width:100%; justify-content:center;}
-  .toc{display:none !important;}
+  .navwrap{
+    height:auto !important;
+    padding:12px 14px !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:10px !important;
+  }
+  .brand{
+    flex-direction:column !important;
+    align-items:center !important;
+    text-align:center !important;
+    gap:6px !important;
+    line-height:1.2 !important;
+  }
+  .brand .pipe{display:none !important;}
+  .navlinks{
+    width:100% !important;
+    justify-content:center !important;
+    flex-wrap:wrap !important;
+    gap:10px !important;
+  }
+  .navlinks a{
+    padding:10px 14px !important;
+    border-radius:999px !important;
+    background:rgba(15,15,18,.55) !important;
+    border:1px solid rgba(255,255,255,.10) !important;
+  }
 }
-
+/* ===== END INDEX HEADER SYNC ===== */
 </style>
 </head>
 
@@ -402,21 +336,21 @@ details .callout{margin-top:12px;}
   <nav>
 <div class="navwrap">
 <div class="brand">
-<span class="title">TOBI ADEFIDIYA</span>
+<span>TOBI ADEFIDIYA</span>
 <span class="pipe">||</span>
-<span class="sub">GAME &amp; NARRATIVE DESIGNER</span>
+<span style="color:var(--muted); font-weight:700">GAME &amp; NARRATIVE DESIGNER</span>
 </div>
 <div class="navlinks">
-<a href="../index.html#projects">Projects</a>
-<a href="../index.html#about">About</a>
-<a href="../index.html#resume">Resume</a>
+<a href="../index.html#projects" class="navlink">Projects</a>
+<a href="../index.html#about" class="navlink">About</a>
+<a href="../index.html#resume" class="navlink">Resume</a>
 </div>
 </div>
 </nav>
 
   <header class="hero">
     <div class="inner">
-      <div class="kicker"><span class="dot"></span> Team Project • Producer Case Study</div>
+      <div class="kicker">Team Project • Producer Case Study</div>
 
       <div class="hero-sub">
         <div>
@@ -774,23 +708,6 @@ sections.forEach(s=>s && io.observe(s));
 const toTop=document.getElementById('toTop');
 window.addEventListener('scroll', ()=>toTop.classList.toggle('show', window.scrollY>800));
 toTop.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
-</script>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('details').forEach(d => { d.open = false; });
-  document.querySelectorAll('details summary .chev').forEach(ch => { ch.textContent = '＋'; });
-
-  document.querySelectorAll('details').forEach(d => {
-    const sync = () => {
-      const ch = d.querySelector('summary .chev');
-      if(ch) ch.textContent = d.open ? '−' : '＋';
-    };
-    d.addEventListener('toggle', sync);
-    sync();
-  });
-});
 </script>
 
 </body>
