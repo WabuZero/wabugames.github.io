@@ -251,6 +251,100 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
     margin-bottom:6px;
   }
 }
+
+
+/* ABOUT HEADER WITH AVATAR */
+.about-header{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+}
+.about-avatar{
+  width:95px;
+  height:95px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,.15);
+  box-shadow:0 10px 26px rgba(0,0,0,.45);
+  flex:0 0 auto;
+}
+.about-text{flex:1;}
+.links-row{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-top:6px;
+}
+.link-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  text-decoration:none;
+  color:var(--brand);
+  border:1px solid var(--line);
+  background:rgba(15,15,18,.55);
+  font-size:18px;
+  transition:transform .15s, background .15s, color .15s, border-color .15s;
+}
+.link-icon:hover{
+  transform:translateY(-2px);
+  background:rgba(255,127,50,.08);
+  border-color:rgba(255,127,50,.35);
+  color:var(--ink);
+}
+@media (max-width:640px){
+  .about-header{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .about-avatar{
+    width:82px;
+    height:82px;
+  }
+  .links-row{
+    justify-content:center;
+  }
+}
+
+
+/* HERO SKILLS */
+.hero-skills{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:18px;
+}
+.hero-skills span{
+  border:1px solid var(--line);
+  padding:8px 12px;
+  border-radius:999px;
+  color:var(--muted);
+  font-size:14px;
+  background:rgba(19,19,24,.6);
+}
+.link-icon.linkedin{
+  font-weight:900;
+  font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif;
+}
+.link-icon.website{
+  color:var(--brand);
+}
+@media (max-width:640px){
+  .hero-skills{
+    gap:10px;
+    margin-top:16px;
+  }
+  .hero-skills span{
+    font-size:13px;
+    padding:8px 11px;
+  }
+}
 </style>
 </head>
 
@@ -275,6 +369,18 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
   <header class="hero">
     <h1>TLDR, I'm just a nerd.</h1>
     <p>Designer • Developer • Storyteller</p>
+    <div class="hero-skills">
+      <span>Unity</span>
+      <span>Blender</span>
+      <span>C++</span>
+      <span>Rigging</span>
+      <span>Audio</span>
+      <span>Writing</span>
+      <span>Level Design</span>
+      <span>UI</span>
+      <span>Systems Design</span>
+      <span>Git</span>
+    </div>
   </header>
 
   <section id="projects">
@@ -372,14 +478,38 @@ footer{ text-align:center; color:var(--muted); padding:30px 20px 60px }
       <div class="about-grid">
         <div class="panel">
           <h3>Hey, I’m Tobi — Wabu Games.</h3>
-          <p>I’m a game & narrative designer who loves readable combat, strong thematic arcs, and mechanics that <em>say something</em>. Currently building <strong>Strife & Serenity</strong> while prototyping smaller experiences and board games to explore conflict, tension, and resolution.</p>
-          <div class="kv"><span>Unity</span><span>Systems Design</span><span>Narrative Design</span><span>Rapid Prototyping</span><span>Level Design</span><span>UX Writing</span><span>Blender</span><span>Git</span></div>
+
+          <div class="about-header">
+            <img src="wabu gradient1.png" class="about-avatar" alt="Illustrated avatar of Tobi">
+
+            <div class="about-text">
+              <p>I’m a <strong>Black (Nigerian) British game developer</strong> with a deep passion for writing, storytelling, and games that stay with players long after the credits roll.</p>
+
+              <p>I graduated with a <strong>First Class Honours in BA Games Design &amp; Art from the University of Southampton</strong> and am currently pursuing a <strong>Master’s Degree in Games Design at the University of Southern California</strong>.</p>
+
+              <p>I was recently awarded the <strong>Gerald A. Lawson Fund</strong> by <a class="cta" href="https://www.playstation.com/en-us/corporate/playstation-careers/playstation-career-pathways/" target="_blank" rel="noopener">PlayStation Career Pathways</a> and am now part of that program too.</p>
+
+              <p>Through my work I aim to build games where mechanics and narrative reinforce each other — stories you don’t just watch, but experience through play.</p>
+            </div>
+          </div>
         </div>
         <div class="panel">
           <h3>Currently</h3>
-          <ul><li>Prototyping encounter pacing & ability kits for S&amp;S</li><li>Writing narrative surfaces that respect flow</li><li>Iterating weekly with playtests</li></ul>
-          <h3 style="margin-top:14px">Contact</h3>
-          <p><a class="cta" href="mailto:tobidee@icloud.com">tobidee@icloud.com</a></p>
+          <ul>
+            <li>Working towards my <strong>Master’s Degree at USC</strong>!</li>
+            <li>Working on <strong><a class="cta" href="https://wabugames.com/" target="_blank" rel="noopener">STRIFE &amp; SERENITY</a></strong>, a personal passion game project I’m working on...</li>
+            <li>Working on <strong><a class="cta" href="https://vgen.co/" target="_blank" rel="noopener">LOVANIA</a></strong>, another personal story project I’m working on...</li>
+            <li>Working on Radical Play Labs upcoming game <strong>FULL COURT UPRISING</strong>! <em>(no sneak peeks just yet ;))</em></li>
+            <li>Probably playing <strong>Final Fantasy VII</strong>...</li>
+          </ul>
+
+          <h3 style="margin-top:14px">Links</h3>
+          <div class="links-row" aria-label="Links">
+            <a class="link-icon" href="mailto:tobidee@icloud.com" aria-label="Email" title="Email">✉</a>
+            <a class="link-icon linkedin" href="https://www.linkedin.com/in/tobi-a-03660b230/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">in</a>
+            <a class="link-icon" href="https://www.youtube.com/@WabuGames" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">▶</a>
+            <a class="link-icon website" href="https://wabugames.com/" target="_blank" rel="noopener" aria-label="Website" title="Website">🌐</a>
+          </div>
         </div>
       </div>
     </div>
