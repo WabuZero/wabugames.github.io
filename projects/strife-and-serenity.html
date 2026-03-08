@@ -710,11 +710,13 @@ nav{
 
 
 /* ===== Image Lightbox ===== */
-.media-grid img{
+.media-grid img,
+.media-grid video{
   cursor: zoom-in;
   transition: transform .2s ease, filter .2s ease;
 }
-.media-grid img:hover{
+.media-grid img:hover,
+.media-grid video:hover{
   transform: scale(1.03);
   filter: brightness(1.04);
 }
@@ -741,6 +743,9 @@ nav{
   object-fit:contain;
   background:#050508;
 }
+#videoExpanded{
+  display:none;
+}
 .img-close{
   position:absolute;
   top:18px;
@@ -757,7 +762,27 @@ nav{
   line-height:1;
   cursor:pointer;
 }
-.img-close:hover{
+.img-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:52px;
+  height:52px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(15,15,18,.7);
+  color:#fff;
+  font-size:34px;
+  line-height:1;
+  cursor:pointer;
+  z-index:2;
+}
+.img-prev{ left:24px; }
+.img-next{ right:24px; }
+.img-close:hover,
+.img-nav:hover{
   background:rgba(255,127,50,.12);
   color:var(--brand);
   border-color:rgba(255,127,50,.35);
@@ -792,6 +817,13 @@ nav{
     height:40px;
     font-size:26px;
   }
+  .img-nav{
+    width:42px;
+    height:42px;
+    font-size:28px;
+  }
+  .img-prev{ left:12px; }
+  .img-next{ right:12px; }
   .img-caption{
     width:calc(100% - 24px);
     bottom:12px;
@@ -1518,24 +1550,4 @@ document.addEventListener('DOMContentLoaded', () => {
     video.playsInline = true;
 
     const seekToThumb = () => {
-      try { video.currentTime = Math.max(0, thumbTime); } catch (_) {}
-    };
-
-    video.addEventListener('loadedmetadata', seekToThumb, { once: true });
-    video.addEventListener('seeked', () => video.pause(), { once: true });
-
-    if (video.readyState >= 1) seekToThumb();
-
-    video.addEventListener('play', () => {
-      if (Math.abs(video.currentTime - thumbTime) < 0.35) {
-        video.currentTime = 0;
-      }
-    });
-  });
-});
-
-/* ===== Make accordion chevrons toggle between + and − ===== */
-document.querySelectorAll('details').forEach(d=>{
-  const chev = d.querySelector('.chev');
-  if(!chev) return;
-  c... (1 KB left)
+      try { video.currentTime = Math... (2 KB left)
