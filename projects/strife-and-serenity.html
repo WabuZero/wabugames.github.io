@@ -710,6 +710,47 @@ nav{
 </style>
 </head>
 <body>
+/* IMAGE LIGHTBOX */
+
+.media-grid img{
+  cursor: zoom-in;
+  transition: transform .2s ease;
+}
+
+.media-grid img:hover{
+  transform: scale(1.03);
+}
+
+.img-modal{
+  display:none;
+  position:fixed;
+  z-index:1000;
+  padding-top:60px;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.92);
+}
+
+.img-modal-content{
+  display:block;
+  margin:auto;
+  max-width:90%;
+  max-height:85%;
+  border-radius:12px;
+  box-shadow:0 30px 60px rgba(0,0,0,.7);
+}
+
+.img-close{
+  position:absolute;
+  top:18px;
+  right:30px;
+  color:#fff;
+  font-size:40px;
+  font-weight:700;
+  cursor:pointer;
+}
 <div id="progress"></div>
 <div class="overlay"></div>
 <div class="page">
@@ -1315,6 +1356,28 @@ document.querySelectorAll('details').forEach(d=>{
   sync();
   d.addEventListener('toggle', sync);
 });
+/* IMAGE CLICK ENLARGE */
+
+const modal = document.getElementById("imgModal");
+const modalImg = document.getElementById("imgExpanded");
+const closeBtn = document.querySelector(".img-close");
+
+document.querySelectorAll(".media-grid img").forEach(img => {
+  img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+  }
+});
+
+closeBtn.onclick = function(){
+  modal.style.display = "none";
+}
+
+modal.onclick = function(e){
+  if(e.target === modal){
+    modal.style.display = "none";
+  }
+}
 </script>
 <script>
 /* Ensure all collapsibles start closed (even if an 'open' slips in) */
@@ -1325,5 +1388,10 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('details').forEach(d => d.open = false);
 });
 </script>
+<!-- IMAGE LIGHTBOX -->
+<div id="imgModal" class="img-modal">
+  <span class="img-close">&times;</span>
+  <img class="img-modal-content" id="imgExpanded">
+</div>
 </body>
 </html>
