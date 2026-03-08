@@ -743,6 +743,7 @@ nav{
   object-fit:contain;
   background:#050508;
 }
+#imgExpanded,
 #videoExpanded{
   display:none;
 }
@@ -777,7 +778,7 @@ nav{
   font-size:34px;
   line-height:1;
   cursor:pointer;
-  z-index:2;
+  z-index:1001;
 }
 .img-prev{ left:24px; }
 .img-next{ right:24px; }
@@ -989,14 +990,14 @@ nav{
 </figcaption>
 </figure>
 <figure>
-<video controls="" preload="metadata" muted playsinline data-thumb-time="3" src="../assets/strife-overview-2.mp4"></video>
+<video controls="" src="../assets/strife-overview-2.mp4.mp4"></video>
 <figcaption>
 <strong>30–45 sec trailer clip.</strong> This should sell tone + movement + one fight beat.
                 <div class="media-meta">Replace with: tight montage</div>
 </figcaption>
 </figure>
 <figure>
-<img alt="Mood shot of Gate Town environment" src="../assets/strife-overview-3.jpg"/>
+<img alt="Mood shot of Gate Town environment" src="../assets/strife-overview-3.jpg.png"/>
 <figcaption>
 <strong>Mood + mystery.</strong> Lighting/signage hint at wider conflict without stopping play.
                 <div class="media-meta">Replace with: moodiest shot</div>
@@ -1071,14 +1072,14 @@ nav{
 </div>
 <div class="media-grid">
 <figure>
-<img alt="Loop flow screenshot / layout" src="../assets/strife-loop-1.jpg"/>
+<img alt="Loop flow screenshot / layout" src="../assets/strife-loop-1.png"/>
 <figcaption>
 <strong>Loop flow snapshot.</strong> One image that shows skirmish → traversal → discovery → escalation.
                 <div class="media-meta">Replace with: annotated screenshot if possible</div>
 </figcaption>
 </figure>
 <figure>
-<video controls="" preload="metadata" muted playsinline data-thumb-time="3" src="../assets/strife-loop-2.mp4"></video>
+<video controls="" src="../assets/strife-loop-2.mp4.mp4"></video>
 <figcaption>
 <strong>Traversal clip.</strong> Sell that movement is expression (not filler).
                 <div class="media-meta">Replace with: best traversal micro-montage</div>
@@ -1156,24 +1157,24 @@ nav{
           </div>
 <div class="media-grid">
 <figure>
-<img alt="Marks UI / inventory / socketing" src="../assets/strife-systems-1.jpg"/>
+<video controls="" src="../assets/strife-systems-1.mp4"></video>
 <figcaption>
 <strong>Marks moment.</strong> Show the UI or a clear “before/after” stat impact screenshot.
-                <div class="media-meta">Replace with: Marks socketing / tooltip</div>
+                <div class="media-meta">TIP: Click to view</div>
 </figcaption>
 </figure>
 <figure>
 <img alt="Gauge UI / combat level" src="../assets/strife-systems-2.jpg"/>
 <figcaption>
-<strong>Gauge readability.</strong> Capture gauge filling + level-up state.
-                <div class="media-meta">Replace with: best HUD frame</div>
+<strong>Gauge readability.</strong> Shows gauges at Combat Levels 1 (Blue), 2 (Yellow) & 3 (Red).
+                <div class="media-meta">TIP: Click to view</div>
 </figcaption>
 </figure>
 <figure>
-<video controls="" preload="metadata" muted playsinline data-thumb-time="3" src="../assets/strife-systems-3.mp4"></video>
+<video controls="" src="../assets/strife-systems-3.mp4.mp4"></video>
 <figcaption>
 <strong>System payoff clip.</strong> One short clip where variety → gauge → stronger effect is obvious.
-                <div class="media-meta">Replace with: 20–30 sec system showcase</div>
+                <div class="media-meta">TIP: Click to view</div>
 </figcaption>
 </figure>
 </div>
@@ -1274,14 +1275,14 @@ nav{
 </figcaption>
 </figure>
 <figure>
-<img alt="Concept video / storyboard frame / doc screenshot" src="../assets/strife-process-2.jpg"/>
+<video controls="" src="../assets/strife-process-2.mp4"></video>
 <figcaption>
 <strong>Storyboard energy.</strong> Screenshot a concept video frame or planning doc snippet.
                 <div class="media-meta">Replace with: one strong “planning” artifact</div>
 </figcaption>
 </figure>
 <figure>
-<video controls="" preload="metadata" muted playsinline data-thumb-time="3" src="../assets/strife-process-3.mp4"></video>
+<img alt="Concept video / storyboard frame / doc screenshot" src="../assets/strife-process-2.jpg"/>
 <figcaption>
 <strong>Iteration reel.</strong> Show a before/after change (timing, UI, readability, etc).
                 <div class="media-meta">Replace with: short comparison clip</div>
@@ -1402,9 +1403,10 @@ nav{
   <button class="img-close" id="imgClose" aria-label="Close expanded media">×</button>
   <button class="img-nav img-prev" id="imgPrev" aria-label="Previous media">‹</button>
   <button class="img-nav img-next" id="imgNext" aria-label="Next media">›</button>
-  <img class="img-modal-content" id="imgExpanded" alt="">
+  <img class="img-modal-content" id="imgExpanded" alt=""/>
   <video class="img-modal-content" id="videoExpanded" controls playsinline></video>
   <div class="img-caption" id="imgCaption"></div>
+</div>
 </div>
 <script>
 /* ===== Active TOC highlight ===== */
@@ -1439,7 +1441,7 @@ function updateProgress(){
 window.addEventListener('scroll', updateProgress, {passive:true});
 updateProgress();
 
-/* ===== Click-to-expand images + videos ===== */
+/* ===== Click-to-expand images ===== */
 document.addEventListener('DOMContentLoaded', () => {
   const imgModal = document.getElementById('imgModal');
   const imgExpanded = document.getElementById('imgExpanded');
@@ -1454,39 +1456,42 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentItems = [];
   let currentIndex = 0;
 
-  function hideExpandedMedia(){
-    imgExpanded.style.display = 'none';
-    videoExpanded.style.display = 'none';
-    imgExpanded.src = '';
-    imgExpanded.alt = '';
-    videoExpanded.pause();
-    videoExpanded.removeAttribute('src');
-    videoExpanded.load();
-  }
-
   function getCaption(item){
     const figcaption = item.closest('figure')?.querySelector('figcaption');
     return figcaption ? figcaption.textContent.replace(/\s+/g, ' ').trim() : (item.getAttribute('alt') || '');
   }
 
+  function hideExpandedMedia(){
+    imgExpanded.style.display = 'none';
+    videoExpanded.style.display = 'none';
+
+    imgExpanded.removeAttribute('src');
+    imgExpanded.alt = '';
+
+    videoExpanded.pause();
+    videoExpanded.removeAttribute('src');
+    videoExpanded.load();
+  }
+
   function showItem(index){
-    currentIndex = index;
+    if (!currentItems.length) return;
+
+    currentIndex = (index + currentItems.length) % currentItems.length;
     const item = currentItems[currentIndex];
-    if (!item) return;
 
     hideExpandedMedia();
 
-    if (item.tagName.toLowerCase() === 'video'){
-      videoExpanded.src = item.currentSrc || item.getAttribute('src');
+    if (item.tagName.toLowerCase() === 'video') {
+      videoExpanded.src = item.currentSrc || item.getAttribute('src') || '';
       videoExpanded.style.display = 'block';
-      videoExpanded.currentTime = 0;
     } else {
-      imgExpanded.src = item.currentSrc || item.getAttribute('src');
+      imgExpanded.src = item.currentSrc || item.getAttribute('src') || '';
       imgExpanded.alt = item.getAttribute('alt') || 'Expanded project media';
       imgExpanded.style.display = 'block';
     }
 
     imgCaption.textContent = getCaption(item);
+
     const navDisplay = currentItems.length > 1 ? 'grid' : 'none';
     imgPrev.style.display = navDisplay;
     imgNext.style.display = navDisplay;
@@ -1494,11 +1499,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openFromItem(item){
     const gallery = item.closest('.media-grid');
-    currentItems = gallery ? [...gallery.querySelectorAll('img, video')] : [item];
+    currentItems = gallery ? Array.from(gallery.querySelectorAll('img, video')) : [item];
     currentIndex = Math.max(0, currentItems.indexOf(item));
+
     imgModal.classList.add('open');
     imgModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+
     showItem(currentIndex);
   }
 
@@ -1511,22 +1518,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function goPrev(){
-    if (!currentItems.length) return;
-    showItem((currentIndex - 1 + currentItems.length) % currentItems.length);
+    showItem(currentIndex - 1);
   }
 
   function goNext(){
-    if (!currentItems.length) return;
-    showItem((currentIndex + 1) % currentItems.length);
+    showItem(currentIndex + 1);
   }
 
   document.querySelectorAll('.media-grid img, .media-grid video').forEach(item => {
     item.addEventListener('click', () => openFromItem(item));
   });
 
-  imgClose.addEventListener('click', closeImgModal);
-  imgPrev.addEventListener('click', (e) => { e.stopPropagation(); goPrev(); });
-  imgNext.addEventListener('click', (e) => { e.stopPropagation(); goNext(); });
+  imgClose.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeImgModal();
+  });
+
+  imgPrev.addEventListener('click', (e) => {
+    e.stopPropagation();
+    goPrev();
+  });
+
+  imgNext.addEventListener('click', (e) => {
+    e.stopPropagation();
+    goNext();
+  });
 
   imgModal.addEventListener('click', (e) => {
     if (e.target === imgModal) closeImgModal();
@@ -1539,15 +1555,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowRight') goNext();
   });
 
-  /* Video thumbnail frame:
-     Set data-thumb-time="3" (or any second) on inline video tags.
-     Change that number later wherever you want a different thumbnail frame.
-     Playback resets to the beginning when played. */
+  /* Optional video thumbnail helper:
+     If you ever want a specific inline thumbnail frame later,
+     add data-thumb-time="3" (or any second) to a <video> tag.
+     This does not change any existing src or file name. */
   document.querySelectorAll('.media-grid video[data-thumb-time]').forEach(video => {
     const thumbTime = parseFloat(video.dataset.thumbTime || '0');
+
+    const seekToThumb = () => {
+      try { video.currentTime = Math.max(0, thumbTime); } catch (_) {}
+    };
+
     video.preload = 'metadata';
     video.muted = true;
     video.playsInline = true;
 
-    const seekToThumb = () => {
-      try { video.currentTime = Math... (2 KB left)
+    video.addEventListener('loadedmetadata', seekToThumb, { once: true });
+    video.addEventListener('seeked', () => video.pause(), { once: true });
+
+    if (video.readyState >= 1) seekToThumb();
+
+    video.addEventLis... (1 KB left)
