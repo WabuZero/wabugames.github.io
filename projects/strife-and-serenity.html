@@ -707,50 +707,100 @@ nav{
   }
 }
 /* ===== END INDEX HEADER SYNC ===== */
-</style>
-</head>
-<body>
-/* IMAGE LIGHTBOX */
 
+
+/* ===== Image Lightbox ===== */
 .media-grid img{
   cursor: zoom-in;
-  transition: transform .2s ease;
+  transition: transform .2s ease, filter .2s ease;
 }
-
 .media-grid img:hover{
   transform: scale(1.03);
+  filter: brightness(1.04);
 }
-
 .img-modal{
   display:none;
   position:fixed;
+  inset:0;
   z-index:1000;
-  padding-top:60px;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
   background:rgba(0,0,0,.92);
+  padding:32px 18px;
 }
-
+.img-modal.open{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 .img-modal-content{
-  display:block;
-  margin:auto;
-  max-width:90%;
-  max-height:85%;
-  border-radius:12px;
+  max-width:min(92vw, 1400px);
+  max-height:86vh;
+  width:auto;
+  height:auto;
+  border-radius:16px;
   box-shadow:0 30px 60px rgba(0,0,0,.7);
+  object-fit:contain;
+  background:#050508;
 }
-
 .img-close{
   position:absolute;
   top:18px;
-  right:30px;
+  right:24px;
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(15,15,18,.7);
   color:#fff;
-  font-size:40px;
-  font-weight:700;
+  font-size:28px;
+  line-height:1;
   cursor:pointer;
 }
+.img-close:hover{
+  background:rgba(255,127,50,.12);
+  color:var(--brand);
+  border-color:rgba(255,127,50,.35);
+}
+.img-caption{
+  position:absolute;
+  left:50%;
+  bottom:20px;
+  transform:translateX(-50%);
+  max-width:min(92vw, 900px);
+  text-align:center;
+  color:#e8e8ee;
+  font-size:14px;
+  padding:10px 14px;
+  border-radius:12px;
+  background:rgba(15,15,18,.7);
+  border:1px solid rgba(255,255,255,.10);
+}
+@media (max-width: 720px){
+  .img-modal{
+    padding:20px 12px 72px;
+  }
+  .img-modal-content{
+    max-width:94vw;
+    max-height:78vh;
+    border-radius:12px;
+  }
+  .img-close{
+    top:12px;
+    right:12px;
+    width:40px;
+    height:40px;
+    font-size:26px;
+  }
+  .img-caption{
+    width:calc(100% - 24px);
+    bottom:12px;
+    font-size:13px;
+  }
+}
+</style>
+</head>
+<body>
 <div id="progress"></div>
 <div class="overlay"></div>
 <div class="page">
@@ -1348,6 +1398,44 @@ function updateProgress(){
 window.addEventListener('scroll', updateProgress, {passive:true});
 updateProgress();
 
+/* ===== Click-to-expand images ===== */
+const imgModal = document.getElementById('imgModal');
+const imgExpanded = document.getElementById('imgExpanded');
+const imgClose = document.getElementById('imgClose');
+const imgCaption = document.getElementById('imgCaption');
+
+function closeImgModal(){
+  imgModal.classList.remove('open');
+  imgModal.setAttribute('aria-hidden', 'true');
+  imgExpanded.src = '';
+  imgExpanded.alt = '';
+  imgCaption.textContent = '';
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.media-grid img').forEach(img => {
+  img.addEventListener('click', () => {
+    const figcaption = img.closest('figure')?.querySelector('figcaption');
+    imgExpanded.src = img.src;
+    imgExpanded.alt = img.alt || 'Expanded project image';
+    imgCaption.textContent = figcaption ? figcaption.textContent.replace(/\s+/g, ' ').trim() : (img.alt || '');
+    imgModal.classList.add('open');
+    imgModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+imgClose.addEventListener('click', closeImgModal);
+imgModal.addEventListener('click', (e) => {
+  if (e.target === imgModal) closeImgModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && imgModal.classList.contains('open')) {
+    closeImgModal();
+  }
+});
+
 /* ===== Make accordion chevrons toggle between + and − ===== */
 document.querySelectorAll('details').forEach(d=>{
   const chev = d.querySelector('.chev');
@@ -1356,28 +1444,6 @@ document.querySelectorAll('details').forEach(d=>{
   sync();
   d.addEventListener('toggle', sync);
 });
-/* IMAGE CLICK ENLARGE */
-
-const modal = document.getElementById("imgModal");
-const modalImg = document.getElementById("imgExpanded");
-const closeBtn = document.querySelector(".img-close");
-
-document.querySelectorAll(".media-grid img").forEach(img => {
-  img.onclick = function(){
-    modal.style.display = "block";
-    modalImg.src = this.src;
-  }
-});
-
-closeBtn.onclick = function(){
-  modal.style.display = "none";
-}
-
-modal.onclick = function(e){
-  if(e.target === modal){
-    modal.style.display = "none";
-  }
-}
 </script>
 <script>
 /* Ensure all collapsibles start closed (even if an 'open' slips in) */
@@ -1389,9 +1455,10 @@ document.querySelectorAll('details').forEach(d => d.open = false);
 });
 </script>
 <!-- IMAGE LIGHTBOX -->
-<div id="imgModal" class="img-modal">
-  <span class="img-close">&times;</span>
-  <img class="img-modal-content" id="imgExpanded">
+<div id="imgModal" class="img-modal" aria-hidden="true">
+  <button class="img-close" id="imgClose" aria-label="Close expanded image">×</button>
+  <img class="img-modal-content" id="imgExpanded" alt="">
+  <div class="img-caption" id="imgCaption"></div>
 </div>
 </body>
 </html>
