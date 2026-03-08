@@ -1365,6 +1365,12 @@ nav{
 </main>
 <button aria-label="Back to top" id="toTop">▲</button>
 </div>
+<!-- IMAGE LIGHTBOX -->
+<div id="imgModal" class="img-modal" aria-hidden="true">
+  <button class="img-close" id="imgClose" aria-label="Close expanded image">×</button>
+  <img class="img-modal-content" id="imgExpanded" alt="">
+  <div class="img-caption" id="imgCaption"></div>
+</div>
 <script>
 /* ===== Active TOC highlight ===== */
 const links = [...document.querySelectorAll('#toc a[href^="#"]')];
@@ -1399,41 +1405,45 @@ window.addEventListener('scroll', updateProgress, {passive:true});
 updateProgress();
 
 /* ===== Click-to-expand images ===== */
-const imgModal = document.getElementById('imgModal');
-const imgExpanded = document.getElementById('imgExpanded');
-const imgClose = document.getElementById('imgClose');
-const imgCaption = document.getElementById('imgCaption');
+document.addEventListener('DOMContentLoaded', () => {
+  const imgModal = document.getElementById('imgModal');
+  const imgExpanded = document.getElementById('imgExpanded');
+  const imgClose = document.getElementById('imgClose');
+  const imgCaption = document.getElementById('imgCaption');
 
-function closeImgModal(){
-  imgModal.classList.remove('open');
-  imgModal.setAttribute('aria-hidden', 'true');
-  imgExpanded.src = '';
-  imgExpanded.alt = '';
-  imgCaption.textContent = '';
-  document.body.style.overflow = '';
-}
+  if (!imgModal || !imgExpanded || !imgClose || !imgCaption) return;
 
-document.querySelectorAll('.media-grid img').forEach(img => {
-  img.addEventListener('click', () => {
-    const figcaption = img.closest('figure')?.querySelector('figcaption');
-    imgExpanded.src = img.src;
-    imgExpanded.alt = img.alt || 'Expanded project image';
-    imgCaption.textContent = figcaption ? figcaption.textContent.replace(/\s+/g, ' ').trim() : (img.alt || '');
-    imgModal.classList.add('open');
-    imgModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  });
-});
-
-imgClose.addEventListener('click', closeImgModal);
-imgModal.addEventListener('click', (e) => {
-  if (e.target === imgModal) closeImgModal();
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && imgModal.classList.contains('open')) {
-    closeImgModal();
+  function closeImgModal(){
+    imgModal.classList.remove('open');
+    imgModal.setAttribute('aria-hidden', 'true');
+    imgExpanded.src = '';
+    imgExpanded.alt = '';
+    imgCaption.textContent = '';
+    document.body.style.overflow = '';
   }
+
+  document.querySelectorAll('.media-grid img').forEach(img => {
+    img.addEventListener('click', () => {
+      const figcaption = img.closest('figure')?.querySelector('figcaption');
+      imgExpanded.src = img.src;
+      imgExpanded.alt = img.alt || 'Expanded project image';
+      imgCaption.textContent = figcaption ? figcaption.textContent.replace(/\s+/g, ' ').trim() : (img.alt || '');
+      imgModal.classList.add('open');
+      imgModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  imgClose.addEventListener('click', closeImgModal);
+  imgModal.addEventListener('click', (e) => {
+    if (e.target === imgModal) closeImgModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && imgModal.classList.contains('open')) {
+      closeImgModal();
+    }
+  });
 });
 
 /* ===== Make accordion chevrons toggle between + and − ===== */
@@ -1454,11 +1464,5 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('details').forEach(d => d.open = false);
 });
 </script>
-<!-- IMAGE LIGHTBOX -->
-<div id="imgModal" class="img-modal" aria-hidden="true">
-  <button class="img-close" id="imgClose" aria-label="Close expanded image">×</button>
-  <img class="img-modal-content" id="imgExpanded" alt="">
-  <div class="img-caption" id="imgCaption"></div>
-</div>
 </body>
 </html>
