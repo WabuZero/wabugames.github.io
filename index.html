@@ -3079,7 +3079,7 @@ toggle.addEventListener(&#x27;click&#x27;,()=&gt;{
         anchor.rel = "noopener noreferrer";
         anchor.target = "_blank";
         const resource = new URL(href);
-        if (resource.origin === globalThis.location.origin && ["narrative.html", "design.html"].some(page => resource.pathname === new URL(page, portfolioBase).pathname)) anchor.removeAttribute("target");
+        if (resource.origin === globalThis.location.origin && ["projects/narrative.html", "projects/design.html", "narrative.html", "design.html"].some(page => resource.pathname === new URL(page, portfolioBase).pathname)) anchor.removeAttribute("target");
         if (resource.origin === globalThis.location.origin && resource.pathname === new URL("assets/Tobi_A_Resume.pdf", portfolioBase).pathname && resource.searchParams.get("download") === "1") {
           resource.searchParams.delete("download");
           anchor.href = resource.href;
