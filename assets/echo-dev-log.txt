@@ -1,0 +1,24 @@
+Tobi Adefidiya
+
+Echo is my prototype that explores whether a puzzle game can be built around absence rather than presence. Instead of directly interacting with the world to progress, the player records their own movements and relies on an echo of those past actions to solve puzzles. This prototype is built around the theme “what remains”, asking the player to think ahead and consider the consequences of actions.
+
+Build Notes:
+
+Question:
+Can a puzzle be solved by removing the player from the action and forcing them to rely on their past self?
+
+Hypothesis:
+If a player is given clear feedback and constraints, they will adapt to solving problems indirectly by planning their actions in advance rather than reacting in the moment.
+
+Inputs:
+Keyboard movement (WASD)
+Record action (R)
+Replay echo (E)
+
+Additional instructions/useful info:
+Players must record their movement before attempting to progress. Echoes can only be used once per recording, and puzzles require completing actions in a specific order during a single playback.
+
+Third-party / found assets & libraries:
+Unity
+Free sound effects
+Placeholder models and materials – Unity Asset Store

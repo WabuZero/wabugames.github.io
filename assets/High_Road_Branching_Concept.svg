@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1260" viewBox="0 0 1440 1260" role="img" aria-labelledby="title desc"><title id="title">High Road: proposed branching encounter workflow</title><desc id="desc">An unimplemented design proposal. Choose Doubt or Desire, meet the opposing emotion, then resist, take its advice, or switch routes. One temporary consequence applies to the next segment before the next encounter.</desc>
+<rect x="0" y="0" width="1440" height="1260" rx="0" fill="#101115" stroke="#101115" stroke-width="2"/>
+<text x="70" y="64" fill="#ff8b3e" font-family="DejaVu Sans, sans-serif" font-size="38" font-weight="700" text-anchor="start">HIGH</text>
+<text x="192.1640625" y="64" fill="#6ab9ee" font-family="DejaVu Sans, sans-serif" font-size="38" font-weight="700" text-anchor="start">ROAD</text>
+<text x="70" y="103" fill="#ece5da" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="400" text-anchor="start">Branching encounter workflow</text>
+<rect x="600" y="177" width="240" height="56" rx="28" fill="#25262f" stroke="#8a8b91" stroke-width="2"/>
+<text x="720" y="212" fill="#e9e5df" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">BEGIN JOURNEY</text>
+<polyline points="720,233 720,258" fill="none" stroke="#99999d" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="720,258 726.0,246.0 714.0,246.0" fill="#99999d"/>
+<polygon points="720,258 870,309 720,360 570,309" fill="#1b1b23" stroke="#d1bba4" stroke-width="2"/>
+<text x="720" y="304" fill="#e9e5df" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Choose your</text>
+<text x="720" y="328" fill="#e9e5df" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">starting route</text>
+<polyline points="570,309 380,309 380,377" fill="none" stroke="#6ab9ee" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="380,377 386.0,365.0 374.0,365.0" fill="#6ab9ee"/>
+<polyline points="870,309 1060,309 1060,377" fill="none" stroke="#ff8b3e" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="1060,377 1066.0,365.0 1054.0,365.0" fill="#ff8b3e"/>
+<rect x="180" y="377" width="400" height="99" rx="18" fill="#132b3b" stroke="#6ab9ee" stroke-width="2"/>
+<text x="380" y="414" fill="#8ed1ff" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" text-anchor="middle">DOUBT ROUTE</text>
+<text x="380" y="448" fill="#d5e7f3" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle">Stealth · caution · the past</text>
+<rect x="860" y="377" width="400" height="99" rx="18" fill="#3b2618" stroke="#ff8b3e" stroke-width="2"/>
+<text x="1060" y="414" fill="#ffad75" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" text-anchor="middle">DESIRE ROUTE</text>
+<text x="1060" y="448" fill="#f3dfcd" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle">Platforming · risk · the future</text>
+<polyline points="380,476 380,511 615,511 615,541" fill="none" stroke="#6ab9ee" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="615,541 621.0,529.0 609.0,529.0" fill="#6ab9ee"/>
+<polyline points="1060,476 1060,511 825,511 825,541" fill="none" stroke="#ff8b3e" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="825,541 831.0,529.0 819.0,529.0" fill="#ff8b3e"/>
+<rect x="450" y="541" width="540" height="105" rx="18" fill="#22222c" stroke="#8a8b91" stroke-width="2"/>
+<text x="720" y="579" fill="#e9e5df" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" text-anchor="middle">THE OPPOSING EMOTION APPEARS</text>
+<text x="720" y="611" fill="#bfbac2" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle">DESIRE on Doubt · DOUBT on Desire</text>
+<polyline points="720,646 720,680" fill="none" stroke="#99999d" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="720,680 726.0,668.0 714.0,668.0" fill="#99999d"/>
+<polygon points="720,680 875,743 720,806 565,743" fill="#1b1b23" stroke="#d1bba4" stroke-width="2"/>
+<text x="720" y="735" fill="#e9e5df" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" text-anchor="middle">How do you</text>
+<text x="720" y="762" fill="#e9e5df" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" text-anchor="middle">respond?</text>
+<polyline points="565,743 270,743 270,866" fill="none" stroke="#65b5a0" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="270,866 276.0,854.0 264.0,854.0" fill="#65b5a0"/>
+<polyline points="720,806 720,866" fill="none" stroke="#d7b36d" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="720,866 726.0,854.0 714.0,854.0" fill="#d7b36d"/>
+<polyline points="875,743 1170,743 1170,866" fill="none" stroke="#ab9fe5" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="1170,866 1176.0,854.0 1164.0,854.0" fill="#ab9fe5"/>
+<rect x="95" y="804" width="350" height="34" rx="0" fill="#101115" stroke="#101115" stroke-width="2"/>
+<rect x="545" y="804" width="350" height="34" rx="0" fill="#101115" stroke="#101115" stroke-width="2"/>
+<rect x="995" y="804" width="350" height="34" rx="0" fill="#101115" stroke="#101115" stroke-width="2"/>
+<text x="270" y="827" fill="#bfe6da" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle">“I’m staying my course.”</text>
+<text x="720" y="827" fill="#eddbb5" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle">“I’ll consider your advice.”</text>
+<text x="1170" y="827" fill="#d9d1f5" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle">“Show me the other way.”</text>
+<rect x="80" y="866" width="380" height="147" rx="18" fill="#172b26" stroke="#65b5a0" stroke-width="2"/>
+<text x="270" y="903" fill="#91d6c1" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" text-anchor="middle">STAY + RESIST</text>
+<text x="270" y="939" fill="#e9e5df" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle">Keep the current route.</text>
+<text x="270" y="969" fill="#c7d5cf" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle">Gain one route-specific assist</text>
+<text x="270" y="993" fill="#c7d5cf" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle">for the next segment.</text>
+<rect x="530" y="866" width="380" height="147" rx="18" fill="#30291b" stroke="#d7b36d" stroke-width="2"/>
+<text x="720" y="903" fill="#efd198" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle">STAY + TAKE ADVICE</text>
+<text x="720" y="939" fill="#e9e5df" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle">Keep the current route.</text>
+<text x="720" y="969" fill="#dad2be" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle">Try a tactical alternative with</text>
+<text x="720" y="993" fill="#dad2be" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle">one benefit and one added risk.</text>
+<rect x="980" y="866" width="380" height="147" rx="18" fill="#29233b" stroke="#ab9fe5" stroke-width="2"/>
+<text x="1170" y="903" fill="#c9bdf8" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" text-anchor="middle">SWITCH ROUTES</text>
+<text x="1170" y="939" fill="#e9e5df" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle">Move at a designated junction.</text>
+<text x="1170" y="969" fill="#d3cdde" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle">Preserve progress; the opposing</text>
+<text x="1170" y="993" fill="#d3cdde" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle">emotion becomes the new guide.</text>
+<polyline points="270,1013 270,1051 650,1051 650,1084" fill="none" stroke="#65b5a0" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="650,1084 656.0,1072.0 644.0,1072.0" fill="#65b5a0"/>
+<polyline points="720,1013 720,1084" fill="none" stroke="#d7b36d" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="720,1084 726.0,1072.0 714.0,1072.0" fill="#d7b36d"/>
+<polyline points="1170,1013 1170,1051 790,1051 790,1084" fill="none" stroke="#ab9fe5" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="790,1084 796.0,1072.0 784.0,1072.0" fill="#ab9fe5"/>
+<rect x="510" y="1084" width="420" height="74" rx="18" fill="#24242d" stroke="#8a8b91" stroke-width="2"/>
+<text x="720" y="1116" fill="#e9e5df" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" text-anchor="middle">PLAY THE NEXT SEGMENT</text>
+<text x="720" y="1143" fill="#c1bec5" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle">Apply only the selected consequence.</text>
+<polyline points="930,1121 1400,1121 1400,593 990,593" fill="none" stroke="#8a8b91" stroke-width="2.4" stroke-linejoin="round"/>
+<polygon points="990,593 1002.0,599.0 1002.0,587.0" fill="#8a8b91"/>
+<text x="1180" y="1097" fill="#a9a8b0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="middle">Next designated encounter</text>
+<text x="1180" y="612" fill="#a9a8b0" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="middle">Temporary effects reset</text>
+</svg>

@@ -1,0 +1,24 @@
+Tobi Adefidiya
+
+Crossfire Chaos is my prototype that explores how a simple objective can be made overwhelming through pressure and opposition. The player is tasked with a straightforward goal, but the addition of time constraints and active threats creates a sense of chaos and urgency. The intention was to make the task feel almost impossible at first glance, while still being achievable through persistence and determination. 
+
+Build Notes
+
+Question:
+Can a task be made to feel chaotic and daunting while still remaining possible?
+
+Hypothesis:
+If a simple objective is layered with time pressure and direct opposition, players will perceive the challenge as overwhelming even though the underlying task remains achievable.
+
+Inputs:
+Keyboard movement (WASD)
+Swing Hammer (LMB/Left Mouse Button)
+
+Additional instructions/useful info:
+Players are encouraged to keep moving and stay aware of their surroundings. The experience is designed to feel intense and stressful, even though the core objective itself is simple.
+
+Third-party/found assets & libraries:
+Unity Starter Assets
+Free sound effects from itch.io asset packs
+Placeholder models and materials – Unity Asset Store
+Placeholder music – YouTube

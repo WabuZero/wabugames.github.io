@@ -1,0 +1,12 @@
+/* Shared, compact section navigation for Design and Narrative. */
+html{scroll-padding-top:calc(var(--section-header-height,82px) + 76px)}
+main>section[id]{scroll-margin-top:12px}
+.jump-nav{display:flex;align-items:center;gap:5px;position:sticky;top:var(--section-header-height,82px);z-index:25;max-width:100%;min-width:0;background:#14161af2;backdrop-filter:blur(18px);border:1px solid #ffffff24;border-radius:12px;padding:6px;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin;scrollbar-color:#726255 transparent}
+.jump-nav a{padding:10px 13px;min-height:42px;white-space:nowrap;display:flex;gap:10px;font-size:11px;line-height:1.5;align-items:center;border-radius:7px;transition:background .2s;color:#ddd6cf;text-decoration:none;flex:0 0 auto}
+.jump-nav a:hover,.jump-nav a[aria-current]{background:#ff873f17;color:#ff873f}
+.jump-nav a:focus-visible{outline:2px solid #ff873f;outline-offset:-2px}
+.jump-nav a small{font-size:9px;color:#a59484}
+.jump-nav .nav-label{padding:0 11px;color:#93989b;font-size:9px;text-transform:uppercase;letter-spacing:.15em;white-space:nowrap}
+@media(max-width:1000px){.jump-nav .nav-label{display:none}.jump-nav a{padding:10px 12px}}
+@media(max-width:760px){.jump-nav{border-radius:9px;gap:1px;padding:4px}.jump-nav a{font-size:10px;padding:9px 12px}.jump-nav a small{display:none}}
+@media(prefers-reduced-motion:reduce){.jump-nav a{transition:none}}

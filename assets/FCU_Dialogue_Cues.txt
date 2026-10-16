@@ -1,0 +1,200 @@
+FCU DIALOGUE CUES!
+
+—— GRIND RAIL CUE:
+
+M: Xiara! 
+
+X: GAH—! 
+
+M: Rails, just up ahead.
+
+X: I can see that. Did I forget to give you a volume dial?
+
+M: You can interact with them. Maintain forward momentum, align your stance, and you’ll glide along the surface!
+
+X: You’re saying I can grind them? Like Son—
+
+M: Exactly like that! It is an efficient method of traversal, faster than running and overall less exhausting than jumping.
+
+X: Huh, that’s neat.
+
+M: This will be the first time we coordinate directly. So I’ll provide guidance when new movement options become available.
+
+X: Sure thing, coach.
+
+M: Whenever you’re ready, step onto the rail!
+
+
+—— DASHING CUE:
+
+M: Excellent grinding Xiara!
+
+X: Pfft—
+
+M: What’s the matter?
+
+X: Nothing, what now?
+
+M: Well, this section requires additional speed.
+In areas such as this one, I advise DASHING. Very useful for clearing distance or accelerating quickly!
+
+X: And… you’re sure I won’t fall and eat crap?
+
+M: Not if you time it right!
+
+X: (Sigh) Alright, let’s mosey.
+
+M: That’s the goal!
+
+
+—— THROWING CUE:
+
+X: Dang, doors locked.
+
+M: Well! Do I have news for you!
+
+X: Dunno, do you?
+
+M: Yes…? This is the perfect opportunity for you to use me!
+
+X: Eh?
+
+M: Target the RED RECEIVER over there, LOCK-ON, then THROW.
+
+X: You’re volunteering as ammo?
+
+M: As a magnetically stabilized basketball.
+
+X: Alright, well try not to dent.
+
+M: As long as you throw me gently!
+
+X: …
+
+M: …Xiara?
+
+
+——— SEEING E.C.I. CUE:
+
+X: Dang!
+
+M: What is it?
+
+X: Up there. Behind the glass.
+Those uniforms… that’s E.C.I.
+
+M: Confirmed. Three officers. Armed.
+
+X: Do these guys seriously have nothing better to do?
+
+M: Individuals in positions of authority often look… unnecessarily hard for problems to resolve.
+Whether this becomes one’s up to you. I’ll follow your lead.
+
+X: Easy for you to say, you don’t have a record with these guys.
+
+M: I don’t. But I do have reinforced casing… and confidence in your judgment.
+
+X: You’re actually ready for this, aren’t you?
+
+M: I’m ready to support you, Xiara!
+
+X: …yeah, alright.
+
+M: Now, when you’re ready, let’s mosey!
+
+X: Heh…
+
+
+——— COMBAT I CUE (BASICS):
+
+ECI Officer (radio):
+Suspicious individual located on court level.
+Initiating detainment procedure.
+
+X: Here we go…
+
+-
+
+M: Xiara! Combat readiness recommended!
+
+X: You’re the coach! Your turn to lead!
+
+M: Start with light strikes! Keep them off balance!
+
+X: Fast hits. Got ya!
+
+-
+
+M: Heavy strikes deal more damage, but require commitment. Use them when you see an opening.
+
+X: So don’t spam?
+
+M: Thats right!
+
+M: If they guard your front, move around them and cross them up!
+
+X: Cross ‘em up, I like that play!
+
+
+——— COMBAT II CUE (MULTIPLE ENEMIES):
+
+M: Multiple hostiles detected. You’ll need to manage them.
+
+X: What’s the play?
+
+M: Switch your focus between targets. Don’t let any one of them control the fight!
+
+X: Got it, so keep moving.
+
+M: That’s right. And remember! You can throw me… SLIGHTLY harder I, suppose… to disrupt them. Direct hits stun briefly!
+
+X: Great, you’ll be my ticket to some breathing room.
+
+M: One last thing! The rails around you aren’t just for traversal. Use them to reposition, gain speed, and strike from better angles.
+
+X: Got it! Let’s run the floor.
+
+
+——— POWER GENERATOR CUE:
+
+M: That device ahead… it’s a power generator!
+
+X: Cross ‘em up, ri—
+
+M: Oh, no. Combat party’s over.
+
+X: Oh, okay so… throw you, right?
+
+M: Yes but WAIT!
+
+X: Eh?
+
+M: Timing is key here. Approach the generator and initiate interaction.
+
+Once the access port opens, time your input carefully, throw me inside at the right time and a clean throw should overload the system!
+
+X: Gotcha.
+
+
+——— COMBAT III CUE (RANGED ENEMIES):
+
+M: Xiara! New threat detected up ahead!!
+
+X: Are those GUNS!?
+
+M: Welcome to the United States.
+
+X: I——! True.
+
+M: It's okay! Maintain distance and stay mobile. Their attacks track your position, not you!
+
+X: Got it, staying on the move!
+
+M: If you time your movement correctly, you can even ‘cross up’ projectiles.
+A sharp change in direction will slow the shot and give you an opening!
+
+X: Really?? Dude, I’m totally goated!
+
+M: That’s right! Unless of course you get shot, so please try not to.
+
+X: I like that plan!
