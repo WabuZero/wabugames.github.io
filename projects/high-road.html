@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>High Road — Case Study | Wabu Games</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>High Road: Case Study | Wabu Games</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;family=Playfair+Display:wght@600;800&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/site.css?v=1">
 
 <style>
@@ -22,7 +22,7 @@ html{scroll-behavior:smooth}
 body{
   margin:0; color:var(--ink);
   font:400 16px/1.65 Inter,system-ui,Segoe UI,Roboto;
-  background:#000 url('../Wallpaper.png') center/cover fixed no-repeat;
+  background:#000 url("https://wabuzero.github.io/wabugames.github.io/Wallpaper.png") center/cover fixed no-repeat;
   overflow-x:hidden; /* prevents sections drifting sideways */
 }
 a{color:inherit}
@@ -59,7 +59,7 @@ nav{
     radial-gradient(circle at 12% 0%, rgba(255,127,50,.22) 0, transparent 55%),
     radial-gradient(circle at 88% 8%, rgba(140,104,255,.18) 0, transparent 55%),
     linear-gradient(180deg, rgba(10,10,12,.92) 0%, rgba(10,10,12,.70) 42%, rgba(10,10,12,0) 100%),
-    url('../assets/high-road-hero.jpg') center/cover no-repeat;
+    url("https://wabuzero.github.io/wabugames.github.io/assets/high-road-hero.jpg") center/cover no-repeat;
   border-bottom:1px solid var(--line);
 }
 .hero .inner{max-width:var(--max); margin:auto}
@@ -388,27 +388,12 @@ nav{
 }
 /* ===== END INDEX HEADER SYNC ===== */
 </style>
-</head>
+<link rel="stylesheet" href="../assets/portfolio-chrome.css"><link rel="stylesheet" href="../assets/section-nav.css"><link rel="stylesheet" href="../assets/case-study.css"><link rel="stylesheet" href="../assets/portfolio-refinements.css"><link rel="stylesheet" href="../assets/media-preview.css"></head>
 
-<body>
-<div id="progress"></div>
+<body class="case-study">
+<header class="site-header portfolio-header"><nav class="navbar" aria-label="Main navigation"><a class="header-brand" href="../index.html" aria-label="Tobi Adefidiya: homepage"><span class="brand-copy"><span class="brand-name">TOBI ADEFIDIYA</span><span class="brand-role">GAME &amp; NARRATIVE DESIGNER</span></span></a><div class="navlinks"><a href="../index.html#tobi-wheel-home" class="navlink">Projects</a><a href="../index.html#about" class="navlink">About</a><a href="../index.html#resume" class="navlink">Resume</a></div></nav></header><div id="progress"></div>
 <div class="overlay"></div>
 <div class="page">
-
-  <nav>
-<div class="navwrap">
-<div class="brand">
-<span>TOBI ADEFIDIYA</span>
-<span class="pipe">||</span>
-<span style="color:var(--muted); font-weight:700">GAME &amp; NARRATIVE DESIGNER</span>
-</div>
-<div class="navlinks">
-<a href="../index.html#projects" class="navlink">Projects</a>
-<a href="../index.html#about" class="navlink">About</a>
-<a href="../index.html#resume" class="navlink">Resume</a>
-</div>
-</div>
-</nav>
 
   <header class="hero">
     <div class="inner">
@@ -418,8 +403,8 @@ nav{
         <div>
           <h1>High Road</h1>
           <p class="deck">
-            A self-reflective platformer about internal conflict. Players climb through two reflections of identity,
-            <strong>Desire</strong> and <strong>Doubt</strong>, unlocking fragmented memories that shape how the journey is understood.
+            A <strong class="portfolio-keyword">self-reflective platformer</strong> about <strong class="portfolio-keyword">internal conflict</strong>. Players climb through two reflections of identity,
+            Desire and Doubt, unlocking fragmented memories that shape how the journey is understood.
           </p>
 
           <div class="meta">
@@ -431,8 +416,8 @@ nav{
           </div>
 
           <div class="cta-row">
-            <a class="btn btn-primary" href="https://wabuzero.itch.io/high-road" target="_blank" rel="noopener">Playable build →</a>
-            <a class="btn btn-soft" href="https://adaptable-radius-84c.notion.site/Game-I-High-Road-13c927cda10680f59936f2face654c71" target="_blank" rel="noopener">Ideation →</a>
+            <a class="btn btn-primary" href="https://wabuzero.itch.io/high-road" rel="noopener">Playable build →</a>
+            <a class="btn btn-soft" href="https://adaptable-radius-84c.notion.site/Game-I-High-Road-13c927cda10680f59936f2face654c71" rel="noopener">Ideation →</a>
           </div>
 
           <p class="small" style="margin-top:10px">
@@ -448,7 +433,7 @@ nav{
           </div>
           <div class="fact">
             <div class="fact-label">Reward</div>
-            <div class="fact-value">Memory fragments that reveal motives / regrets</div>
+            <div class="fact-value"><strong class="portfolio-keyword">Memory fragments</strong> that reveal motives / regrets</div>
           </div>
           <div class="fact">
             <div class="fact-label">Target feeling</div>
@@ -460,18 +445,7 @@ nav{
   </header>
 
   <main class="wrap">
-    <div class="grid">
-
-      <aside class="toc" id="toc">
-        <h4>On this page</h4>
-        <a href="#overview">Overview</a>
-        <a href="#loop">Gameplay Loop</a>
-        <a href="#routes">Routes & Effects</a>
-        <a href="#story">Memories & Protagonist</a>
-        <a href="#mda">Essential Experience (MDA)</a>
-        <a href="#gallery">Media Gallery</a>
-        <a href="#takeaways">Takeaways</a>
-      </aside>
+    <nav class="jump-nav" id="toc" aria-label="Case study sections"><span class="nav-label">Explore</span><a href="#overview"><small>01</small> Overview</a><a href="#loop"><small>02</small> Gameplay Loop</a><a href="#routes"><small>03</small> Routes &amp; Effects</a><a href="#story"><small>04</small> Memories &amp; Protagonist</a><a href="#mda"><small>05</small> Essential Experience (MDA)</a><a href="#gallery"><small>06</small> Media Gallery</a><a href="#takeaways"><small>07</small> Takeaways</a></nav><div class="grid">
 
       <div>
 
@@ -479,8 +453,8 @@ nav{
           <div class="section-header-eyebrow">01 • Concept</div>
           <h2>Overview</h2>
           <p class="section-sub">
-            High Road is a climb through identity. Players encounter two sides of self, <strong>Desire</strong> and <strong>Doubt</strong>, and
-            choose routes aligned with either reflection. Completing levels rewards <strong>memory fragments</strong> that slowly assemble the
+            High Road is a climb through identity. Players encounter two sides of self, Desire and Doubt, and
+            choose routes aligned with either reflection. Completing levels rewards memory fragments that slowly assemble the
             protagonist’s motivations, regrets, and meaning of the ascent.
           </p>
 
@@ -488,7 +462,7 @@ nav{
             <div class="mini-card">
               <div class="mini-k">Theme</div>
               <h3>Conflict → inward</h3>
-              <p>Not “enemy vs enemy”—but ambition vs acceptance, wanting vs fearing, pushing vs pausing.</p>
+              <p>Not “enemy vs enemy”, but <strong class="portfolio-keyword">ambition vs acceptance</strong>, wanting vs fearing, pushing vs pausing.</p>
             </div>
             <div class="mini-card">
               <div class="mini-k">Structure</div>
@@ -503,7 +477,7 @@ nav{
           </div>
 
           <div class="callout" style="margin-top:12px">
-            <strong>Design promise:</strong><br/>
+            Design promise:<br>
             The game does not reward or punish Desire vs Doubt. Your route shapes <em>feel</em>, <em>difficulty</em>, and <em>interpretation</em>, not a score.
           </div>
         </section>
@@ -519,12 +493,12 @@ nav{
             <div class="mini-card">
               <div class="mini-k">01</div>
               <h3>Choose a route</h3>
-              <p>Pick Desire or Doubt based on what resonates in that moment, not what is “optimal.”</p>
+              <p>Pick Desire or Doubt based on what resonates in that moment, not what is “optimal”.</p>
             </div>
             <div class="mini-card">
               <div class="mini-k">02</div>
               <h3>Complete the level</h3>
-              <p>Traverse challenges tuned to the route’s emotional tone: exciting risk vs stable persistence.</p>
+              <p>Traverse challenges tuned to the <strong class="portfolio-keyword">route’s emotional tone</strong>: exciting risk vs stable persistence.</p>
             </div>
             <div class="mini-card">
               <div class="mini-k">03</div>
@@ -548,50 +522,50 @@ nav{
 
         <section id="routes" class="section">
           <div class="section-header-eyebrow">03 • The choice</div>
-          <h2>Routes & Effects</h2>
+          <h2>Routes &amp; Effects</h2>
           <p class="section-sub">
-            Desire and Doubt aren’t “good vs bad.” They’re different ways of moving—each revealing different memories, different friction, and different self-reading.
+            Desire and Doubt aren’t “good vs bad”. They’re different ways of moving, each revealing different memories, different friction, and different self-reading.
           </p>
 
           <div class="compare">
-            <div class="route">
+            <div class="route route-desire">
               <div class="badge">Desire</div>
               <h3>Appealing, direct, exciting</h3>
               <p style="margin:0 0 10px;color:#d6d6e1;font-size:14px">
                 Desire’s path looks like the fast track to the goal. It’s straightforward, but easy to overestimate your control.
               </p>
               <ul style="margin:0; padding-left:18px; color:#d6d6e1; font-size:14px">
-                <li><strong>Challenges:</strong> Physical obstacles (moving platforms, turbines, timing windows).</li>
-                <li><strong>Skill test:</strong> Precision, landing, jump rhythm, confidence management.</li>
-                <li><strong>Emotional read:</strong> Excitement + momentum, with hidden risk when you rush.</li>
+                <li>Challenges: Physical obstacles (moving platforms, turbines, timing windows).</li>
+                <li>Skill test: Precision, landing, jump rhythm, confidence management.</li>
+                <li>Emotional read: Excitement + momentum, with hidden risk when you rush.</li>
               </ul>
             </div>
 
-            <div class="route">
+            <div class="route route-doubt">
               <div class="badge">Doubt</div>
               <h3>Uncertain, strategic, resilient</h3>
               <p style="margin:0 0 10px;color:#d6d6e1;font-size:14px">
                 Doubt’s path feels slower and less direct, but it becomes stable through persistence. Progress that feels earned.
               </p>
               <ul style="margin:0; padding-left:18px; color:#d6d6e1; font-size:14px">
-                <li><strong>Challenges:</strong> Planning, route-reading, patience under ambiguity.</li>
-                <li><strong>Skill test:</strong> Restraint, consistency, deliberate problem-solving.</li>
-                <li><strong>Emotional read:</strong> Caution + introspection, reflecting the work of facing your past.</li>
+                <li>Challenges: Planning, route-reading, patience under ambiguity.</li>
+                <li>Skill test: Restraint, consistency, deliberate problem-solving.</li>
+                <li>Emotional read: Caution + introspection, reflecting the work of facing your past.</li>
               </ul>
             </div>
           </div>
 
           <div class="media-grid">
             <figure>
-              <img src="../assets/high-road-branching.jpg" alt="Brancher (slot)">
+              <img src="https://wabuzero.github.io/wabugames.github.io/assets/high-road-branching.jpg" alt="Brancher (slot)">
               <figcaption>Branch decision moment. <div class="media-meta">TIP: Click to view</div></figcaption>
             </figure>
             <figure>
-              <img src="../assets/high-road-doubt.jpg" alt="Doubt route (slot)">
+              <img src="https://wabuzero.github.io/wabugames.github.io/assets/high-road-doubt.jpg" alt="Doubt route (slot)">
               <figcaption>Doubt route visuals. <div class="media-meta">TIP: Click to view</div></figcaption>
             </figure>
             <figure>
-              <img src="../assets/high-road-desire.jpg" alt="Desire route (slot)">
+              <img src="https://wabuzero.github.io/wabugames.github.io/assets/high-road-desire.jpg" alt="Desire route (slot)">
               <figcaption>Desire route visuals. <div class="media-meta">TIP: Click to view</div></figcaption>
             </figure>
           </div>
@@ -602,7 +576,7 @@ nav{
           <h2>Memories &amp; Protagonist</h2>
           <p class="section-sub">
             The protagonist begins intentionally vague. Their identity is revealed through what you choose to see.
-            Are they climbing to escape, to reach new heights, or to reconcile a regret? The game keeps room for projection—so the climb can mean something personal.
+            Are they climbing to escape, to reach new heights, or to reconcile a regret? The game keeps room for projection, so the climb can mean something personal.
           </p>
 
           <div class="feature">
@@ -611,8 +585,8 @@ nav{
               <h3 style="margin:0 0 6px;font-size:16px">Fragmented reveals</h3>
               <ul>
                 <li>Each completed level grants one memory fragment.</li>
-                <li>Desire memories lean toward <strong>ambition</strong>, “what I want most”.</li>
-                <li>Doubt memories lean toward <strong>acceptance</strong>, “what I’m afraid to face”.</li>
+                <li>Desire memories lean toward ambition, “what I want most”.</li>
+                <li>Doubt memories lean toward acceptance, “what I’m afraid to face”.</li>
                 <li>Assembling fragments changes how the player interprets the same climb.</li>
               </ul>
             </div>
@@ -621,16 +595,16 @@ nav{
               <h3 style="margin:0 0 6px;font-size:16px">Symbolic landscapes</h3>
               <ul>
                 <li>Levels visually reinforce the tone of the chosen route.</li>
-                <li>Challenge design mirrors internal struggle without explicit judgment.</li>
+                <li><strong class="portfolio-keyword">Challenge design mirrors internal struggle</strong> without explicit judgment.</li>
                 <li>The ending reflects the path you lived, not a “correct” conclusion.</li>
               </ul>
             </div>
           </div>
 
           <div class="media-grid">
-            <figure><img src="../assets/high-road-memory-1.jpg" alt=""><figcaption>Memory fragment UI. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
-            <figure><img src="../assets/high-road-memory-2.jpg" alt=""><figcaption>Memory reward after positive choice. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
-            <figure><img src="../assets/high-road-memory-3.jpg" alt=""><figcaption>End of route. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
+            <figure><img src="https://wabuzero.github.io/wabugames.github.io/assets/high-road-memory-1.jpg" alt=""><figcaption>Memory fragment UI. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
+            <figure><img src="https://wabuzero.github.io/wabugames.github.io/assets/high-road-memory-2.jpg" alt=""><figcaption>Memory reward after positive choice. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
+            <figure><img src="https://wabuzero.github.io/wabugames.github.io/assets/high-road-memory-3.jpg" alt=""><figcaption>End of route. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
           </div>
         </section>
 
@@ -643,7 +617,7 @@ nav{
 
           <div class="quote">
             “When people play games, they have an experience. It is this experience that the designer cares about. Without the experience, the game is worthless.”
-            <div class="by">— Jesse Schell, <em>The Art of Game Design</em> (3rd ed., 2019)</div>
+            <div class="by">Jesse Schell, <em>The Art of Game Design</em> (3rd ed., 2019)</div>
           </div>
 
           <div class="card-grid" style="margin-top:14px">
@@ -655,7 +629,7 @@ nav{
             <div class="mini-card">
               <div class="mini-k">Expression</div>
               <h3>Game as self-discovery</h3>
-              <p>Choices create a personal narrative: ambition vs acceptance, shaped by the path you resonate with.</p>
+              <p><strong class="portfolio-keyword">Choices create a personal narrative</strong>: ambition vs acceptance, shaped by the path you resonate with.</p>
             </div>
             <div class="mini-card">
               <div class="mini-k">Discovery</div>
@@ -665,8 +639,8 @@ nav{
           </div>
 
           <div class="callout" style="margin-top:12px">
-            <strong>What is essential?</strong><br/>
-            <strong>Freedom of choice</strong> (no judgment), <strong>meaningful memories</strong> (layered, relatable), and <strong>visual distinction</strong> (routes feel emotionally different).
+            What is essential?<br>
+            Freedom of choice (no judgment), meaningful memories (layered, relatable), and visual distinction (routes feel emotionally different).
           </div>
         </section>
 
@@ -675,46 +649,44 @@ nav{
           <h2>Media Gallery</h2>
 
           <div class="media-grid">
-            <figure><img src="../assets/high-road-01.jpg" alt=""><figcaption>Encountering Doubt on Desire's route. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
-            <figure><img src="../assets/high-road-02.jpg" alt=""><figcaption>Desire route moment (Platforming). <div class="media-meta">TIP: Click to view</div></figcaption></figure>
-            <figure><img src="../assets/high-road-03.jpg" alt=""><figcaption>Meeting with Desire at level end. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
-            <figure><img src="../assets/high-road-04.jpg" alt=""><figcaption>Encountering Desire on Doubt's route. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
-            <figure><img src="../assets/high-road-05.jpg" alt=""><figcaption>Doubt route moment (Stealth). <div class="media-meta">TIP: Click to view</div></figcaption></figure>
-            <figure><img src="../assets/high-road-06.jpg" alt=""><figcaption>EMeeting with Doubt at level end. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
+            <figure><img src="https://wabuzero.github.io/wabugames.github.io/assets/high-road-01.jpg" alt=""><figcaption>Encountering Doubt on Desire's route. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
+            <figure><img src="https://wabuzero.github.io/wabugames.github.io/assets/high-road-02.jpg" alt=""><figcaption>Desire route moment (Platforming). <div class="media-meta">TIP: Click to view</div></figcaption></figure>
+            <figure><img src="https://wabuzero.github.io/wabugames.github.io/assets/high-road-03.jpg" alt=""><figcaption>Meeting with Desire at level end. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
+            <figure><img src="https://wabuzero.github.io/wabugames.github.io/assets/high-road-04.jpg" alt=""><figcaption>Encountering Desire on Doubt's route. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
+            <figure><img src="https://wabuzero.github.io/wabugames.github.io/assets/high-road-05.jpg" alt=""><figcaption>Doubt route moment (Stealth). <div class="media-meta">TIP: Click to view</div></figcaption></figure>
+            <figure><img src="https://wabuzero.github.io/wabugames.github.io/assets/high-road-06.jpg" alt=""><figcaption>EMeeting with Doubt at level end. <div class="media-meta">TIP: Click to view</div></figcaption></figure>
           </div>
         </section>
 
-        <section id="takeaways" class="section">
+        <section id="takeaways" class="section case-study-final-section" data-no-emphasis="">
           <div class="section-header-eyebrow">07 • Reflection</div>
           <h2>Takeaways</h2>
 
-          <div class="card-grid">
-            <div class="mini-card">
+          <div class="card-grid takeaway-grid">
+            <div class="mini-card takeaway-card">
               <div class="mini-k">Design</div>
               <h3>Choice can be emotional, not moral</h3>
               <p>By removing “right/wrong”, players choose based on resonance, which makes reflection feel honest.</p>
             </div>
-            <div class="mini-card">
+            <div class="mini-card takeaway-card">
               <div class="mini-k">Narrative</div>
               <h3>Memories make progress meaningful</h3>
               <p>Rewards that change interpretation (not stats) are perfect for self-reflective themes.</p>
             </div>
-            <div class="mini-card">
+            <div class="mini-card takeaway-card">
               <div class="mini-k">Next steps</div>
               <h3>Prototype route contrast</h3>
               <p>Test how “fast risky” vs “slow stable” reads in play, then tune visuals + feedback to match emotion.</p>
             </div>
           </div>
 
-          <div class="nextprev">
-            <a class="ghost" href="../index.html#projects">← Back to Projects</a>
-            <a href="strife-and-serenity.html">Next: Strife &amp; Serenity →</a>
-          </div>
-        </section>
+          </section>
 
       </div>
     </div>
-  </main>
+  <aside class="case-next-step" aria-label="Explore High Road"><div class="case-action-copy"><h3>Explore High Road</h3><p>Play the build or explore the original ideation.</p></div><div class="cta-row"><a class="btn btn-primary" href="https://wabuzero.itch.io/high-road" rel="noopener">Play now →</a>
+            <a class="btn btn-ghost" href="https://adaptable-radius-84c.notion.site/Game-I-High-Road-13c927cda10680f59936f2face654c71" rel="noopener">Explore ideation →</a>
+          </div></aside><nav class="project-pagination" aria-label="Project navigation"><a class="btn btn-ghost project-back" href="../index.html#tobi-wheel-home">← Back to projects</a><a class="btn btn-ghost project-next" href="pulse-and-pole.html">Next · Pulse &amp; Pole →</a></nav></main>
 
   <button id="toTop" aria-label="Back to top">▲</button>
 </div>
@@ -745,6 +717,5 @@ const toTop=document.getElementById('toTop');
 window.addEventListener('scroll', ()=>toTop.classList.toggle('show', window.scrollY>800));
 toTop.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
-<script src="../assets/lightbox.js"></script>
-</body>
+<script src="../assets/portfolio-chrome.js"></script><script src="../assets/section-nav.js"></script><script src="../assets/portfolio-refinements.js"></script><script src="../assets/media-preview.js"></script></body>
 </html>

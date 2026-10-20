@@ -1,0 +1,21 @@
+/* A single in-page media frame, matching Narrative's character artwork preview. */
+body .portfolio-media-preview{box-sizing:border-box;width:min(1000px,94vw);max-width:1000px;max-height:92dvh;margin:auto;padding:0;border:1px solid #ff7f3245;border-radius:20px;background:#17171c;color:#eeece8;box-shadow:0 30px 100px #0008;overflow:hidden}
+body .portfolio-media-preview[open]{display:flex;flex-direction:column}
+body .portfolio-media-preview::backdrop,body dialog.script-preview::backdrop,body dialog.viewer::backdrop,body dialog.cue-dialog::backdrop{background:#000b;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+body .portfolio-media-preview *,body .portfolio-media-preview *::before,body .portfolio-media-preview *::after{box-sizing:border-box}
+body .portfolio-media-preview .pm-stage{display:grid;place-items:center;min-height:0;overflow:auto;background:#17171c}
+body .portfolio-media-preview .pm-stage img,body .portfolio-media-preview .pm-stage video{display:block;width:auto;height:auto;max-width:100%;max-height:calc(92dvh - 110px);margin:0;object-fit:contain;border:0;border-radius:0;aspect-ratio:auto;background:#17171c}
+body .portfolio-media-preview .pm-stage video{width:100%;aspect-ratio:16/9;background:#09090c}
+body .portfolio-media-preview .pm-footer{display:flex;align-items:center;justify-content:space-between;gap:22px;flex:0 0 auto;padding:18px 22px}
+body .portfolio-media-preview .pm-description{min-width:0}
+body .portfolio-media-preview .pm-caption{margin:0;font:400 13px/1.6 Inter,system-ui,sans-serif;color:#b5b0aa;overflow-wrap:anywhere}
+body .portfolio-media-preview .pm-count{display:block;margin-top:5px;font:400 11px/1.4 Inter,system-ui,sans-serif;color:#aaa7a4}
+body .portfolio-media-preview .pm-controls{display:flex;align-items:center;gap:9px;flex-shrink:0}
+body .portfolio-media-preview button,body .media-preview-trigger{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;width:auto;height:auto;margin:0;padding:10px 16px;border:1px solid #ff7f3270;border-radius:99px;background:transparent;color:#ff7f32;font:600 12px/1.5 Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;cursor:pointer;box-shadow:none}
+body .portfolio-media-preview button:hover,body .media-preview-trigger:hover{background:#ff7f3217}
+body .portfolio-media-preview button:focus-visible,body .media-preview-trigger:focus-visible{outline:2px solid #ff7f32;outline-offset:3px}
+body .portfolio-media-preview [hidden]{display:none!important}
+body .media-preview-trigger{margin-top:14px;font-size:11px;padding:8px 14px}
+figure img[role="button"],[data-image],[data-story-image],.expression-strip button{cursor:zoom-in}
+body dialog.script-preview,body dialog.viewer,body dialog.cue-dialog{border-color:#ff7f3245;border-radius:20px}
+@media(max-width:600px){body .portfolio-media-preview{width:calc(100vw - 24px);max-height:calc(100dvh - 24px);border-radius:16px}body .portfolio-media-preview .pm-footer{padding:14px;gap:12px;flex-wrap:wrap}body .portfolio-media-preview .pm-controls{margin-left:auto}body .portfolio-media-preview .pm-stage img,body .portfolio-media-preview .pm-stage video{max-height:calc(100dvh - 170px)}}

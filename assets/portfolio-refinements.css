@@ -1,0 +1,50 @@
+/* Consistent orange emphasis for selected prose; headings and samples keep their styling. */
+body .portfolio-keyword{display:inline!important;color:#ffad76!important;font-weight:600!important;font-size:inherit!important;line-height:inherit!important;letter-spacing:inherit!important;text-transform:none!important}
+/* Every native and custom dropdown shares the orange + / purple − treatment. */
+body .portfolio-disclosure-summary{list-style:none!important;cursor:pointer;min-height:44px}
+body .portfolio-disclosure-summary:not(.celeste-summary){display:flex!important;align-items:center;gap:14px}
+body .portfolio-disclosure-summary::after{content:none!important;display:none!important}
+body .portfolio-disclosure-summary::marker{content:''}
+body .portfolio-disclosure-summary::-webkit-details-marker{display:none!important}
+body .portfolio-disclosure-summary .disclosure-indicator,
+body button.collapsible>.icon,
+body button.collapse-btn{
+ box-sizing:border-box!important;display:inline-grid!important;place-items:center!important;
+ flex:0 0 36px!important;width:36px!important;height:36px!important;min-width:36px!important;
+ padding:0!important;border:1px solid #ff7f3240!important;border-radius:11px!important;
+ background:#ff7f3210!important;color:#ff7f32!important;
+ font:600 20px/1 Inter,system-ui,sans-serif!important;letter-spacing:0!important;
+ transform:none!important;transition:color .15s,background .15s,border-color .15s;
+}
+body .portfolio-disclosure-summary>.disclosure-indicator{margin-left:auto!important}
+body details[open]>.portfolio-disclosure-summary .disclosure-indicator,
+body button.collapsible.active>.icon,
+body button.collapsible[aria-expanded="true"]>.icon,
+body .collapsible-card.open>.collapsible-header>button.collapse-btn,
+body button.collapse-btn[aria-expanded="true"]{
+ color:#bda6ff!important;border-color:#8c68ff55!important;background:#8c68ff12!important;
+}
+body button.collapsible{min-height:44px;gap:16px}
+body .collapsible-header{min-height:44px;gap:16px}
+body .collapsible-header>button.collapse-btn{flex-shrink:0}
+body .portfolio-disclosure-summary:focus-visible,
+body button.collapsible:focus-visible,
+body button.collapse-btn:focus-visible{outline:2px solid #ff7f32;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){body .disclosure-indicator,body button.collapse-btn,body button.collapsible>.icon{transition:none}}
+
+/* High Road's route accents match Narrative: Doubt blue, Desire orange. */
+body .route.route-doubt,body .route-side.route-doubt{border-color:#7ba9cd44;background:#6388aa0c}
+body .route.route-desire,body .route-side.route-desire{border-color:#ff7f3244;background:#ff7f3208}
+body .route-doubt>.badge{color:#9cc5e6;border-color:#7ba9cd55;background:#6388aa12}
+body .route-desire>.badge{color:#ff7f32;border-color:#ff7f3255;background:#ff7f3212}
+body .route-doubt>h3,body .route-doubt>h4,body .route-doubt .portfolio-keyword{color:#9cc5e6!important}
+body .route-desire>h3,body .route-desire>h4,body .route-desire .portfolio-keyword{color:#ff7f32!important}
+
+/* Takeaways stay neutral: emphasis belongs to the demonstrated work above. */
+body [data-no-emphasis] .portfolio-keyword,
+body [data-no-emphasis] .key-phrase,
+body [data-no-emphasis] p strong,
+body [data-no-emphasis] p b,
+body [data-no-emphasis] li strong,
+body [data-no-emphasis] li b{color:inherit!important;font-weight:inherit!important}
+body [data-no-emphasis] .k,body [data-no-emphasis] .mini-k{color:var(--muted,#aaa7a4)!important}
